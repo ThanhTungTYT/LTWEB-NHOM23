@@ -1,0 +1,126 @@
+.catalog {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    height: auto;
+}
+
+.catalog-list {
+    position: relative;
+    top: 50px;
+    left: 10px;
+    margin-right: 10px;
+    width: 260px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.catalog-list .head-catalog {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    background: #a03636;
+    padding: 10px 0;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #000000;
+}
+.catalog-list .list-catalog {
+    list-style: none;
+}
+.catalog-list .list-catalog .catalog-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px solid #ccc;
+}
+.catalog-list .list-catalog .catalog-item:hover {
+    background-color: #f0f0f0;
+    color: #d65200;
+}
+.product-area {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+}
+.product-area .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    overflow: visible;
+}
+.product-area .product-list .product{
+    width: 250px;
+    max-height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.product-area .product-list .product:hover{
+    scale: 1.05;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.product-area .product-list .product img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.product-area .product-list .product p{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 80%;
+}
+.product-area .product-list .product span{
+    font-size: 16px;
+    color: green;
+    margin-top: 15px;
+}
+.product-area .product-list .product label{
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+}
+.product-area .product-page {
+    text-align: center;
+}
+
+.product-area .product-page button {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.product-area .product-page button:hover {
+    background-color: #f2f2f2;
+}
+
+.product-area .product-page button.active {
+    background-color: #b33a3a;
+    color: white;
+    border-color: #b33a3a;
+}
