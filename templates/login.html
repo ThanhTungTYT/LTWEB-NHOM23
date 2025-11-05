@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../webapp/css/style.css">
+    <link rel="stylesheet" href="../webapp/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="lo-re">
+            <div class="cart">
+                <a href="../../../Project/Web-Programing/templates/cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                <label for="num-cart" id="num-cart-label">0</label>
+            </div>
+            <div class="mini-menu">
+                <a href="login.html">Login</a>
+                <span>/</span>
+                <a href="../../../Project/Web-Programing/templates/register.html">Register</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class = "container">
+        <h2 id = "Login">Đăng nhập</h2>
+        <form action="/submit" method="post">
+            <label class="lbu" for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" placeholder="Tên đăng nhập hoặc email" required><br><br>
+            <label class="lbpw" for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" placeholder="Mật khẩu" required><br><br>
+            <div class="forgot-password">
+                <p>Quên mật khẩu? <a href="#" onclick="forgotPassword()">Click vào đây</a></p>
+            </div>
+            <input type="submit" id="login" value="Đăng nhập">
+        </form>
+        <div class="or-login"> Hoặc đang nhập bằng:
+            <button class="icon-btn google-btn">
+                <div class="google-icon-wrapper">
+                    <img class="google-icon" src="../../../Project/Web-Programing/static/images/gg.png" alt="Google Logo" width="24px" height="24px">
+                </div>
+            </button>
+            <button class="icon-btn facebook-btn">
+                <div class="facebook-icon-wrapper">
+                    <img class="facebook-icon" src="../../../Project/Web-Programing/static/images/fb.png" alt="Facebook Logo" width="24px" height="24px">
+                </div>
+            </button>
+        </div>
+        <div class="register-link">
+                <p>Bạn chưa có tài khoản? <a href="#" onclick="redirectToRegister()">Đăng ký ở đây</a></p> 
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="foot-content left">
+                <h3>Aroma Café</h3>
+                <p>Địa chỉ: xxx, xxx, xxx.</p>
+                <p>Điện thoại: xxx-xxx-xxxx.</p>
+                <p>Email: example@gmail.com.</p>
+            </div>
+            <div class="foot-content right">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aroma Café. All rights reserved.</p>
+        </div>
+    </footer>
+    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+
+    <script src="../../../Project/Web-Programing/static/js/script.js"></script>
+    <script src="../../../Project/Web-Programing/static/js/login.js"></script>
+</body>
+</html>
