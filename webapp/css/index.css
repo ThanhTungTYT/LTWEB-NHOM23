@@ -1,0 +1,166 @@
+body{
+    background-color: #f0d9b3;
+}
+.img-home{
+    margin: auto;
+    margin-top: 50px;
+    width: 80%;
+    height: 560px;
+    border-radius: 20px;
+    background-image: url("../img/img_1.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;;
+}
+.img-home button{
+    position: absolute;
+    display: none;
+    top: 450px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 10px;
+    cursor: pointer;
+}
+.img-home:hover button{
+    display: block;
+}
+.img-home .left{
+    left: 180px;
+}
+.img-home .right{
+    right: 180px;
+}
+.hot-item{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: #a03636;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.hot-item .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.hot-item .title h2{
+    font-size: 24px;
+    font-weight: bold;
+}
+.hot-item .title a{
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+.hot-item .title a:hover{
+    color: #d65200;
+}
+.hot-item .title a i{
+    margin-left: 5px;
+}
+.hot-item .product-list{
+    height: fit-content;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    border-radius: 20px;
+    background: white;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+.hot-item .product-list .product{
+    min-width: 250px;
+    height: fit-content;
+    background: transparent;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 0.7;
+    margin: 30px;
+    text-decoration: none;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out;
+}
+.hot-item .product-list .product:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+.hot-item .product-list .product img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.hot-item .product-list .product p{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hot-item .product-list .product span{
+    font-size: 16px;
+    color: green;
+    margin-top: 15px;
+}
+.hot-item .product-list .product label{
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+}
+.hot-item .product-list button{
+    position: absolute;
+    top: 1050px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    display: none;
+    border-radius: 100px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+.hot-item .product-list .slider-left{
+    left: 180px;
+}
+.hot-item .product-list .slider-right{
+    right: 180px;
+}
+.hot-item .product-list:hover > button{
+    display: block;
+}
+.introduction{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.introduction .intro-content{
+    background: transparent;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
+}
+.introduction .intro-content h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.introduction .intro-content p{
+    margin-bottom: 10px;
+    line-height: 1.6;
+}

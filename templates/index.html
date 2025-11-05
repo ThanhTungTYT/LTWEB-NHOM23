@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma Café-Cà phê rang số 1 Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../webapp/css/index.css">
+    <link rel="stylesheet" href="../webapp/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="lo-re">
+            <div class="cart">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                <span id="num-cart-label">0</span>
+            </div>
+            <div class="mini-menu">
+             <a href="login.html">Login</a>
+                <span>/</span>
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+    </header>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="index.html" class="item">Trang chủ</a></li>
+            <li><a href="#" class="item">Sản phẩm</a>
+                <ul class="menu-item">
+                    <li><a href="catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
+                    <li><a href="catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
+                    <li><a href="catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
+                    <li><a href="catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="item">Giới thiệu</a></li>
+            <li><a href="#" class="item">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="img-home" id="img-home">
+        <button class="left" onclick="showPreviousImage()"><</button>
+        <button class="right" onclick="showNextImage()">></button>
+    </div>
+    <div class="hot-item">
+        <div class="title">
+            <h2>Sản phẩm nổi bật<i class="fa-solid fa-fire"></i></h2>
+            <a href="catalog.html?category=all">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="product-list" id="product-list">
+            <button class="slider-right" id="slider-right">></button>
+            <button class="slider-left" id="slider-left"><</button>
+        </div>
+    </div>
+    <div class="introduction">
+        <div class="intro-content">
+            <h2>Về Aroma Café</h2>
+            <p>Aroma Café tự hào là thương hiệu cà phê rang xay hàng đầu tại Việt Nam, mang đến những trải nghiệm cà phê tuyệt vời cho khách hàng. Với hơn 10 năm kinh nghiệm trong ngành, chúng tôi cam kết sử dụng những hạt cà phê chất lượng cao nhất, được chọn lọc kỹ lưỡng từ các vùng trồng cà phê nổi tiếng trên thế giới.</p>
+            <p>Chúng tôi không chỉ chú trọng đến chất lượng sản phẩm mà còn đặt sự hài lòng của khách hàng lên hàng đầu. Đội ngũ nhân viên tận tâm và chuyên nghiệp của chúng tôi luôn sẵn sàng hỗ trợ bạn trong việc lựa chọn sản phẩm phù hợp với khẩu vị và nhu cầu của bạn.</p>
+            <p>Hãy đến với Aroma Café để trải nghiệm hương vị cà phê đích thực và khám phá thế giới cà phê phong phú mà chúng tôi mang lại.</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="foot-content left">
+                <h3>Aroma Café</h3>
+                <p>Địa chỉ: xxx, xxx, xxx.</p>
+                <p>Điện thoại: xxx-xxx-xxxx.</p>
+                <p>Email: example@gmail.com.</p>
+            </div>
+            <div class="foot-content right">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aroma Café. All rights reserved.</p>
+        </div>
+    </footer>
+    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+
+
+    <script src="../webapp/js/index.js"></script>
+    <script src="../webapp/js/script.js"></script>
+</body>
+</html>
