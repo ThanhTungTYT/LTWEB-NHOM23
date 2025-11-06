@@ -120,20 +120,6 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 16px;
 }
 
-/* Dòng chọn mã giảm giá */
-.discount-link {
-    display: block;
-    font-weight: 700;
-    color: #e96d00;
-    text-decoration: none;
-    margin-bottom: 10px;
-}
-
-/* Hiệu ứng hover cho dòng chọn mã giảm giá */
-.discount-link:hover {
-    text-decoration: underline;
-}
-
 /* Tổng tiền giỏ hàng */
 .cart-totals{
     display: flex;
@@ -168,10 +154,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Nút Thanh toán */
 .checkout-button {
+    text-decoration:none;
+    text-align: center;
     display: block;
     width: 100%;
     background-color: #641c16;
-    color: #f47a00;
+    color: #f47a00 ;
     border: none;
     padding: 18px 0;
     font-size: 22px;
@@ -201,7 +189,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Biểu tượng các thức thanh toán */
 .payment-methods i {
-    font-size: 25px;
+    font-size: 18px;
     margin-right: 15px;
     padding-left: 15px;
 }
@@ -209,7 +197,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Chữ các phương thức thanh toán */
 .payment-methods span {
     margin-right: 20px;
-    font-size: 25px;
+    font-size: 18px;
     padding-right: 15px;
 }
 
