@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../LTWEB-NHOM23/webapp/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../LTWEB-NHOM23/webapp/css/help.css">
+</head>
+<body>
+    <header>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="lo-re">
+            <div class="cart">
+                <a href="../LTWEB-NHOM23/templates/cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                <span id="num-cart-label">0</span>
+            </div>
+            <div class="mini-menu">
+             <a href="../LTWEB-NHOM23/templates/login.html">Login</a>
+                <span>/</span>
+                <a href="../LTWEB-NHOM23/templates/register.html">Register</a>
+            </div>
+        </div>
+    </header>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="../LTWEB-NHOM23/templates/index.html" class="item">Trang chủ</a></li>
+            <li><a href="#" class="item">Sản phẩm</a>
+                <ul class="menu-item">
+                    <li><a href="../LTWEB-NHOM23/templates/catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
+                    <li><a href="../LTWEB-NHOM23/templates/catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
+                    <li><a href="../LTWEB-NHOM23/templates/catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
+                    <li><a href="../LTWEB-NHOM23/templates/catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="item">Giới thiệu</a></li>
+            <li><a href="#" class="item">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 id="help">Aroma Café-Cà phê rang số 1 Việt Nam</h1>
+        <div class="address">
+            <div class="pin-address"> 
+                <i class="fa-solid fa-location-dot"></i>  Địa chỉ: xxx , xxx, xxx.
+            </div>
+            <div class="phone-number">
+                <i class="fa-solid fa-phone"></i>  Điện thoại: xxx-xxx-xxxx.
+            </div>
+            <div class="email-address">
+                <i class="fa-solid fa-envelope"></i>  Email: aromacafe@gmail.com
+            </div>
+        </div>
+        <div class="main-content">
+            <h2> Liên hệ với chúng tôi</h2>
+            <form action="/submit" method="post">
+                <input type="text" id="name" name="name" placeholder="Họ và tên của bạn" required><br><br>
+                <input type="email" id="email" name="email" placeholder="Email của bạn" required><br><br>
+                <label class="lbmessage" for="message">Tin nhắn:</label><br>
+                <textarea id="message" name="message" placeholder="Viết tin nhắn của bạn ở đây..." rows="5" cols="40" required></textarea><br><br>
+                <button type="button" id="send-message">Liên hệ ngay</button>
+            </form>
+        </div>
+    </div>       
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="foot-content left">
+                <h3>Aroma Café</h3>
+                <p>Địa chỉ: xxx, xxx, xxx.</p>
+                <p>Điện thoại: xxx-xxx-xxxx.</p>
+                <p>Email: example@gmail.com.</p>
+            </div>
+            <div class="foot-content right">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aroma Café. All rights reserved.</p>
+        </div>
+    </footer>
+    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+</body>
+</html>
