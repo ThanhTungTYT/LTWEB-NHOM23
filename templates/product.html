@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../webapp/css/style.css">
+    <link rel="stylesheet" href="../webapp/css/product.css">
+</head>
+<body>
+    <header>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="lo-re">
+            <div class="cart">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                <span id="num-cart-label">0</span>
+            </div>
+            <div class="mini-menu">
+                <a href="login.html">Login</a>
+                <span>/</span>
+                <a href="register.html">Register</a>
+            </div>
+        </div>
+    </header>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="index.html" class="item">Trang chủ</a></li>
+            <li><a href="#" class="item">Sản phẩm</a>
+                <ul class="menu-item">
+                    <li><a href="catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
+                    <li><a href="catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
+                    <li><a href="catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
+                    <li><a href="catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="item">Giới thiệu</a></li>
+            <li><a href="#" class="item">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="product-body">
+        <div class="product-main">
+            <div class="product-title">
+                <span>Sản phẩm</span>
+                <p>Tên sản phẩm</p>
+            </div>
+            <div class="product-content">
+                <div class="product-img">
+                    <img src="../webapp/img/Cafe1.png" alt="Ảnh Cà Phê" id="img-main">
+                </div>
+                <div class="content">
+                    <p>100.000 VND</p>
+                    <div class="sub-content">
+                        <p>Tình trạng: <span>Còn hàng</span></p>
+                        <p>Thương hiệu: <span>Aroma Cafe</span></p>
+                    </div>
+                    <form>
+                        <div class="type">
+                            <label>Loại</label>
+                            <select>
+                                <option>Chọn một tùy chọn</option>
+                                <option>Loại hạt</option>
+                                <option>Loại xoay</option>
+                            </select>
+                        </div>
+                        <div class="weight">
+                            <label>Khối lượng</label>
+                            <select>
+                                <option>Chọn một tùy chọn</option>
+                                <option>500gr</option>
+                                <option>800gr</option>
+                                <option>1000gr</option>
+                            </select>
+                        </div>
+                        <div class="count-num">
+                            <label>Số lượng</label>
+                            <button id="count-minus" type="button">-</button>
+                            <span id="num-count">1</span>
+                            <button id="count-add" type="button">+</button>
+                        </div>
+                        <button type="submit">Thêm vào giỏ hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="product-details">
+            <div class="detail-des">
+                <div class="des-left">
+                    <p>-Thông tin sản phẩm-</p>
+                    <div class="sub-detail">
+                        <p>1. Xuất xứ: XXX</p>
+                        <p>2. Thương hiệu sản phẩm: XXX</p>
+                        <p>3. Công nghệ chế biến: XXX</p>
+                        <p>4. Chứng nhận chất lượng: XXX</p>
+                    </div>
+                </div>
+                <div class="des-right">
+                    <p>-Thông tin liên hệ tư vấn-</p>
+                    <div class="list-call">
+                        <p><i class="fab fa-facebook-f"></i> Facebook: <a href="#">AromaCafe</a></p>
+                        <p><i class="fab fa-twitter"></i>Twitter: <a href="#">AromaCafe</a></p>
+                        <p><i class="fab fa-instagram"></i>Instagram: <a href="#">AromaCafe</a></p>
+                        <p><i class="fab fa-linkedin-in"></i>Linkedin: <a href="#">AromaCafe</a></p>
+                        <p>Số hotline: XXXXXXXXXX</p>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-main">
+                <p>-Mô tả sản phẩm-</p>
+                <div class="detail-content">
+                    <p>
+                        Cà phê hộp rang xay nguyên chất – Hương vị đậm đà, khơi nguồn cảm hứng mỗi ngày
+                        Thưởng thức trọn vẹn vị cà phê tinh túy trong từng hạt được tuyển chọn kỹ lưỡng từ những vùng cao nguyên trù phú. Mỗi hộp cà phê được đóng gói kín giữ trọn hương thơm tự nhiên, giúp bạn dễ dàng pha chế và tận hưởng ly cà phê đậm đà, thơm nồng ngay tại nhà hay nơi làm việc.
+                        Sản phẩm không pha tạp, không chất bảo quản, mang đến vị đắng nhẹ đầu lưỡi, hậu ngọt sâu lắng – đúng chuẩn gu cà phê Việt. Thiết kế hộp sang trọng, tiện dụng, phù hợp để sử dụng hàng ngày hoặc làm quà tặng tinh tế cho người thân và đối tác.
+                    </p>
+                    <p>1. Hướng dẫn sử dụng:</p>
+                    <p>2. Mô tả hương vị:</p>
+                    <p>3. Hiệu quả dinh dưỡng:</p>
+                </div>
+            </div>
+        </div>
+        <div class="product-comment">
+            <p>-Đánh giá sản phẩm-</p>
+            <div class="another-comment">
+                <p>Hiện không có đánh giá khác cho sản phẩm này.</p>
+            </div>
+            <form class="comment">
+                <input type="text" placeholder="Enter your comment...">
+                <button type="submit">Gửi</button>
+            </form>
+        </div>
+        <div class="product-relative">
+            <p>-Sản phẩm liên quan-</p>
+            <div class="product-catalog" id="product-catalog">
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="foot-content left">
+                <h3>Aroma Café</h3>
+                <p>Địa chỉ: xxx, xxx, xxx.</p>
+                <p>Điện thoại: xxx-xxx-xxxx.</p>
+                <p>Email: example@gmail.com.</p>
+            </div>
+            <div class="foot-content right">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Aroma Café. All rights reserved.</p>
+        </div>
+    </footer>
+    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+
+    <script src="../webapp/js/script.js"></script>
+    <script src="../webapp/js/product.js"></script>
+</body>
+</html>
