@@ -9,13 +9,7 @@ const hotItems = [
     { name: 'Rumi-Cafe đóng gói Trung Nguyên', image: '../webapp/img/Cafe1.png', price: '100,000 VND', purchase: 4500 },
     { name: 'Drip Coffee', image: '../webapp/img/Cafe2.jpg', price: '200,000 VND', purchase: 3500 },
     { name: 'Cafe Chất-Vina Cafe', image: '../webapp/img/Cafe3.png', price: '300,000 VND', purchase: 2500 },
-    { name: 'Fresh Coffee-Cafe đóng gói Archievs', image: '../webapp/img/Cafe4.jpeg', price: '400,000 VND', purchase: 1500 },
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
+    { name: 'Fresh Coffee-Cafe đóng gói Archievs', image: '../webapp/img/Cafe4.jpeg', price: '400,000 VND', purchase: 1500 }
 ];
 
 let currentIndex = 0;
@@ -51,16 +45,6 @@ hotItems.forEach(item => {
     product.appendChild(productItem);
 });
 
-const btnLeft = document.getElementById("slider-left");
-const btnRight = document.getElementById("slider-right");
-
-btnRight.addEventListener("click", () => {
-    product.scrollLeft += 300;
-});
-
-btnLeft.addEventListener("click", () => {
-    product.scrollLeft -= 300;
-});
 
 
 

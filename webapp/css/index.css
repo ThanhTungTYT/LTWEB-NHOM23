@@ -1,16 +1,11 @@
-body{
-    background-color: #f0d9b3;
-}
 .img-home{
-    margin: auto;
-    margin-top: 50px;
-    width: 80%;
-    height: 560px;
-    border-radius: 20px;
+    width: 100%;
+    height: 650px;
     background-image: url("../img/img_1.jpg");
     background-size: cover;
     background-position: center;
-    transition: background-image 0.5s ease-in-out;;
+    transition: background-image 0.5s ease-in-out;
+    margin-bottom: 50px;
 }
 .img-home button{
     position: absolute;
@@ -29,55 +24,57 @@ body{
     display: block;
 }
 .img-home .left{
-    left: 180px;
+    left: 20px;
 }
 .img-home .right{
-    right: 180px;
+    right: 20px;
 }
 .hot-item{
-    width: 80%;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 20px;
-    background: #a03636;
-    border-radius: 20px;
-    border: 1px solid black;
-}
-.hot-item .title{
+    width: 100%;
+    background-color: #FAF6F1;
+    height: fit-content;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    padding: 50px 20px;
+    margin-bottom: 50px;
+    color: #840500;
 }
-.hot-item .title h2{
-    font-size: 24px;
-    font-weight: bold;
+.hot-item .hot-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+    color: #A13333;
 }
-.hot-item .title a{
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
+.hot-item h2{
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 30px;
+    white-space: nowrap;
 }
-.hot-item .title a:hover{
-    color: #d65200;
-}
-.hot-item .title a i{
-    margin-left: 5px;
+.hot-item .hot-title .line {
+    height: 1px;
+    width: 100%;
+    max-width: 200px;
+    background-color: #D3C1C1;
 }
 .hot-item .product-list{
+    max-width: 100%;
     height: fit-content;
     display: flex;
     gap: 20px;
-    overflow-x: auto;
+    text-align: center;
     border-radius: 20px;
-    background: white;
     overflow: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
 }
 .hot-item .product-list .product{
-    min-width: 250px;
+    width: 250px;
     height: fit-content;
+    display: block;
     background: transparent;
     padding: 10px;
     border-radius: 20px;
@@ -103,6 +100,8 @@ body{
     font-weight: bold;
     color: black;
     margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -118,49 +117,195 @@ body{
     font-size: 14px;
     color: gray;
 }
-.hot-item .product-list button{
-    position: absolute;
-    top: 1050px;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    display: none;
-    border-radius: 100px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 2;
-}
-.hot-item .product-list .slider-left{
-    left: 180px;
-}
-.hot-item .product-list .slider-right{
-    right: 180px;
-}
-.hot-item .product-list:hover > button{
-    display: block;
-}
-.introduction{
-    width: 80%;
-    margin: auto;
+.video-1{
+    width: 100%;
+    height: fit-content;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
+    gap: 30px;
+    padding: 0 50px;
     margin-bottom: 50px;
 }
-.introduction .intro-content{
-    background: transparent;
-    padding: 20px;
-    border-radius: 20px;
+.video-1 .intro-video-1{
+    width: 50%;
     box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
+    border-radius: 20px;
+    padding: 100px 30px;
 }
-.introduction .intro-content h2{
-    font-size: 24px;
+.video-1 .intro-video-1 p{
+    text-align: center;
+    color: #840500;
+    font-size: 30px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
-.introduction .intro-content p{
-    margin-bottom: 10px;
+.video-1 .intro-video-1 .content{
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+}
+.video-1 .intro-video-1 button{
+    position: relative;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    background: transparent;
+    border: 1px orange solid;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.video-1 .intro-video-1 button:hover{
+    background: orange;
+    color: white;
+}
+.video-1 video{
+    width: 50%;
+    border-radius: 20px;
+}
+.why-choose-us {
+    width: 100%;
+    background-color: #FAF6F1;
+    padding: 60px 30px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+    color: #A13333;
+}
+.section-title h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 30px;
+    white-space: nowrap;
+}
+.section-title .line {
+    height: 1px;
+    width: 100%;
+    max-width: 200px;
+    background-color: #D3C1C1;
+}
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.feature-item .feature-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+.feature-item h3 {
+    color: #A13333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    min-height: 3em;
+}
+.feature-item p {
+    color: #333;
+    font-size: 16px;
     line-height: 1.6;
 }
+.approach-section {
+    padding: 60px 20px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+.approach-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.text-content-box, .video-content-box {
+    flex: 1;
+    min-width: 300px;
+}
+.text-content-box {
+    border-radius: 10px;
+    padding: 100px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.text-content-box h2 {
+    text-align: center;
+    color: #840500;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+.text-content-box p {
+    text-align: center;
+    color: #000000;
+    font-size: 20px;
+}
+.text-content-box button {
+    position: relative;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 50px;
+    font-size: 15px;
+    background: transparent;
+    border: 1px orange solid;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.text-content-box button:hover {
+    background: orange;
+    color: white;
+}
+.video-content-box {
+    display: flex;
+    align-items: center;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
