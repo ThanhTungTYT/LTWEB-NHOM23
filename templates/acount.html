@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../webapp/css/style.css">
+    <link rel="stylesheet" href="../webapp/css/acount.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Tìm kiếm...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="lo-re">
+        <div class="cart">
+            <a href="../../../Project/Web-Programing/templates/cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+            <label for="num-cart" id="num-cart-label">0</label>
+        </div>
+        <div class="mini-menu">
+            <a href="login.html">Login</a>
+            <span>/</span>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
+</header>
+<nav class="main-menu">
+    <ul>
+        <li><a href="index.html" class="item">Trang chủ</a></li>
+        <li><a href="#" class="item">Sản phẩm</a>
+            <ul class="menu-item">
+                <li><a href="catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
+                <li><a href="catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
+                <li><a href="catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
+                <li><a href="catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="item">Giới thiệu</a></li>
+        <li><a href="#" class="item">Liên hệ</a></li>
+    </ul>
+</nav>
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="info.html" class="sidebar-link active">Thông tin cá nhân</a></li>
+                <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
+                <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
+                <li><a href="index.html" class="logout-link">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="content-area" class="content-area"></main>
+</div>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="foot-content left">
+            <h3>Aroma Café</h3>
+            <p>Địa chỉ: xxx, xxx, xxx.</p>
+            <p>Điện thoại: xxx-xxx-xxxx.</p>
+            <p>Email: contact@aromacafe.com</p>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../webapp/js/acount.js"></script>
+<script src="../webapp/js/script.js"></script>
+</html>
