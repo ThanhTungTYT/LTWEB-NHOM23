@@ -10,23 +10,38 @@
 
 </head>
 <body>
-    <header>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
+<header>
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Tìm kiếm...">
+        <button id="search-button"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="lo-re">
+        <div class="cart">
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+            <span id="num-cart-label">0</span>
         </div>
-        <div class="lo-re">
-            <div class="cart">
-                <a href="../../../Project/Web-Programing/templates/cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
-                <label for="num-cart" id="num-cart-label">0</label>
-            </div>
-            <div class="mini-menu">
-                <a href="login.html">Login</a>
-                <span>/</span>
-                <a href="register.html">Register</a>
-            </div>
+        <div class="mini-menu">
+            <a href="login.html">Login</a>
+            <span>/</span>
+            <a href="register.html">Register</a>
         </div>
-    </header>
+    </div>
+</header>
+<nav class="main-menu">
+    <ul>
+        <li><a href="index.html" class="item">Trang chủ</a></li>
+        <li><a href="#" class="item">Sản phẩm</a>
+            <ul class="menu-item">
+                <li><a href="catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
+                <li><a href="catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
+                <li><a href="catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
+                <li><a href="catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
+            </ul>
+        </li>
+        <li><a href="#" class="item">Giới thiệu</a></li>
+        <li><a href="#" class="item">Liên hệ</a></li>
+    </ul>
+</nav>
     <div class = "container">
         <h2 id = "register">Đăng ký</h2>
         <form id="register-form" action="/submit" method="post">
@@ -41,8 +56,8 @@
             <label class="lbcpw" for="confirmpassword">Xác nhận mật khẩu:</label>
             <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Xác nhận mật khẩu" required><br><br>
             <div class="bt_regis" >
-                <input type="submit" id="quaylai" value="Quay lại" onclick="redirectToLogin()">
-                <input type="submit" id="register-btn" value="Đăng ký">
+                <button type="button" id="clear-btn" onclick="location.href='login.html'">Quay lại</button>
+                <button type="submit" id="register-btn">Đăng ký  </button>
             </div>
         </form>
     </div>
@@ -69,6 +84,8 @@
             <p>&copy; 2024 Aroma Café. All rights reserved.</p>
         </div>
     </footer>
+<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+
     <script src="../webapp/js/register.js"></script>
     <script src="../webapp/js/script.js"></script>
 </body>

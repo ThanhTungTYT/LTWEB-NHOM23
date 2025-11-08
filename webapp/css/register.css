@@ -41,6 +41,15 @@ body {
     display: flex;
     justify-content: space-between; /* chỉnh sửa để nút cách đều nhau */
 }
+.bt_regis button{
+    width: 44%;
+    padding: 10px;
+    background-color: #d65200;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* con trỏ chuột biến thành tay khi hover qua nút */
+}
 .container input[type="submit"] {
     width: 44%;
     padding: 10px;
