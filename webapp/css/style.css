@@ -33,6 +33,7 @@ header{
     outline: none;
     width: 500px;
     height: 50px;
+    font-size: 18px;
     border-radius: 20px 0 0 20px;
 }
 #search-button{
@@ -198,4 +199,8 @@ footer .footer-bottom{
     height: 50px;
     border: 3px solid black;
     cursor: pointer;
+}
+.slide-top:hover{
+    background: saddlebrown;
+    color: white;
 }
