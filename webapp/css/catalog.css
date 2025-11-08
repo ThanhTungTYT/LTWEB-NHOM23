@@ -1,49 +1,82 @@
 .catalog {
     display: flex;
     align-items: flex-start;
-    gap: 30px;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
     padding: 20px;
-    background-color: white;
+    margin-top: 50px;
+    margin-bottom: 30px;
     height: auto;
 }
-
 .catalog-list {
-    position: relative;
-    top: 50px;
-    left: 10px;
-    margin-right: 10px;
-    width: 260px;
-    border-radius: 8px;
-    flex-shrink: 0;
+    width: 100%;
+    height: fit-content;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }
-
 .catalog-list .head-catalog {
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    color: white;
-    background: #a03636;
-    padding: 10px 0;
-    border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid #000000;
+    font-size: 40px;
+    font-weight: 600;
+    color: #840500;
+    display: flex;
+    align-items: center;
+}
+.catalog-list .head-catalog:after {
+    content: "";
+    flex-grow: 1;
+    margin-left: 15px;
+    height: 3px;
+    background-color: #840500;
 }
 .catalog-list .list-catalog {
     list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
 }
 .catalog-list .list-catalog .catalog-item {
-    display: block;
-    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 400;
     text-decoration: none;
-    color: black;
-    border-bottom: 1px solid #ccc;
+    color: #040404;
+    border: 2px darkgray solid;
+    padding: 15px 25px;
+    border-radius: 50px;
+}
+.catalog-list .list-catalog .catalog-item.active {
+    border-color: #b71c1c;
+    background-color: #b71c1c;
+    color: #fff;
 }
 .catalog-list .list-catalog .catalog-item:hover {
-    background-color: #f0f0f0;
-    color: #d65200;
+    background-color: #f5f5f5;
+}
+.catalog-list hr{
+    height: 3.5px;
+    background-color: #840500;
+}
+.catalog-list .filter{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+.catalog-list .filter select{
+    width: 300px;
+    height: 45px;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 0 10px;
+    background: linear-gradient(180deg, white, #f1f1f1);
+}
+.catalog-list .filter select:hover{
+    background: transparent;
 }
 .product-area {
-    width: 80%;
+    width: 100%;
     height: auto;
     overflow: hidden;
 }
@@ -51,9 +84,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 32px;
+    padding: 50px;
     width: 100%;
-    padding: 20px;
     overflow: visible;
 }
 .product-area .product-list .product{
@@ -63,6 +96,7 @@
     border-radius: 8px;
     background: #fff;
     padding: 10px;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;

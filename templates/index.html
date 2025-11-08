@@ -10,57 +10,99 @@
 </head>
 <body>
     <header>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="lo-re">
-            <div class="cart">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
-                <span id="num-cart-label">0</span>
+        <div class="top">
+            <div class="logo">
+                <span><i class="fa-solid fa-mug-saucer"></i></span>
+                <span>A</span>
+                <span>R</span>
+                <span>O</span>
+                <span>M</span>
+                <span>A</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Tìm kiếm...">
+                <button id="search-button"><i class="fas fa-search"></i></button>
             </div>
             <div class="mini-menu">
-             <a href="login.html">Login</a>
-                <span>/</span>
-                <a href="register.html">Register</a>
+                <div class="cart">
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    <span id="num-cart-label">0</span>
+                </div>
+                <a class="user"><i class="fa-solid fa-user"></i></a>
             </div>
         </div>
+        <div class="bottom">
+            <a href="#">Trang chủ</a>
+            <a href="catalog.html">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+            <a href="#">Giới thiệu</a>
+        </div>
     </header>
-    <nav class="main-menu">
-        <ul>
-            <li><a href="index.html" class="item">Trang chủ</a></li>
-            <li><a href="#" class="item">Sản phẩm</a>
-                <ul class="menu-item">
-                    <li><a href="catalog.html?category=organic-coffee">Cà phê hữu cơ</a></li>
-                    <li><a href="catalog.html?category=roasted-coffee">Cà phê nguyên hạt rang</a></li>
-                    <li><a href="catalog.html?category=instant-coffee">Cà phê hòa tan</a></li>
-                    <li><a href="catalog.html?category=special-products">Các sản phẩm đặc biệt</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="item">Giới thiệu</a></li>
-            <li><a href="#" class="item">Liên hệ</a></li>
-        </ul>
-    </nav>
     <div class="img-home" id="img-home">
         <button class="left" onclick="showPreviousImage()"><</button>
         <button class="right" onclick="showNextImage()">></button>
     </div>
     <div class="hot-item">
-        <div class="title">
-            <h2>Sản phẩm nổi bật<i class="fa-solid fa-fire"></i></h2>
-            <a href="catalog.html?category=all">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="hot-title">
+            <span class="line"></span>
+            <h2>SẢN PHẨM NỔI BẬT<i class="fa-solid fa-fire"></i></h2>
+            <span class="line"></span>
         </div>
-        <div class="product-list" id="product-list">
-            <button class="slider-right" id="slider-right">></button>
-            <button class="slider-left" id="slider-left"><</button>
-        </div>
+        <div class="product-list" id="product-list"></div>
     </div>
-    <div class="introduction">
-        <div class="intro-content">
-            <h2>Về Aroma Café</h2>
-            <p>Aroma Café tự hào là thương hiệu cà phê rang xay hàng đầu tại Việt Nam, mang đến những trải nghiệm cà phê tuyệt vời cho khách hàng. Với hơn 10 năm kinh nghiệm trong ngành, chúng tôi cam kết sử dụng những hạt cà phê chất lượng cao nhất, được chọn lọc kỹ lưỡng từ các vùng trồng cà phê nổi tiếng trên thế giới.</p>
-            <p>Chúng tôi không chỉ chú trọng đến chất lượng sản phẩm mà còn đặt sự hài lòng của khách hàng lên hàng đầu. Đội ngũ nhân viên tận tâm và chuyên nghiệp của chúng tôi luôn sẵn sàng hỗ trợ bạn trong việc lựa chọn sản phẩm phù hợp với khẩu vị và nhu cầu của bạn.</p>
-            <p>Hãy đến với Aroma Café để trải nghiệm hương vị cà phê đích thực và khám phá thế giới cà phê phong phú mà chúng tôi mang lại.</p>
+    <div class="video-1">
+        <div class="intro-video-1">
+            <p>QUY TRÌNH SẢN XUẤT</p>
+            <p class="content">
+                Các sản phẩm của chúng tôi được sản xuất theo quy trình sản xuất chuẩn thế giới. Được đóng gói kĩ càng và máy móc đạt chuẩn.
+            </p>
+            <button>Liên hệ báo giá</button>
+        </div>
+        <video class="video-bg fill visible" preload playsinline autoplay muted loop>
+            <source src="https://90scoffee.vn/wp-content/uploads/2022/07/videos-cat-ngan-full-vien.mp4" type="video/mp4">
+        </video>
+    </div>
+    <section class="why-choose-us">
+        <div class="section-title">
+            <span class="line"></span>
+            <h2>TẠI SAO NÊN CHỌN CHÚNG TÔI?</h2>
+            <span class="line"></span>
+        </div>
+        <div class="features-container">
+            <div class="feature-item">
+                <img src="https://90scoffee.vn/wp-content/uploads/2025/10/natural-ingredients-25x25.png" alt="Icon Vùng nguyên liệu" class="feature-icon">
+                <h3>Vùng nguyên liệu cà phê độc quyền</h3>
+                <p>Mọi hạt cà phê của 90S Coffee đều được tuyển chọn từ nông trại riêng tại Gia Lai, Đắk Lắk và Lâm Đồng – nơi khởi nguồn chất lượng đích thực.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://90scoffee.vn/wp-content/uploads/2025/10/management-25x25.png" alt="Icon Quy trình ISO" class="feature-icon">
+                <h3>Quy trình sản xuất đạt chuẩn ISO</h3>
+                <p>Tuân thủ nghiêm ngặt theo hệ thống quản lý an toàn thực phẩm ISO 22000:2018</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://90scoffee.vn/wp-content/uploads/2025/10/handshake-25x25.png" alt="Icon Chính sách" class="feature-icon">
+                <h3>Chính sách sỉ linh hoạt – Hậu mãi tận tâm</h3>
+                <p>Chúng tôi có chính sách bán hàng sỉ & lẻ. Chế độ hậu mãi tốt, mang lại lợi ích – bảo vệ lợi ích cho khách hàng của 90S Coffee.</p>
+            </div>
+        </div>
+    </section>
+    <div class="approach-section">
+        <div class="approach-container">
+            <div class="text-content-box">
+                <h2>CÁCH TIẾP CẬN CỦA CHÚNG TÔI VỚI CÀ PHÊ</h2>
+                <p>Là một trong những doanh nghiệp hàng đầu trong hệ thống cà phê, AROMA CAFÉ là một trong những cầu nối uy tín, vững chắc giữa những người nông dân với thị trường cà phê Việt Nam và thế giới.</p>
+                <button>Liên hệ báo giá</button>
+            </div>
+            <div class="video-content-box">
+                <div class="video-container">
+                    <iframe
+                            src="https://www.youtube-nocookie.com/embed/OKdyYY6tShA?"
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="footer">

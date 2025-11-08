@@ -1,23 +1,40 @@
 const products = [];
 const categories = ['all', 'organic-coffee', 'roasted-coffee', 'instant-coffee', 'special-products'];
 for (let i = 1; i <= 200; i++) {
-    const category = categories[(i-1) % categories.length];
+    const validCategories = categories.slice(1);
+    const temp = validCategories[(i - 1) % validCategories.length];
+    let category
+    switch (temp){
+        case 'organic-coffee':
+            category = 'Cà phê hữu cơ'
+            break;
+        case 'roasted-coffee':
+            category = 'Cà phê hạt nguyên rang'
+            break;
+        case 'instant-coffee':
+            category = 'Cà phê hòa tan'
+            break;
+        case 'special-products':
+            category = 'Sản phẩm đặc biệt'
+            break;
+    }
     products.push({
         id: i,
         img: '',
         name: `Sản phẩm #${i}`,
         price: `${(Math.random() * 100 + 50).toFixed(0)}.000đ`,
-        category: category
+        category: category,
+        temp: temp
     });
 }
 
-const productsPerPage = 12;
+const productsPerPage = 15;
 let currentPage = 1;
 let currentCategory = 'all';
 
 function filterProducts() {
     if (currentCategory === 'all') return products;
-    return products.filter(p => p.category === currentCategory);
+    return products.filter(p => p.temp === currentCategory);
 }
 
 function renderProducts() {
