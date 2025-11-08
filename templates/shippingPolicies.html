@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giỏ hàng</title>
+    <meta charset="UTF-8">
+    <title>Chính Sách Vận Chuyển</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../webapp/css/policies.css">
     <link rel="stylesheet" href="../webapp/css/style.css">
-    <link rel="stylesheet" href="../webapp/css/cart.css">
 
 </head>
 <body>
@@ -39,31 +38,25 @@
         <a href="aboutUs.html">Giới thiệu</a>
     </div>
 </header>
+<div class="container">
+    <h1>Chính Sách Vận Chuyển</h1>
 
-<div class="cart-container">
-    <h2>Giỏ hàng</h2>
+    <h2 class="fade-in">1. Phí giao hàng</h2>
+    <ul class="fade-in">
+        <li>Miễn phí vận chuyển toàn quốc cho đơn hàng từ 299.000 VNĐ.</li>
+        <li>Đơn hàng dưới 299.000 VNĐ áp dụng phí giao hàng cố định 25.000 VNĐ.</li>
+    </ul>
 
-    <div class="clear-all-container">
-        <a href="#" class="clear-all-cart">Xóa tất cả</a>
-    </div>
+    <h2 class="fade-in">2. Thời gian giao hàng</h2>
+    <ul class="fade-in">
+        <li>Khu vực TP. HCM: 1–2 ngày làm việc.</li>
+        <li>Các tỉnh thành khác: 3–5 ngày làm việc.</li>
+    </ul>
 
-    <div id="cart-list"></div>
+    <h2 class="fade-in">3. Lưu ý khi nhận hàng</h2>
+    <p class="fade-in">Khách hàng cần kiểm tra tình trạng và số lượng sản phẩm trước khi ký nhận. Mọi phản hồi về sai sót cần được báo lại trong vòng 24h kể từ khi nhận hàng.</p>
 
-    <div class="cart-totals">
-        <h3>TỔNG CỘNG</h3>
-        <span id="cart-total">0đ</span>
-        <p>(Chỉ tính các sản phẩm được chọn)</p>
-    </div>
-
-    <a href="payment.html" type="button" class="checkout-button"> Thanh Toán </a>
-
-    <div class="payment-methods">
-        <h4>Phương thức thanh toán</h4>
-        <i class="fa-brands fa-cc-visa"></i>
-        <span>Chuyển Khoản Qua Ngân Hàng</span>
-        <i class="fa-solid fa-boxes-stacked"></i>
-        <span>Thanh Toán Khi Nhận Hàng</span>
-    </div>
+    <a href="index.html" class="back-btn fade-in">Quay về trang chủ</a>
 </div>
 
 <footer class="footer">
@@ -98,8 +91,9 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
+
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
-<script src="../webapp/js/cart.js"></script>
+<script src="../webapp/js/policies.js"></script>
 <script src="../webapp/js/script.js"></script>
 </body>
 </html>

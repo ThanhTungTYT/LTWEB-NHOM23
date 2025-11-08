@@ -1,0 +1,84 @@
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #fffaf7;
+    color: #2c2c2c;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.container h1 {
+    text-align: center;
+    color: #8b2f1c;
+    font-size: 28px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.container h1:after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: #8b2f1c;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container h2 {
+    color: #8b2f1c;
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+.container p, .container li {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.container ul {
+    padding-left: 20px;
+}
+
+.container .policy-img {
+    width: 100%;
+    max-width: 450px;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.container .back-btn {
+    display: inline-block;
+    background: #8b2f1c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #a83e25;
+}
+
+/* Hiệu ứng fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
