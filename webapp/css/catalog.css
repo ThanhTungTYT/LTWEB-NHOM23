@@ -45,6 +45,7 @@
     border: 2px darkgray solid;
     padding: 15px 25px;
     border-radius: 50px;
+    transition: all 0.3s ease-in-out;
 }
 .catalog-list .list-catalog .catalog-item.active {
     border-color: #b71c1c;
@@ -52,7 +53,9 @@
     color: #fff;
 }
 .catalog-list .list-catalog .catalog-item:hover {
-    background-color: #f5f5f5;
+    border-color: #b71c1c;
+    background-color: #b71c1c;
+    color: #fff;
 }
 .catalog-list hr{
     height: 3.5px;
@@ -119,6 +122,7 @@
     font-weight: bold;
     color: black;
     margin-top: 10px;
+    text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
