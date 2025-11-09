@@ -1,11 +1,4 @@
-/* style.css */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6;
-    color: #333;
-}
+
 
 /* Bố cục chính sử dụng Flexbox */
 .dashboard-container {
@@ -22,7 +15,7 @@ body {
 /* Sidebar (Menu bên trái) */
 .sidebar {
     width: 250px;
-    background-color: #621818;
+    background-color: #cd764d;
     padding: 20px 0;
     flex-shrink: 0;
 }
@@ -40,11 +33,11 @@ body {
     transition: background-color 0.2s, color 0.2s;
 }
 .sidebar li a:hover {
-    background-color: #B14B4B;
+    background-color: #a0522d;
 }
 
 .sidebar li a.active {
-    background-color: #A03636;
+    background-color: #783e22;
     color: white;
     border-left: 5px solid #ffc107;
     padding-left: 15px;
@@ -58,7 +51,7 @@ body {
 }
 
 .content-area h2 {
-    color: #D65200;
+    color: #c76739;
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
     margin-top: 0;
@@ -107,7 +100,7 @@ body {
 }
 
 .content-area button {
-    background-color: #D65200;
+    background-color: #c76739;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -115,6 +108,9 @@ body {
     cursor: pointer;
     transition: background-color 0.2s;
     margin-top: 15px;
+}
+.content-area button:hover{
+    background: #b45c33;
 }
 
 /* Định kiểu cho bảng Lịch sử mua hàng */

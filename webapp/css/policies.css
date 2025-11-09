@@ -1,10 +1,4 @@
-body {
-    font-family: Tahoma, Arial, sans-serif;
-    background-color: #fffaf7;
-    color: #2c2c2c;
-    margin: 0;
-    padding: 0;
-}
+
 
 .container {
     width: 80%;
@@ -17,7 +11,7 @@ body {
 
 .container h1 {
     text-align: center;
-    color: #8b2f1c;
+    color: #c76739;
     font-size: 28px;
     margin-bottom: 30px;
     position: relative;
@@ -28,14 +22,14 @@ body {
     position: absolute;
     width: 60px;
     height: 3px;
-    background: #8b2f1c;
+    background: #c76739;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .container h2 {
-    color: #8b2f1c;
+    color: #c76739;
     margin-top: 30px;
     font-size: 24px;
 }
@@ -59,7 +53,7 @@ body {
 
 .container .back-btn {
     display: inline-block;
-    background: #8b2f1c;
+    background: #c76739;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -68,7 +62,7 @@ body {
 }
 
 .back-btn:hover {
-    background: #a83e25;
+    background: #b45c33;
 }
 
 /* Hiệu ứng fade-in */

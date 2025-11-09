@@ -3,7 +3,7 @@
 }
 
 .back-link a {
-    color: #000;
+    color: #cd764d;
     text-decoration: none;
     font-weight: 500;
 }
@@ -44,6 +44,7 @@ section {
 .checkout-left h3 {
     margin-top: 0;
     margin-bottom: 15px;
+    color: #c76739;
 }
 
 .account-info {
@@ -56,7 +57,7 @@ section {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #000;
+    background: #c76739;
     color: #fff;
     display: flex;
     align-items: center;
@@ -68,7 +69,7 @@ section {
     margin-left: auto;
     background: none;
     border: none;
-    color: #666;
+    color: #cd764d;
     cursor: pointer;
 }
 
@@ -102,7 +103,11 @@ input[type="radio"] {
     flex-direction: column;
     gap: 20px;
 }
-
+.checkout-right h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #c76739;
+}
 .cart-item {
     display: flex;
     align-items: center;
@@ -184,8 +189,8 @@ input[type=number] {
 
 .apply-row .apply-btn {
     padding: 10px 16px;
-    background: #641c16;
-    color: #f47a00;
+    background: #c76739;
+    color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -207,11 +212,14 @@ input[type=number] {
 .checkout-btn {
     width: 100%;
     padding: 14px;
-    background: #641c16;
-    color: #f47a00;
+    background: #c76739;
+    color: white;
     border: none;
     border-radius: 8px;
     font-size: 1em;
     cursor: pointer;
     margin-top: 12px;
+}
+.checkout-btn:hover{
+    background: #b45c33;
 }

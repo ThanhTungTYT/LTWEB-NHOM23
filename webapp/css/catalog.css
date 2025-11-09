@@ -20,7 +20,7 @@
 .catalog-list .head-catalog {
     font-size: 40px;
     font-weight: 600;
-    color: #840500;
+    color: #c76739;
     display: flex;
     align-items: center;
 }
@@ -29,7 +29,7 @@
     flex-grow: 1;
     margin-left: 15px;
     height: 3px;
-    background-color: #840500;
+    background-color: #c76739;
 }
 .catalog-list .list-catalog {
     list-style: none;
@@ -48,13 +48,13 @@
     transition: all 0.3s ease-in-out;
 }
 .catalog-list .list-catalog .catalog-item.active {
-    border-color: #b71c1c;
-    background-color: #b71c1c;
+    border-color: #8c4827;
+    background-color: #c76739;
     color: #fff;
 }
 .catalog-list .list-catalog .catalog-item:hover {
-    border-color: #b71c1c;
-    background-color: #b71c1c;
+    border-color: #8c4827;
+    background-color: #c76739;
     color: #fff;
 }
 .catalog-list hr{
@@ -158,7 +158,7 @@
 }
 
 .product-area .product-page button.active {
-    background-color: #b33a3a;
+    background-color: #c76739;
     color: white;
-    border-color: #b33a3a;
+    border-color: #8c4827;
 }

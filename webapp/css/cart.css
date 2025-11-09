@@ -17,6 +17,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 20px;
+    color:  #c76739;
 }
 
 /* Xoá tất cả sản phẩm */
@@ -27,7 +28,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Nút xoá tất cả sản phẩm */
 .clear-all-cart {
-    color: #a54040;
+    color: black;
     font-weight: 600;
     text-decoration: none;
 }
@@ -49,7 +50,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Nút xoá sản phẩm */
 .product-remove {
-    color: #a54040;
+    color: #c76739;
     font-size: 22px;
     cursor: pointer;
     margin-right: 10px;
@@ -83,7 +84,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Giá và Tổng tiền sản phẩm */
 .product-price,
 .product-subtotal {
-    color: #f47a00;
+    color: #c76739;
     font-weight: 700;
     font-size: 18px;
     width: 120px;
@@ -132,14 +133,14 @@ input[type=number]::-webkit-outer-spin-button {
 /* Tiêu đề tổng tiền giỏ hàng */
 .cart-totals h3{
     font-size: 25px;
-    color:  #641c16;
+    color:  #c76739;
 }
 
 /* Số tổng tiền giỏ hàng */
 .cart-totals span{
     font-size: 30px;
     font-weight: bold;
-    color:  #641c16;
+    color:  #c76739;
     margin: auto;
 }
 
@@ -158,8 +159,8 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     display: block;
     width: 100%;
-    background-color: #641c16;
-    color: #f47a00 ;
+    background-color: #c76739;
+    color: white ;
     border: none;
     padding: 18px 0;
     font-size: 22px;
@@ -170,7 +171,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Hiệu ứng hover cho nút Thanh toán */
 .checkout-button:hover {
-    background-color: #4e1310;
+    background-color: #c76739;
     color: #fff3e0;
 }
 
@@ -184,7 +185,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Tiêu đề phương thức thanh toán */
 .payment-methods h4 {
     font-size: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 /* Biểu tượng các thức thanh toán */
