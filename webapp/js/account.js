@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     // Xử lý Đăng xuất
     $('.logout-link').on('click', function(e) {
-        alert("Đang xử lý đăng xuất và chuyển hướng...");
+        alert("Đang đăng xuất....");
         // Trình duyệt sẽ tự chuyển hướng nhờ href
     });
 });
