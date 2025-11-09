@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Account</title>
     <link rel="stylesheet" href="../webapp/css/style.css">
+    <link rel="stylesheet" href="../webapp/css/account.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../webapp/css/help.css">
 </head>
 <body>
 <header>
@@ -28,7 +29,7 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">0</span>
             </div>
-            <a class="user"><i class="fa-solid fa-user"></i></a>
+            <a href="account.html"><i class="fa-solid fa-user"></i></a>
         </div>
     </div>
     <div class="bottom">
@@ -38,30 +39,21 @@
         <a href="aboutUs.html">Giới thiệu</a>
     </div>
 </header>
-    <div class="container">
-        <h1 id="help">Aroma Café-Cà phê rang số 1 Việt Nam</h1>
-        <div class="address">
-            <div class="pin-address"> 
-                <i class="fa-solid fa-location-dot"></i>  Địa chỉ: xxx , xxx, xxx.
-            </div>
-            <div class="phone-number">
-                <i class="fa-solid fa-phone"></i>  Điện thoại: xxx-xxx-xxxx.
-            </div>
-            <div class="email-address">
-                <i class="fa-solid fa-envelope"></i>  Email: aromacafe@gmail.com
-            </div>
-        </div>
-        <div class="main-content">
-            <h2> Liên hệ với chúng tôi</h2>
-            <form action="/submit" method="post">
-                <input type="text" id="name" name="name" placeholder="Họ và tên của bạn" required><br><br>
-                <input type="email" id="email" name="email" placeholder="Email của bạn" required><br><br>
-                <label class="lbmessage" for="message">Tin nhắn:</label><br>
-                <textarea id="message" name="message" placeholder="Viết tin nhắn của bạn ở đây..." rows="5" cols="40" required></textarea><br><br>
-                <button type="button" id="send-message">Liên hệ ngay</button>
-            </form>
-        </div>
-    </div>
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <nav>
+            <ul>
+                <li><a href="info.html" class="sidebar-link active">Thông tin cá nhân</a></li>
+                <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
+                <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
+                <li><a href="index.html" class="logout-link">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="content-area" class="content-area"></main>
+</div>
 <footer class="footer">
     <div class="footer-top">
         <div class="foot-content left">
@@ -84,6 +76,7 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
 </body>
+<script src="../webapp/js/acount.js"></script>
+<script src="../webapp/js/script.js"></script>
 </html>
