@@ -4,33 +4,33 @@ document.addEventListener("DOMContentLoaded", () => {
     const finalTotalEl = document.getElementById("final-total");
     const checkoutBtn = document.getElementById("checkout-btn");
 
-    // database sản phẩm (có thể mở rộng sau)
+    // Database sản phẩm (đã thêm khối lượng)
     const cartItems = [
-        { name: "Cà phê rang nguyên chất 1", type: "Nguyên hạt", price: 200000, image: "../webapp/img/Cafe1.png" , qty: 1},
-        { name: "Drip Coffee", type: "Phin giấy", price: 150000, image: "../webapp/img/Cafe2.jpg" , qty: 1},
-        { name: "Cafe Chất - Vina Cafe", type: "Đậm vị", price: 250000, image: "../webapp/img/Cafe3.png" , qty: 1},
+        { name: "Cà phê rang nguyên chất 1", type: "Nguyên hạt", weight: "500gr", price: 200000, image: "../webapp/img/Cafe1.png", qty: 1 },
+        { name: "Drip Coffee", type: "Phin giấy", weight: "800gr", price: 150000, image: "../webapp/img/Cafe2.jpg", qty: 1 },
+        { name: "Cafe Chất - Vina Cafe", type: "Đậm vị", weight: "1000gr", price: 250000, image: "../webapp/img/Cafe3.png", qty: 1 },
     ];
 
-    // Render sản phẩm
     function renderCart() {
         cartList.innerHTML = "";
         cartItems.forEach((item, index) => {
             const el = document.createElement("div");
             el.className = "cart-item";
             el.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
-        <div class="cart-info">
-          <p class="title">${item.name}</p>
-          <p class="variant">${item.type}</p>
-          <p class="price">${format(item.price)}</p>
-        </div>
-        <div class="quantity-box">
-          <button class="btn-minus" data-index="${index}">-</button>
-          <input type="number" value="${item.qty}" min="1">
-          <button class="btn-plus" data-index="${index}">+</button>
-        </div>
-        <button class="remove-btn" data-index="${index}">×</button>
-      `;
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-info">
+                    <p class="title">${item.name}</p>
+                    <p class="variant">Loại: ${item.type}</p>
+                    <p class="weight">Khối lượng: <span>${item.weight}</span></p>
+                    <p class="price">${format(item.price)}</p>
+                </div>
+                <div class="quantity-box">
+                    <button class="btn-minus" data-index="${index}">-</button>
+                    <input type="number" value="${item.qty}" min="1">
+                    <button class="btn-plus" data-index="${index}">+</button>
+                </div>
+                <button class="remove-btn" data-index="${index}">×</button>
+            `;
             cartList.appendChild(el);
         });
         attachEvents();
@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         finalTotalEl.textContent = format(total - discount);
     }
 
-    // Giảm giá theo điều kiện
     function getDiscount(total) {
         const select = document.getElementById("discount-select");
         const percent = parseInt(select.value) || 0;
@@ -81,12 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("discount-select").addEventListener("change", updateTotal);
 
-    // Xử lý đặt hàng
+    // Đặt hàng
     checkoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
         if (!validateForm()) return;
 
-        alert("Đặt hàng thành công!");
+        // Hiện thông báo đặt hàng thành công
+        showSuccessPopup();
     });
 
     // Kiểm tra form
@@ -109,11 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return valid;
     }
 
-    // Format giá tiền
+    // Thông báo popup thành công
+    function showSuccessPopup() {
+        const popup = document.createElement("div");
+        popup.className = "success-popup";
+        popup.innerHTML = `
+            <div class="popup-box">
+                <i class="fas fa-check-circle"></i>
+                <p>Cảm ơn quý khách đã mua hàng!</p>
+                <button onclick="location.href='index.html'">Quay về trang chủ</button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+    }
+
+    // Format giá
     function format(value) {
         return value.toLocaleString("vi-VN") + "₫";
     }
 
     renderCart();
-
 });

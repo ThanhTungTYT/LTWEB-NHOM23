@@ -81,6 +81,17 @@ input[type=number]::-webkit-outer-spin-button {
     color: #333;
 }
 
+/* Khối lượng sản phẩm */
+.product-weight {
+    font-size: 15px;
+    color: #333;
+    margin-top: 4px;
+}
+.product-weight span {
+    font-weight: 600;
+    color: #c76739;
+}
+
 /* Giá và Tổng tiền sản phẩm */
 .product-price,
 .product-subtotal {
