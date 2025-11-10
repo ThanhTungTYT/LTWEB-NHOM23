@@ -24,7 +24,10 @@
     display: flex;
     gap: 40px;
     max-width: 1200px;
-    margin: auto;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 /* ========== CỘT TRÁI ========== */
@@ -129,6 +132,16 @@ input[type="radio"] {
 
 .cart-info p {
     margin: 2px 0;
+}
+
+.cart-info .weight {
+    font-size: 14px;
+    color: #333;
+    margin-top: 2px;
+}
+.cart-info .weight span {
+    color: #c76739;
+    font-weight: 600;
 }
 
 .quantity-box {
