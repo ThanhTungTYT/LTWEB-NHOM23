@@ -14,26 +14,16 @@ body{
 .left-menu{
     width: 20%;
     height: 100%;
-    border-right: 3px black solid;
+    border-right: 1px black solid;
 }
 .left-menu .logo{
-    width: 100%;
     height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 35px;
-    font-weight: bold;
-    padding: 20px 0;
-    background: #5D4037;
+    width: 100%;
 }
-.logo span:nth-child(1) { color: #4A2C2A; }
-.logo span:nth-child(2) { color: #E67E22; }
-.logo span:nth-child(3) { color: #A0522D; }
-.logo span:nth-child(4) { color: #FFDDAA; }
-.logo span:nth-child(5) { color: #6B4423; }
-.logo span:nth-child(6) { color: #DAA520; }
-
+.left-menu .logo img{
+    width: 100%;
+    height: 100%;
+}
 .left-menu .menu{
     height: calc(100% - 130px);
     display: flex;
@@ -60,7 +50,7 @@ body{
 .left-menu .footer{
     width: 100%;
     height: 50px;
-    background: #5D4037;
+    background: #A0522D;
     text-align: center;
     padding-top: 15px;
 }
@@ -77,7 +67,7 @@ body{
     position: relative;
     height: 80px;
     width: 100%;
-    background: #5D4037;
+    background: #A0522D;
     margin-bottom: 30px;
     display: flex;
     flex-direction: row;
@@ -220,10 +210,11 @@ body{
 .form-add .form-title button{
     position: absolute;
     right: 20px;
-    height: 30px;
-    width: 30px;
-    background: red;
-    color: white;
+    height: 20px;
+    width: 20px;
+    color: red;
+    background: transparent;
+    border: none;
     cursor: pointer;
 }
 .form-add .main-form{
@@ -256,6 +247,12 @@ body{
     width: 60%;
     height: 30px;
     padding: 0 10px;
+}
+.form-add .main-form div textarea{
+    width: 60%;
+    height: 50px;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
 }
 .form-add .main-form .submit{
     width: 50%;

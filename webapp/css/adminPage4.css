@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 body{
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -66,6 +67,7 @@ body{
     position: relative;
     height: 80px;
     width: 100%;
+    margin-bottom: 30px;
     background: #A0522D;
     display: flex;
     flex-direction: row;
@@ -87,128 +89,109 @@ body{
     font-size: 28px;
     color: white;
 }
-.dashboard-container {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-}
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    margin-bottom: 30px;
-}
-
-.kpi-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    display: flex;
-    align-items: center;
-}
-
-.kpi-card .card-icon {
-    font-size: 32px;
-    padding: 15px;
-    border-radius: 50%;
-    margin-right: 20px;
-    color: #fff;
-}
-.kpi-card .card-icon.blue { background-color: #007bff; }
-.kpi-card .card-icon.green { background-color: #28a745; }
-.kpi-card .card-icon.orange { background-color: #fd7e14; }
-.kpi-card .card-icon.red { background-color: #dc3545; }
-
-.kpi-card .card-info h3 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-.kpi-card .card-info span {
-    font-size: 14px;
-    color: #6c757d;
-}
-.charts-grid {
+.right-content .search-bar{
     width: 100%;
-    height: fit-content;
+    height: 50px;
+    padding: 20px 0;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
-    gap: 25px;
-    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
 }
-.charts-grid .chart-card {
+.right-content .search-bar input{
     width: 50%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 20px 0 0 20px;
+    border: 1px black solid;
+    border-right: none;
+}
+.right-content .search-bar input:focus{
+    outline: none;
+}
+.right-content .search-bar button{
+    width: 5%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 0 20px 20px 0;
+    border: 1px black solid;
+    border-left: none;
+    background: transparent;
+}
+.right-content .notify{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
     background: #fff;
     padding: 25px;
+    margin-left: 120px;
+    margin-bottom: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.chart-card h3 {
+.right-content .notify h3{
     font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-weight: 500;
     color: #495057;
 }
-.chart-card p {
-    font-size: 30px;
-    color: #7dca01;
-    text-align: start;
+.right-content .notify .notify-main{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 0;
+    overflow-y: scroll;
 }
-.large p{
-    margin-top: 40px;
+.right-content .notify .notify-main p span{
+    font-weight: 600;
 }
-.large span{
-    color: deepskyblue;
-    margin-right: 10px;
-}
-.small p{
-    font-size: 18px;
-    color: black;
-}
-.small span{
-    color: #7dca01;
-}
-.table-card {
+.right-content .list-account{
     background: #fff;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.table-card h3 {
+.right-content .list-account h3{
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
     color: #495057;
 }
-table {
+.right-content .list-account table{
     width: 100%;
     border-collapse: collapse;
 }
-table th, table td {
+.right-content .list-account table th, .right-content .list-account table td{
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
 }
-table th {
+.right-content .list-account table th{
     background-color: #f8f9fa;
     color: #6c757d;
     font-weight: 500;
     font-size: 14px;
 }
-table td {
+.right-content .list-account table td{
     font-size: 15px;
 }
-.status {
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
+.right-content .list-account button{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+    color: white;
+    background: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
 }
-.status.pending { background-color: #fff0c2; color: #f39c12; }
-.status.completed { background-color: #c8f7dc; color: #28a745; }
-.status.cancelled { background-color: #fde2e4; color: #dc3545; }
-
+.right-content .list-account button:hover{
+    background: #700000;
+}
 .slide-top{
     position: fixed;
     display: none;
