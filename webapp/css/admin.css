@@ -1,0 +1,353 @@
+body {
+    height: 100vh;
+    font-family: Tahoma, Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* === 1. LEFT MENU (SIDEBAR) === */
+.left-menu {
+    width: 250px;
+    height: 100vh;
+    background-color: #363636; /* Màu nền menu đậm */
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.left-menu.collapsed {
+    width: 60px; /* Chiều rộng khi thu gọn (cho icon) */
+}
+
+.logo {
+    padding: 0;
+    text-align: center;
+    background-color: #a0522d; /* Màu nền logo khác biệt */
+    margin: 0;
+
+}
+
+.logo img {
+    max-width: 100%;
+    height: 80px;
+    object-fit: contain;
+}
+
+.menu {
+    flex-grow: 1;
+}
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-item:hover {
+    background-color: #4a4a4a;
+    color: white;
+}
+
+.menu-item.active {
+    background-color: #5a5a5a; /* Màu nền khi active */
+    color: white;
+    font-weight: normal; /* Không in đậm (theo yêu cầu) */
+}
+
+.footer {
+    padding: 15px;
+    font-size: 12px;
+    text-align: center;
+    border-top: 1px solid #4a4a4a;
+    color: #999;
+    flex-shrink: 0;
+}
+
+/* === 2. RIGHT CONTENT (NỘI DUNG CHÍNH) === */
+.right-content {
+    margin-left: 250px;
+    padding: 0;
+    transition: margin-left 0.3s ease;
+    min-height: 100vh;
+}
+
+.right-content.expanded {
+    margin-left: 60px; /* Khi menu bị thu gọn */
+}
+
+/* Header/Title Bar */
+.title {
+    background-color: #a0522d; /* Màu nền header nâu */
+    color: white;
+    padding-left: 25px;
+    padding-bottom: 7px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.slider-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+/* Khu vực nội dung được tải AJAX */
+.main-content {
+    padding: 0 30px 30px 30px;
+}
+
+.loading-state, .error-state {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: #888;
+}
+
+/* === 3. TỔNG QUAN (ADMINPAGE1 CONTENT) === */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kpi-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.card-icon {
+    font-size: 24px;
+    color: white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.card-icon.blue { background-color: #007bff; }
+.card-icon.green { background-color: #28a745; }
+.card-icon.orange { background-color: #ffc107; }
+.card-icon.red { background-color: #dc3545; }
+
+.card-info h3 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #333;
+}
+.card-info span {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.charts-grid {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chart-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card.large {
+    flex: 2; /* Chiếm phần lớn diện tích */
+}
+.chart-card.small {
+    flex: 1;
+}
+
+.list-product p {
+    margin: 8px 0;
+    font-size: 0.95em;
+}
+
+/* === 4. BẢNG (CHUNG CHO TẤT CẢ TRANG) === */
+.table-card, .list-product, .list-order, .list-account {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+thead th {
+    background-color: #f8f9fa;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #dee2e6;
+}
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85em;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+}
+.status.pending { background-color: #fff3cd; color: #856404; } /* Chờ xử lý */
+.status.completed { background-color: #d4edda; color: #155724; } /* Đã giao */
+.status.cancelled { background-color: #f8d7da; color: #721c24; } /* Đã hủy */
+
+/* === 5. FORM & SEARCH BARS (CHUNG) === */
+.search-bar {
+    display: flex;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 1em;
+}
+
+.search-bar button {
+    background-color: #c76739;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.main-menu {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.main-menu select, .main-menu input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Nút Chi tiết (Đơn hàng) & Nút Thêm/Xóa (Sản phẩm) */
+.detail, #add, .list-product button, .list-account button {
+    background-color: #c76739;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.9em;
+}
+.output{
+    background-color: #cd764d;
+}
+.submit{
+    background-color: #c76739;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.9em;
+}
+/* Nút Xóa Sản phẩm (Màu đỏ) */
+.list-product button:last-child {
+    background-color: #c76739;
+    margin-top: 15px;
+}
+.detail-p{
+    padding: 30px;
+}
+/* Nút thùng rác (Quản lí tài khoản) */
+.list-account tbody button {
+    background-color: #c76739;
+    padding: 5px 10px;
+    font-size: 1em;
+}
+
+/* === 6. QUẢN LÍ TÀI KHOẢN (NOTIFY & SCROLLBAR) === */
+.notify {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.notify-main {
+    max-height: 150px; /* Chiều cao cố định cho thông báo */
+    overflow-y: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+}
+
+.notify-main p {
+    margin: 5px 0;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 5px;
+}
+
+.notify-main span {
+    font-weight: bold;
+    color: #c76739;
+}
+
+/* === 7. POPUP VÀ SLIDE TOP (Nút cuộn lên đầu) === */
+.slide-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #363636;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    display: none; /* Mặc định ẩn, JS sẽ xử lý */
+}

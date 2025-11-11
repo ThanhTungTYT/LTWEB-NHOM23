@@ -1,133 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Doanh thu</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../webapp/css/adminPage1.css">
-</head>
-<body>
-    <div class="left-menu" id="left-menu">
-        <div class="logo">
-            <img src="../webapp/img/logo.png">
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="card-icon blue">
+            <i class='bx bx-trending-up'></i>
         </div>
-        <div class="menu">
-            <a href="adminPage1.html" class="menu-item active">Tổng quan</a>
-            <a href="adminPage2.html" class="menu-item">Quản lí sản phẩm</a>
-            <a href="adminPage3.html" class="menu-item">Đơn hàng</a>
-            <a href="adminPage4.html" class="menu-item">Quản lí tài khoản</a>
-        </div>
-        <div class="footer">
-            <p>2024 Aroma Café. All rights reserved.</p>
+        <div class="card-info">
+            <h3>1.500.000đ</h3>
+            <span>Doanh thu hôm nay</span>
         </div>
     </div>
-    <div class="right-content" id="right-content">
-        <div class="title">
-            <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
-            <p>TỔNG QUAN</p>
+    <div class="kpi-card">
+        <div class="card-icon green">
+            <i class='bx bx-package'></i>
         </div>
-        <main class="dashboard-container">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="card-icon blue">
-                        <i class='bx bx-trending-up'></i>
-                    </div>
-                    <div class="card-info">
-                        <h3>1.500.000đ</h3>
-                        <span>Doanh thu hôm nay</span>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="card-icon green">
-                        <i class='bx bx-package'></i>
-                    </div>
-                    <div class="card-info">
-                        <h3>32</h3>
-                        <span>Đơn hàng mới</span>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="card-icon orange">
-                        <i class='bx bx-group'></i>
-                    </div>
-                    <div class="card-info">
-                        <h3>120</h3>
-                        <span>Khách truy cập</span>
-                    </div>
-                </div>
-                <div class="kpi-card">
-                    <div class="card-icon red">
-                        <i class='bx bx-money-withdraw'></i>
-                    </div>
-                    <div class="card-info">
-                        <h3>46.875đ</h3>
-                        <span>Giá trị TB</span>
-                    </div>
-                </div>
-            </div>
-            <div class="charts-grid">
-                <div class="chart-card large">
-                    <h3>Tổng doanh thu (30 ngày)</h3>
-                    <p><span><i class="fa-solid fa-chart-line"></i></span>1.000.000.000 VND</p>
-                </div>
-                <div class="chart-card small">
-                    <h3>Top sản phẩm</h3>
-                    <div class="list-product">
-                        <p>Cà phê hữu cơ: <span>50%</span></p>
-                        <p>Cà phê rang nguyên hạt: <span>28%</span></p>
-                        <p>Cà phê hòa tan: <span>12%</span></p>
-                        <p>Các sản phẩm đặc biệt: <span>10%</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="table-card">
-                <h3>Đơn hàng gần đây</h3>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Mã ĐH</th>
-                        <th>Khách hàng</th>
-                        <th>Ngày đặt</th>
-                        <th>Trạng thái</th>
-                        <th>Tổng tiền</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>#10542</td>
-                        <td>Nguyễn Văn A</td>
-                        <td>09/11/2025</td>
-                        <td><span class="status pending">Chờ xử lý</span></td>
-                        <td>120.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>#10541</td>
-                        <td>Trần Thị B</td>
-                        <td>09/11/2025</td>
-                        <td><span class="status completed">Đã giao</span></td>
-                        <td>85.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>#10540</td>
-                        <td>Lê Văn C</td>
-                        <td>08/11/2025</td>
-                        <td><span class="status cancelled">Đã hủy</span></td>
-                        <td>210.000đ</td>
-                    </tr>
-                    <tr>
-                        <td>#10539</td>
-                        <td>Phạm Thị D</td>
-                        <td>08/11/2025</td>
-                        <td><span class="status completed">Đã giao</span></td>
-                        <td>55.000đ</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </main>
+        <div class="card-info">
+            <h3>32</h3>
+            <span>Đơn hàng mới</span>
+        </div>
     </div>
-    <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
-
-    <script src="../webapp/js/adminPage.js"></script>
-</body>
-</html>
+    <div class="kpi-card">
+        <div class="card-icon orange">
+            <i class='bx bx-group'></i>
+        </div>
+        <div class="card-info">
+            <h3>120</h3>
+            <span>Khách truy cập</span>
+        </div>
+    </div>
+    <div class="kpi-card">
+        <div class="card-icon red">
+            <i class='bx bx-money-withdraw'></i>
+        </div>
+        <div class="card-info">
+            <h3>46.875đ</h3>
+            <span>Giá trị TB</span>
+        </div>
+    </div>
+</div>
+<div class="charts-grid">
+    <div class="chart-card large">
+        <h3>Tổng doanh thu (30 ngày)</h3>
+        <p><span><i class="fa-solid fa-chart-line"></i></span>1.000.000.000 VND</p>
+    </div>
+    <div class="chart-card small">
+        <h3>Top sản phẩm</h3>
+        <div class="list-product">
+            <p>Cà phê hữu cơ: <span>50%</span></p>
+            <p>Cà phê rang nguyên hạt: <span>28%</span></p>
+            <p>Cà phê hòa tan: <span>12%</span></p>
+            <p>Các sản phẩm đặc biệt: <span>10%</span></p>
+        </div>
+    </div>
+</div>
+<div class="table-card">
+    <h3>Đơn hàng gần đây</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã ĐH</th>
+            <th>Khách hàng</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Tổng tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>#10542</td>
+            <td>Nguyễn Văn A</td>
+            <td>09/11/2025</td>
+            <td><span class="status pending">Chờ xử lý</span></td>
+            <td>120.000đ</td>
+        </tr>
+        <tr>
+            <td>#10541</td>
+            <td>Trần Thị B</td>
+            <td>09/11/2025</td>
+            <td><span class="status completed">Đã giao</span></td>
+            <td>85.000đ</td>
+        </tr>
+        <tr>
+            <td>#10540</td>
+            <td>Lê Văn C</td>
+            <td>08/11/2025</td>
+            <td><span class="status cancelled">Đã hủy</span></td>
+            <td>210.000đ</td>
+        </tr>
+        <tr>
+            <td>#10539</td>
+            <td>Phạm Thị D</td>
+            <td>08/11/2025</td>
+            <td><span class="status completed">Đã giao</span></td>
+            <td>55.000đ</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
