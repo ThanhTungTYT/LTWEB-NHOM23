@@ -1,75 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const cartList = document.getElementById("cart-list");
     const totalPriceEl = document.getElementById("total-price");
     const finalTotalEl = document.getElementById("final-total");
+    const discountSelect = document.getElementById("discount-select");
     const checkoutBtn = document.getElementById("checkout-btn");
 
-    // Database sản phẩm (đã thêm khối lượng)
-    const cartItems = [
-        { name: "Cà phê rang nguyên chất 1", type: "Nguyên hạt", weight: "500gr", price: 200000, image: "../webapp/img/Cafe1.png", qty: 1 },
-        { name: "Drip Coffee", type: "Phin giấy", weight: "800gr", price: 150000, image: "../webapp/img/Cafe2.jpg", qty: 1 },
-        { name: "Cafe Chất - Vina Cafe", type: "Đậm vị", weight: "1000gr", price: 250000, image: "../webapp/img/Cafe3.png", qty: 1 },
-    ];
+    const cartItems = document.querySelectorAll(".cart-item");
 
-    function renderCart() {
-        cartList.innerHTML = "";
-        cartItems.forEach((item, index) => {
-            const el = document.createElement("div");
-            el.className = "cart-item";
-            el.innerHTML = `
-                <img src="${item.image}" alt="${item.name}">
-                <div class="cart-info">
-                    <p class="title">${item.name}</p>
-                    <p class="variant">Loại: ${item.type}</p>
-                    <p class="weight">Khối lượng: <span>${item.weight}</span></p>
-                    <p class="price">${format(item.price)}</p>
-                </div>
-                <div class="quantity-box">
-                    <button class="btn-minus" data-index="${index}">-</button>
-                    <input type="number" value="${item.qty}" min="1">
-                    <button class="btn-plus" data-index="${index}">+</button>
-                </div>
-                <button class="remove-btn" data-index="${index}">×</button>
-            `;
-            cartList.appendChild(el);
+    cartItems.forEach((item) => {
+        const minus = item.querySelector(".btn-minus");
+        const plus = item.querySelector(".btn-plus");
+        const qtyInput = item.querySelector("input[type='number']");
+        const removeBtn = item.querySelector(".remove-btn");
+
+        minus.addEventListener("click", () => {
+            let qty = parseInt(qtyInput.value) || 1;
+            qtyInput.value = qty > 1 ? qty - 1 : 1;
+            updateTotal();
         });
-        attachEvents();
-        updateTotal();
-    }
 
-    function attachEvents() {
-        document.querySelectorAll(".btn-minus").forEach(btn => {
-            btn.onclick = () => changeQty(btn.dataset.index, -1);
+        plus.addEventListener("click", () => {
+            let qty = parseInt(qtyInput.value) || 1;
+            qtyInput.value = qty + 1;
+            updateTotal();
         });
-        document.querySelectorAll(".btn-plus").forEach(btn => {
-            btn.onclick = () => changeQty(btn.dataset.index, 1);
+
+        qtyInput.addEventListener("input", updateTotal);
+
+        removeBtn.addEventListener("click", () => {
+            item.remove();
+            updateTotal();
         });
-        document.querySelectorAll(".remove-btn").forEach(btn => {
-            btn.onclick = () => removeItem(btn.dataset.index);
-        });
-    }
+    });
 
-    function changeQty(index, delta) {
-        const item = cartItems[index];
-        item.qty = Math.max(1, item.qty + delta);
-        renderCart();
-    }
-
-    function removeItem(index) {
-        cartItems.splice(index, 1);
-        renderCart();
-    }
-
+    // ===== TÍNH TỔNG TIỀN =====
     function updateTotal() {
-        let total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+        let total = 0;
+        document.querySelectorAll(".cart-item").forEach(item => {
+            const priceEl = item.querySelector(".price");
+            const qtyInput = item.querySelector("input[type='number']");
+            const price = Number(priceEl.dataset.price);
+            const qty = Number(qtyInput.value);
+            total += price * qty;
+        });
+
         const discount = getDiscount(total);
         totalPriceEl.textContent = format(total);
         finalTotalEl.textContent = format(total - discount);
     }
 
+    // ===== ÁP DỤNG GIẢM GIÁ =====
     function getDiscount(total) {
-        const select = document.getElementById("discount-select");
-        const percent = parseInt(select.value) || 0;
+        const percent = parseInt(discountSelect.value) || 0;
         if ((percent === 10 && total >= 500000) ||
             (percent === 15 && total >= 1000000) ||
             (percent === 20 && total >= 1500000)) {
@@ -78,55 +59,44 @@ document.addEventListener("DOMContentLoaded", () => {
         return 0;
     }
 
-    document.getElementById("discount-select").addEventListener("change", updateTotal);
+    discountSelect.addEventListener("change", updateTotal);
+    updateTotal();
 
-    // Đặt hàng
+    // ===== KIỂM TRA THÔNG TIN THANH TOÁN =====
     checkoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        if (!validateForm()) return;
-
-        // Hiện thông báo đặt hàng thành công
-        showSuccessPopup();
+        if (!validateForm()) {alert("Vui lòng điền đầy đủ thông tin...")
+            return;}
+        alert("Thanh toán đơn hàng thành công! Trở về trang chủ...");
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1500);
     });
 
-    // Kiểm tra form
     function validateForm() {
         const name = document.getElementById("fullname");
         const phone = document.getElementById("phone");
+        const country  = document.getElementById("country");
         const address = document.getElementById("address");
+        const province = document.getElementById("province");
         let valid = true;
 
-        [name, phone, address].forEach(input => {
+        [name, phone, country ,address, province].forEach(input => {
             const err = input.nextElementSibling;
             if (!input.value.trim()) {
                 err.textContent = "Vui lòng điền thông tin.";
                 err.style.color = "red";
                 valid = false;
-            } else err.textContent = "";
+            } else {
+                err.textContent = "";
+            }
         });
 
-        if (!valid) alert("Vui lòng điền đầy đủ thông tin giao hàng.");
         return valid;
     }
 
-    // Thông báo popup thành công
-    function showSuccessPopup() {
-        const popup = document.createElement("div");
-        popup.className = "success-popup";
-        popup.innerHTML = `
-            <div class="popup-box">
-                <i class="fas fa-check-circle"></i>
-                <p>Cảm ơn quý khách đã mua hàng!</p>
-                <button onclick="location.href='index.html'">Quay về trang chủ</button>
-            </div>
-        `;
-        document.body.appendChild(popup);
-    }
-
-    // Format giá
+    // ===== FORMAT TIỀN =====
     function format(value) {
         return value.toLocaleString("vi-VN") + "₫";
     }
-
-    renderCart();
 });

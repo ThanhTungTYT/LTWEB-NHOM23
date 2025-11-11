@@ -32,18 +32,6 @@ function showPreviousImage() {
 
 setInterval(showNextImage, 3000);
 
-hotItems.forEach(item => {
-    const productItem = document.createElement('a');
-    productItem.className = 'product';
-    productItem.href = '#';
-    productItem.innerHTML = `
-    <img src="${item.image}" alt="${item.name}">
-    <p>${item.name}</p>
-    <span>${item.price}</span>
-    <label><i class="fa-solid fa-fire"></i>${item.purchase}</label>
-  `;
-    product.appendChild(productItem);
-});
 window.addEventListener("scroll", () => {
     const elements = document.querySelectorAll(".fade-in, .slide-up");
     elements.forEach((el) => {

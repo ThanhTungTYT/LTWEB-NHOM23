@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
     <link rel="stylesheet" href="../webapp/css/style.css">
     <link rel="stylesheet" href="../webapp/css/cart.css">
-
 </head>
 <body>
 <header>
@@ -22,7 +21,7 @@
         <div class="mini-menu">
             <div class="cart">
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">0</span>
+                <span id="num-cart-label">3</span>
             </div>
             <a href="login.html"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -42,7 +41,70 @@
         <a href="#" class="clear-all-cart">Xóa tất cả</a>
     </div>
 
-    <div id="cart-list"></div>
+    <div id="cart-list">
+        <!-- Sản phẩm 1 -->
+        <div class="cart-item" data-price="200000">
+            <input type="checkbox" class="product-select">
+            <div class="product-remove"><i class="fas fa-times"></i></div>
+            <div class="product-thumbnail">
+                <img src="../webapp/img/Cafe1.png" alt="Cà phê rang nguyên chất 1" />
+            </div>
+            <div class="product-details">
+                <p class="product-name">Cà phê rang nguyên chất 1</p>
+                <p class="product-type">Loại: Nguyên hạt</p>
+                <p class="product-weight">Khối lượng: <span>500gr</span></p>
+            </div>
+            <div class="product-price">200.000đ</div>
+            <div class="product-quantity">
+                <button class="btn-decrease">-</button>
+                <input type="number" value="1" min="1" />
+                <button class="btn-increase">+</button>
+            </div>
+            <div class="product-subtotal">200.000đ</div>
+        </div>
+
+        <!-- Sản phẩm 2 -->
+        <div class="cart-item" data-price="150000">
+            <input type="checkbox" class="product-select">
+            <div class="product-remove"><i class="fas fa-times"></i></div>
+            <div class="product-thumbnail">
+                <img src="../webapp/img/Cafe2.jpg" alt="Drip Coffee" />
+            </div>
+            <div class="product-details">
+                <p class="product-name">Drip Coffee</p>
+                <p class="product-type">Loại: Phin giấy</p>
+                <p class="product-weight">Khối lượng: <span>800gr</span></p>
+            </div>
+            <div class="product-price">150.000đ</div>
+            <div class="product-quantity">
+                <button class="btn-decrease">-</button>
+                <input type="number" value="1" min="1" />
+                <button class="btn-increase">+</button>
+            </div>
+            <div class="product-subtotal">150.000đ</div>
+        </div>
+
+        <!-- Sản phẩm 3 -->
+        <div class="cart-item" data-price="250000">
+            <input type="checkbox" class="product-select">
+            <div class="product-remove"><i class="fas fa-times"></i></div>
+            <div class="product-thumbnail">
+                <img src="../webapp/img/Cafe3.png" alt="Cafe Chất - Vina Cafe" />
+            </div>
+            <div class="product-details">
+                <p class="product-name">Cafe Chất - Vina Cafe</p>
+                <p class="product-type">Loại: Đậm vị</p>
+                <p class="product-weight">Khối lượng: <span>1000gr</span></p>
+            </div>
+            <div class="product-price">250.000đ</div>
+            <div class="product-quantity">
+                <button class="btn-decrease">-</button>
+                <input type="number" value="1" min="1" />
+                <button class="btn-increase">+</button>
+            </div>
+            <div class="product-subtotal">250.000đ</div>
+        </div>
+    </div>
 
     <div class="cart-totals">
         <h3>TỔNG CỘNG</h3>
@@ -54,8 +116,6 @@
 
     <div class="payment-methods">
         <h4>Phương thức thanh toán</h4>
-        <i class="fa-brands fa-cc-visa"></i>
-        <span>Chuyển Khoản Qua Ngân Hàng</span>
         <i class="fa-solid fa-boxes-stacked"></i>
         <span>Thanh Toán Khi Nhận Hàng</span>
     </div>
@@ -93,7 +153,9 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+
+<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+
 <script src="../webapp/js/cart.js"></script>
 <script src="../webapp/js/script.js"></script>
 </body>
