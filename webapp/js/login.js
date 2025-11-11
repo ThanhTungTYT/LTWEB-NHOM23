@@ -1,20 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const blogin = document.getElementById('b-login');
-    const usernameIP = document.getElementById('username');
-    const passIP = document.getElementById('password');
 
-    if (blogin && usernameIP && passIP) {
-        blogin.addEventListener('click', function (envent) {
-            if (usernameIP.value.trim() === '' || passIP.value.trim() === '') {
-                alert('vui long dien day du thong tin')
-                return;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginButton = document.getElementById('b-login'); // Nút Đăng nhập (button)
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password'); // Thêm để kiểm tra mật khẩu
+
+    if (loginButton && usernameInput && passwordInput) {
+        loginButton.addEventListener('click', function(event) {
+            if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
+                alert('Vui lòng điền đầy đủ Tên đăng nhập và Mật khẩu.');
+                return; // Dừng nếu chưa điền đủ
             }
-            const usename = usernameIP.value.trim().toLocaleLowerCase();
-            const  pass = passIP.value.trim().toLocaleLowerCase();
-            if (usename === 'admin'&& pass === '123123') {
-                window.location.href = "../../templates/adminIndex.html";
+
+            const username = usernameInput.value.trim().toLowerCase();
+
+            // 2. Logic kiểm tra TÊN ĐĂNG NHẬP
+            if (username === 'admin') {
+                // Chuyển hướng đến trang quản trị
+                window.location.href = 'adminIndex.html';
             } else {
-                window.location.href = '../../templates/account.html';
+                // Chuyển hướng đến trang tài khoản người dùng hoặc trang chủ
+                window.location.href = 'account.html';
             }
         });
     }
