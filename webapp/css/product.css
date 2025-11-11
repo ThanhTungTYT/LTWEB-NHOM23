@@ -532,13 +532,14 @@
     width: 200px;
     height: 200px;
     border-radius: 20px;
+    margin-bottom: 10px;
     border: 1px solid black;
 }
 .product-body .product-relative .product-catalog .product p{
     font-size: 18px;
     font-weight: bold;
     color: black;
-    margin-top: 10px;
+    margin-bottom: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -547,6 +548,7 @@
     font-size: 16px;
     color: #c76739;
     margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 
