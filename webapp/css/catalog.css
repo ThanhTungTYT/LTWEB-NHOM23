@@ -58,8 +58,8 @@
     color: #fff;
 }
 .catalog-list hr{
-    height: 3.5px;
-    background-color: #840500;
+    height: 4px;
+    background-color: #c76739;
 }
 .catalog-list .filter{
     display: flex;
@@ -94,7 +94,7 @@
 }
 .product-area .product-list .product{
     width: 250px;
-    max-height: 300px;
+    max-height: 350px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;

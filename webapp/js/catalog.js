@@ -20,7 +20,7 @@ for (let i = 1; i <= 200; i++) {
     }
     products.push({
         id: i,
-        img: '',
+        img: '../webapp/img/Cafe1.png',
         name: `Sản phẩm #${i}`,
         price: `${(Math.random() * 100 + 50).toFixed(0)}.000đ`,
         category: category,
@@ -28,7 +28,7 @@ for (let i = 1; i <= 200; i++) {
     });
 }
 
-const productsPerPage = 15;
+const productsPerPage = 20;
 let currentPage = 1;
 let currentCategory = 'all';
 
