@@ -45,7 +45,7 @@
     color: #cd764d;
     text-decoration: none; /* không gạch chân */
 }
-.container input[type="submit"] {
+.container #b-login {
     width: 100%;
     padding: 10px;
     background-color: #c76739;
@@ -54,7 +54,7 @@
     border-radius: 4px;
     cursor: pointer;    /* con trỏ chuột biến thành tay khi hover qua nút đăng nhập */
 }
-.container input[type="submit"]:hover {
+.container #b-login:hover {
     background: #b45c33;
 }
 .container .or-login {
