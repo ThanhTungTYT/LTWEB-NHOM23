@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
     <link rel="stylesheet" href="../webapp/css/style.css">
     <link rel="stylesheet" href="../webapp/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
@@ -36,7 +36,7 @@
 </header>
     <div class = "container">
         <h2 id = "Login">Đăng nhập</h2>
-        <form action="/submit" method="post">
+        <form id="f-login" action="javascrip:void(0);" method="post">
             <label class="lbu" for="username">Tên đăng nhập:</label>
             <input type="text" id="username" name="username" placeholder="Tên đăng nhập hoặc email" required><br><br>
             <label class="lbpw" for="password">Mật khẩu:</label>
@@ -44,7 +44,7 @@
             <div class="forgot-password">
                 <p>Quên mật khẩu? <a href="forgotpassword.html">Click vào đây</a></p>
             </div>
-            <input type="submit" id="b-login" value="Đăng nhập" onclick="location.href='account.html'">
+            <button type="button" id="b-login">Đăng nhập</button>
         </form>
         <div class="or-login"> Hoặc đang nhập bằng:
             <button class="icon-btn google-btn">
@@ -95,6 +95,6 @@
 </footer>
     <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
     <script src="../webapp/js/script.js"></script>
-
+    <script src="../webapp/js/login.js"></script>
 </body>
 </html>

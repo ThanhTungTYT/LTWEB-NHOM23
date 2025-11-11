@@ -49,18 +49,7 @@
     background: #b45c33;
 
 }
-.container input[type="submit"] {
-    width: 44%;
-    padding: 10px;
-    background-color: #c76739;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer; /* con trỏ chuột biến thành tay khi hover qua nút đăng ký */
-}
-.container input[type="submit"]:hover {
-    background: #b45c33;
-}
+
 .container .or-login {
     text-align: center;
     margin-top: 20px;
@@ -78,14 +67,4 @@
     margin: 0 8px; 
     cursor: pointer;
     appearance: none; /* loại bỏ kiểu dáng mặc định của nút */
-}
-.container .register-link {
-    margin-bottom: 20px;
-    text-align: left;
-    opacity: 0.8; /* làm mờ nhẹ */
-    font-size: 14px;
-}
-.container .register-link a {
-    color: #c76739;
-    text-decoration: none; /* loại bỏ gạch chân */
 }
