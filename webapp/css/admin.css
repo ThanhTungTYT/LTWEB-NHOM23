@@ -260,7 +260,7 @@ table td {
     background: #c76739;
     color: white;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
 }
 .right-content .main-menu button:hover{
     background: #A0522D;
@@ -304,10 +304,33 @@ table td {
     height: 40px;
     border-radius: 10px;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
 }
 .right-content .list-product button:hover{
     background: #700000;
+}
+
+/* --- PAGE 3: ĐƠN HÀNG --- */
+.right-content .main-content .main-menu-date{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+.right-content .main-content .main-menu-date button{
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+    background: #c76739;
+    color: white;
+}
+.right-content .main-content .list-order{
+    padding: 10px 30px;
+}
+.right-content .main-content .list-order table .detail{
+    cursor: pointer;
+    padding: 5px 5px;
 }
 
 /* --- PAGE 4: TÀI KHOẢN --- */
@@ -548,7 +571,7 @@ table td {
     height: 50px;
     border: 3px solid black;
     cursor: pointer;
-    z-index: 50; /* Thêm */
+    z-index: 50;
 }
 .slide-top:hover{
     background: saddlebrown;
