@@ -1,353 +1,556 @@
-body {
-    height: 100vh;
-    font-family: Tahoma, Arial, sans-serif;
-    background-color: #f5f5f5;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Open Sans', sans-serif;
+    position: relative; /* Thêm để định vị pop-up */
+}
+.left-menu{
+    width: 20%;
+    height: 100%;
+    border-right: 1px black solid;
+    display: flex;
+    flex-direction: column; /* Thêm để đẩy footer xuống */
+}
+.left-menu .logo{
+    height: 80px;
+    width: 100%;
 }
 
-/* === 1. LEFT MENU (SIDEBAR) === */
-.left-menu {
-    width: 250px;
-    height: 100vh;
-    background-color: #363636; /* Màu nền menu đậm */
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease;
+.left-menu .logo img{
+    width: 100%;
+    height: 100%;
+}
+.left-menu .menu{
+    height: calc(100% - 130px);
     display: flex;
     flex-direction: column;
-
+    gap: 30px;
+    background: #3a3a3a;
+    padding: 20px 20px;
+    flex-grow: 1; /* Thêm để chiếm không gian */
 }
-
-.left-menu.collapsed {
-    width: 60px; /* Chiều rộng khi thu gọn (cho icon) */
-}
-
-.logo {
-    padding: 0;
-    text-align: center;
-    background-color: #a0522d; /* Màu nền logo khác biệt */
-    margin: 0;
-
-}
-
-.logo img {
-    max-width: 100%;
-    height: 80px;
-    object-fit: contain;
-}
-
-.menu {
-    flex-grow: 1;
-}
-
-.menu-item {
-    display: block;
-    padding: 15px 20px;
-    color: #cccccc;
+.left-menu .menu a{
+    height: 50px;
+    width: 100%;
     text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.menu-item:hover {
-    background-color: #4a4a4a;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 500;
     color: white;
+    transition: all 0.3s ease-in-out;
 }
-
-.menu-item.active {
-    background-color: #5a5a5a; /* Màu nền khi active */
+.left-menu .menu .menu-item.active, /* Thêm class active */
+.left-menu .menu .menu-item:hover{
+    background: #686868;
+    border-left: 3px #840500 solid;
+}
+.left-menu .footer{
+    width: 100%;
+    height: 50px;
+    background: #A0522D;
+    text-align: center;
+    padding-top: 15px;
+}
+.left-menu .footer p{
     color: white;
-    font-weight: normal; /* Không in đậm (theo yêu cầu) */
-}
-
-.footer {
-    padding: 15px;
     font-size: 12px;
-    text-align: center;
-    border-top: 1px solid #4a4a4a;
-    color: #999;
-    flex-shrink: 0;
 }
-
-/* === 2. RIGHT CONTENT (NỘI DUNG CHÍNH) === */
-.right-content {
-    margin-left: 250px;
-    padding: 0;
-    transition: margin-left 0.3s ease;
-    min-height: 100vh;
+.right-content{
+    width: 80%;
+    height: 100vh; /* Sửa */
+    overflow-y: auto; /* Thêm để cuộn */
 }
-
-.right-content.expanded {
-    margin-left: 60px; /* Khi menu bị thu gọn */
-}
-
-/* Header/Title Bar */
-.title {
-    background-color: #a0522d; /* Màu nền header nâu */
-    color: white;
-    padding-left: 25px;
-    padding-bottom: 7px;
+.right-content .title{
+    position: relative;
+    height: 81px;
+    width: 100%;
+    background: #A0522D;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Thêm từ định nghĩa bị trùng */
 }
-
-.slider-menu {
-    background: none;
-    border: none;
-    color: white;
+.right-content .title button{
+    position: absolute;
+    left: 20px;
+    width: 50px;
+    height: 50px;
     font-size: 24px;
+    background: transparent;
+    border: 2px black solid;
+    color: white;
     cursor: pointer;
-    margin-right: 20px;
+}
+.right-content .title p{
+    font-size: 28px;
+    color: white;
 }
 
-/* Khu vực nội dung được tải AJAX */
-.main-content {
-    padding: 0 30px 30px 30px;
+/* --- PAGE 1: TỔNG QUAN --- */
+.dashboard-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
 }
-
-.loading-state, .error-state {
-    text-align: center;
-    padding: 50px;
-    font-size: 1.2em;
-    color: #888;
-}
-
-/* === 3. TỔNG QUAN (ADMINPAGE1 CONTENT) === */
 .kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 25px;
     margin-bottom: 30px;
 }
-
 .kpi-card {
-    background: white;
-    padding: 20px;
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     display: flex;
     align-items: center;
 }
-
-.card-icon {
-    font-size: 24px;
-    color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
+.kpi-card .card-icon {
+    font-size: 32px;
+    padding: 15px;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 20px;
+    color: #fff;
 }
-.card-icon.blue { background-color: #007bff; }
-.card-icon.green { background-color: #28a745; }
-.card-icon.orange { background-color: #ffc107; }
-.card-icon.red { background-color: #dc3545; }
-
-.card-info h3 {
-    margin: 0;
-    font-size: 1.4em;
-    color: #333;
+.kpi-card .card-icon.blue { background-color: #007bff; }
+.kpi-card .card-icon.green { background-color: #28a745; }
+.kpi-card .card-icon.orange { background-color: #fd7e14; }
+.kpi-card .card-icon.red { background-color: #dc3545; }
+.kpi-card .card-info h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 5px;
 }
-.card-info span {
-    font-size: 0.9em;
+.kpi-card .card-info span {
+    font-size: 14px;
     color: #6c757d;
 }
-
 .charts-grid {
+    width: 100%;
+    height: fit-content;
     display: flex;
-    gap: 20px;
+    flex-direction: row;
+    gap: 25px;
     margin-bottom: 30px;
 }
-
-.chart-card {
-    background: white;
-    padding: 20px;
+.charts-grid .chart-card {
+    width: 50%;
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-
-.chart-card.large {
-    flex: 2; /* Chiếm phần lớn diện tích */
+.chart-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #495057;
 }
-.chart-card.small {
-    flex: 1;
+.chart-card p {
+    font-size: 30px;
+    color: #7dca01;
+    text-align: start;
 }
-
-.list-product p {
-    margin: 8px 0;
-    font-size: 0.95em;
+.large p{
+    margin-top: 40px;
 }
-
-/* === 4. BẢNG (CHUNG CHO TẤT CẢ TRANG) === */
-.table-card, .list-product, .list-order, .list-account {
-    background: white;
-    padding: 20px;
+.large span{
+    color: deepskyblue;
+    margin-right: 10px;
+}
+.small p{
+    font-size: 18px;
+    color: black;
+}
+.small span{
+    color: #7dca01;
+}
+.table-card {
+    background: #fff;
+    padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.table-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #495057;
 }
 
+/* --- TABLE CHUNG --- */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 0.9em;
 }
-
-thead th {
-    background-color: #f8f9fa;
+table th, table td {
+    padding: 12px 15px;
     text-align: left;
-    padding: 12px;
-    border-bottom: 2px solid #dee2e6;
+    border-bottom: 1px solid #f0f0f0;
 }
-tbody td {
-    padding: 12px;
-    border-bottom: 1px solid #dee2e6;
-    vertical-align: middle;
+table th {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 14px;
+}
+table td {
+    font-size: 15px;
 }
 
-tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-.status {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.85em;
-    display: inline-block;
-    min-width: 60px;
-    text-align: center;
-}
-.status.pending { background-color: #fff3cd; color: #856404; } /* Chờ xử lý */
-.status.completed { background-color: #d4edda; color: #155724; } /* Đã giao */
-.status.cancelled { background-color: #f8d7da; color: #721c24; } /* Đã hủy */
-
-/* === 5. FORM & SEARCH BARS (CHUNG) === */
-.search-bar {
+/* --- PAGE 2 & 3: SẢN PHẨM & ĐƠN HÀNG --- */
+.right-content .search-bar{
+    width: 100%;
+    height: 50px;
+    padding: 20px 0;
+    margin-bottom: 30px;
     display: flex;
-    width: 400px;
-    margin-bottom: 20px;
-}
-
-.search-bar input[type="text"] {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    font-size: 1em;
-}
-
-.search-bar button {
-    background-color: #c76739;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-}
-
-.main-menu {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
-
-.main-menu select, .main-menu input[type="date"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.right-content .search-bar input{
+    width: 50%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 20px 0 0 20px;
+    border: 1px black solid;
+    border-right: none;
 }
-
-/* Nút Chi tiết (Đơn hàng) & Nút Thêm/Xóa (Sản phẩm) */
-.detail, #add, .list-product button, .list-account button {
-    background-color: #c76739;
+.right-content .search-bar input:focus{
+    outline: none;
+}
+.right-content .search-bar button{
+    width: 5%;
+    height: 40px;
+    padding: 10px 30px;
+    border-radius: 0 20px 20px 0;
+    border: 1px black solid;
+    border-left: none;
+    background: transparent;
+}
+.right-content .main-menu{
+    width: 100%;
+    height: 50px;
+    padding: 20px 50px;
+    margin-bottom: 30px;
+}
+.right-content .main-menu select{
+    float: left;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+.right-content .main-menu button{
+    float: right;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background: #c76739;
     color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    font-size: 0.9em;
+    border: none; /* Thêm */
 }
-.output{
-    background-color: #cd764d;
+.right-content .main-menu button:hover{
+    background: #A0522D;
 }
-.submit{
-    background-color: #c76739;
+.right-content .list-product{
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.right-content .list-product h3{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #495057;
+}
+.right-content .list-product table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.right-content .list-product table th, .right-content .list-product table td{
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+.right-content .list-product table th{
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 14px;
+}
+.right-content .list-product table td{
+    font-size: 15px;
+}
+.right-content .list-product button{
+    font-weight: 500;
+    margin-top: 20px;
     color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    background: red;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s;
-    font-size: 0.9em;
+    border: none; /* Thêm */
 }
-/* Nút Xóa Sản phẩm (Màu đỏ) */
-.list-product button:last-child {
+.right-content .list-product button:hover{
+    background: #700000;
+}
+
+/* --- PAGE 4: TÀI KHOẢN --- */
+.right-content .notify{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    background: #fff;
+    padding: 25px;
+    margin-left: 120px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.right-content .notify h3{
+    font-size: 18px;
+    font-weight: 500;
+    color: #495057;
+}
+.right-content .notify .notify-main{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px 0;
+    overflow-y: scroll;
+}
+.right-content .notify .notify-main p span{
+    font-weight: 600;
+}
+.right-content .list-account{
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.right-content .list-account h3{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #495057;
+}
+.right-content .list-account table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.right-content .list-account table th, .right-content .list-account table td{
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+.right-content .list-account table th{
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 14px;
+}
+.right-content .list-account table td{
+    font-size: 15px;
+}
+.right-content .list-account button{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+    color: white;
+    background: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none; /* Thêm */
+}
+.right-content .list-account button:hover{
+    background: #700000;
+}
+
+/* --- POP-UP CHUNG --- */
+.form-add{
+    position: fixed; /* Sửa thành fixed */
+    height: fit-content;
+    width: 60%;
+    background: white;
+    top: 50%;
+    left: 60%;
+    padding: 20px 20px;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
+    z-index: 100; /* Thêm */
+}
+.list-order .detail{
     background-color: #c76739;
-    margin-top: 15px;
+}
+.list-order .detail i{
+    color: white;
+}
+.form-add .form-title{
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.form-add .form-title button{
+    position: absolute;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    color: red;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.form-add .main-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-add .main-form label{
+    width: 150px;
+    font-size: 17px;
+}
+.form-add .main-form div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+.form-add .main-form .img-p button{
+    height: 30px;
+    width: 70px;
+    border: none; /* Thêm */
+    cursor: pointer; /* Thêm */
+}
+.form-add .main-form div input{
+    width: 60%;
+    height: 30px;
+    padding: 10px 10px;
+}
+.form-add .main-form div select{
+    font-size: 12px;
+    width: 60%;
+    height: 30px;
+    padding: 0 10px;
+}
+.form-add .main-form div textarea{
+    width: 60%;
+    height: 50px;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+.form-add .main-form .submit{
+    width: 50%;
+    height: 30px;
+    margin: auto;
+    background: deepskyblue;
+    color: white;
+    cursor: pointer;
+    border: none; /* Thêm */
+}
+.form-add .main-form .submit:hover{
+    background: #00ff00;
 }
 .detail-p{
-    padding: 30px;
-}
-/* Nút thùng rác (Quản lí tài khoản) */
-.list-account tbody button {
-    background-color: #c76739;
-    padding: 5px 10px;
-    font-size: 1em;
-}
-
-/* === 6. QUẢN LÍ TÀI KHOẢN (NOTIFY & SCROLLBAR) === */
-.notify {
+    position: fixed; /* Sửa thành fixed */
+    height: fit-content;
+    width: 60%;
+    display: flex; /* Thêm để JS điều khiển */
+    flex-direction: column;
+    gap: 30px;
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    top: 50%;
+    left: 60%;
+    padding: 50px 50px;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
+    z-index: 100; /* Thêm */
+}
+.detail-p h3{
     margin-bottom: 20px;
 }
-
-.notify-main {
-    max-height: 150px; /* Chiều cao cố định cho thông báo */
-    overflow-y: auto;
-    border: 1px solid #eee;
-    padding: 10px;
+.detail-p .info-customer .info{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
 }
-
-.notify-main p {
-    margin: 5px 0;
-    border-bottom: 1px dashed #eee;
-    padding-bottom: 5px;
+.detail-p .info-customer .info div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-
-.notify-main span {
-    font-weight: bold;
-    color: #c76739;
-}
-
-/* === 7. POPUP VÀ SLIDE TOP (Nút cuộn lên đầu) === */
-.slide-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #363636;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
+.detail-p button{
+    width: 200px;
     height: 40px;
-    line-height: 40px;
-    text-align: center;
     cursor: pointer;
-    display: none; /* Mặc định ẩn, JS sẽ xử lý */
+}
+.detail-p .totalSum span{
+    color: #A0522D;
+    margin-left: 20px;
+}
+.detail-p #close{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    color: red;
+    background: transparent;
+    border: none;
+}
+
+/* --- THÀNH PHẦN CHUNG KHÁC --- */
+.status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.status.pending { background-color: #fff0c2; color: #f39c12; }
+.status.completed { background-color: #c8f7dc; color: #28a745; }
+.status.cancelled { background-color: #fde2e4; color: #dc3545; }
+
+.slide-top{
+    position: fixed;
+    display: none;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    color: saddlebrown;
+    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+    border: 3px solid black;
+    cursor: pointer;
+    z-index: 50; /* Thêm */
+}
+.slide-top:hover{
+    background: saddlebrown;
+    color: white;
 }
