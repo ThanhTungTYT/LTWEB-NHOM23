@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const mainContentArea = document.getElementById('product-list');
 
         const categoryFiles = {
-            "Tất cả": "../../templates/catalog-all.html",
-            "Cà phê hữu cơ": "../../templates/catalog-cphc.html",
-            "Cà phê nguyên hạt rang": "",
-            "Cà phê hòa tan": "",
-            "Các sản phẩm đặc biệt": ""
+            "Tất cả": "../templates/catalog-all.html",
+            "Cà phê hữu cơ": "../templates/catalog-cphc.html",
+            "Cà phê nguyên hạt rang": "../templates/catalog-cpnh.html",
+            "Cà phê hòa tan": "../templates/catalog-cpht.html",
+            "Các sản phẩm đặc biệt": "../templates/catalog-special.html"
         };
 
         async function loadContent(url, title) {
