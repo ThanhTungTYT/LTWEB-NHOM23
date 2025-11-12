@@ -2,21 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Trang Quản Trị Aroma Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="stylesheet" href="../webapp/css/admin.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../webapp/css/adminPage4.css">
+    <style>
+        /* Thêm style để đảm bảo bố cục hoạt động */
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        .right-content {
+            width: 80%; /* Hoặc 100% nếu menu bị ẩn */
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
 <div class="left-menu" id="left-menu">
     <div class="logo">
-        <img src="../webapp/img/logo.png" onclick="location.href='index.html'">
+        <img src="../webapp/img/logo.png">
     </div>
     <div class="menu">
-        <a href="adminPage1.html" class="menu-item active" data-title="Tổng quan">Tổng quan</a>
-        <a href="adminPage2.html" class="menu-item" data-title="Quản lí sản phẩm">Quản lí sản phẩm</a>
-        <a href="adminPage3.html" class="menu-item" data-title="Đơn hàng">Đơn hàng</a>
-        <a href="adminPage4.html" class="menu-item" data-title="Quản lí tài khoản">Quản lí tài khoản</a>
+        <a href="#" class="menu-item active" data-page="adminPage1.html">Tổng quan</a>
+        <a href="#" class="menu-item" data-page="adminPage2.html">Quản lí sản phẩm</a>
+        <a href="#" class="menu-item" data-page="adminPage3.html">Đơn hàng</a>
+        <a href="#" class="menu-item" data-page="adminPage4.html">Quản lí tài khoản</a>
     </div>
     <div class="footer">
         <p>2024 Aroma Café. All rights reserved.</p>
@@ -24,56 +35,9 @@
 </div>
 
 <div class="right-content" id="right-content">
-    <div class="title">
-        <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
-        <p id="page-title">TỔNG QUAN</p>
-    </div>
-    <main class="main-content" id="main-content">
-        <div class="loading-state">Đang tải nội dung...</div>
-    </main>
-
-    <div class="detail-p" id="detail-p" style="display: none">
-        <button id="close">X</button>
-        <div class="order">
-            <h3>DANH SÁCH SẢN PHẨM</h3>
-            <table>
-                <thead><tr><th>ID</th><th>Tên sản phẩm</th><th>Loại sản phẩm</th><th>Giá (VND)</th><th>Số lượng</th></tr></thead>
-                <tbody><tr><td>P001</td><td>Cafe Aroma 1</td><td>Cà phê hữu cơ</td><td>100.000</td><td>1</td></tr></tbody>
-            </table>
-        </div>
-        <div class="info-customer">
-            <h3>THÔNG TIN KHÁCH HÀNG</h3>
-            <div class="info">
-                <div class="info-left"><p>1. Họ và tên: Phan Thanh Tùng</p><p>2. SĐT: 0868.xxx.xxx</p><p>3. Email: example@gmail.com</p></div>
-                <div class="info-right"><p>4. Tỉnh: Gia Lai</p><p>5. Xã: Hòa Hội</p><p>6. Địa chỉ: Số 1xx, đường 1x, thôn Hòa Hội</p></div>
-            </div>
-        </div>
-        <div class="totalSum">
-            <h3>PHÍ VẬN CHUYỂN: <span>20.000</span> VND</h3>
-            <h3>TỔNG TIỀN: <span>120.000</span> VND</h3>
-        </div>
-        <button class="output">Xuất hóa đơn</button>
-    </div>
-
-    <div class="form-add" id="form-add" style="display: none">
-        <div class="form-title">
-            <p>THÊM SẢN PHẨM</p>
-            <button id="take-off">X</button>
-        </div>
-        <form class="main-form">
-            <div class="p name-p"><label>Tên sản phẩm</label><input type="text" placeholder="Tên sản phẩm" required></div>
-            <div class="type-p"><label>Loại sản phẩm</label><select><option>-Chọn dòng sản phẩm-</option><option>Cà phê hữu cơ</option><option>Cà phê rang nguyên hạt</option><option>Cà phê hòa tan</option><option>Các sản phẩm đặc biệt khác</option></select></div>
-            <div class="price-p"><label>Giá sản phẩm</label><input type="text" placeholder="Giá sản phẩm" required></div>
-            <div class="img-p"><label>Ảnh</label><input type="text" placeholder="Url link"><button type="button">Thêm</button><span>0</span></div>
-            <div class="count-p"><label>Số lượng</label><input type="text" placeholder="Số lượng" required></div>
-            <div class="des-p"><label>Mô tả</label><textarea placeholder="Mô tả..."></textarea></div>
-            <button class="submit" type="submit">Thêm</button>
-        </form>
-    </div>
 </div>
-
-<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
-
+<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="../webapp/js/admin.js"></script>
+<script src="../webapp/js/script.js"></script>
 </body>
 </html>
