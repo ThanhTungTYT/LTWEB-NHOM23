@@ -32,14 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ===== TÍNH TỔNG TIỀN =====
     function updateTotal() {
         let total = 0;
         document.querySelectorAll(".cart-item").forEach(item => {
-            const priceEl = item.querySelector(".price");
-            const qtyInput = item.querySelector("input[type='number']");
-            const price = Number(priceEl.dataset.price);
-            const qty = Number(qtyInput.value);
+            const price = Number(item.dataset.price);
+            const qty = Number(item.querySelector("input[type='number']").value);
             total += price * qty;
         });
 
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
         finalTotalEl.textContent = format(total - discount);
     }
 
-    // ===== ÁP DỤNG GIẢM GIÁ =====
     function getDiscount(total) {
         const percent = parseInt(discountSelect.value) || 0;
         if ((percent === 10 && total >= 500000) ||
@@ -62,41 +58,35 @@ document.addEventListener("DOMContentLoaded", () => {
     discountSelect.addEventListener("change", updateTotal);
     updateTotal();
 
-    // ===== KIỂM TRA THÔNG TIN THANH TOÁN =====
     checkoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        if (!validateForm()) {alert("Vui lòng điền đầy đủ thông tin...")
-            return;}
+        if (!validateForm()) {
+            alert("Vui lòng điền đầy đủ thông tin...");
+            return;
+        }
         alert("Thanh toán đơn hàng thành công! Trở về trang chủ...");
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1500);
+        setTimeout(() => window.location.href = "index.html", 1500);
     });
 
     function validateForm() {
-        const name = document.getElementById("fullname");
-        const phone = document.getElementById("phone");
-        const country  = document.getElementById("country");
-        const address = document.getElementById("address");
-        const province = document.getElementById("province");
+        const fields = ["fullname", "phone", "country", "address", "province"];
         let valid = true;
-
-        [name, phone, country ,address, province].forEach(input => {
+        fields.forEach(id => {
+            const input = document.getElementById(id);
             const err = input.nextElementSibling;
             if (!input.value.trim()) {
                 err.textContent = "Vui lòng điền thông tin.";
-                err.style.color = "red";
                 valid = false;
-            } else {
-                err.textContent = "";
-            }
+            } else err.textContent = "";
         });
-
         return valid;
     }
 
-    // ===== FORMAT TIỀN =====
     function format(value) {
         return value.toLocaleString("vi-VN") + "₫";
     }
+
+});
+document.getElementById("account-btn").addEventListener("click", () => {
+    window.location.href = "../templates/account.html";
 });
