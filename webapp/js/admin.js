@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const newContent = doc.getElementById('right-content');
             if (newContent) {
                 content.innerHTML = newContent.innerHTML;
+                content.style.filter = 'blur(0)';
             } else {
-                // Lỗi này là lỗi bạn gặp lúc 10:16 PM
                 content.innerHTML = `<p style="color: red;">Lỗi: Không tìm thấy div#right-content trong file ${url}</p>`;
             }
 

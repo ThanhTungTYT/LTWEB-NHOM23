@@ -27,6 +27,9 @@
         <input type="text" placeholder="Tìm kiếm người dùng" required>
         <button><i class="fas fa-search"></i></button>
     </form>
+    <div class="main-menu">
+        <button id="add">+ Thêm tài khoản</button>
+    </div>
     <div class="list-account">
         <h3>DANH SÁCH TÀI KHOẢN</h3>
         <table>
@@ -37,16 +40,27 @@
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Mật khẩu</th>
+                <th>Role</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
+            <tr>
+                <td>KH000</td>
+                <td></td>
+                <td>admin@gmail.com</td>
+                <td>xxxx.xxx.xxx</td>
+                <td>xxxxxxxxx</td>
+                <td>Admin</td>
+                <td><button><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
             <tr>
                 <td>KH001</td>
                 <td>Phan Thanh Tùng</td>
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
@@ -55,6 +69,7 @@
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
@@ -63,6 +78,7 @@
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
@@ -71,6 +87,7 @@
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
@@ -79,6 +96,7 @@
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             <tr>
@@ -87,11 +105,45 @@
                 <td>example@gmail.com</td>
                 <td>xxxx.xxx.xxx</td>
                 <td>xxxxxxxxx</td>
+                <td>Customer</td>
                 <td><button><i class="fa-solid fa-trash"></i></button></td>
             </tr>
             </tbody>
         </table>
     </div>
+</div>
+<div class="form-add" id="form-add" style="display: none">
+    <div class="form-title">
+        <p>THÊM TÀI KHOẢN</p>
+        <button id="take-off">X</button>
+    </div>
+    <form class="main-form">
+        <div class="p name-p">
+            <label>Tên người dùng</label>
+            <input type="text" placeholder="Tên người dùng">
+        </div>
+        <div class="price-p">
+            <label>Email</label>
+            <input type="text" placeholder="Email" required>
+        </div>
+        <div class="count-p">
+            <label>Mật khẩu</label>
+            <input type="text" placeholder="Mật khẩu" required>
+        </div>
+        <div class="count-p">
+            <label>Số điện thoại</label>
+            <input type="text" placeholder="Số điện thoại">
+        </div>
+        <div class="type-p">
+            <label>Role</label>
+            <select>
+                <option>-Chọn vai trò-</option>
+                <option>Admin</option>
+                <option>Customer</option>
+            </select>
+        </div>
+        <button class="submit" type="submit">Thêm</button>
+    </form>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
 </body>
