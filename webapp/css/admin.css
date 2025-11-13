@@ -324,6 +324,7 @@ table td {
     border-radius: 20px;
     background: #c76739;
     color: white;
+    cursor: pointer;
 }
 .right-content .main-content .list-order{
     padding: 10px 30px;
@@ -487,16 +488,17 @@ table td {
     font-family: 'Open Sans', sans-serif;
 }
 .form-add .main-form .submit{
-    width: 50%;
+    width: 30%;
     height: 30px;
     margin: auto;
     background: deepskyblue;
     color: white;
     cursor: pointer;
     border: none; /* Thêm */
+    border-radius: 20px;
 }
 .form-add .main-form .submit:hover{
-    background: #00ff00;
+    background: #00779f;
 }
 .detail-p{
     position: fixed; /* Sửa thành fixed */
