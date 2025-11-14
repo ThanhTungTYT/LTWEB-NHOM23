@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-     * HÀM LOADCONTENT (ĐÃ NÂNG CẤP)
+     * HÀM LOADCONTENT
      * Tự động tải #right-content VÀ các pop-up
      */
     async function loadContent(url) {
