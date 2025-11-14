@@ -18,12 +18,9 @@ document.addEventListener("DOMContentLoaded", function() {
         async function loadContent(url, title) {
             mainContentArea.innerHTML = '<div class="loading-state" style="text-align: center; padding: 50px;">Đang tải sản phẩm...</div>';
 
-            console.log(`Đang tải: ${title}`);
-
                 const response = await fetch(url);
                 const htmlContent = await response.text();
                 mainContentArea.innerHTML = htmlContent;
-                console.log(`Tải thành công: ${url}`);
 
         }
         menuItems.forEach(link => {
