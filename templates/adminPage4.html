@@ -2,11 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quản lí tài khoản</title>
+    <title>Trang Quản Trị Aroma Café</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="../webapp/css/admin.css">
+    <style>
+        /* Thêm style để đảm bảo bố cục hoạt động */
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        .right-content {
+            width: 80%; /* Hoặc 100% nếu menu bị ẩn */
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
+<div class="left-menu" id="left-menu">
+    <div class="logo">
+        <img src="../webapp/img/logo.png">
+    </div>
+    <div class="menu">
+        <a href="adminPage1.html" class="menu-item">Tổng quan</a>
+        <a href="adminPage2.html" class="menu-item">Quản lí sản phẩm</a>
+        <a href="adminPage3.html" class="menu-item">Đơn hàng</a>
+        <a href="adminPage4.html" class="menu-item active">Quản lí tài khoản</a>
+        <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
+    </div>
+    <div class="footer">
+        <p>2024 Aroma Café. All rights reserved.</p>
+    </div>
+</div>
 <div class="right-content" id="right-content">
     <div class="title">
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
@@ -145,6 +171,8 @@
         <button class="submit" type="submit">Thêm</button>
     </form>
 </div>
-<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+
+<script src="../webapp/js/admin.js"></script>
 </body>
 </html>

@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <title>Quản lí sản phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../webapp/css/adminPage2.css">
+    <link rel="stylesheet" href="../webapp/css/admin.css">
 
 </head>
 <body>
+<div class="left-menu" id="left-menu">
+    <div class="logo">
+        <img src="../webapp/img/logo.png">
+    </div>
+    <div class="menu">
+        <a href="adminPage1.html" class="menu-item">Tổng quan</a>
+        <a href="adminPage2.html" class="menu-item active">Quản lí sản phẩm</a>
+        <a href="adminPage3.html" class="menu-item">Đơn hàng</a>
+        <a href="adminPage4.html" class="menu-item">Quản lí tài khoản</a>
+        <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
+    </div>
+    <div class="footer">
+        <p>2024 Aroma Café. All rights reserved.</p>
+    </div>
+</div>
 <div class="right-content" id="right-content">
     <div class="title">
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
@@ -37,8 +52,8 @@
                 <th>Tên sản phẩm</th>
                 <th>Loại sản phẩm</th>
                 <th>Giá (VND)</th>
-                <th>Số lượng còn</th>
                 <th>Số lượng bán</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -48,8 +63,8 @@
                 <td>Cafe Aroma 1</td>
                 <td>Cà phê hữu cơ</td>
                 <td>100.000</td>
-                <td>250</td>
                 <td>0</td>
+                <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
@@ -57,8 +72,8 @@
                 <td>Cafe Aroma 2</td>
                 <td>Cà phê rang nguyên hạt</td>
                 <td>150.000</td>
-                <td>250</td>
                 <td>0</td>
+                <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
@@ -66,8 +81,8 @@
                 <td>Cafe Aroma 3</td>
                 <td>Cà phê hòa tan</td>
                 <td>200.000</td>
-                <td>250</td>
                 <td>0</td>
+                <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
             </tr>
             <tr>
                 <td><input type="checkbox"></td>
@@ -75,8 +90,8 @@
                 <td>Ly uống cafe</td>
                 <td>Các sản phẩm đặc biệt</td>
                 <td>130.000</td>
-                <td>250</td>
                 <td>0</td>
+                <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
             </tr>
             </tbody>
         </table>
@@ -113,10 +128,6 @@
             <button type="button">Thêm</button>
             <span>0</span>
         </div>
-        <div class="count-p">
-            <label>Số lượng</label>
-            <input type="text" placeholder="Số lượng" required>
-        </div>
         <div class="des-p">
             <label>Mô tả</label>
             <textarea placeholder="Mô tả..."></textarea>
@@ -124,6 +135,35 @@
         <button class="submit" type="submit">Thêm</button>
     </form>
 </div>
+<div class="form-add" id="form-remake" style="display: none">
+    <div class="form-title">
+        <p>SỬA SẢN PHẨM</p>
+        <button id="close">X</button>
+    </div>
+    <form class="main-form">
+        <div class="p name-p">
+            <label>Tên sản phẩm</label>
+            <input type="text" placeholder="Tên sản phẩm">
+        </div>
+        <div class="type-p">
+            <label>Loại sản phẩm</label>
+            <select>
+                <option>-Chọn dòng sản phẩm-</option>
+                <option>Cà phê hữu cơ</option>
+                <option>Cà phê rang nguyên hạt</option>
+                <option>Cà phê hòa tan</option>
+                <option>Các sản phẩm đặc biệt khác</option>
+            </select>
+        </div>
+        <div class="price-p">
+            <label>Giá sản phẩm</label>
+            <input type="text" placeholder="Giá sản phẩm">
+        </div>
+        <button class="submit" type="submit">Thêm</button>
+    </form>
+</div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i> </button>
+
+<script src="../webapp/js/admin.js"></script>
 </body>
 </html>

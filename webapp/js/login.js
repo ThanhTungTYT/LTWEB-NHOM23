@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 2. Logic kiểm tra TÊN ĐĂNG NHẬP
             if (username === 'admin') {
                 // Chuyển hướng đến trang quản trị
-                window.location.href = 'adminIndex.html';
+                window.location.href = 'adminPage1.html';
             } else {
                 // Chuyển hướng đến trang tài khoản người dùng hoặc trang chủ
                 window.location.href = 'account.html';
