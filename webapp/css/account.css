@@ -132,7 +132,25 @@
 }
 
 /* Định kiểu cho chi tiết sản phẩm trong Lịch sử mua hàng */
+.content-area .order-item .order-title{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+.content-area .order-item .order-title .status{
+    position: absolute;
+    right: 30px;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+.status.pending { background-color: #fff0c2; color: #f39c12; }
+.status.completed { background-color: #c8f7dc; color: #28a745; }
+.status.cancelled { background-color: #fde2e4; color: #dc3545; }
 .content-area .order-item img {
     border-radius: 4px;
     margin-right: 15px;
+}
+.content-area .order-item button{
+    background: red;
+    color: white;
 }

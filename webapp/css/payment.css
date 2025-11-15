@@ -138,10 +138,15 @@ input[type="radio"] {
 
 .cart-info p {
     margin: 2px 0;
+    font-size: 13px;
+}
+.cart-info .product-name{
+    color: #c76739;
+    font-weight: 600;
 }
 
 .cart-info .weight {
-    font-size: 14px;
+    font-size: 13px;
     color: #333;
     margin-top: 2px;
 }
@@ -211,6 +216,10 @@ input[type=number] {
 .apply-row {
     display: flex;
     gap: 10px;
+}
+.apply-row input[type='text'] {
+    height: 40px;
+    margin-top: 10px;
 }
 
 .apply-row .apply-btn {

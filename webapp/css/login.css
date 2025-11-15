@@ -7,7 +7,7 @@
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* thêm bóng mờ */
     border-radius: 8px;
-    min-height: 500px; /* chiều cao tối thiểu */
+    min-height: 420px; /* chiều cao tối thiểu */
     width: 400px;
 }
 /* Tiêu đề đăng nhập */
@@ -56,24 +56,6 @@
 }
 .container #b-login:hover {
     background: #b45c33;
-}
-.container .or-login {
-    text-align: center;
-    margin: 20px 20px;
-    color: #666;
-}
-.container .or-login img {
-    margin: 5px; /* khoảng cách giữa các biểu tượng */
-    cursor: pointer;
-}
-
-.container .or-login .icon-btn {
-    border: none;
-    background: transparent;  /* loại bỏ viền và nền của nút */
-    padding: 0; 
-    margin: 0 8px; 
-    cursor: pointer;
-    appearance: none;   
 }
 .register-link {
     margin-top: 30px;
