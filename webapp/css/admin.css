@@ -288,6 +288,16 @@ table td {
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
 }
+.right-content .list-product table th, .right-content .list-product table td button{
+    width: 40px;
+    height: 30px;
+    background: dodgerblue;
+    color: white;
+    margin-bottom: 20px;
+}
+.right-content .list-product table th, .right-content .list-product table td button:hover{
+    background: blue;
+}
 .right-content .list-product table th{
     background-color: #f8f9fa;
     color: #6c757d;
