@@ -26,6 +26,18 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 10px;
 }
 
+/* Nút chọn tất cả */
+.select-all-cart {
+    color: black;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Hover giống nút xoá tất cả */
+.select-all-cart:hover {
+    text-decoration: underline;
+}
+
 /* Nút xoá tất cả sản phẩm */
 .clear-all-cart {
     color: black;

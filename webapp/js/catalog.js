@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "Tất cả": "../templates/catalog-all.html",
             "Cà phê hữu cơ": "../templates/catalog-cphc.html",
             "Cà phê nguyên hạt rang": "../templates/catalog-cpnh.html",
-            "Cà phê hòa tan": "../templates/catalog-cpht.html",
+            "Cà phê xay nguyên chất": "../templates/catalog-cpxnc.html",
             "Các sản phẩm đặc biệt": "../templates/catalog-special.html"
         };
 

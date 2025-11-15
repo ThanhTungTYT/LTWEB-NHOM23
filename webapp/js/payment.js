@@ -4,43 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const discountSelect = document.getElementById("discount-select");
     const checkoutBtn = document.getElementById("checkout-btn");
 
-    const cartItems = document.querySelectorAll(".cart-item");
+    updateTotal();
+    discountSelect.addEventListener("change", updateTotal);
 
-    cartItems.forEach((item) => {
-        const minus = item.querySelector(".btn-minus");
-        const plus = item.querySelector(".btn-plus");
-        const qtyInput = item.querySelector("input[type='number']");
-        const removeBtn = item.querySelector(".remove-btn");
-
-        minus.addEventListener("click", () => {
-            let qty = parseInt(qtyInput.value) || 1;
-            qtyInput.value = qty > 1 ? qty - 1 : 1;
-            updateTotal();
-        });
-
-        plus.addEventListener("click", () => {
-            let qty = parseInt(qtyInput.value) || 1;
-            qtyInput.value = qty + 1;
-            updateTotal();
-        });
-
-        qtyInput.addEventListener("input", updateTotal);
-
-        removeBtn.addEventListener("click", () => {
-            item.remove();
-            updateTotal();
-        });
-    });
-
+    // Tính tổng
     function updateTotal() {
         let total = 0;
+
         document.querySelectorAll(".cart-item").forEach(item => {
             const price = Number(item.dataset.price);
-            const qty = Number(item.querySelector("input[type='number']").value);
+            const qty = 1; // MẶC ĐỊNH 1
             total += price * qty;
         });
 
         const discount = getDiscount(total);
+
         totalPriceEl.textContent = format(total);
         finalTotalEl.textContent = format(total - discount);
     }
@@ -54,9 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return 0;
     }
-
-    discountSelect.addEventListener("change", updateTotal);
-    updateTotal();
 
     checkoutBtn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -85,8 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function format(value) {
         return value.toLocaleString("vi-VN") + "₫";
     }
-
 });
+
+// chuyển sang trang tài khoản
 document.getElementById("account-btn").addEventListener("click", () => {
     window.location.href = "../templates/account.html";
 });

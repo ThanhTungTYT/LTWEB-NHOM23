@@ -155,48 +155,6 @@ input[type="radio"] {
     font-weight: 600;
 }
 
-.quantity-box {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.quantity-box button {
-    width: 24px;
-    height: 24px;
-    border: 1px solid #ccc;
-    background: #eee;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.quantity-box input {
-    width: 40px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 18px;
-}
-
-/* Ẩn mũi tên input number */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-.remove-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #999;
-}
-
 .discount-box select{
     width: 100%;
     padding: 10px;
