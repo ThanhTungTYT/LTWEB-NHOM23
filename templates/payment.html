@@ -1,1 +1,223 @@
-<!DOCTYPE html><html lang="vi"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Aroma Café Cà phê rang số 1 Việt Nam</title>    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />    <link rel="stylesheet" href="../webapp/css/style.css">    <link rel="stylesheet" href="../webapp/css/payment.css"></head><body><header>    <div class="top">        <div class="logo">            <img src="../webapp/img/logo.png" onclick="location.href='index.html'" width="300px" height="100px">        </div>        <div class="search-bar">            <input type="text" id="search-input" placeholder="Tìm kiếm...">            <button id="search-button"><i class="fas fa-search"></i></button>        </div>        <div class="mini-menu">            <div class="cart">                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>                <span id="num-cart-label">3</span>            </div>            <a href="login.html"><i class="fa-solid fa-user"></i></a>        </div>    </div>    <div class="bottom">        <a href="index.html">Trang chủ</a>        <a href="catalog.html">Sản phẩm</a>        <a href="help.html">Liên hệ</a>        <a href="aboutUs.html">Giới thiệu</a>    </div></header><div class="checkout-container">    <!-- Nút quay lại -->    <div class="back-link">        <a href="cart.html"><i class="fas fa-arrow-left"></i> Quay lại giỏ hàng</a>    </div>    <!-- CỘT TRÁI -->    <div class="checkout-left">        <!-- Tài khoản -->        <section class="account-box">            <h3>Tài khoản</h3>            <div class="account-info">                <div class="avatar-icon" id="account-btn">                    <i class="fas fa-user"></i>                </div>                <div>                    <p class="name">Nguyễn Huy Bảo</p>                    <p class="email">23130022@st.hcmuaf.edu.vn</p>                </div>            </div>        </section>        <!-- Thông tin giao hàng -->        <section class="shipping-box">            <h3>Thông tin giao hàng</h3>            <form class="shipping-form" id="shipping-form">                <input type="text" id="fullname" placeholder="Họ và tên" required>                <small class="error"></small>                <input type="text" id="phone" placeholder="Số điện thoại" required>                <small class="error"></small>                <input type="text" id="country" placeholder="Quốc gia" value="Vietnam" required>                <small class="error"></small>                <input type="text" id="address" placeholder="Địa chỉ" required>                <small class="error"></small>                <input type="text" id="province" placeholder="Tỉnh/TP, Quận/Huyện, Phường/Xã" required>                <small class="error"></small>            </form>        </section>        <!-- Phương thức giao hàng -->        <!-- Phương thức thanh toán -->        <section class="payment-method">            <h3>Phương thức thanh toán</h3>            <label class="radio-item">                <input type="radio" name="payment" value="cod" checked> Thanh toán khi nhận hàng            </label>            <label class="radio-item">                <input type="radio" name="payment" value="bank"> Chuyển khoản qua ngân hàng            </label>        </section>        <!-- Ghi chú -->        <section class="note-box">            <h3>Ghi chú</h3>            <textarea placeholder="Nhập ghi chú cho đơn hàng (nếu có)"></textarea>        </section>    </div>    <!-- CỘT PHẢI -->    <div class="checkout-right">        <!-- Giỏ hàng -->        <section class="cart-box">            <h3>Giỏ hàng</h3>            <div id="cart-list">                <div class="cart-item" data-price="200000">                    <img src="../webapp/img/Cafe1.png" alt="Cà phê rang nguyên chất 1">                    <div class="cart-info">                        <p class="product-name">Cà phê rang nguyên chất 1</p>                        <p class="product-type">Loại: Cà phê hữu cơ</p>                        <p class="weight">Khối lượng: <span>500gr</span></p>                        <p class="price" data-price="200000">200.000đ</p>                    </div>                    <div class="quantity-box">                        <p>Số lượng: 1</p>                    </div>                </div>                <div class="cart-item" data-price="150000">                    <img src="../webapp/img/Cafe2.jpg" alt="Drip Coffee">                    <div class="cart-info">                        <p class="product-name">Drip Coffee</p>                        <p class="product-type">Loại: Cà phê hạt nguyên rang</p>                        <p class="weight">Khối lượng: <span>800gr</span></p>                        <p class="price" data-price="150000">150.000đ</p>                    </div>                    <div class="quantity-box">                        <p>Số lượng: 1</p>                    </div>                </div>                <div class="cart-item" data-price="250000">                    <img src="../webapp/img/Cafe3.png" alt="Cafe Chất - Vina Cafe">                    <div class="cart-info">                        <p class="product-name">Cafe Chất - Vina Cafe</p>                        <p class="product-type">Loại: Cà phê hòa tan</p>                        <p class="weight">Khối lượng: <span>1000gr</span></p>                        <p class="price" data-price="250000">250.000đ</p>                    </div>                    <div class="quantity-box">                        <p>Số lượng: 1</p>                    </div>                </div>            </div>        </section>        <!-- Mã khuyến mãi -->        <section class="discount-box">            <h3>Mã khuyến mãi</h3>            <select id="discount-select">                <option value="">Chọn mã</option>                <option value="10">Giảm 10% (≥ 500k)</option>                <option value="15">Giảm 15% (≥ 1tr)</option>                <option value="20">Giảm 20% (≥ 1tr5)</option>            </select>            <div class="apply-row">                <input type="text" placeholder="Nhập mã khuyến mãi" id="discount-code">                <button class="apply-btn">Áp dụng</button>            </div>        </section>        <!-- Tóm tắt đơn hàng -->        <section class="summary-box">            <h3>Tóm tắt đơn hàng</h3>            <div class="summary-row">                <span>Tổng tiền hàng</span>                <span id="total-price">600.000₫</span>            </div>            <div class="summary-row">                <span>Phí vận chuyển</span>                <span>Miễn phí</span>            </div>            <div class="summary-row total">                <span>Tổng thanh toán</span>                <span id="final-total">600.000₫</span>            </div>            <button class="checkout-btn" id="checkout-btn">Đặt hàng</button>        </section>    </div></div><footer class="footer">    <div class="footer-top">        <div class="foot-content left">            <h3>Aroma Café</h3>            <p>Địa chỉ: xxx, xxx, xxx.</p>            <p>Điện thoại: xxx-xxx-xxxx.</p>            <p>Email: example@gmail.com</p>        </div>        <div class="foot-content footer-links">            <h3>Quy định & Chính sách</h3>            <ul>                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>            </ul>        </div>        <div class="foot-content right">            <h3>Kết nối với chúng tôi</h3>            <div class="social">                <a href="#"><i class="fab fa-facebook-f"></i></a>                <a href="#"><i class="fab fa-twitter"></i></a>                <a href="#"><i class="fab fa-instagram"></i></a>                <a href="#"><i class="fab fa-linkedin-in"></i></a>            </div>        </div>    </div>    <div class="footer-bottom">        <p>&copy; 2024 Aroma Café. All rights reserved.</p>    </div></footer><button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button><script src="../webapp/js/script.js"></script><script src="../webapp/js/payment.js"></script></body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="../webapp/css/style.css">
+    <link rel="stylesheet" href="../webapp/css/payment.css">
+</head>
+<body>
+<header>
+    <div class="top">
+        <div class="logo">
+            <img src="../webapp/img/logo.png" onclick="location.href='index.html'" width="300px" height="100px">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="mini-menu">
+            <div class="cart">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span id="num-cart-label">3</span>
+            </div>
+            <a href="login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </div>
+    <div class="bottom">
+        <a href="index.html">Trang chủ</a>
+        <a href="catalog.html">Sản phẩm</a>
+        <a href="help.html">Liên hệ</a>
+        <a href="aboutUs.html">Giới thiệu</a>
+    </div>
+</header>
+
+<div class="checkout-container">
+    <!-- Nút quay lại -->
+    <div class="back-link">
+        <a href="cart.html"><i class="fas fa-arrow-left"></i> Quay lại giỏ hàng</a>
+    </div>
+
+    <!-- CỘT TRÁI -->
+    <div class="checkout-left">
+        <!-- Tài khoản -->
+        <section class="account-box">
+            <h3>Tài khoản</h3>
+            <div class="account-info">
+                <div class="avatar-icon" id="account-btn">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div>
+                    <p class="name">Nguyễn Huy Bảo</p>
+                    <p class="email">23130022@st.hcmuaf.edu.vn</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thông tin giao hàng -->
+        <section class="shipping-box">
+            <h3>Thông tin giao hàng</h3>
+            <form class="shipping-form" id="shipping-form">
+                <input type="text" id="fullname" placeholder="Họ và tên" required>
+                <small class="error"></small>
+
+                <input type="text" id="phone" placeholder="Số điện thoại" required>
+                <small class="error"></small>
+
+                <input type="text" id="country" placeholder="Quốc gia" value="Vietnam" required>
+                <small class="error"></small>
+
+                <input type="text" id="province" placeholder="Tỉnh/TP" required>
+                <small class="error"></small>
+
+                <input type="text" id="ward" placeholder="Quận/Huyện, Phường/Xã" required>
+                <small class="error"></small>
+
+                <input type="text" id="address" placeholder="Đường, Số nhà" required>
+                <small class="error"></small>
+
+            </form>
+        </section>
+
+        <!-- Phương thức giao hàng -->
+
+        <!-- Phương thức thanh toán -->
+        <section class="payment-method">
+            <h3>Phương thức thanh toán</h3>
+            <label class="radio-item">
+                <input type="radio" name="payment" value="cod" checked> Thanh toán khi nhận hàng
+            </label>
+            <label class="radio-item">
+                <input type="radio" name="payment" value="bank"> Chuyển khoản qua ngân hàng
+            </label>
+        </section>
+
+        <!-- Ghi chú -->
+        <section class="note-box">
+            <h3>Ghi chú</h3>
+            <textarea placeholder="Nhập ghi chú cho đơn hàng (nếu có)"></textarea>
+        </section>
+    </div>
+
+    <!-- CỘT PHẢI -->
+    <div class="checkout-right">
+        <!-- Giỏ hàng -->
+        <section class="cart-box">
+            <h3>Giỏ hàng</h3>
+            <div id="cart-list">
+                <div class="cart-item" data-price="200000">
+                    <img src="../webapp/img/Cafe1.png" alt="Cà phê rang nguyên chất 1">
+                    <div class="cart-info">
+                        <p class="product-name">Cà phê rang nguyên chất 1</p>
+                        <p class="product-type">Loại: Cà phê hữu cơ</p>
+                        <p class="weight">Khối lượng: <span>500gr</span></p>
+                        <p class="price" data-price="200000">200.000đ</p>
+                    </div>
+                    <div class="quantity-box">
+                        <p>Số lượng: 1</p>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-price="150000">
+                    <img src="../webapp/img/Cafe2.jpg" alt="Drip Coffee">
+                    <div class="cart-info">
+                        <p class="product-name">Drip Coffee</p>
+                        <p class="product-type">Loại: Cà phê hạt nguyên rang</p>
+                        <p class="weight">Khối lượng: <span>800gr</span></p>
+                        <p class="price" data-price="150000">150.000đ</p>
+                    </div>
+                    <div class="quantity-box">
+                        <p>Số lượng: 1</p>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-price="250000">
+                    <img src="../webapp/img/Cafe3.png" alt="Cafe Chất - Vina Cafe">
+                    <div class="cart-info">
+                        <p class="product-name">Cafe Chất - Vina Cafe</p>
+                        <p class="product-type">Loại: Cà phê hòa tan</p>
+                        <p class="weight">Khối lượng: <span>1000gr</span></p>
+                        <p class="price" data-price="250000">250.000đ</p>
+                    </div>
+                    <div class="quantity-box">
+                        <p>Số lượng: 1</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Mã khuyến mãi -->
+        <section class="discount-box">
+            <h3>Mã khuyến mãi</h3>
+            <select id="discount-select">
+                <option value="">Chọn mã</option>
+                <option value="10">Giảm 10% (≥ 500k)</option>
+                <option value="15">Giảm 15% (≥ 1tr)</option>
+                <option value="20">Giảm 20% (≥ 1tr5)</option>
+            </select>
+            <div class="apply-row">
+                <input type="text" placeholder="Nhập mã khuyến mãi" id="discount-code">
+                <button class="apply-btn">Áp dụng</button>
+            </div>
+        </section>
+
+        <!-- Tóm tắt đơn hàng -->
+        <section class="summary-box">
+            <h3>Tóm tắt đơn hàng</h3>
+            <div class="summary-row">
+                <span>Tổng tiền hàng</span>
+                <span id="total-price">600.000₫</span>
+            </div>
+            <div class="summary-row">
+                <span>Phí vận chuyển</span>
+                <span>Miễn phí</span>
+            </div>
+            <div class="summary-row total">
+                <span>Tổng thanh toán</span>
+                <span id="final-total">600.000₫</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">Đặt hàng</button>
+        </section>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="foot-content left">
+            <h3>Aroma Café</h3>
+            <p>Địa chỉ: xxx, xxx, xxx.</p>
+            <p>Điện thoại: xxx-xxx-xxxx.</p>
+            <p>Email: example@gmail.com</p>
+        </div>
+
+        <div class="foot-content footer-links">
+            <h3>Quy định & Chính sách</h3>
+            <ul>
+                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>
+                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>
+            </ul>
+        </div>
+
+        <div class="foot-content right">
+            <h3>Kết nối với chúng tôi</h3>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Aroma Café. All rights reserved.</p>
+    </div>
+</footer>
+<button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+<script src="../webapp/js/script.js"></script>
+<script src="../webapp/js/payment.js"></script>
+</body>

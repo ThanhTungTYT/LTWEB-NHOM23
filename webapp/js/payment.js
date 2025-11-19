@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function validateForm() {
-        const fields = ["fullname", "phone", "country", "address", "province"];
+        const fields = ["fullname", "phone", "country", "address", "province", "ward"];
         let valid = true;
         fields.forEach(id => {
             const input = document.getElementById(id);

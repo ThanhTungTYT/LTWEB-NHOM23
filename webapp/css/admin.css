@@ -568,7 +568,9 @@ table td {
     flex-direction: column;
     gap: 30px;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
+
 .contact{
     display: flex;
     flex-direction: row;
@@ -613,7 +615,53 @@ table td {
     font-size: 18px;
     font-weight: 600;
 }
+/* Title DANH SÁCH LIÊN HỆ */
+.contact-title {
+    margin-left: 50px;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #495057;
+}
 
+/* Header DANH SÁCH LIÊN HỆ */
+.contact-header {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 50px 10px 50px;
+    padding: 30px 20px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+    gap: 30px;
+}
+
+.contact-header p {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    color: #495057;
+}
+
+/* CỘT 1: Ngày gửi — khớp .time-start */
+.contact-header p:nth-child(1) {
+    width: 80px;
+}
+
+/* CỘT 2: Email — khớp .email */
+.contact-header p:nth-child(2) {
+    width: 200px;
+}
+
+/* CỘT 3: Họ và tên — khớp .name */
+.contact-header p:nth-child(3) {
+    width: 200px;
+}
+
+/* CỘT 4: Nội dung — khớp .content */
+.contact-header p:nth-child(4) {
+    width: 400px;
+}
 /* --- THÀNH PHẦN CHUNG KHÁC --- */
 .status {
     padding: 5px 10px;
