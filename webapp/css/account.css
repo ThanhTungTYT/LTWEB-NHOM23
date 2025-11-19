@@ -154,3 +154,8 @@
     background: red;
     color: white;
 }
+.content-area .order-item .submit{
+    margin-left: 20px;
+    background: deepskyblue;
+    color: white;
+}
