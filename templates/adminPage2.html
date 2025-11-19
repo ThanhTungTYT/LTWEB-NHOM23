@@ -51,6 +51,7 @@
                 <th>ID</th>
                 <th>Tên sản phẩm</th>
                 <th>Loại sản phẩm</th>
+                <th>Khối lượng</th>
                 <th>Giá (VND)</th>
                 <th>Số lượng bán</th>
                 <th></th>
@@ -62,6 +63,7 @@
                 <td>P001</td>
                 <td>Cafe Aroma 1</td>
                 <td>Cà phê hữu cơ</td>
+                <td>500gr</td>
                 <td>100.000</td>
                 <td>0</td>
                 <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
@@ -71,6 +73,7 @@
                 <td>P002</td>
                 <td>Cafe Aroma 2</td>
                 <td>Cà phê rang nguyên hạt</td>
+                <td>500gr</td>
                 <td>150.000</td>
                 <td>0</td>
                 <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
@@ -79,7 +82,8 @@
                 <td><input type="checkbox"></td>
                 <td>P003</td>
                 <td>Cafe Aroma 3</td>
-                <td>Cà phê hòa tan</td>
+                <td>Cà phê xay nguyên chất</td>
+                <td>800gr</td>
                 <td>200.000</td>
                 <td>0</td>
                 <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
@@ -89,6 +93,7 @@
                 <td>P004</td>
                 <td>Ly uống cafe</td>
                 <td>Các sản phẩm đặc biệt</td>
+                <td></td>
                 <td>130.000</td>
                 <td>0</td>
                 <td><button class="remake"><i class="fa-solid fa-pen"></i></button></td>
@@ -114,13 +119,17 @@
                 <option>-Chọn dòng sản phẩm-</option>
                 <option>Cà phê hữu cơ</option>
                 <option>Cà phê rang nguyên hạt</option>
-                <option>Cà phê hòa tan</option>
+                <option>Cà phê xay nguyên chất</option>
                 <option>Các sản phẩm đặc biệt khác</option>
             </select>
         </div>
         <div class="price-p">
             <label>Giá sản phẩm</label>
             <input type="text" placeholder="Giá sản phẩm" required>
+        </div>
+        <div class="weight-p">
+            <label>Khối lượng</label>
+            <input type="text" placeholder="Khối lượng" required>
         </div>
         <div class="img-p">
             <label>Ảnh</label>
@@ -141,6 +150,10 @@
         <button id="close">X</button>
     </div>
     <form class="main-form">
+        <div class="p id-p">
+            <label>ID</label>
+            <p>P00#</p>
+        </div>
         <div class="p name-p">
             <label>Tên sản phẩm</label>
             <input type="text" placeholder="Tên sản phẩm">
@@ -151,13 +164,21 @@
                 <option>-Chọn dòng sản phẩm-</option>
                 <option>Cà phê hữu cơ</option>
                 <option>Cà phê rang nguyên hạt</option>
-                <option>Cà phê hòa tan</option>
+                <option>Cà phê xay nguyên chất</option>
                 <option>Các sản phẩm đặc biệt khác</option>
             </select>
         </div>
         <div class="price-p">
             <label>Giá sản phẩm</label>
             <input type="text" placeholder="Giá sản phẩm">
+        </div>
+        <div class="weight-p">
+            <label>Khối lượng</label>
+            <input type="text" placeholder="Khối lượng" required>
+        </div>
+        <div class="des-p">
+            <label>Mô tả</label>
+            <textarea placeholder="Mô tả..."></textarea>
         </div>
         <button class="submit" type="submit">Thêm</button>
     </form>
