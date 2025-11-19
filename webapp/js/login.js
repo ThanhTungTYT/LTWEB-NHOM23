@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const username = usernameInput.value.trim().toLowerCase();
 
             // 2. Logic kiểm tra TÊN ĐĂNG NHẬP
-            if (username === 'admin') {
+            if (username === 'admin@gmail.com') {
                 // Chuyển hướng đến trang quản trị
                 window.location.href = 'adminPage1.html';
             } else {
