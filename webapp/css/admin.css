@@ -562,6 +562,58 @@ table td {
     border: none;
 }
 
+/* --- TRANG 5 --- */
+.main-content-contact{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+.contact{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 30px 20px;
+    gap: 30px;
+    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.1);
+}
+.time-start{
+    width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.email{
+    width: 200px;
+}
+.name{
+    width: 200px;
+}
+.contact .content{
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.contact .detail{
+    padding: 5px 5px;
+    background: deepskyblue;
+    color: black;
+    cursor: pointer;
+}
+.detail-content{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.1);
+    padding: 30px 30px;
+}
+.detail-content span{
+    font-size: 18px;
+    font-weight: 600;
+}
+
 /* --- THÀNH PHẦN CHUNG KHÁC --- */
 .status {
     padding: 5px 10px;
