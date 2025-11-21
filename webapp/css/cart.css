@@ -194,7 +194,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 /* Hiệu ứng hover cho nút Thanh toán */
 .checkout-button:hover {
-    background-color: #c76739;
+    background-color: #8c4828;
     color: #fff3e0;
 }
 

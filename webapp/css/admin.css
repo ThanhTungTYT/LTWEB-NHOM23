@@ -197,7 +197,7 @@ table {
 }
 table th, table td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
 table th {
@@ -265,7 +265,7 @@ table td {
     border: none;
 }
 .right-content .main-menu button:hover{
-    background: #A0522D;
+    background: #8c4828;
 }
 .right-content .list-product{
     background: #fff;
@@ -285,18 +285,18 @@ table td {
 }
 .right-content .list-product table th, .right-content .list-product table td{
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
 .right-content .list-product table th, .right-content .list-product table td button{
     width: 40px;
     height: 30px;
-    background: dodgerblue;
+    background: #c76739;
     color: white;
     margin-bottom: 20px;
 }
 .right-content .list-product table th, .right-content .list-product table td button:hover{
-    background: blue;
+    background: #8c4828;
 }
 .right-content .list-product table th{
     background-color: #f8f9fa;
@@ -337,6 +337,9 @@ table td {
     background: #c76739;
     color: white;
     cursor: pointer;
+}
+.right-content .main-content .main-menu-date button:hover{
+    background: #8c4828;
 }
 .right-content .main-content .list-order{
     padding: 10px 30px;
@@ -394,7 +397,7 @@ table td {
 }
 .right-content .list-account table th, .right-content .list-account table td{
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
 .right-content .list-account table th{
@@ -503,14 +506,14 @@ table td {
     width: 30%;
     height: 30px;
     margin: auto;
-    background: deepskyblue;
+    background: #c76739;
     color: white;
     cursor: pointer;
     border: none; /* Thêm */
     border-radius: 20px;
 }
 .form-add .main-form .submit:hover{
-    background: #00779f;
+    background: #8c4828;
 }
 .detail-p{
     position: fixed; /* Sửa thành fixed */
@@ -563,59 +566,10 @@ table td {
 }
 
 /* --- TRANG 5 --- */
-.main-content-contact{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-.contact{
-    display: flex;
-    flex-direction: row;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 30px 20px;
-    gap: 30px;
-    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.1);
-}
-.time-start{
-    width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.email{
-    width: 200px;
-}
-.name{
-    width: 200px;
-}
-.contact .content{
-    width: 400px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.contact .detail{
-    padding: 5px 5px;
-    background: deepskyblue;
-    color: black;
-    cursor: pointer;
-}
-.detail-content{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    box-shadow: 0 8px 10px rgba(49, 49, 49, 0.1);
-    padding: 30px 30px;
-}
-.detail-content span{
-    font-size: 18px;
-    font-weight: 600;
-}
 /* Title DANH SÁCH LIÊN HỆ */
+.contact{
+    padding: 25px;
+}
 .contact-title {
     margin-left: 50px;
     margin-top: 40px;
@@ -623,44 +577,28 @@ table td {
     font-weight: 600;
     color: #495057;
 }
-
-/* Header DANH SÁCH LIÊN HỆ */
-.contact-header {
-    display: flex;
-    flex-direction: row;
-    margin: 20px 50px 10px 50px;
-    padding: 30px 20px;
-    background: #f8f9fa;
-    border-radius: 4px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-    gap: 30px;
+.contact table th{
+    text-align: center;
 }
-
-.contact-header p {
-    font-size: 15px;
+.contact table td{
+    text-align: center;
+}
+.contact table td button{
     font-weight: 500;
-    white-space: nowrap;
-    color: #495057;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 50px;
+    color: white;
+    background: #c76739;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
+.contact table td button:hover{
+    background: #8c4828;
 
-/* CỘT 1: Ngày gửi — khớp .time-start */
-.contact-header p:nth-child(1) {
-    width: 80px;
-}
-
-/* CỘT 2: Email — khớp .email */
-.contact-header p:nth-child(2) {
-    width: 200px;
-}
-
-/* CỘT 3: Họ và tên — khớp .name */
-.contact-header p:nth-child(3) {
-    width: 200px;
-}
-
-/* CỘT 4: Nội dung — khớp .content */
-.contact-header p:nth-child(4) {
-    width: 400px;
 }
 /* --- THÀNH PHẦN CHUNG KHÁC --- */
 .status {
@@ -672,7 +610,6 @@ table td {
 .status.pending { background-color: #fff0c2; color: #f39c12; }
 .status.completed { background-color: #c8f7dc; color: #28a745; }
 .status.cancelled { background-color: #fde2e4; color: #dc3545; }
-
 .slide-top{
     position: fixed;
     display: none;
