@@ -46,7 +46,7 @@
     cursor: pointer; /* con trỏ chuột biến thành tay khi hover qua nút */
 }
 .bt_regis button:hover{
-    background: #b45c33;
+    background: #8c4828;
 
 }
 

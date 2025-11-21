@@ -55,7 +55,7 @@
     cursor: pointer;    /* con trỏ chuột biến thành tay khi hover qua nút đăng nhập */
 }
 .container #b-login:hover {
-    background: #b45c33;
+    background: #8c4828;
 }
 .register-link {
     margin-top: 30px;
