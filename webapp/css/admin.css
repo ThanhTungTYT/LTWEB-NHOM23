@@ -279,6 +279,10 @@ table td {
     margin-bottom: 20px;
     color: #495057;
 }
+.right-content h3{
+    font-weight:normal;
+    color: #495057;
+}
 .right-content .list-product table{
     width: 100%;
     border-collapse: collapse;
@@ -429,6 +433,7 @@ table td {
 .form-add{
     position: fixed; /* Sửa thành fixed */
     height: fit-content;
+    max-height: 500px;
     width: 60%;
     background: white;
     top: 50%;
@@ -438,6 +443,7 @@ table td {
     border-radius: 20px;
     box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
     z-index: 100; /* Thêm */
+    overflow-y: scroll;
 }
 .list-order .detail{
     background-color: #c76739;
@@ -570,8 +576,10 @@ table td {
 .contact{
     padding: 25px;
 }
+.right-content h3{
+    margin-bottom: 20px;
+}
 .contact-title {
-    margin-left: 50px;
     margin-top: 40px;
     font-size: 18px;
     font-weight: 600;
@@ -634,12 +642,13 @@ table td {
     padding: 25px;
 }
 .review-title{
-    margin-left: 50px;
+
     margin-top: 40px;
     font-size: 18px;
     font-weight: 600;
     color: #495057;
 }
+
 .review table{
     margin-top: 5px;
 }
