@@ -102,6 +102,7 @@
 .content-area button {
     background-color: #c76739;
     color: white;
+    width: 200px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
