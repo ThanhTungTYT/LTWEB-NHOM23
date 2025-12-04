@@ -488,19 +488,21 @@ table td {
 .form-add .main-form .img-p button{
     height: 30px;
     width: 70px;
-    border: none; /* Thêm */
-    cursor: pointer; /* Thêm */
+    border: none;
+    cursor: pointer;
 }
 .form-add .main-form div input{
     width: 60%;
     height: 30px;
     padding: 10px 10px;
+    border: 1px solid black;
 }
 .form-add .main-form div select{
     font-size: 12px;
     width: 60%;
     height: 30px;
     padding: 0 10px;
+    border: 1px solid black;
 }
 .form-add .main-form div textarea{
     width: 60%;
@@ -669,3 +671,75 @@ table td {
     background: #8c4828;
 
 }
+/* ---Trang 7---*/
+/* ==== BANNER LIST STYLE ==== */
+
+.list-banner {
+    background: #fff;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.list-banner h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.list-banner table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.list-banner table th,
+.list-banner table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.list-banner table th {
+    background: #fafafa;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Banner preview image */
+.list-banner table img.banner-img {
+    width: 140px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+/* Nút sửa */
+.list-banner button.remake {
+    background: #e6f2ff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.list-banner button.remake:hover {
+    background: #cfe5ff;
+}
+
+/* Nút xóa */
+.delete-banner {
+    margin-top: 20px;
+    background: #dc3545;
+    border: none;
+    color: white;
+    width: 160px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.delete-banner:hover {
+    background: #b02a37;
+}
+
+
+
