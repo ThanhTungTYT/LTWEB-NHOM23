@@ -47,8 +47,10 @@
                 <th>ID</th>
                 <th>Mã Code</th>
                 <th>Mô tả</th>
+                <th>Điều kiện</th>
                 <th>Mức giảm</th>
                 <th>Số lượng</th>
+                <th>Thời gian bắt đầu</th>
                 <th>Hạn sử dụng</th>
                 <th></th>
             </tr>
@@ -58,9 +60,11 @@
                 <td>#V001</td>
                 <td><strong>SALE10</strong></td>
                 <td>10% cho đơn trên 500k</td>
+                <td>500k</td>
                 <td>10%</td>
                 <td>100</td>
-                <td>31/12/2024</td>
+                <td></td>
+                <td></td>
                 <td>
                     <button class="delete"><i class="fa-solid fa-trash"></i></button>
                 </td>
@@ -69,8 +73,10 @@
                 <td>#V002</td>
                 <td><strong>SALE15</strong></td>
                 <td>15% cho đơn trên 800k</td>
+                <td>800k</td>
                 <td>15%</td>
                 <td>100</td>
+                <td></td>
                 <td>31/12/2024</td>
                 <td>
                     <button class="delete"><i class="fa-solid fa-trash"></i></button>
@@ -80,9 +86,11 @@
                 <td>#V003</td>
                 <td><strong>SALE10</strong></td>
                 <td>20% cho đơn trên 1000k</td>
+                <td>1000k</td>
                 <td>20%</td>
                 <td>100</td>
-                <td>31/12/2024</td>
+                <td>1/1/2000</td>
+                <td>31/12/2025</td>
                 <td>
                     <button class="delete"><i class="fa-solid fa-trash"></i></button>
                 </td>
@@ -91,9 +99,11 @@
                 <td>#V04</td>
                 <td><strong>SALE10</strong></td>
                 <td>5% trong giáng sinh</td>
+                <td>24-25 tháng 12</td>
                 <td>5%</td>
                 <td>100</td>
-                <td>31/12/2024</td>
+                <td>24/12/2025</td>
+                <td>25/12/2025</td>
                 <td>
                     <button class="delete"><i class="fa-solid fa-trash"></i></button>
                 </td>
@@ -112,20 +122,27 @@
                 <label>Mã Code</label>
                 <input type="text" placeholder="Mã giảm giá" required>
             </div>
-            <div class="type-p">
-                <label>Loại giảm giá</label>
-                <select>
-                    <option>Theo phần trăm (%)</option>
-                    <option>Theo số tiền (VND)</option>
-                </select>
+            <div class="price-p">
+                <label>Mô tả</label>
+                <input type="text" placeholder="Nhập thông tin" required>
             </div>
+
+            <div class="price-p">
+                <label>Điều kiện</label>
+                <input type="number" placeholder="Nhập số tiền tối thiểu" required>
+            </div>
+
             <div class="price-p">
                 <label>Giá trị giảm</label>
-                <input type="number" placeholder="Nhập số..." required>
+                <input type="number" placeholder="Phần trăm giảm" required>
             </div>
             <div class="count-p">
                 <label>Số lượng</label>
                 <input type="number" placeholder="Số lượng mã" required>
+            </div>
+            <div class="count-p">
+                <label>Ngày bắt đầu</label>
+                <input type="date" required>
             </div>
             <div class="count-p">
                 <label>Hạn sử dụng</label>
