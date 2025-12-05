@@ -740,6 +740,36 @@ table td {
 .delete-banner:hover {
     background: #b02a37;
 }
+/* trang 8*/
 
+.list-discount {
+    padding: 25px;
+}
+.discount-title{
 
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #495057;
+}
 
+.list-discount table{
+    margin-top: 5px;
+}
+.list-discount td button{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 15px;
+    color: white;
+    background: #c76739;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+.list-discount td button:hover{
+    background: #8c4828;
+
+}
