@@ -423,7 +423,7 @@ table td {
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
 }
 .right-content .list-account button:hover{
     background: #700000;
@@ -508,7 +508,6 @@ table td {
     width: 60%;
     height: 50px;
     padding: 5px 10px;
-    font-family: 'Open Sans', sans-serif;
 }
 .form-add .main-form .submit{
     width: 30%;
@@ -517,17 +516,17 @@ table td {
     background: #c76739;
     color: white;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
     border-radius: 20px;
 }
 .form-add .main-form .submit:hover{
     background: #8c4828;
 }
 .detail-p{
-    position: fixed; /* Sửa thành fixed */
+    position: fixed;
     height: fit-content;
     width: 60%;
-    display: flex; /* Thêm để JS điều khiển */
+    display: flex;
     flex-direction: column;
     gap: 30px;
     background: white;

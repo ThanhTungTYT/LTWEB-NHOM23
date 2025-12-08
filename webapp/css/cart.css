@@ -1,9 +1,4 @@
-/* Ẩn mũi tên trong input number */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+e
 
 /* Container giỏ hàng */
 .cart-container {
