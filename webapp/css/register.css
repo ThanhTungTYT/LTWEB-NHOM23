@@ -1,8 +1,7 @@
-
 /* container */
 .container {
     margin: 50px auto; /* set margin top là 50px con lại tự căng chỉnh */
-    padding: 30px; 
+    padding: 30px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* thêm bóng mờ */
     border-radius: 8px;
@@ -10,21 +9,24 @@
     width: 400px;
 
 }
+
 /* Tiêu đề đăng ký */
 .container h2 {
     text-align: center;
     margin-bottom: 12px;
-    color: 	#c76739;
+    color: #c76739;
     font-size: 24px; /* chỉnh sửa kích thước font */
     margin-top: 12px;
 }
+
 .container label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold; /* in đậm chữ */
 }
+
 /* các input trong container */
-.container input[type="text"],.container input[type="email"],.container input[type="password"] { 
+.container input[type="text"], .container input[type="email"], .container input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 12px;
@@ -32,11 +34,13 @@
     border-radius: 4px;
     box-sizing: border-box; /* đảm bảo padding và border được tính vào tổng chiều rộng */
 }
+
 .container .bt_regis {
     display: flex;
     justify-content: space-between; /* chỉnh sửa để nút cách đều nhau */
 }
-.bt_regis button{
+
+.bt_regis button {
     width: 44%;
     padding: 10px;
     background-color: #c76739;
@@ -45,7 +49,8 @@
     border-radius: 4px;
     cursor: pointer; /* con trỏ chuột biến thành tay khi hover qua nút */
 }
-.bt_regis button:hover{
+
+.bt_regis button:hover {
     background: #8c4828;
 
 }
@@ -55,6 +60,7 @@
     margin-top: 20px;
     color: #666;
 }
+
 .container .or-login img {
     margin: 0 10px;
     cursor: pointer;
@@ -63,8 +69,8 @@
 .container .or-login .icon-btn {
     border: none;
     background: transparent; /* loại bỏ viền và nền của nút */
-    padding: 0; 
-    margin: 0 8px; 
+    padding: 0;
+    margin: 0 8px;
     cursor: pointer;
     appearance: none; /* loại bỏ kiểu dáng mặc định của nút */
 }

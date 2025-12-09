@@ -112,11 +112,13 @@ input[type="radio"] {
     flex-direction: column;
     gap: 20px;
 }
+
 .checkout-right h3 {
     margin-top: 0;
     margin-bottom: 15px;
     color: #c76739;
 }
+
 .cart-item {
     display: flex;
     align-items: center;
@@ -140,7 +142,8 @@ input[type="radio"] {
     margin: 2px 0;
     font-size: 13px;
 }
-.cart-info .product-name{
+
+.cart-info .product-name {
     color: #c76739;
     font-weight: 600;
 }
@@ -150,12 +153,13 @@ input[type="radio"] {
     color: #333;
     margin-top: 2px;
 }
+
 .cart-info .weight span {
     color: #c76739;
     font-weight: 600;
 }
 
-.discount-box select{
+.discount-box select {
     width: 100%;
     padding: 10px;
     border-radius: 8px;
@@ -175,6 +179,7 @@ input[type="radio"] {
     display: flex;
     gap: 10px;
 }
+
 .apply-row input[type='text'] {
     height: 40px;
     margin-top: 10px;
@@ -213,6 +218,7 @@ input[type="radio"] {
     cursor: pointer;
     margin-top: 12px;
 }
-.checkout-btn:hover{
+
+.checkout-btn:hover {
     background: #b45c33;
 }

@@ -9,30 +9,37 @@
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .container h1 {
     text-align: center;
     color: #c76739;
     margin-bottom: 40px;
     margin-top: 40px;
 }
+
 .address {
     margin-bottom: 30px;
     font-size: 18px;
 }
+
 .address i {
     color: #c76739;
     margin-right: 10px;
 }
+
 .address div {
     margin: 10px 0;
 }
+
 .main-content form {
     display: flex;
     flex-direction: column;
 }
-h2{
+
+h2 {
     margin-bottom: 15px;
 }
+
 .main-content input[type="text"], input[type="email"], textarea {
     padding: 10px;
     margin: 5px;
@@ -41,8 +48,9 @@ h2{
     font-size: 16px;
     resize: vertical;
     outline: none;
-    
+
 }
+
 .main-content button {
     padding: 10px;
     background-color: #c76739;
@@ -52,6 +60,7 @@ h2{
     cursor: pointer;
     font-size: 16px;
 }
+
 .main-content button:hover {
     background-color: #8c4828;
 }

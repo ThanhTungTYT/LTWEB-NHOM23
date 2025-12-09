@@ -22,8 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const checkbox = item.querySelector(".product-select");
         const removeBtn = item.querySelector(".product-remove");
 
-        btnMinus.addEventListener("click", () => { changeQuantity(qtyInput, -1); });
-        btnPlus.addEventListener("click", () => { changeQuantity(qtyInput, +1); });
+        btnMinus.addEventListener("click", () => {
+            changeQuantity(qtyInput, -1);
+        });
+        btnPlus.addEventListener("click", () => {
+            changeQuantity(qtyInput, +1);
+        });
 
         qtyInput.addEventListener("change", () => {
             qtyInput.value = Math.max(1, parseInt(qtyInput.value) || 1);
