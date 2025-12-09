@@ -1,12 +1,10 @@
-
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const loginButton = document.getElementById('b-login'); // Nút Đăng nhập (button)
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password'); // Thêm để kiểm tra mật khẩu
 
     if (loginButton && usernameInput && passwordInput) {
-        loginButton.addEventListener('click', function(event) {
+        loginButton.addEventListener('click', function (event) {
             if (usernameInput.value.trim() === '' || passwordInput.value.trim() === '') {
                 alert('Vui lòng điền đầy đủ Tên đăng nhập và Mật khẩu.');
                 return; // Dừng nếu chưa điền đủ

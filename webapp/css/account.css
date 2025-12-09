@@ -1,5 +1,3 @@
-
-
 /* Bố cục chính sử dụng Flexbox */
 .dashboard-container {
     display: flex;
@@ -8,7 +6,7 @@
     margin: 20px auto;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     overflow: hidden;
 }
 
@@ -19,11 +17,13 @@
     padding: 20px 0;
     flex-shrink: 0;
 }
+
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .sidebar li a {
     display: block;
     padding: 15px 20px;
@@ -32,6 +32,7 @@
     font-size: 16px;
     transition: background-color 0.2s, color 0.2s;
 }
+
 .sidebar li a:hover {
     background-color: #a0522d;
 }
@@ -57,24 +58,30 @@
     margin-top: 0;
     margin-bottom: 30px;
 }
-.content-area p{
+
+.content-area p {
     margin: 10px;
 }
+
 .loading-state, .error-state {
     text-align: center;
     padding: 50px;
     font-size: 1.2em;
     color: #888;
 }
-.content-area h3{
+
+.content-area h3 {
     margin-bottom: 15px;
 }
-.content-area p label{
+
+.content-area p label {
     margin-bottom: 10px;
 }
-.order-item h4{
+
+.order-item h4 {
     margin: 10px;
 }
+
 .error-state {
     color: #dc3545;
 }
@@ -110,7 +117,8 @@
     transition: background-color 0.2s;
     margin-top: 15px;
 }
-.content-area button:hover{
+
+.content-area button:hover {
     background: #8c4828;
 }
 
@@ -133,29 +141,45 @@
 }
 
 /* Định kiểu cho chi tiết sản phẩm trong Lịch sử mua hàng */
-.content-area .order-item .order-title{
+.content-area .order-item .order-title {
     position: relative;
     display: flex;
     flex-direction: row;
 }
-.content-area .order-item .order-title .status{
+
+.content-area .order-item .order-title .status {
     position: absolute;
     right: 30px;
     padding: 5px 20px;
     border-radius: 20px;
 }
-.status.pending { background-color: #fff0c2; color: #f39c12; }
-.status.completed { background-color: #c8f7dc; color: #28a745; }
-.status.cancelled { background-color: #fde2e4; color: #dc3545; }
+
+.status.pending {
+    background-color: #fff0c2;
+    color: #f39c12;
+}
+
+.status.completed {
+    background-color: #c8f7dc;
+    color: #28a745;
+}
+
+.status.cancelled {
+    background-color: #fde2e4;
+    color: #dc3545;
+}
+
 .content-area .order-item img {
     border-radius: 4px;
     margin-right: 15px;
 }
-.content-area .order-item button{
+
+.content-area .order-item button {
     background: red;
     color: white;
 }
-.content-area .order-item .submit{
+
+.content-area .order-item .submit {
     margin-left: 20px;
     background: deepskyblue;
     color: white;

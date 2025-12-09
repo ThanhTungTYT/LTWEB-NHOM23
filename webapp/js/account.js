@@ -1,18 +1,19 @@
 // script.js
 
-$(document).ready(function() {
+$(document).ready(function () {
     const contentArea = $('#content-area');
 
     function loadContent(url) {
         contentArea.html('<div class="loading-state">Đang tải nội dung...</div>');
 
         // Sử dụng $.load() để thực hiện AJAX
-        contentArea.load(url, function(response, status, xhr) {
+        contentArea.load(url, function (response, status, xhr) {
             if (status == "error") {
                 contentArea.html(`<div class='error-state'>Lỗi tải trang: Không tìm thấy file <strong>${url}</strong>. Vui lòng kiểm tra tên file.</div>`);
             }
         });
     }
+
     // 1. Đặt trạng thái 'active' cho nút "Thông tin cá nhân"
     $('.sidebar-link').removeClass('active');
     // Tìm liên kết có href là 'info.html' (hoặc dùng class active ban đầu nếu đã set trong html)
@@ -23,7 +24,7 @@ $(document).ready(function() {
     loadContent(defaultLink.attr('href'));
 
     //Xử lý click cho các liên kết menu (sidebar-link)
-    $('.sidebar-link').on('click', function(e) {
+    $('.sidebar-link').on('click', function (e) {
         e.preventDefault(); // Ngăn chặn trình duyệt chuyển trang
 
         const url = $(this).attr('href');
@@ -37,7 +38,7 @@ $(document).ready(function() {
     });
 
     // Xử lý Đăng xuất
-    $('.logout-link').on('click', function(e) {
+    $('.logout-link').on('click', function (e) {
         alert("Đang đăng xuất....");
         // Trình duyệt sẽ tự chuyển hướng nhờ href
     });

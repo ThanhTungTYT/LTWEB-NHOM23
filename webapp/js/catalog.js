@@ -1,5 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
     const catalogPage = document.getElementById('catalog-list');
 
@@ -18,15 +17,16 @@ document.addEventListener("DOMContentLoaded", function() {
         async function loadContent(url, title) {
             mainContentArea.innerHTML = '<div class="loading-state" style="text-align: center; padding: 50px;">Đang tải sản phẩm...</div>';
 
-                const response = await fetch(url);
-                const htmlContent = await response.text();
-                mainContentArea.innerHTML = htmlContent;
-                setupPagination();
-                console.log(`Tải thành công: ${url}`);
+            const response = await fetch(url);
+            const htmlContent = await response.text();
+            mainContentArea.innerHTML = htmlContent;
+            setupPagination();
+            console.log(`Tải thành công: ${url}`);
 
         }
+
         menuItems.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
 
                 const title = this.textContent.trim();
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (defaultUrl) {
             loadContent(defaultUrl, defaultTitle);
         }
+
         function setupPagination() {
             const allProducts = document.querySelectorAll(".product");
             const itemsPerPage = 25;
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (currentPage > 1) {
                     currentPage--;
                     renderPage();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({top: 0, behavior: "smooth"});
                 }
             };
 
@@ -79,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (currentPage < totalPages) {
                     currentPage++;
                     renderPage();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({top: 0, behavior: "smooth"});
                 }
             };
 
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (val > totalPages) val = totalPages;
                     currentPage = val;
                     renderPage();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.scrollTo({top: 0, behavior: "smooth"});
                 }
             });
 
