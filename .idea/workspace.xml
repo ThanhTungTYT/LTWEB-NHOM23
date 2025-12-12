@@ -1,96 +1,194 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="LTWEB-NHOM23:war" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LTWEB-NHOM23.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/AuthDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/DBProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aboutUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aboutUs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage5.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage6.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage7.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage8.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/catalog-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/catalog-all.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/catalog-cphc.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/catalog-cphc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/catalog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/forgotpassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/forgotpassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/help.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/help.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/history-order.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/history-order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/info.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/payment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shippingPolicies.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shippingPolicies.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/termOfUse.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/termOfUse.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/warrantyPolicies.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/warrantyPolicies.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/aboutUs.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/aboutUs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/account.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/account.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/catalog.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/catalog.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/forgotpassword.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/forgotpassword.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/help.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/help.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/payment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/policies.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/policies.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/register.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/catalog.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/catalog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+        <option value="Servlet" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="36bp8KM3cXfWnhCtbumdQUxqN4l" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "bao",
-    "junie.onboarding.icon.badge.shown": "true",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.49.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tung&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="LTWEB-NHOM23:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/LTWEB_NHOM23" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="c12c43e8-2be1-4fee-82b5-e0713e872284" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="55325" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="LTWEB-NHOM23:war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.27397.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.27397.103" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
       </set>
     </attachedChunks>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="" />
@@ -99,7 +197,22 @@
       <option name="presentableId" value="Default" />
       <updated>1765284971485</updated>
       <workItem from="1765284972334" duration="11000" />
+      <workItem from="1765288338416" duration="19000" />
+      <workItem from="1765288942958" duration="77000" />
+      <workItem from="1765289164551" duration="115000" />
+      <workItem from="1765290206049" duration="60000" />
+      <workItem from="1765339737625" duration="70000" />
+      <workItem from="1765351720987" duration="12000" />
+      <workItem from="1765373078399" duration="511000" />
+      <workItem from="1765374284109" duration="1943000" />
+      <workItem from="1765376590356" duration="333000" />
+      <workItem from="1765458143643" duration="3846000" />
+      <workItem from="1765518005144" duration="4344000" />
+      <workItem from="1765523516881" duration="2738000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
