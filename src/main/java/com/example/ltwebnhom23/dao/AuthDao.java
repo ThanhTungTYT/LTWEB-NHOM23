@@ -6,14 +6,36 @@ import java.sql.Connection;
 
 public class AuthDao extends BaseDao {
 
-    public User login(String email, String password){
+    public User findByEmail(String email){
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM users WHERE email = :e AND password_hash = :p")
+                handle.createQuery("SELECT * FROM users WHERE email = :e")
                         .bind("e", email)
-                        .bind("p", password)
                         .mapToBean(User.class)
                         .findOne()
                         .orElse(null)
+        );
+    }
+    public boolean exists(String email){
+        Integer count = getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM users WHERE email = :e")
+                        .bind("e", email)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+        return count != null && count > 0;
+    }
+    public boolean register(User user){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate(
+                        "INSERT INTO users(full_name, email, phone, password_hash, role, created_at) " +
+                        "VALUES (:fullname, :email, :phone, :pass, :role, NOW())"
+                )
+                        .bind("fullname", user.getFull_name())
+                        .bind("email",user.getEmail())
+                        .bind("phone", user.getPhone())
+                        .bind("pass", user.getPassword_hash())
+                        .bind("role", "customer")
+                        .execute() > 0
         );
     }
 }

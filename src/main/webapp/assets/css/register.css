@@ -54,6 +54,10 @@
     background: #8c4828;
 
 }
+.register-form .status{
+    font-size: 10px;
+    margin-bottom: 10px;
+}
 
 .container .or-login {
     text-align: center;

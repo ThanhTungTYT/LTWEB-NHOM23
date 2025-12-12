@@ -1,4 +1,4 @@
-package com.example.ltwebnhom23.controller;
+package com.example.ltwebnhom23.controller.auth;
 import com.example.ltwebnhom23.model.User;
 import com.example.ltwebnhom23.services.AuthService;
 import jakarta.servlet.*;
