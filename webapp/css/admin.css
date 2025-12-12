@@ -1,35 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     height: 100vh;
     display: flex;
     flex-direction: row;
     font-family: 'Open Sans', sans-serif;
     position: relative; /* Thêm để định vị pop-up */
 }
-.left-menu{
+
+.left-menu {
     width: 20%;
     height: 100%;
     border-right: 1px black solid;
     display: flex;
     flex-direction: column; /* Thêm để đẩy footer xuống */
 }
-.left-menu .logo{
+
+.left-menu .logo {
     height: 80px;
     width: 100%;
 }
 
-.left-menu .logo img{
+.left-menu .logo img {
     width: 100%;
     height: 100%;
     cursor: pointer;
 }
 
-.left-menu .menu{
+.left-menu .menu {
     height: calc(100% - 130px);
     display: flex;
     flex-direction: column;
@@ -38,7 +42,8 @@ body{
     padding: 20px 20px;
     flex-grow: 1; /* Thêm để chiếm không gian */
 }
-.left-menu .menu a{
+
+.left-menu .menu a {
     height: 50px;
     width: 100%;
     text-decoration: none;
@@ -49,28 +54,33 @@ body{
     color: white;
     transition: all 0.3s ease-in-out;
 }
+
 .left-menu .menu .menu-item.active, /* Thêm class active */
-.left-menu .menu .menu-item:hover{
+.left-menu .menu .menu-item:hover {
     background: #686868;
     border-left: 3px #840500 solid;
 }
-.left-menu .footer{
+
+.left-menu .footer {
     width: 100%;
     height: 50px;
     background: #A0522D;
     text-align: center;
     padding-top: 15px;
 }
-.left-menu .footer p{
+
+.left-menu .footer p {
     color: white;
     font-size: 12px;
 }
-.right-content{
+
+.right-content {
     width: 80%;
     height: 100vh; /* Sửa */
     overflow-y: auto; /* Thêm để cuộn */
 }
-.right-content .title{
+
+.right-content .title {
     position: relative;
     height: 81px;
     width: 100%;
@@ -81,7 +91,8 @@ body{
     align-items: center;
     margin-bottom: 30px; /* Thêm từ định nghĩa bị trùng */
 }
-.right-content .title button{
+
+.right-content .title button {
     position: absolute;
     left: 20px;
     width: 50px;
@@ -92,7 +103,8 @@ body{
     color: white;
     cursor: pointer;
 }
-.right-content .title p{
+
+.right-content .title p {
     font-size: 28px;
     color: white;
 }
@@ -103,20 +115,23 @@ body{
     display: flex;
     flex-direction: column;
 }
+
 .kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     margin-bottom: 30px;
 }
+
 .kpi-card {
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     align-items: center;
 }
+
 .kpi-card .card-icon {
     font-size: 32px;
     padding: 15px;
@@ -124,19 +139,34 @@ body{
     margin-right: 20px;
     color: #fff;
 }
-.kpi-card .card-icon.blue { background-color: #007bff; }
-.kpi-card .card-icon.green { background-color: #28a745; }
-.kpi-card .card-icon.orange { background-color: #fd7e14; }
-.kpi-card .card-icon.red { background-color: #dc3545; }
+
+.kpi-card .card-icon.blue {
+    background-color: #007bff;
+}
+
+.kpi-card .card-icon.green {
+    background-color: #28a745;
+}
+
+.kpi-card .card-icon.orange {
+    background-color: #fd7e14;
+}
+
+.kpi-card .card-icon.red {
+    background-color: #dc3545;
+}
+
 .kpi-card .card-info h3 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 5px;
 }
+
 .kpi-card .card-info span {
     font-size: 14px;
     color: #6c757d;
 }
+
 .charts-grid {
     width: 100%;
     height: fit-content;
@@ -145,44 +175,53 @@ body{
     gap: 25px;
     margin-bottom: 30px;
 }
+
 .charts-grid .chart-card {
     width: 50%;
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 .chart-card h3 {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 20px;
     color: #495057;
 }
+
 .chart-card p {
     font-size: 30px;
     color: #7dca01;
     text-align: start;
 }
-.large p{
+
+.large p {
     margin-top: 40px;
 }
-.large span{
+
+.large span {
     color: deepskyblue;
     margin-right: 10px;
 }
-.small p{
+
+.small p {
     font-size: 18px;
     color: black;
 }
-.small span{
+
+.small span {
     color: #7dca01;
 }
+
 .table-card {
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
+
 .table-card h3 {
     font-size: 18px;
     font-weight: 500;
@@ -195,23 +234,26 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
+
 table th, table td {
     padding: 12px 15px;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
+
 table th {
     background-color: #f8f9fa;
     color: #6c757d;
     font-weight: 500;
     font-size: 14px;
 }
+
 table td {
     font-size: 15px;
 }
 
 /* --- PAGE 2 & 3: SẢN PHẨM & ĐƠN HÀNG --- */
-.right-content .search-bar{
+.right-content .search-bar {
     width: 100%;
     height: 50px;
     padding: 20px 0;
@@ -221,7 +263,8 @@ table td {
     justify-content: center;
     align-items: center;
 }
-.right-content .search-bar input{
+
+.right-content .search-bar input {
     width: 50%;
     height: 40px;
     padding: 10px 30px;
@@ -229,10 +272,12 @@ table td {
     border: 1px black solid;
     border-right: none;
 }
-.right-content .search-bar input:focus{
+
+.right-content .search-bar input:focus {
     outline: none;
 }
-.right-content .search-bar button{
+
+.right-content .search-bar button {
     width: 5%;
     height: 40px;
     padding: 10px 30px;
@@ -241,20 +286,23 @@ table td {
     border-left: none;
     background: transparent;
 }
-.right-content .main-menu{
+
+.right-content .main-menu {
     width: 100%;
     height: 50px;
     padding: 20px 50px;
     margin-bottom: 30px;
 }
-.right-content .main-menu select{
+
+.right-content .main-menu select {
     float: left;
     width: 200px;
     height: 40px;
     border-radius: 10px;
     padding: 0 10px;
 }
-.right-content .main-menu button{
+
+.right-content .main-menu button {
     float: right;
     width: 150px;
     height: 40px;
@@ -264,54 +312,65 @@ table td {
     cursor: pointer;
     border: none;
 }
-.right-content .main-menu button:hover{
+
+.right-content .main-menu button:hover {
     background: #8c4828;
 }
-.right-content .list-product{
+
+.right-content .list-product {
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-.right-content .list-product h3{
+
+.right-content .list-product h3 {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
     color: #495057;
 }
-.right-content h3{
-    font-weight:normal;
+
+.right-content h3 {
+    font-weight: normal;
     color: #495057;
 }
-.right-content .list-product table{
+
+.right-content .list-product table {
     width: 100%;
     border-collapse: collapse;
 }
-.right-content .list-product table th, .right-content .list-product table td{
+
+.right-content .list-product table th, .right-content .list-product table td {
     padding: 12px 15px;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
-.right-content .list-product table th, .right-content .list-product table td button{
+
+.right-content .list-product table th, .right-content .list-product table td button {
     width: 40px;
     height: 30px;
     background: #c76739;
     color: white;
     margin-bottom: 20px;
 }
-.right-content .list-product table th, .right-content .list-product table td button:hover{
+
+.right-content .list-product table th, .right-content .list-product table td button:hover {
     background: #8c4828;
 }
-.right-content .list-product table th{
+
+.right-content .list-product table th {
     background-color: #f8f9fa;
     color: #6c757d;
     font-weight: 500;
     font-size: 14px;
 }
-.right-content .list-product table td{
+
+.right-content .list-product table td {
     font-size: 15px;
 }
-.right-content .list-product button{
+
+.right-content .list-product button {
     font-weight: 500;
     margin-top: 20px;
     color: white;
@@ -322,19 +381,21 @@ table td {
     cursor: pointer;
     border: none;
 }
-.right-content .list-product button:hover{
+
+.right-content .list-product button:hover {
     background: #700000;
 }
 
 /* --- PAGE 3: ĐƠN HÀNG --- */
-.right-content .main-content .main-menu-date{
+.right-content .main-content .main-menu-date {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin-bottom: 10px;
     margin-left: 30px;
 }
-.right-content .main-content .main-menu-date button{
+
+.right-content .main-content .main-menu-date button {
     width: 150px;
     height: 25px;
     border-radius: 20px;
@@ -342,19 +403,22 @@ table td {
     color: white;
     cursor: pointer;
 }
-.right-content .main-content .main-menu-date button:hover{
+
+.right-content .main-content .main-menu-date button:hover {
     background: #8c4828;
 }
-.right-content .main-content .list-order{
+
+.right-content .main-content .list-order {
     padding: 10px 30px;
 }
-.right-content .main-content .list-order table .detail{
+
+.right-content .main-content .list-order table .detail {
     cursor: pointer;
     padding: 5px 5px;
 }
 
 /* --- PAGE 4: TÀI KHOẢN --- */
-.right-content .notify{
+.right-content .notify {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -364,14 +428,16 @@ table td {
     margin-left: 120px;
     margin-bottom: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-.right-content .notify h3{
+
+.right-content .notify h3 {
     font-size: 18px;
     font-weight: 500;
     color: #495057;
 }
-.right-content .notify .notify-main{
+
+.right-content .notify .notify-main {
     width: 100%;
     height: 200px;
     display: flex;
@@ -380,40 +446,48 @@ table td {
     padding: 25px 0;
     overflow-y: scroll;
 }
-.right-content .notify .notify-main p span{
+
+.right-content .notify .notify-main p span {
     font-weight: 600;
 }
-.right-content .list-account{
+
+.right-content .list-account {
     background: #fff;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-.right-content .list-account h3{
+
+.right-content .list-account h3 {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
     color: #495057;
 }
-.right-content .list-account table{
+
+.right-content .list-account table {
     width: 100%;
     border-collapse: collapse;
 }
-.right-content .list-account table th, .right-content .list-account table td{
+
+.right-content .list-account table th, .right-content .list-account table td {
     padding: 12px 15px;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
 }
-.right-content .list-account table th{
+
+.right-content .list-account table th {
     background-color: #f8f9fa;
     color: #6c757d;
     font-weight: 500;
     font-size: 14px;
 }
-.right-content .list-account table td{
+
+.right-content .list-account table td {
     font-size: 15px;
 }
-.right-content .list-account button{
+
+.right-content .list-account button {
     font-weight: 500;
     font-size: 15px;
     margin-top: 20px;
@@ -423,14 +497,15 @@ table td {
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
 }
-.right-content .list-account button:hover{
+
+.right-content .list-account button:hover {
     background: #700000;
 }
 
 /* --- POP-UP CHUNG --- */
-.form-add{
+.form-add {
     position: fixed; /* Sửa thành fixed */
     height: fit-content;
     max-height: 500px;
@@ -445,13 +520,16 @@ table td {
     z-index: 100; /* Thêm */
     overflow-y: scroll;
 }
-.list-order .detail{
+
+.list-order .detail {
     background-color: #c76739;
 }
-.list-order .detail i{
+
+.list-order .detail i {
     color: white;
 }
-.form-add .form-title{
+
+.form-add .form-title {
     position: relative;
     font-size: 30px;
     font-weight: 600;
@@ -459,7 +537,8 @@ table td {
     display: flex;
     flex-direction: row;
 }
-.form-add .form-title button{
+
+.form-add .form-title button {
     position: absolute;
     right: 20px;
     height: 20px;
@@ -469,65 +548,74 @@ table td {
     border: none;
     cursor: pointer;
 }
-.form-add .main-form{
+
+.form-add .main-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.form-add .main-form label{
+
+.form-add .main-form label {
     width: 150px;
     font-size: 17px;
 }
-.form-add .main-form div{
+
+.form-add .main-form div {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 15px;
     gap: 20px;
 }
-.form-add .main-form .img-p button{
+
+.form-add .main-form .img-p button {
     height: 30px;
     width: 70px;
     border: none;
     cursor: pointer;
 }
-.form-add .main-form div input{
+
+.form-add .main-form div input {
     width: 60%;
     height: 30px;
     padding: 10px 10px;
     border: 1px solid black;
 }
-.form-add .main-form div select{
+
+.form-add .main-form div select {
     font-size: 12px;
     width: 60%;
     height: 30px;
     padding: 0 10px;
     border: 1px solid black;
 }
-.form-add .main-form div textarea{
+
+.form-add .main-form div textarea {
     width: 60%;
     height: 50px;
     padding: 5px 10px;
-    font-family: 'Open Sans', sans-serif;
 }
-.form-add .main-form .submit{
+
+.form-add .main-form .submit {
     width: 30%;
     height: 30px;
     margin: auto;
     background: #c76739;
     color: white;
     cursor: pointer;
-    border: none; /* Thêm */
+    border: none;
     border-radius: 20px;
 }
-.form-add .main-form .submit:hover{
+
+.form-add .main-form .submit:hover {
     background: #8c4828;
 }
-.detail-p{
-    position: fixed; /* Sửa thành fixed */
+
+.detail-p {
+    position: fixed;
     height: fit-content;
     width: 60%;
-    display: flex; /* Thêm để JS điều khiển */
+    display: flex;
     flex-direction: column;
     gap: 30px;
     background: white;
@@ -539,29 +627,35 @@ table td {
     box-shadow: 0 8px 10px rgba(49, 49, 49, 0.5);
     z-index: 100; /* Thêm */
 }
-.detail-p h3{
+
+.detail-p h3 {
     margin-bottom: 20px;
 }
-.detail-p .info-customer .info{
+
+.detail-p .info-customer .info {
     display: flex;
     flex-direction: row;
     gap: 50px;
 }
-.detail-p .info-customer .info div{
+
+.detail-p .info-customer .info div {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.detail-p button{
+
+.detail-p button {
     width: 200px;
     height: 40px;
     cursor: pointer;
 }
-.detail-p .totalSum span{
+
+.detail-p .totalSum span {
     color: #A0522D;
     margin-left: 20px;
 }
-.detail-p #close{
+
+.detail-p #close {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -575,25 +669,30 @@ table td {
 
 /* --- TRANG 5 --- */
 /* Title DANH SÁCH LIÊN HỆ */
-.contact{
+.contact {
     padding: 25px;
 }
-.right-content h3{
+
+.right-content h3 {
     margin-bottom: 20px;
 }
+
 .contact-title {
     margin-top: 40px;
     font-size: 18px;
     font-weight: 600;
     color: #495057;
 }
-.contact table th{
+
+.contact table th {
     text-align: center;
 }
-.contact table td{
+
+.contact table td {
     text-align: center;
 }
-.contact table td button{
+
+.contact table td button {
     font-weight: 500;
     font-size: 15px;
     margin-top: 5px;
@@ -606,10 +705,12 @@ table td {
     cursor: pointer;
     border: none;
 }
-.contact table td button:hover{
+
+.contact table td button:hover {
     background: #8c4828;
 
 }
+
 /* --- THÀNH PHẦN CHUNG KHÁC --- */
 .status {
     padding: 5px 10px;
@@ -617,10 +718,23 @@ table td {
     font-size: 12px;
     font-weight: 700;
 }
-.status.pending { background-color: #fff0c2; color: #f39c12; }
-.status.completed { background-color: #c8f7dc; color: #28a745; }
-.status.cancelled { background-color: #fde2e4; color: #dc3545; }
-.slide-top{
+
+.status.pending {
+    background-color: #fff0c2;
+    color: #f39c12;
+}
+
+.status.completed {
+    background-color: #c8f7dc;
+    color: #28a745;
+}
+
+.status.cancelled {
+    background-color: #fde2e4;
+    color: #dc3545;
+}
+
+.slide-top {
     position: fixed;
     display: none;
     bottom: 20px;
@@ -634,7 +748,8 @@ table td {
     cursor: pointer;
     z-index: 50;
 }
-.slide-top:hover{
+
+.slide-top:hover {
     background: saddlebrown;
     color: white;
 }
@@ -643,7 +758,8 @@ table td {
 .review {
     padding: 25px;
 }
-.review-title{
+
+.review-title {
 
     margin-top: 40px;
     font-size: 18px;
@@ -651,10 +767,11 @@ table td {
     color: #495057;
 }
 
-.review table{
+.review table {
     margin-top: 5px;
 }
-.review td button{
+
+.review td button {
     font-weight: 500;
     font-size: 15px;
     margin-top: 5px;
@@ -667,10 +784,12 @@ table td {
     cursor: pointer;
     border: none;
 }
-.review td button:hover{
+
+.review td button:hover {
     background: #8c4828;
 
 }
+
 /* ---Trang 7---*/
 /* ==== BANNER LIST STYLE ==== */
 
@@ -713,6 +832,7 @@ table td {
     border-radius: 6px;
     border: 1px solid #ddd;
 }
+
 /* Nút sửa */
 .list-banner button.remake {
     background: #e6f2ff;
@@ -721,6 +841,7 @@ table td {
     border-radius: 6px;
     cursor: pointer;
 }
+
 .list-banner button.remake:hover {
     background: #cfe5ff;
 }
@@ -737,9 +858,11 @@ table td {
     cursor: pointer;
     font-weight: 500;
 }
+
 .delete-banner:hover {
     background: #b02a37;
 }
+
 /* trang 8*/
 
 input[type=number]::-webkit-inner-spin-button,
@@ -750,7 +873,8 @@ input[type=number]::-webkit-outer-spin-button {
 .list-discount {
     padding: 25px;
 }
-.discount-title{
+
+.discount-title {
 
     margin-top: 40px;
     font-size: 18px;
@@ -758,10 +882,11 @@ input[type=number]::-webkit-outer-spin-button {
     color: #495057;
 }
 
-.list-discount table{
+.list-discount table {
     margin-top: 5px;
 }
-.list-discount td button{
+
+.list-discount td button {
     font-weight: 500;
     font-size: 15px;
     margin-top: 5px;
@@ -774,7 +899,8 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     border: none;
 }
-.list-discount td button:hover{
+
+.list-discount td button:hover {
     background: #8c4828;
 
 }

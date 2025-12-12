@@ -1,9 +1,9 @@
 const num_cart = document.querySelector('#num-cart-label');
 const btn = document.getElementById("slide-top");
 
-if(parseInt(num_cart.textContent) > 0){
+if (parseInt(num_cart.textContent) > 0) {
     num_cart.style.display = 'block';
-}else{
+} else {
     num_cart.style.display = 'none';
 }
 

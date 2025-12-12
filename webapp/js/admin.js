@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_slider_top.style.display = window.scrollY > 20 ? "block" : "none";
         });
         btn_slider_top.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({top: 0, behavior: "smooth"});
         });
     }
 
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (e.target.closest('.remake')){
+        if (e.target.closest('.remake')) {
             if (form_remake && getComputedStyle(form_remake).display === 'none') {
                 form_remake.style.display = 'block';
                 content.style.filter = 'blur(5px)';
