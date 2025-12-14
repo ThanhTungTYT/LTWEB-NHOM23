@@ -10,6 +10,8 @@ public class Product {
     private Date  created_at;
     private Category category;
     private List<ProductReview> review;
+    private String image_url;
+    private String category_name;
 
     public Product(int product_id, String product_name, String description, int stock, int sold, double price, double weight, Date created_at, Category ,  List<ProductReview> review) {
         this.product_id = product_id;
@@ -84,5 +86,17 @@ public class Product {
 
     public void setReview(List<ProductReview> review) {
         this.review = review;
+    }
+    public  String getImage_url() {
+        return image_url;
+    }
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+    public String getCategory_name() {
+        return category_name;
+    }
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 }
