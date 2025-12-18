@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,13 +19,24 @@
       <input type="text" id="search-input" placeholder="Tìm kiếm...">
       <button id="search-button"><i class="fas fa-search"></i></button>
     </div>
-    <div class="mini-menu">
-      <div class="cart">
-        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-        <span id="num-cart-label">3</span>
+      <div class="mini-menu">
+          <div class="cart">
+              <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+              <span id="num-cart-label">3</span>
+          </div>
+          <c:choose>
+              <c:when test="${not empty sessionScope.user}">
+                  <a href="${pageContext.request.contextPath}/account.jsp">
+                      <i class="fas fa-user"></i> Xin chào, ${sessionScope.user.full_name}
+                  </a>
+              </c:when>
+              <c:otherwise>
+                  <a href="${pageContext.request.contextPath}/login.jsp">
+                      <i class="fas fa-user"></i> Đăng nhập
+                  </a>
+              </c:otherwise>
+          </c:choose>
       </div>
-      <a href="${pageContext.request.contextPath}/login.jsp"><i class="fa-solid fa-user"></i></a>
-    </div>
   </div>
   <div class="bottom">
     <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
