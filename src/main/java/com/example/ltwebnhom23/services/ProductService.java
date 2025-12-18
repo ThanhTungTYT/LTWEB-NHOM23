@@ -8,6 +8,9 @@ import java.util.List;
 public class ProductService {
     private ProductDao p = new ProductDao();
 
+    public List<Product> getProductsBySold(){
+        return p.getProductsBySold();
+    }
     public List<Product> getAllProduct(){
         return p.getAllProduct();
     }

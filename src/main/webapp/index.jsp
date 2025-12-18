@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -55,7 +56,14 @@
     <span class="line"></span>
   </div>
   <div class="product-list" id="product-list">
-
+    <c:forEach items="${listProduct}" var="p">
+      <a class="product" href="product.html">
+        <img src="${p.image_url}">
+        <p>${p.product_name}</p>
+        <span>${p.price}</span>
+        <label><i class="fa-solid fa-fire"></i>${p.sold}</label>
+      </a>
+    </c:forEach>
   </div>
 </div>
 <div class="video-1 fade-in">
