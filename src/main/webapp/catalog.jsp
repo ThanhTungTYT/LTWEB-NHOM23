@@ -62,7 +62,7 @@
     <div class="product-area" id="product-area">
         <div class="product-list" id="product-list">
             <c:forEach items="${listProducts}" var="p">
-                <a href="product.html" class="product">
+                <a href="product?pid=${p.product_id}" class="product">
                     <img src="${p.image_url}">
                     <p>${p.product_name}</p>
                     <span>Giá: ${p.price}</span>

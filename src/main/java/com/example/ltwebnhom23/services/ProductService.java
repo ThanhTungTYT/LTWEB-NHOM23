@@ -17,4 +17,10 @@ public class ProductService {
     public List<Product> getProductForCategory(int cid){
         return p.getProductForCategory(cid);
     }
+    public Product getProduct(int pid){
+        return p.getProdutct(pid);
+    }
+    public List<Product> getProductsByRelative(int cid, String name, int pid){
+        return p.getProductsByRelative(cid, name, pid);
+    }
 }

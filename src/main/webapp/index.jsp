@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -27,12 +26,12 @@
           <c:choose>
               <c:when test="${not empty sessionScope.user}">
                   <a href="${pageContext.request.contextPath}/account.jsp">
-                      <i class="fas fa-user"></i> Xin chào, ${sessionScope.user.full_name}
+                      <i class="fas fa-user"></i>
                   </a>
               </c:when>
               <c:otherwise>
                   <a href="${pageContext.request.contextPath}/login.jsp">
-                      <i class="fas fa-user"></i> Đăng nhập
+                      <i class="fas fa-user"></i>
                   </a>
               </c:otherwise>
           </c:choose>
@@ -57,7 +56,7 @@
   </div>
   <div class="product-list" id="product-list">
     <c:forEach items="${listProduct}" var="p">
-      <a class="product" href="product.html">
+      <a class="product" href="product?pid=${p.product_id}">
         <img src="${p.image_url}">
         <p>${p.product_name}</p>
         <span>${p.price}</span>
