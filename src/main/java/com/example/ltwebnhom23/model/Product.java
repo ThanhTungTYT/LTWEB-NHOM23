@@ -7,19 +7,19 @@ public class Product {
     private String description;
     private int stock;
     private int sold;
-    private String weight_gram;
+    private String weigth_gram;
     private double price;
     private String image_url;
     private String category_name;
 
-    public Product(int product_id, int category_id, String product_name, String description, int stock, int sold, String weight_gram, double price) {
+    public Product(int product_id, int category_id, String product_name, String description, int stock, int sold, String weigth_gram, double price) {
         this.product_id = product_id;
         this.category_id = category_id;
         this.product_name = product_name;
         this.description = description;
         this.stock = stock;
         this.sold = sold;
-        this.weight_gram = weight_gram;
+        this.weigth_gram = weigth_gram;
         this.price = price;
     }
 
@@ -73,12 +73,12 @@ public class Product {
         this.sold = sold;
     }
 
-    public String getWeiht_gram() {
-        return weight_gram;
+    public String getWeigth_gram() {
+        return weigth_gram;
     }
 
-    public void setWeiht_gram(String weight_gram) {
-        this.weight_gram = weight_gram;
+    public void setWeigth_gram(String weigth_gram) {
+        this.weigth_gram = weigth_gram;
     }
 
     public double getPrice() {
