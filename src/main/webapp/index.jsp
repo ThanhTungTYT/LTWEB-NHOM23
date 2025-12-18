@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
   </div>
   <div class="bottom">
     <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
-    <a href="catalog.html">Sản phẩm</a>
+    <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
     <a href="help.html">Liên hệ</a>
     <a href="aboutUs.html">Giới thiệu</a>
   </div>
@@ -43,7 +44,14 @@
     <span class="line"></span>
   </div>
   <div class="product-list" id="product-list">
-
+    <c:forEach items="${listProduct}" var="p">
+      <a class="product" href="product.html">
+        <img src="${p.image_url}">
+        <p>${p.product_name}</p>
+        <span>${p.price}</span>
+        <label><i class="fa-solid fa-fire"></i>${p.sold}</label>
+      </a>
+    </c:forEach>
   </div>
 </div>
 <div class="video-1 fade-in">
