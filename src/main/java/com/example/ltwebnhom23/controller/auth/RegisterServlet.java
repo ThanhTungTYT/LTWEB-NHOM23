@@ -39,13 +39,10 @@ public class RegisterServlet extends HttpServlet {
         boolean status = authService.register(user);
 
         if(status){
-            request.setAttribute("status", "Đăng kí thành công");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-            return;
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
         }else {
             request.setAttribute("status", "Đăng kí không thành công");
             request.getRequestDispatcher("register.jsp").forward(request, response);
-            return;
         }
     }
 }

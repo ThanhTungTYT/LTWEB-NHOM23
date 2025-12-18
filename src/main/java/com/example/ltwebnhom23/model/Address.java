@@ -1,23 +1,35 @@
 package com.example.ltwebnhom23.model;
-public class OderAddress{
-    private int order_address_id;
+
+public class Address {
+    private int id_address;
+    private int user_id;
     private String country;
     private String province;
     private String ward;
     private String address;
 
-    public OderAddress(int order_address_id, String country, String province, String ward, String address) {
-        this.order_address_id = order_address_id;
+    public Address() {
+    }
+
+    public Address(int id_address, int user_id, String country, String province, String ward, String address) {
+        this.id_address = id_address;
+        this.user_id = user_id;
         this.country = country;
         this.province = province;
         this.ward = ward;
         this.address = address;
     }
-    public int getOrder_address_id() {
-        return order_address_id;
+    public int getId_address() {
+        return id_address;
     }
-    public void setOrder_address_id(int order_address_id) {
-        this.order_address_id = order_address_id;
+    public void setId_address(int id_address) {
+        this.id_address = id_address;
+    }
+    public int getUser_id() {
+        return user_id;
+    }
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
     public String getCountry() {
         return country;
@@ -43,4 +55,5 @@ public class OderAddress{
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
