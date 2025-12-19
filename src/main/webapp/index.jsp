@@ -40,7 +40,7 @@
   <div class="bottom">
     <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
     <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
-    <a href="help.html">Liên hệ</a>
+    <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
     <a href="aboutUs.html">Giới thiệu</a>
   </div>
 </header>

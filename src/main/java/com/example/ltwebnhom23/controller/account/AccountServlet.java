@@ -28,8 +28,8 @@ public class AccountServlet extends HttpServlet {
 
         if (authUser != null) {
             // Lấy thông tin mới nhất từ DB
-            User userDetail = accountService.getAccountInfo(authUser.getUser_id());
-            Address addressDetail = accountService.getUserAddress(authUser.getUser_id());
+            User userDetail = accountService.getAccountInfo(authUser.getId());
+            Address addressDetail = accountService.getUserAddress(authUser.getId());
 
             // Đặt tên attribute là "user" để info.jsp dùng được ${user.email}
             request.setAttribute("user", userDetail);

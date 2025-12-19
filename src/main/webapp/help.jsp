@@ -1,30 +1,29 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%--
   Created by IntelliJ IDEA.
-  User: TDat
-  Date: 14/12/2025
-  Time: 20:21
+  User: MyPC
+  Date: 19/12/2025
+  Time: 8:46 CH
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/account.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/help.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 </head>
 <body>
+
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
-        </div>
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+        </div>e
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -34,7 +33,18 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="account.html"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="bottom">
@@ -44,20 +54,37 @@
         <a href="aboutUs.html">Giới thiệu</a>
     </div>
 </header>
-<div class="dashboard-container">
 
-    <div class="sidebar">
-        <nav>
-            <ul>
-                <li><a href="info" class="sidebar-link active">Thông tin cá nhân</a></li>
-                <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
-                <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
-                <li><a href="logout" class="logout-link">Đăng xuất</a></li>
-            </ul>
-        </nav>
+<div class="container">
+    <h1>Aroma Café - Cà phê rang số 1 Việt Nam</h1>
+
+    <div class="address">
+        <div><i class="fa-solid fa-location-dot"></i> Địa chỉ: xxx , xxx, xxx.</div>
+        <div><i class="fa-solid fa-phone"></i> Điện thoại: xxx-xxx-xxxx.</div>
+        <div><i class="fa-solid fa-envelope"></i> Email: aromacafe@gmail.com</div>
     </div>
 
-    <main id="content-area" class="content-area"></main>
+    <div class="main-content">
+        <h2>Liên hệ với chúng tôi</h2>
+
+        <!-- Thông báo gửi thành công -->
+        <c:if test="${not empty success}">
+            <p style="color: green; margin-bottom: 15px;">
+                    ${success}
+            </p>
+        </c:if>
+
+        <form action="${pageContext.request.contextPath}/contact" method="post">
+            <input type="text" name="name" placeholder="Họ và tên của bạn" required>
+            <input type="email" name="email" placeholder="Email của bạn" required>
+
+            <label for="message">Tin nhắn:</label>
+            <textarea name="message" rows="5"
+                      placeholder="Viết tin nhắn của bạn ở đây..." required></textarea>
+
+            <button type="submit">Liên hệ ngay</button>
+        </form>
+    </div>
 </div>
 <footer class="footer">
     <div class="footer-top">
@@ -91,8 +118,10 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-</body>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
-<script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+
+<script src="${pageContext.request.contextPath}/js/script.js"></script>
+</body>
 </html>
+
+
