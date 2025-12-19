@@ -19,7 +19,7 @@
     <div class="top">
         <div class="logo">
             <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
-        </div>e
+        </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -33,9 +33,9 @@
         </div>
     </div>
     <div class="bottom">
-        <a href="${pageContext.request.contextPath}/">Trang chủ</a>
-        <a href="catalog.html">Sản phẩm</a>
-        <a href="help.html">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
         <a href="aboutUs.html">Giới thiệu</a>
     </div>
 </header>

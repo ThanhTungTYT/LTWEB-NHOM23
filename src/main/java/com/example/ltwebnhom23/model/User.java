@@ -1,15 +1,15 @@
 package com.example.ltwebnhom23.model;
 
 public class User {
-    private int user_id;
+    private int id;
     private String full_name;
     private String email;
     private String phone;
     private String password_hash;
     private String role;
 
-    public User(int user_id, String full_name, String email, String phone, String password_hash, String role) {
-        this.user_id = user_id;
+    public User(int id, String full_name, String email, String phone, String password_hash, String role) {
+        this.id = id;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
@@ -19,12 +19,12 @@ public class User {
 
     public User() {}
 
-    public int getUser_id() {
-        return user_id;
+    public int getId() {
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId(int user_id) {
+        this.id = user_id;
     }
 
     public String getFull_name() {
