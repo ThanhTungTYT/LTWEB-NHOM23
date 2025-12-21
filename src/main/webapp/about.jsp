@@ -1,19 +1,30 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: MyPC
+  Date: 21/12/2025
+  Time: 3:47 CH
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
-    <link rel="stylesheet" href="../webapp/css/aboutUs.css"/>
-    <link rel="stylesheet" href="../webapp/css/style.css"/>
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/aboutUs.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"/>
 </head>
 <body>
+
 <header>
     <div class="top">
         <div class="logo">
-            <img src="../webapp/img/logo.png" onclick="location.href='index.html'" width="300px" height="100px">
-        </div>
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+        </div>e
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -23,27 +34,37 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="login.html"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="bottom">
-        <a href="index.html">Trang chủ</a>
-        <a href="catalog.html">Sản phẩm</a>
-        <a href="help.html">Liên hệ</a>
-        <a href="aboutUs.html">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 
 <main class="about-wrapper">
-    <!-- Banner -->
+
     <section class="about-banner">
-        <img src="../webapp/img/about06.png" alt="Banner" class="banner-img"/>
+        <img src="${pageContext.request.contextPath}/assets/img/about06.png" alt="Banner" class="banner-img"/>
         <div class="banner-text">
             <h1>VỀ CHÚNG TÔI</h1>
         </div>
     </section>
 
-    <!-- Section 1 -->
     <section class="about-section fade-in">
         <h2>ĐỒNG HÀNH ĐỂ ĐI XA</h2>
         <p>
@@ -52,11 +73,11 @@
             biệt.
         </p>
         <div class="about-imgs">
-            <img src="../webapp/img/about01.png" alt="Hình ảnh 1"/>
+            <img src="${pageContext.request.contextPath}/assets/img/about01.png" alt="Hình ảnh 1"/>
         </div>
     </section>
 
-    <!-- Section 2 -->
+
     <section class="about-section slide-up">
         <div class="about-content reverse">
             <div class="about-text">
@@ -69,16 +90,16 @@
                 </p>
             </div>
             <div class="about-imgs">
-                <img src="../webapp/img/about02.png" alt="Hình ảnh 2"/>
+                <img src="${pageContext.request.contextPath}/assets/img/about02.png" alt="Hình ảnh 2"/>
             </div>
         </div>
     </section>
 
-    <!-- Section 3 -->
+
     <section class="about-section fade-in">
         <div class="about-content">
             <div class="about-imgs">
-                <img src="../webapp/img/about04.png" alt="Hình ảnh 3"/>
+                <img src="${pageContext.request.contextPath}/assets/img/about04.png" alt="Hình ảnh 3"/>
             </div>
             <div class="about-text">
                 <h2>NHỮNG HẠT CÀ PHÊ NGUYÊN CHẤT</h2>
@@ -91,7 +112,7 @@
         </div>
     </section>
 
-    <!-- Section 4 -->
+
     <section class="about-section slide-up">
         <div class="about-content reverse">
             <div class="about-text">
@@ -103,7 +124,7 @@
                 </p>
             </div>
             <div class="about-imgs">
-                <img src="../webapp/img/about05.png" alt="Hình ảnh 4"/>
+                <img src="${pageContext.request.contextPath}/assets/img/about05.png" alt="Hình ảnh 4"/>
             </div>
         </div>
     </section>
@@ -121,9 +142,9 @@
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>
-                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/shippingPolicies">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/warrantyPolicies">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/termOfUse">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 
@@ -137,12 +158,16 @@
             </div>
         </div>
     </div>
+
     <div class="footer-bottom">
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
+
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
-<script src=""></script>
-<script src="../webapp/js/script.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/aboutUs.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+
 </body>
 </html>
+
