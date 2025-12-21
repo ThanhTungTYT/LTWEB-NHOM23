@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
     <title>Đăng kí</title>
@@ -21,14 +22,25 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="${pageContext.request.contextPath}/login.jsp"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
         <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
-        <a href="aboutUs.html">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 <div class="container">

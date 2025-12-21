@@ -23,8 +23,8 @@
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
-        </div>
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+        </div>e
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -34,14 +34,25 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="account.html"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
         <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
-        <a href="aboutUs.html">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 <div class="dashboard-container">
