@@ -142,9 +142,9 @@
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="${pageContext.request.contextPath}/shippingPolicies">Chính sách vận chuyển</a></li>
-                <li><a href="${pageContext.request.contextPath}/warrantyPolicies">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="${pageContext.request.contextPath}/termOfUse">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 
@@ -158,7 +158,6 @@
             </div>
         </div>
     </div>
-
     <div class="footer-bottom">
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>

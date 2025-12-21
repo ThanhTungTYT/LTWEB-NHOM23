@@ -71,9 +71,9 @@
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>
-                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 
