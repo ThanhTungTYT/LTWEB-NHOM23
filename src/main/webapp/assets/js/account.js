@@ -16,7 +16,7 @@ $(document).ready(function () {
             }
         });
     }
-    let defaultLink = $('a[href="info"]');
+        let defaultLink = $('a[href="info"]');
     if (defaultLink.length > 0) {
         defaultLink.addClass('active');
         loadContent("info");

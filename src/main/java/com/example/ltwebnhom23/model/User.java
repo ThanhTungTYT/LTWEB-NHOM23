@@ -19,14 +19,6 @@ public class User {
 
     public User() {}
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int user_id) {
-        this.id = user_id;
-    }
-
     public String getFull_name() {
         return full_name;
     }
@@ -35,12 +27,12 @@ public class User {
         this.full_name = full_name;
     }
 
-    public String getEmail() {
-        return email;
+    public int getId() {
+        return id;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPhone() {
@@ -51,12 +43,12 @@ public class User {
         this.phone = phone;
     }
 
-    public String getPassword_hash() {
-        return password_hash;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword_hash(String password_hash) {
-        this.password_hash = password_hash;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getRole() {
@@ -65,5 +57,13 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassword_hash() {
+        return password_hash;
+    }
+
+    public void setPassword_hash(String password_hash) {
+        this.password_hash = password_hash;
     }
 }

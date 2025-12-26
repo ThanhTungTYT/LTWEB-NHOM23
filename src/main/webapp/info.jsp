@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-
 <style>
     .info-container {
         background: #fff;
@@ -29,11 +28,32 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         font-size: 14px;
+        transition: all 0.3s;
     }
+
+    .info-form input[readonly] {
+        background-color: #f9f9f9;
+        cursor: default;
+        color: #555;
+        border-color: transparent;
+    }
+
+    .info-form input:not([readonly]) {
+        background-color: #fff;
+        border-color: #d2691e;
+    }
+
+
+    .input-fixed {
+        background-color: #f9f9f9 !important;
+        cursor: not-allowed !important;
+    }
+
     .info-form input:focus {
         border-color: #d2691e;
         outline: none;
     }
+
     .btn-update {
         background-color: #d2691e;
         color: white;
@@ -47,31 +67,40 @@
     .btn-update:hover {
         background-color: #a0522d;
     }
+
+    .btn-save-mode {
+        background-color: #d2691e !important;
+    }
+    .btn-save-mode:hover {
+        background-color: #a0522d !important;
+    }
 </style>
 
 <div class="info-container">
     <h2>Thông tin cá nhân</h2>
-    <form action="update-info" method="post" class="info-form">
-        <input type="hidden" name="id" value="${user.user_id}">
+    <form id="userForm" action="update-info" method="post" class="info-form">
+        <input type="hidden" name="id" value="${user.id}">
 
         <label>Họ và tên:</label>
-        <input type="text" name="fullname" value="${user.full_name}" required>
+        <input type="text" name="fullname" class="editable" value="${user.full_name}" readonly required>
         <label>Email:</label>
-        <input type="email" name="email" value="${user.email}" readonly style="background-color: #e9ecef; cursor: not-allowed;">
+        <input type="email" name="email" class="input-fixed" value="${user.email}" readonly>
 
         <label>Số điện thoại:</label>
-        <input type="text" name="phone" value="${user.phone}" placeholder="Nhập số điện thoại">
+        <input type="text" name="phone" class="editable" value="${user.phone}" readonly placeholder="Nhập số điện thoại">
 
         <label>Tỉnh/TP:</label>
-        <input type="text" name="city" placeholder=" Tỉnh/TP"value="${addr != null ? addr.province : ''}">
+        <input type="text" name="city" class="editable" placeholder="Tỉnh/TP" value="${addr != null ? addr.province : ''}" readonly>
 
         <label>Quận/Huyện, Xã/Phường:</label>
-        <input type="text" name="district" placeholder=" Quận/Huyện"value="${addr != null ? addr.ward : ''}">
+        <input type="text" name="district" class="editable" placeholder="Quận/Huyện" value="${addr != null ? addr.ward : ''}" readonly>
 
         <label>Đường, Số nhà:</label>
-        <input type="text" name="address" placeholder="số nhà, tên đường"value="${addr != null ? addr.address : ''}">
-        <input type="hidden" name="addressId" value="${addr != null ? addr.id_address : 0}">
+        <input type="text" name="address" class="editable" placeholder="Số nhà, tên đường" value="${addr != null ? addr.address : ''}" readonly>
 
-        <button type="submit" class="btn-update">Cập nhật thông tin</button>
+        <input type="hidden" name="addressId" value="${addr != null ? addr.id : 0}">
+
+        <button type="button" id="btnToggle" class="btn-update">Cập nhật thông tin</button>
     </form>
 </div>
+<script src="${pageContext.request.contextPath}/assets/js/info.js"></script>
