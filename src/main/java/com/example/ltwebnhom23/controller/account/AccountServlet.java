@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "AccountServlet", urlPatterns = "/info")
+@WebServlet(name = "AccountServlet", urlPatterns = {"/info", "/update-info"})
 public class AccountServlet extends HttpServlet {
 
     private AccountService accountService = new AccountService();
@@ -21,25 +21,73 @@ public class AccountServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        String action = request.getServletPath();
 
-        HttpSession session = request.getSession();
-        // Key "auth" phải khớp với key bạn lưu khi đăng nhập
-        User authUser = (User) session.getAttribute("user");
 
-        if (authUser != null) {
-            // Lấy thông tin mới nhất từ DB
-            User userDetail = accountService.getAccountInfo(authUser.getId());
-            Address addressDetail = accountService.getUserAddress(authUser.getId());
+        if (action.equals("/info")) {
+            HttpSession session = request.getSession();
+            User authUser = (User) session.getAttribute("user");
 
-            // Đặt tên attribute là "user" để info.jsp dùng được ${user.email}
-            request.setAttribute("user", userDetail);
-            request.setAttribute("addr", addressDetail);
+            if (authUser != null) {
 
-            // Đường dẫn tới file info.jsp bạn đang có (kiểm tra lại vị trí thực tế của file)
-            request.getRequestDispatcher("/info.jsp").forward(request, response);
-        } else {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("<p style='color:red'>Vui lòng đăng nhập lại.</p>");
+                User userDetail = accountService.getAccountInfo(authUser.getId());
+                Address addressDetail = accountService.getUserAddress(authUser.getId());
+
+
+                request.setAttribute("user", userDetail);
+                request.setAttribute("addr", addressDetail);
+
+                request.getRequestDispatcher("/info.jsp").forward(request, response);
+            } else {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("<p style='color:red'>Vui lòng đăng nhập lại.</p>");
+            }
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String action = request.getServletPath();
+
+        if ("/update-info".equals(action)) {
+            HttpSession session = request.getSession();
+            User authUser = (User) session.getAttribute("user");
+
+            if (authUser != null) {
+                String fullName = request.getParameter("fullname");
+                String phone = request.getParameter("phone");
+                String city = request.getParameter("city");
+                String district = request.getParameter("district");
+                String streetAddress = request.getParameter("address");
+
+                String addressIdStr = request.getParameter("addressId");
+                int addressId = (addressIdStr != null && !addressIdStr.isEmpty()) ? Integer.parseInt(addressIdStr) : 0;
+
+
+                boolean isUpdated = accountService.updateUserInfo(authUser.getId(), fullName, phone, addressId, city, district, streetAddress);
+
+                if (isUpdated) {
+                    authUser.setFull_name(fullName);
+                    authUser.setPhone(phone);
+                    session.setAttribute("user", authUser);
+
+                    request.setAttribute("message", "Cập nhật thành công!");
+                } else {
+                    request.setAttribute("error", "Cập nhật thất bại!");
+                }
+
+
+                User userDetail = accountService.getAccountInfo(authUser.getId());
+                Address addressDetail = accountService.getUserAddress(authUser.getId());
+
+                request.setAttribute("user", userDetail);
+                request.setAttribute("addr", addressDetail);
+
+                request.getRequestDispatcher("/info.jsp").forward(request, response);
+            } else {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            }
         }
     }
 }

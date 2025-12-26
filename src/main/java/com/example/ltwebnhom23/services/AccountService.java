@@ -14,4 +14,7 @@ import com.example.ltwebnhom23.model.Address;
     public Address getUserAddress(int userId) {
         return accountDao.getAddressByUserId(userId);
     }
+    public boolean updateUserInfo(int userId, String fullName, String phone, int addressId, String city, String district, String streetAddress) {
+           return accountDao.updateUser(userId, fullName, phone, addressId, city, district, streetAddress);
+    }
 }

@@ -1,7 +1,7 @@
 package com.example.ltwebnhom23.model;
 
 public class Address {
-    private int id_address;
+    private int id;
     private int user_id;
     private String country;
     private String province;
@@ -11,19 +11,19 @@ public class Address {
     public Address() {
     }
 
-    public Address(int id_address, int user_id, String country, String province, String ward, String address) {
-        this.id_address = id_address;
+    public Address(int id, int user_id, String country, String province, String ward, String address) {
+        this.id = id;
         this.user_id = user_id;
         this.country = country;
         this.province = province;
         this.ward = ward;
         this.address = address;
     }
-    public int getId_address() {
-        return id_address;
+    public int getId() {
+        return id;
     }
-    public void setId_address(int id_address) {
-        this.id_address = id_address;
+    public void setId(int id) {
+        this.id = id;
     }
     public int getUser_id() {
         return user_id;
