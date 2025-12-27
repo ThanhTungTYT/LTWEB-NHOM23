@@ -7,10 +7,9 @@ import java.util.List;
 
 public class CategoryService {
 
-    private CategoryDao catalog = new CategoryDao();
+    private CategoryDao categoryDao = new CategoryDao();
 
     public List<Category> getAllCategories(){
-        return catalog.getAllCategories();
+        return categoryDao.getAllCategories();
     }
-
 }

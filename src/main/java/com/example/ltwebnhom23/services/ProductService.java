@@ -6,22 +6,32 @@ import com.example.ltwebnhom23.model.Product;
 import java.util.List;
 
 public class ProductService {
-    private ProductDao p = new ProductDao();
+    private ProductDao productDao = new ProductDao();
 
     public List<Product> getProductsBySold(){
-        return p.getProductsBySold();
+        return productDao.getProductsBySold();
     }
+
     public List<Product> getAllProduct(){
-        return p.getAllProduct();
+        return productDao.getAllProduct();
     }
+
     public List<Product> getProductForCategory(int cid){
-        return p.getProductForCategory(cid);
+        return productDao.getProductForCategory(cid);
     }
+
     public Product getProduct(int pid){
         return p.getProduct(pid);
+        return productDao.getProductById(pid);
     }
+
     public List<Product> getProductsByRelative(int cid, String name, int pid){
-        return p.getProductsByRelative(cid, name, pid);
+        return productDao.getProductsByRelative(cid, name, pid);
+    }
+
+    public List<Product> getProductsForCatalog(int cid, String sort) {
+        if (sort == null) sort = "default";
+        return productDao.getFilteredProducts(cid, sort);
     }
     public boolean addProductWithUrls(Product product, String[] imageUrls) {
         try {
@@ -42,4 +52,5 @@ public class ProductService {
             return false;
         }
     }
+}
 }

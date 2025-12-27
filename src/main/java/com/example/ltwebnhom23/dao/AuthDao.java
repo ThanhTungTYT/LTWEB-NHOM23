@@ -2,8 +2,6 @@ package com.example.ltwebnhom23.dao;
 
 import com.example.ltwebnhom23.model.User;
 
-import java.sql.Connection;
-
 public class AuthDao extends BaseDao {
 
     public User findByEmail(String email){
@@ -15,6 +13,7 @@ public class AuthDao extends BaseDao {
                         .orElse(null)
         );
     }
+
     public boolean exists(String email){
         Integer count = getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT COUNT(*) FROM users WHERE email = :e")
@@ -24,17 +23,18 @@ public class AuthDao extends BaseDao {
         );
         return count != null && count > 0;
     }
+
     public boolean register(User user){
         return getJdbi().withHandle(handle ->
                 handle.createUpdate(
-                        "INSERT INTO users(full_name, email, phone, password_hash, role, created_at) " +
-                        "VALUES (:fullname, :email, :phone, :pass, :role, NOW())"
-                )
+                                "INSERT INTO users(full_name, email, phone, password_hash, role, created_at) " +
+                                        "VALUES (:fullname, :email, :phone, :pass, :role, NOW())"
+                        )
                         .bind("fullname", user.getFull_name())
-                        .bind("email",user.getEmail())
+                        .bind("email", user.getEmail())
                         .bind("phone", user.getPhone())
                         .bind("pass", user.getPassword_hash())
-                        .bind("role", "customer")
+                        .bind("role", "Customer")
                         .execute() > 0
         );
     }

@@ -19,7 +19,7 @@
     <div class="top">
         <div class="logo">
             <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
-        </div>e
+        </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -54,33 +54,49 @@
     <div class="catalog-list" id="catalog-list">
         <p class="head-catalog">Danh mục sản phẩm</p>
         <ul class="list-catalog" id="list-catalog">
-            <li> <a href="catalog?cid=0" class="catalog-item ${param.cid == null || param.cid == '0' ? 'active' : ''}">Tất cả</a> </li>
+            <li>
+                <a href="catalog?cid=0" class="catalog-item ${currentCid == 0 ? 'active' : ''}">Tất cả</a>
+            </li>
             <c:forEach items="${listCategories}" var="c">
-                <li> <a href="catalog?cid=${c.category_id}" class="catalog-item ${param.cid == c.category_id ? 'active' : ''}">${c.category_name}</a> </li>
+                <li>
+                    <a href="catalog?cid=${c.id}" class="catalog-item ${currentCid == c.id ? 'active' : ''}">${c.name}</a>
+                </li>
             </c:forEach>
         </ul>
         <hr>
+
         <div class="filter">
-            <select>
-                <option>-Chọn lựa-</option>
-                <option>Giá cao đến thấp</option>
-                <option>Giá thấp đến cao</option>
-                <option>Lượt mua nhiều nhất</option>
-                <option>Lượt đánh giá</option>
-            </select>
+            <form action="catalog" method="get" id="filterForm">
+                <input type="hidden" name="cid" value="${currentCid}">
+
+                <select name="sort" onchange="document.getElementById('filterForm').submit()">
+                    <option value="default" ${currentSort == null ? 'selected' : ''}>-Chọn lựa-</option>
+                    <option value="price-desc" ${currentSort == 'price-desc' ? 'selected' : ''}>Giá cao đến thấp</option>
+                    <option value="price-asc" ${currentSort == 'price-asc' ? 'selected' : ''}>Giá thấp đến cao</option>
+                    <option value="sold" ${currentSort == 'sold' ? 'selected' : ''}>Lượt mua nhiều nhất</option>
+                    <option value="rating" ${currentSort == 'rating' ? 'selected' : ''}>Lượt đánh giá</option>
+                </select>
+            </form>
         </div>
     </div>
+
     <div class="product-area" id="product-area">
         <div class="product-list" id="product-list">
             <c:forEach items="${listProducts}" var="p">
-                <a href="product?pid=${p.product_id}" class="product">
-                    <img src="${p.image_url}">
-                    <p>${p.product_name}</p>
-                    <span>Giá: ${p.price}</span>
+                <a href="product?pid=${p.id}" class="product">
+                    <img src="${p.image_url}" alt="${p.name}">
+                    <p>${p.name}</p>
+                    <span>Giá: ${p.price} đ</span>
                     <label>Loại: ${p.category_name}</label>
+
+                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
+                        <span><i class="fas fa-star" style="color:gold"></i> ${String.format("%.1f", p.avg_rating)}</span>
+                        <span style="margin-left: 10px;">Đã bán: ${p.sold}</span>
+                    </div>
                 </a>
             </c:forEach>
         </div>
+
         <div class="product-page" id="pagination">
             <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
             <input type="number" id="page-input" min="1" value="1"/>
