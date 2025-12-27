@@ -7,10 +7,9 @@ import java.util.List;
 
 public class ImageService {
 
-    private ImageDao i = new ImageDao();
+    private ImageDao imageDao = new ImageDao();
 
     public List<ProductImage> getAllImageById(int pid){
-        return i.getAllImageById(pid);
+        return imageDao.getAllImageById(pid);
     }
-
 }

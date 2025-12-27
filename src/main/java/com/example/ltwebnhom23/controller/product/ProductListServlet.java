@@ -7,7 +7,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "catalog", value = "/catalog")
@@ -21,27 +20,29 @@ public class ProductListServlet extends HttpServlet {
         List<Category> listCategories = catalogService.getAllCategories();
         request.setAttribute("listCategories", listCategories);
 
-        String cid = request.getParameter("cid");
-        List<Product> listProducts = new ArrayList<>();
+        String cidStr = request.getParameter("cid");
+        String sort = request.getParameter("sort"); // Lấy kiểu sắp xếp
 
-        if(cid == null || cid.equals("0")){
-            listProducts = productService.getAllProduct();
-        }else{
+        int cid = 0;
+        if (cidStr != null && !cidStr.isEmpty()) {
             try {
-                int categoryId = Integer.parseInt(cid);
-                listProducts = productService.getProductForCategory(categoryId);
+                cid = Integer.parseInt(cidStr);
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                cid = 0;
             }
         }
 
+        List<Product> listProducts = productService.getProductsForCatalog(cid, sort);
+
         request.setAttribute("listProducts", listProducts);
+
+        request.setAttribute("currentCid", cid);
+        request.setAttribute("currentSort", sort);
 
         request.getRequestDispatcher("catalog.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

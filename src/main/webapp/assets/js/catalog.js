@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const categoryFiles = {
             "Tất cả": "../templates/catalog-all.html",
             "Cà phê hữu cơ": "../templates/catalog-cphc.html",
-            "Cà phê nguyên hạt rang": "../templates/catalog-cpnh.html",
+            "Cà phê rang nguyên hạt": "../templates/catalog-cpnh.html",
             "Cà phê xay nguyên chất": "../templates/catalog-cpxnc.html",
             "Các sản phẩm đặc biệt": "../templates/catalog-special.html"
         };

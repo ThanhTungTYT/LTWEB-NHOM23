@@ -25,11 +25,10 @@ public class LoginServlet extends HttpServlet {
         if (user == null) {
             request.setAttribute("error", "Sai email hoặc mật khẩu!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            return;
-        }else {
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-
+            // Redirect về trang chủ
             response.sendRedirect(request.getContextPath() + "/index.jsp");
         }
     }

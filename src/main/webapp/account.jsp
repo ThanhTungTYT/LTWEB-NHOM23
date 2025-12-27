@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -23,7 +23,7 @@
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
         </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
@@ -34,14 +34,25 @@
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="account.html"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="bottom">
-        <a href="index.html">Trang chủ</a>
-        <a href="catalog.html">Sản phẩm</a>
-        <a href="help.html">Liên hệ</a>
-        <a href="aboutUs.html">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 <div class="dashboard-container">
@@ -49,7 +60,7 @@
     <div class="sidebar">
         <nav>
             <ul>
-                <li><a href="info" class="sidebar-link active">Thông tin cá nhân</a></li>
+                <li><a href="${pageContext.request.contextPath}/info" class="sidebar-link active">Thông tin cá nhân</a></li>
                 <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
                 <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
                 <li><a href="logout" class="logout-link">Đăng xuất</a></li>
@@ -91,8 +102,9 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-</body>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+</body>
+
 </html>

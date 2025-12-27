@@ -18,6 +18,8 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8"); // Quan trọng để nhận tên tiếng Việt
+
         if(authService.existsByEmail(request.getParameter("email"))){
             request.setAttribute("status", "Email đã được sử dụng");
             request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -30,7 +32,6 @@ public class RegisterServlet extends HttpServlet {
         }
 
         User user = new User();
-
         user.setFull_name(request.getParameter("fullname"));
         user.setEmail(request.getParameter("email"));
         user.setPhone(request.getParameter("phone"));
