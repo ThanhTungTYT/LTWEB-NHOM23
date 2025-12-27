@@ -23,7 +23,7 @@
     <div class="top">
         <div class="logo">
             <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
-        </div>e
+        </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>

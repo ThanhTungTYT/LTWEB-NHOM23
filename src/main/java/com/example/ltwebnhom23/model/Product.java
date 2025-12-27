@@ -1,107 +1,72 @@
 package com.example.ltwebnhom23.model;
 
+import java.sql.Timestamp;
+
 public class Product {
-    private int product_id;
+    private int id;
     private int category_id;
-    private String product_name;
+    private String name;
     private String description;
     private int stock;
     private int sold;
-    private String weigth_gram;
+    private int weight_grams;
     private double price;
-    private String image_url;
-    private String category_name;
+    private Timestamp created_at;
 
-    public Product(int product_id, int category_id, String product_name, String description, int stock, int sold, String weigth_gram, double price) {
-        this.product_id = product_id;
+    // --- Các trường mở rộng (Lấy từ bảng khác qua JOIN) ---
+    private String image_url;     // Lấy từ product_images
+    private String category_name; // Lấy từ categories
+    private double avg_rating;    // Lấy từ bảng review
+
+    public Product() {}
+
+    // Constructor đầy đủ
+    public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price, Timestamp created_at) {
+        this.id = id;
         this.category_id = category_id;
-        this.product_name = product_name;
+        this.name = name;
         this.description = description;
         this.stock = stock;
         this.sold = sold;
-        this.weigth_gram = weigth_gram;
+        this.weight_grams = weight_grams;
         this.price = price;
+        this.created_at = created_at;
     }
 
-    public Product(){}
+    // --- Getter & Setter ---
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public int getProduct_id() {
-        return product_id;
-    }
+    public int getCategory_id() { return category_id; }
+    public void setCategory_id(int category_id) { this.category_id = category_id; }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public int getCategory_id() {
-        return category_id;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
-    }
+    public int getStock() { return stock; }
+    public void setStock(int stock) { this.stock = stock; }
 
-    public String getProduct_name() {
-        return product_name;
-    }
+    public int getSold() { return sold; }
+    public void setSold(int sold) { this.sold = sold; }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
-    }
+    public int getWeight_grams() { return weight_grams; }
+    public void setWeight_grams(int weight_grams) { this.weight_grams = weight_grams; }
 
-    public String getDescription() {
-        return description;
-    }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public Timestamp getCreated_at() { return created_at; }
+    public void setCreated_at(Timestamp created_at) { this.created_at = created_at; }
 
-    public int getStock() {
-        return stock;
-    }
+    public String getImage_url() { return image_url; }
+    public void setImage_url(String image_url) { this.image_url = image_url; }
 
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
+    public String getCategory_name() { return category_name; }
+    public void setCategory_name(String category_name) { this.category_name = category_name; }
 
-    public int getSold() {
-        return sold;
-    }
-
-    public void setSold(int sold) {
-        this.sold = sold;
-    }
-
-    public String getWeigth_gram() {
-        return weigth_gram;
-    }
-
-    public void setWeigth_gram(String weigth_gram) {
-        this.weigth_gram = weigth_gram;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    public String getCategory_name() {
-        return category_name;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
+    public double getAvg_rating() { return avg_rating; }
+    public void setAvg_rating(double avg_rating) { this.avg_rating = avg_rating; }
 }

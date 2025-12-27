@@ -25,7 +25,7 @@ public class DetailProductServlet extends HttpServlet {
         Product product = productService.getProduct(productId);
         request.setAttribute("product", product);
 
-        List<Product> relative = productService.getProductsByRelative(product.getCategory_id(), product.getProduct_name(), product.getProduct_id());
+        List<Product> relative = productService.getProductsByRelative(product.getCategory_id(), product.getName(), product.getId());
         request.setAttribute("relative", relative);
 
         List<ProductImage> listImage = imageService.getAllImageById(productId);

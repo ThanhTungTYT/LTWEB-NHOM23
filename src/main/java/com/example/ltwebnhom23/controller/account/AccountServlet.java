@@ -23,24 +23,20 @@ public class AccountServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getServletPath();
 
-
         if (action.equals("/info")) {
             HttpSession session = request.getSession();
             User authUser = (User) session.getAttribute("user");
 
             if (authUser != null) {
-
                 User userDetail = accountService.getAccountInfo(authUser.getId());
                 Address addressDetail = accountService.getUserAddress(authUser.getId());
-
 
                 request.setAttribute("user", userDetail);
                 request.setAttribute("addr", addressDetail);
 
                 request.getRequestDispatcher("/info.jsp").forward(request, response);
             } else {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                response.getWriter().write("<p style='color:red'>Vui lòng đăng nhập lại.</p>");
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
         }
     }
@@ -64,19 +60,17 @@ public class AccountServlet extends HttpServlet {
                 String addressIdStr = request.getParameter("addressId");
                 int addressId = (addressIdStr != null && !addressIdStr.isEmpty()) ? Integer.parseInt(addressIdStr) : 0;
 
-
                 boolean isUpdated = accountService.updateUserInfo(authUser.getId(), fullName, phone, addressId, city, district, streetAddress);
 
                 if (isUpdated) {
+                    // Cập nhật lại session để hiển thị tên mới ngay lập tức
                     authUser.setFull_name(fullName);
                     authUser.setPhone(phone);
                     session.setAttribute("user", authUser);
-
                     request.setAttribute("message", "Cập nhật thành công!");
                 } else {
                     request.setAttribute("error", "Cập nhật thất bại!");
                 }
-
 
                 User userDetail = accountService.getAccountInfo(authUser.getId());
                 Address addressDetail = accountService.getUserAddress(authUser.getId());
@@ -86,7 +80,7 @@ public class AccountServlet extends HttpServlet {
 
                 request.getRequestDispatcher("/info.jsp").forward(request, response);
             } else {
-                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
         }
     }
