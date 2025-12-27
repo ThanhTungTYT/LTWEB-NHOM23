@@ -21,6 +21,7 @@ public class ProductService {
     }
 
     public Product getProduct(int pid){
+        return p.getProduct(pid);
         return productDao.getProductById(pid);
     }
 
@@ -32,4 +33,24 @@ public class ProductService {
         if (sort == null) sort = "default";
         return productDao.getFilteredProducts(cid, sort);
     }
+    public boolean addProductWithUrls(Product product, String[] imageUrls) {
+        try {
+            int newProductId = p.insertProduct(product);
+            if (newProductId > 0) {
+                if (imageUrls != null && imageUrls.length > 0) {
+                    for (String url : imageUrls) {
+                        if (url != null && !url.trim().isEmpty()) {
+                            p.insertProductImage(newProductId, url.trim());
+                        }
+                    }
+                }
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
 }
