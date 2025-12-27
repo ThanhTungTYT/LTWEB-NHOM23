@@ -1,36 +1,36 @@
 package com.example.ltwebnhom23.model;
 
 public class Product {
-    private int product_id;
+    private int id;
     private int category_id;
-    private String product_name;
+    private String name;
     private String description;
     private int stock;
     private int sold;
-    private String weigth_gram;
+    private int weight_grams;
     private double price;
     private String image_url;
     private String category_name;
 
-    public Product(int product_id, int category_id, String product_name, String description, int stock, int sold, String weigth_gram, double price) {
-        this.product_id = product_id;
+    public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price) {
+        this.id = id;
         this.category_id = category_id;
-        this.product_name = product_name;
+        this.name = name;
         this.description = description;
         this.stock = stock;
         this.sold = sold;
-        this.weigth_gram = weigth_gram;
+        this.weight_grams = weight_grams;
         this.price = price;
     }
 
     public Product(){}
 
-    public int getProduct_id() {
-        return product_id;
+    public int getId() {
+        return id;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCategory_id() {
@@ -41,12 +41,12 @@ public class Product {
         this.category_id = category_id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -73,12 +73,12 @@ public class Product {
         this.sold = sold;
     }
 
-    public String getWeigth_gram() {
-        return weigth_gram;
+    public int getWeight_grams() {
+        return weight_grams;
     }
 
-    public void setWeigth_gram(String weigth_gram) {
-        this.weigth_gram = weigth_gram;
+    public void setWeight_grams(int weight_grams) {
+        this.weight_grams = weight_grams;
     }
 
     public double getPrice() {

@@ -10,18 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/LogoutServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage1.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage3.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage5.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage6.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage8.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminpage4.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/AccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/auth/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/AccountDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/AccountDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/DetailProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/DetailProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/adminPage2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage2.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,9 +43,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Servlet" />
+        <option value="JavaScript File" />
         <option value="Class" />
         <option value="Jsp File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -105,6 +116,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Intelllij\Project\LTWEB-NHOM23\src\main\webapp" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationStatuses">
       <map>
@@ -251,11 +267,24 @@
       <workItem from="1766421979878" duration="702000" />
       <workItem from="1766552702499" duration="4430000" />
       <workItem from="1766588138979" duration="275000" />
-      <workItem from="1766745039122" duration="3702000" />
+      <workItem from="1766745039122" duration="4457000" />
+      <workItem from="1766820046930" duration="10763000" />
+      <workItem from="1766830919773" duration="3081000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

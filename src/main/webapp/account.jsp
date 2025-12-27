@@ -38,10 +38,10 @@
         </div>
     </div>
     <div class="bottom">
-        <a href="index.html">Trang chủ</a>
-        <a href="catalog.html">Sản phẩm</a>
-        <a href="help.html">Liên hệ</a>
-        <a href="aboutUs.html">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 <div class="dashboard-container">
@@ -52,7 +52,7 @@
                 <li><a href="info" class="sidebar-link active">Thông tin cá nhân</a></li>
                 <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
                 <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
-                <li><a href="logout" class="logout-link">Đăng xuất</a></li>
+                <li><a href="${pageContext.request.contextPath}/logout" class="logout-link">Đăng xuất</a></li>
             </ul>
         </nav>
     </div>
