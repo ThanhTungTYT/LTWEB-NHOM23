@@ -217,9 +217,10 @@
 }
 
 .product-area .product-page button:disabled {
-    opacity: 0.5;
+    background-color: #e0e0e0;
+    color: #a0a0a0;
     cursor: not-allowed;
-    transform: none;
+    border-color: #ddd;
 }
 
 /* Ô nhập số trang */

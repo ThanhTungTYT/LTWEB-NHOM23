@@ -1,22 +1,13 @@
 package com.example.ltwebnhom23.dao;
 import com.example.ltwebnhom23.model.Product;
-
 import java.util.List;
 
-public class ProductDao extends BaseDao{
+public class ProductDao extends BaseDao {
 
-    public List<Product> getProductsBySold(){
+    // Lấy 4 sản phẩm bán chạy nhất
+    public List<Product> getProductsBySold() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id,\n" +
-                        "(SELECT image_url FROM product_images i\n" +
-                        "WHERE i.product_id = p.id \n" +
-                        "ORDER BY i.id ASC LIMIT 1) AS image_url,\n" +
-                        "p.name, p.price, p.sold\n" +
-                        "FROM products p\n" +
-                        "ORDER BY p.sold DESC\n" +
-                        "LIMIT 4;")
                 handle.createQuery("SELECT p.id, p.name, p.price, p.sold, p.stock, p.weight_grams, " +
-                                // Subquery lấy ảnh đầu tiên
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
                                 "c.name AS category_name " +
                                 "FROM products p " +
@@ -28,20 +19,12 @@ public class ProductDao extends BaseDao{
         );
     }
 
-    public List<Product> getAllProduct(){
+    // Lấy toàn bộ sản phẩm (cho trang Admin hoặc Debug)
+    public List<Product> getAllProduct() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id,\n" +
-                                "(SELECT image_url FROM product_images i \n" +
-                                "WHERE i.product_id = p.id \n" +
-                                "ORDER BY i.id ASC LIMIT 1) AS image_url,\n" +
-                                "p.name, p.price, c.name AS category_name, p.stock, p.sold, p.weight_grams\n" +
-                                "FROM products p\n" +
-                                "JOIN categories c ON p.category_id = c.id\n" +
-                                ";")
                 handle.createQuery("SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, " +
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
                                 "c.name AS category_name, " +
-                                // Tính điểm đánh giá trung bình
                                 "IFNULL(AVG(r.rating), 0) AS avg_rating " +
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
@@ -52,15 +35,9 @@ public class ProductDao extends BaseDao{
         );
     }
 
-    public List<Product> getProductForCategory(int cid){
+    // Lấy sản phẩm theo danh mục (cơ bản)
+    public List<Product> getProductForCategory(int cid) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id,\n" +
-                                "(SELECT image_url FROM product_images i \n" +
-                                "WHERE i.product_id = p.id \n" +
-                                "ORDER BY i.id ASC LIMIT 1) AS image_url,\n" +
-                                "p.name, p.price, c.name\n" +
-                                "FROM products p\n" +
-                                "JOIN categories c ON p.category_id = c.id\n" +
                 handle.createQuery("SELECT p.id, p.name, p.price, p.sold, " +
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
                                 "c.name AS category_name " +
@@ -73,22 +50,10 @@ public class ProductDao extends BaseDao{
         );
     }
 
-    public Product getProduct(int pid){
+    // Lấy chi tiết 1 sản phẩm
+    public Product getProductById(int pid) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.*,\n" +
-                        "(SELECT image_url FROM product_images i \n" +
-                        "WHERE i.product_id = p.id \n" +
-                        "ORDER BY i.id LIMIT 1) AS image_url,\n" +
-                        "(SELECT GROUP_CONCAT(image_url ORDER BY id SEPARATOR ',')\n" +
-                        "FROM product_images i WHERE i.product_id = p.id) \n" +
-                        "AS all_images, c.name\n" +
-                        "FROM products p\n" +
-                        "JOIN categories c ON p.category_id = c.id\n" +
-                        "WHERE p.id = :pid")
-                        .bind(("pid"), pid)
-    public Product getProductById(int pid){
-        return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.*, " + // p.* sẽ lấy id, name, weight_grams... khớp Model
+                handle.createQuery("SELECT p.*, " +
                                 "c.name AS category_name, " +
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id LIMIT 1) AS image_url, " +
                                 "IFNULL(AVG(r.rating), 0) AS avg_rating " +
@@ -104,15 +69,9 @@ public class ProductDao extends BaseDao{
         );
     }
 
-    public List<Product> getProductsByRelative(int cid, String name, int pid){
+    // Lấy sản phẩm liên quan
+    public List<Product> getProductsByRelative(int cid, String name, int pid) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id,\n" +
-                        "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.image_id LIMIT 1) AS image_url, p.name, p.price, c.name  FROM products p\n" +
-                        "JOIN categories c ON p.category_id = c.cid\n" +
-                        "WHERE (p.name LIKE CONCAT('%', :name, '%')\n" +
-                        "OR p.category_id = :category_id)\n" +
-                        "AND p.product_id != :product_id\n" +
-                        "ORDER BY p.sold DESC LIMIT 4;")
                 handle.createQuery("SELECT p.id, p.name, p.price, p.sold, " +
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id LIMIT 1) AS image_url, " +
                                 "c.name AS category_name " +
@@ -129,33 +88,23 @@ public class ProductDao extends BaseDao{
         );
     }
 
-    public int insertProduct(Product p) {
-        return getJdbi().withHandle(handle ->
-                handle.createUpdate("INSERT INTO products (category_id, name, description, stock, sold, weight_grams, price) " +
-                                "VALUES (:category_id, :name, :description, :stock, :sold, :weight_grams, :price)")
-                        .bind("category_id", p.getCategory_id())
-                        .bind("name", p.getName())
-                        .bind("description", p.getDescription())
-                        .bind("stock", p.getStock())
-                        .bind("sold", 0)
-                        .bind("weight_grams", p.getWeight_grams())
-                        .bind("price", p.getPrice())
-                        .executeAndReturnGeneratedKeys("id")
-                        .mapTo(Integer.class)
-                        .one()
-        );
+    // --- PHẦN PHÂN TRANG & LỌC (Catalog) ---
+
+    // 1. Đếm tổng số sản phẩm để tính số trang
+    public int countProducts(int cid) {
+        return getJdbi().withHandle(handle -> {
+            String sql = "SELECT COUNT(*) FROM products p ";
+            if (cid > 0) {
+                sql += "WHERE p.category_id = :cid";
+            }
+            var query = handle.createQuery(sql);
+            if (cid > 0) query.bind("cid", cid);
+            return query.mapTo(Integer.class).one();
+        });
     }
 
-    public void insertProductImage(int productId, String imageUrl) {
-        getJdbi().useHandle(handle ->
-                handle.createUpdate("INSERT INTO product_images (product_id, image_url) VALUES (:pid, :url)")
-                        .bind("pid", productId)
-                        .bind("url", imageUrl)
-                        .execute()
-        );
-    }
-}
-    public List<Product> getFilteredProducts(int cid, String sortType) {
+    // 2. Lấy danh sách sản phẩm có phân trang (LIMIT, OFFSET)
+    public List<Product> getFilteredProducts(int cid, String sortType, int offset) {
         return getJdbi().withHandle(handle -> {
             String sql = "SELECT p.id, p.category_id, p.name, p.price, p.sold, p.stock, p.weight_grams, " +
                     "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
@@ -173,21 +122,53 @@ public class ProductDao extends BaseDao{
 
             if (sortType != null) {
                 switch (sortType) {
-                    case "price-desc": sql += "ORDER BY p.price DESC"; break;      // Giá cao -> thấp
-                    case "price-asc":  sql += "ORDER BY p.price ASC"; break;       // Giá thấp -> cao
-                    case "sold":       sql += "ORDER BY p.sold DESC"; break;       // Bán chạy nhất
-                    case "rating":     sql += "ORDER BY avg_rating DESC"; break;   // Điểm đánh giá cao
-                    default:           sql += "ORDER BY p.id DESC"; break;         // Mặc định (mới nhất)
+                    case "price-desc": sql += "ORDER BY p.price DESC "; break;
+                    case "price-asc":  sql += "ORDER BY p.price ASC "; break;
+                    case "sold":       sql += "ORDER BY p.sold DESC "; break;
+                    case "rating":     sql += "ORDER BY avg_rating DESC "; break;
+                    default:           sql += "ORDER BY p.name ASC "; break;
                 }
             } else {
-                sql += "ORDER BY p.id DESC";
+                sql += "ORDER BY p.name ASC ";
             }
+
+            sql += "LIMIT 25 OFFSET :offset";
 
             var query = handle.createQuery(sql);
             if (cid > 0) {
                 query.bind("cid", cid);
             }
+            query.bind("offset", offset);
+
             return query.mapToBean(Product.class).list();
         });
+    }
+
+    // Insert sản phẩm
+    public int insertProduct(Product p) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO products (category_id, name, description, stock, sold, weight_grams, price) " +
+                                "VALUES (:category_id, :name, :description, :stock, :sold, :weight_grams, :price)")
+                        .bind("category_id", p.getCategory_id())
+                        .bind("name", p.getName())
+                        .bind("description", p.getDescription())
+                        .bind("stock", p.getStock())
+                        .bind("sold", 0)
+                        .bind("weight_grams", p.getWeight_grams())
+                        .bind("price", p.getPrice())
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    // Insert ảnh sản phẩm
+    public void insertProductImage(int productId, String imageUrl) {
+        getJdbi().useHandle(handle ->
+                handle.createUpdate("INSERT INTO product_images (product_id, image_url) VALUES (:pid, :url)")
+                        .bind("pid", productId)
+                        .bind("url", imageUrl)
+                        .execute()
+        );
     }
 }

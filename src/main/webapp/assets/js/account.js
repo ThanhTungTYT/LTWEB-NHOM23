@@ -1,38 +1,29 @@
-// script.js
-
 $(document).ready(function () {
     const contentArea = $('#content-area');
 
+    // Hàm load nội dung
     function loadContent(url) {
-        contentArea.html('<div class="loading-state">Đang tải nội dung...</div>');
+        contentArea.html('<div style="text-align:center; padding:50px; color:#666;">Đang tải dữ liệu... <i class="fas fa-spinner fa-spin"></i></div>');
 
-        // Sử dụng $.load() để thực hiện AJAX
         contentArea.load(url, function (response, status, xhr) {
             if (status == "error") {
-                contentArea.html(`<div style='color:red; padding:20px;'>
-                    Lỗi kết nối: ${xhr.status} ${xhr.statusText}<br>
-                    Đường dẫn gọi: ${url}
-                </div>`);
+                contentArea.html(`<div style="color:red; padding:20px; text-align:center;">Lỗi kết nối: ${xhr.status} ${xhr.statusText}</div>`);
             }
         });
     }
-        let defaultLink = $('a[href="info"]');
-    if (defaultLink.length > 0) {
-        defaultLink.addClass('active');
-        loadContent("info");
-    }
-    $('.sidebar-link').on('click', function (e) {
-        e.preventDefault();
 
+    // Xử lý sự kiện click
+    $('.sidebar-link').on('click', function (e) {
+        e.preventDefault(); // Chặn chuyển trang
+
+        // Đổi màu active
         $('.sidebar-link').removeClass('active');
         $(this).addClass('active');
 
+        // Lấy link từ href và load
         var urlToLoad = $(this).attr('href');
         loadContent(urlToLoad);
     });
 
-    // Xử lý Đăng xuất
-    $('.logout-link').on('click', function (e) {
-        alert("Đang đăng xuất....");
-    });
+    $('.sidebar-link.active').trigger('click');
 });

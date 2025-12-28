@@ -5,23 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trang chủ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <title>Trang chủ | Aroma Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 </head>
 <body>
 <header>
-  <div class="top">
-    <div class="logo">
-      <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
-    </div>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Tìm kiếm...">
-      <button id="search-button"><i class="fas fa-search"></i></button>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px" alt="Logo">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
@@ -34,7 +29,7 @@
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
-                    <a href="${pageContext.request.contextPath}/info">
+                    <a href="${pageContext.request.contextPath}/account">
                         <i class="fas fa-user"></i>
                         <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
                     </a>
@@ -47,11 +42,12 @@
             </c:choose>
         </div>
     </div>
+
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
         <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
-        <a href="#">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 
@@ -61,21 +57,6 @@
 </div>
 
 <div class="hot-item slide-up">
-  <div class="hot-title">
-    <span class="line"></span>
-    <h2>SẢN PHẨM NỔI BẬT<i class="fa-solid fa-fire"></i></h2>
-    <span class="line"></span>
-  </div>
-  <div class="product-list" id="product-list">
-    <c:forEach items="${listProduct}" var="p">
-      <a class="product" href="product?pid=${p.id}">
-        <img src="${p.image_url}">
-        <p>${p.name}</p>
-        <span>${p.price}</span>
-        <label><i class="fa-solid fa-fire"></i>${p.sold}</label>
-      </a>
-    </c:forEach>
-  </div>
     <div class="hot-title">
         <span class="line"></span>
         <h2>SẢN PHẨM NỔI BẬT <i class="fa-solid fa-fire"></i></h2>
@@ -89,7 +70,7 @@
 
                 <p>${p.name}</p>
 
-                <span><fmt:formatNumber value="${p.price}" type="number"/> đ</span>
+                <span><fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> đ</span>
 
                 <label><i class="fa-solid fa-fire"></i> ${p.sold}</label>
             </a>
@@ -166,17 +147,17 @@
     <div class="footer-top">
         <div class="foot-content left">
             <h3>Aroma Café</h3>
-            <p>Địa chỉ: TP.HCM, Việt Nam.</p>
-            <p>Điện thoại: 090-xxx-xxxx.</p>
-            <p>Email: contact@aromacafe.com</p>
+            <p>Địa chỉ: xxx, xxx, xxx.</p>
+            <p>Điện thoại: xxx-xxx-xxxx.</p>
+            <p>Email: example@gmail.com</p>
         </div>
 
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="#">Chính sách vận chuyển</a></li>
-                <li><a href="#">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 

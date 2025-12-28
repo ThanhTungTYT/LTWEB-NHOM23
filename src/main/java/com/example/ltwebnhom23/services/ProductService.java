@@ -21,7 +21,6 @@ public class ProductService {
     }
 
     public Product getProduct(int pid){
-        return p.getProduct(pid);
         return productDao.getProductById(pid);
     }
 
@@ -29,18 +28,27 @@ public class ProductService {
         return productDao.getProductsByRelative(cid, name, pid);
     }
 
-    public List<Product> getProductsForCatalog(int cid, String sort) {
+    // --- CẬP NHẬT PHÂN TRANG ---
+    public List<Product> getProductsForCatalog(int cid, String sort, int page) {
         if (sort == null) sort = "default";
-        return productDao.getFilteredProducts(cid, sort);
+        int offset = (page - 1) * 25; // Tính vị trí bắt đầu
+        return productDao.getFilteredProducts(cid, sort, offset);
     }
+
+    public int getTotalPages(int cid) {
+        int totalProducts = productDao.countProducts(cid);
+        return (int) Math.ceil((double) totalProducts / 25);
+    }
+    // ---------------------------
+
     public boolean addProductWithUrls(Product product, String[] imageUrls) {
         try {
-            int newProductId = p.insertProduct(product);
+            int newProductId = productDao.insertProduct(product); // Sửa p -> productDao
             if (newProductId > 0) {
                 if (imageUrls != null && imageUrls.length > 0) {
                     for (String url : imageUrls) {
                         if (url != null && !url.trim().isEmpty()) {
-                            p.insertProductImage(newProductId, url.trim());
+                            productDao.insertProductImage(newProductId, url.trim()); // Sửa p -> productDao
                         }
                     }
                 }
@@ -52,5 +60,4 @@ public class ProductService {
             return false;
         }
     }
-}
 }
