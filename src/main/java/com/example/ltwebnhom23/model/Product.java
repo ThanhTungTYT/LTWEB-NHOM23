@@ -20,7 +20,6 @@ public class Product {
 
     public Product() {}
 
-    public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price) {
     // Constructor đầy đủ
     public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price, Timestamp created_at) {
         this.id = id;
@@ -38,13 +37,6 @@ public class Product {
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
     public int getCategory_id() { return category_id; }
     public void setCategory_id(int category_id) { this.category_id = category_id; }
 
@@ -57,13 +49,6 @@ public class Product {
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
     public int getSold() { return sold; }
     public void setSold(int sold) { this.sold = sold; }
 
@@ -82,41 +67,6 @@ public class Product {
     public String getCategory_name() { return category_name; }
     public void setCategory_name(String category_name) { this.category_name = category_name; }
 
-    public void setSold(int sold) {
-        this.sold = sold;
-    }
-
-    public int getWeight_grams() {
-        return weight_grams;
-    }
-
-    public void setWeight_grams(int weight_grams) {
-        this.weight_grams = weight_grams;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getImage_url() {
-        return image_url;
-    }
-
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
-
-    public String getCategory_name() {
-        return category_name;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
     public double getAvg_rating() { return avg_rating; }
     public void setAvg_rating(double avg_rating) { this.avg_rating = avg_rating; }
 }
