@@ -6,31 +6,49 @@ import com.example.ltwebnhom23.model.Product;
 import java.util.List;
 
 public class ProductService {
-    private ProductDao p = new ProductDao();
+    private ProductDao productDao = new ProductDao();
 
     public List<Product> getProductsBySold(){
-        return p.getProductsBySold();
+        return productDao.getProductsBySold();
     }
+
     public List<Product> getAllProduct(){
-        return p.getAllProduct();
+        return productDao.getAllProduct();
     }
+
     public List<Product> getProductForCategory(int cid){
-        return p.getProductForCategory(cid);
+        return productDao.getProductForCategory(cid);
     }
+
     public Product getProduct(int pid){
-        return p.getProduct(pid);
+        return productDao.getProductById(pid);
     }
+
     public List<Product> getProductsByRelative(int cid, String name, int pid){
-        return p.getProductsByRelative(cid, name, pid);
+        return productDao.getProductsByRelative(cid, name, pid);
     }
+
+    // --- CẬP NHẬT PHÂN TRANG ---
+    public List<Product> getProductsForCatalog(int cid, String sort, int page) {
+        if (sort == null) sort = "default";
+        int offset = (page - 1) * 25; // Tính vị trí bắt đầu
+        return productDao.getFilteredProducts(cid, sort, offset);
+    }
+
+    public int getTotalPages(int cid) {
+        int totalProducts = productDao.countProducts(cid);
+        return (int) Math.ceil((double) totalProducts / 25);
+    }
+    // ---------------------------
+
     public boolean addProductWithUrls(Product product, String[] imageUrls) {
         try {
-            int newProductId = p.insertProduct(product);
+            int newProductId = productDao.insertProduct(product); // Sửa p -> productDao
             if (newProductId > 0) {
                 if (imageUrls != null && imageUrls.length > 0) {
                     for (String url : imageUrls) {
                         if (url != null && !url.trim().isEmpty()) {
-                            p.insertProductImage(newProductId, url.trim());
+                            productDao.insertProductImage(newProductId, url.trim()); // Sửa p -> productDao
                         }
                     }
                 }

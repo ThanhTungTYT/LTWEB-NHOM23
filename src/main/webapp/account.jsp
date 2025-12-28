@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -23,7 +23,9 @@
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
@@ -31,12 +33,25 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
-            <a href="account.html"><i class="fa-solid fa-user"></i></a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account">
+                        <i class="fas fa-user"></i>
+                        <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
+
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
@@ -49,7 +64,7 @@
     <div class="sidebar">
         <nav>
             <ul>
-                <li><a href="info" class="sidebar-link active">Thông tin cá nhân</a></li>
+                <li><a href="${pageContext.request.contextPath}/info" class="sidebar-link active">Thông tin cá nhân</a></li>
                 <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
                 <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout" class="logout-link">Đăng xuất</a></li>
@@ -71,9 +86,9 @@
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>
-                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 
@@ -91,8 +106,9 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-</body>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/account.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+</body>
+
 </html>

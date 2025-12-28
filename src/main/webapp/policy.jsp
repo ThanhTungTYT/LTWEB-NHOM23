@@ -23,7 +23,7 @@
     <div class="top">
         <div class="logo">
             <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
-        </div>e
+        </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
@@ -97,9 +97,10 @@
         <p>&copy; 2024 Aroma Café. All rights reserved.</p>
     </div>
 </footer>
-</body>
-
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/policies.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+</body>
+
+
 </html>

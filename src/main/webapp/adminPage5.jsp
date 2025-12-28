@@ -23,7 +23,7 @@
     </div>
     <div class="menu">
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item">Tổng quan</a>
-        <a href="${pageContext.request.contextPath}/adminPage2.jsp" class="menu-item">Quản lí sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3.jsp" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
@@ -132,14 +132,13 @@
                     <td>example@gmail.com</td>
                     <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
                     <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></i></button>
+                        <button class="detail"><i class="fa-solid fa-message"></i></button>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 </div>
 <div class="detail-p" id="detail-p" style="display: none">
     <button id="close">X</button>
@@ -151,6 +150,6 @@
     </div>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
-<script src="../webapp/js/admin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 </body>
 </html>

@@ -1,132 +1,148 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Trang chủ</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+    <title>Trang chủ | Aroma Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 </head>
 <body>
 <header>
-  <div class="top">
-    <div class="logo">
-      <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+    <div class="top">
+        <div class="logo">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="mini-menu">
+            <div class="cart">
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+                <span id="num-cart-label">3</span>
+            </div>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account">
+                        <i class="fas fa-user"></i>
+                        <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Tìm kiếm...">
-      <button id="search-button"><i class="fas fa-search"></i></button>
+
+    <div class="bottom">
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
-      <div class="mini-menu">
-          <div class="cart">
-              <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-              <span id="num-cart-label">3</span>
-          </div>
-          <c:choose>
-              <c:when test="${not empty sessionScope.user}">
-                  <a href="${pageContext.request.contextPath}/account.jsp">
-                      <i class="fas fa-user"></i>
-                  </a>
-              </c:when>
-              <c:otherwise>
-                  <a href="${pageContext.request.contextPath}/login.jsp">
-                      <i class="fas fa-user"></i>
-                  </a>
-              </c:otherwise>
-          </c:choose>
-      </div>
-  </div>
-  <div class="bottom">
-    <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
-    <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
-    <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
-    <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
-  </div>
 </header>
+
 <div class="img-home" id="img-home">
-  <button class="left" onclick="showPreviousImage()"><</button>
-  <button class="right" onclick="showNextImage()">></button>
+    <button class="left" onclick="showPreviousImage()"><</button>
+    <button class="right" onclick="showNextImage()">></button>
 </div>
+
 <div class="hot-item slide-up">
-  <div class="hot-title">
-    <span class="line"></span>
-    <h2>SẢN PHẨM NỔI BẬT<i class="fa-solid fa-fire"></i></h2>
-    <span class="line"></span>
-  </div>
-  <div class="product-list" id="product-list">
-    <c:forEach items="${listProduct}" var="p">
-      <a class="product" href="product?pid=${p.id}">
-        <img src="${p.image_url}">
-        <p>${p.name}</p>
-        <span>${p.price}</span>
-        <label><i class="fa-solid fa-fire"></i>${p.sold}</label>
-      </a>
-    </c:forEach>
-  </div>
+    <div class="hot-title">
+        <span class="line"></span>
+        <h2>SẢN PHẨM NỔI BẬT <i class="fa-solid fa-fire"></i></h2>
+        <span class="line"></span>
+    </div>
+
+    <div class="product-list" id="product-list">
+        <c:forEach items="${listProduct}" var="p">
+            <a class="product" href="product?pid=${p.id}">
+                <img src="${p.image_url}" alt="${p.name}">
+
+                <p>${p.name}</p>
+
+                <span><fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> đ</span>
+
+                <label><i class="fa-solid fa-fire"></i> ${p.sold}</label>
+            </a>
+        </c:forEach>
+    </div>
 </div>
+
 <div class="video-1 fade-in">
-  <div class="intro-video-1">
-    <p>QUY TRÌNH SẢN XUẤT</p>
-    <p class="content">
-      Các sản phẩm của chúng tôi được sản xuất theo quy trình sản xuất chuẩn thế giới. Được đóng gói kĩ càng và
-      máy móc đạt chuẩn.
-    </p>
-    <button onclick="location.href='help.html'">Liên hệ báo giá</button>
-  </div>
-  <video class="video-bg fill visible" preload playsinline autoplay muted loop>
-    <source src="https://90scoffee.vn/wp-content/uploads/2022/07/videos-cat-ngan-full-vien.mp4" type="video/mp4">
-  </video>
+    <div class="intro-video-1">
+        <p>QUY TRÌNH SẢN XUẤT</p>
+        <p class="content">
+            Các sản phẩm của chúng tôi được sản xuất theo quy trình sản xuất chuẩn thế giới. Được đóng gói kĩ càng và
+            máy móc đạt chuẩn.
+        </p>
+        <button onclick="location.href='${pageContext.request.contextPath}/contact'">Liên hệ báo giá</button>
+    </div>
+    <video class="video-bg fill visible" preload playsinline autoplay muted loop>
+        <source src="https://90scoffee.vn/wp-content/uploads/2022/07/videos-cat-ngan-full-vien.mp4" type="video/mp4">
+    </video>
 </div>
+
 <section class="why-choose-us slide-up">
-  <div class="section-title">
-    <span class="line"></span>
-    <h2>TẠI SAO NÊN CHỌN CHÚNG TÔI?</h2>
-    <span class="line"></span>
-  </div>
-  <div class="features-container">
-    <div class="feature-item">
-      <img src="https://90scoffee.vn/wp-content/uploads/2025/10/natural-ingredients-25x25.png"
-           alt="Icon Vùng nguyên liệu" class="feature-icon">
-      <h3>Vùng nguyên liệu cà phê độc quyền</h3>
-      <p>Mọi hạt cà phê của 90S Coffee đều được tuyển chọn từ nông trại riêng tại Gia Lai, Đắk Lắk và Lâm Đồng –
-        nơi khởi nguồn chất lượng đích thực.</p>
+    <div class="section-title">
+        <span class="line"></span>
+        <h2>TẠI SAO NÊN CHỌN CHÚNG TÔI?</h2>
+        <span class="line"></span>
     </div>
-    <div class="feature-item">
-      <img src="https://90scoffee.vn/wp-content/uploads/2025/10/management-25x25.png" alt="Icon Quy trình ISO"
-           class="feature-icon">
-      <h3>Quy trình sản xuất đạt chuẩn ISO</h3>
-      <p>Tuân thủ nghiêm ngặt theo hệ thống quản lý an toàn thực phẩm ISO 22000:2018</p>
+    <div class="features-container">
+        <div class="feature-item">
+            <img src="https://90scoffee.vn/wp-content/uploads/2025/10/natural-ingredients-25x25.png"
+                 alt="Icon Vùng nguyên liệu" class="feature-icon">
+            <h3>Vùng nguyên liệu cà phê độc quyền</h3>
+            <p>Mọi hạt cà phê của 90S Coffee đều được tuyển chọn từ nông trại riêng tại Gia Lai, Đắk Lắk và Lâm Đồng –
+                nơi khởi nguồn chất lượng đích thực.</p>
+        </div>
+        <div class="feature-item">
+            <img src="https://90scoffee.vn/wp-content/uploads/2025/10/management-25x25.png" alt="Icon Quy trình ISO"
+                 class="feature-icon">
+            <h3>Quy trình sản xuất đạt chuẩn ISO</h3>
+            <p>Tuân thủ nghiêm ngặt theo hệ thống quản lý an toàn thực phẩm ISO 22000:2018</p>
+        </div>
+        <div class="feature-item">
+            <img src="https://90scoffee.vn/wp-content/uploads/2025/10/handshake-25x25.png" alt="Icon Chính sách"
+                 class="feature-icon">
+            <h3>Chính sách sỉ linh hoạt – Hậu mãi tận tâm</h3>
+            <p>Chúng tôi có chính sách bán hàng sỉ & lẻ. Chế độ hậu mãi tốt, mang lại lợi ích – bảo vệ lợi ích cho khách
+                hàng của 90S Coffee.</p>
+        </div>
     </div>
-    <div class="feature-item">
-      <img src="https://90scoffee.vn/wp-content/uploads/2025/10/handshake-25x25.png" alt="Icon Chính sách"
-           class="feature-icon">
-      <h3>Chính sách sỉ linh hoạt – Hậu mãi tận tâm</h3>
-      <p>Chúng tôi có chính sách bán hàng sỉ & lẻ. Chế độ hậu mãi tốt, mang lại lợi ích – bảo vệ lợi ích cho khách
-        hàng của 90S Coffee.</p>
-    </div>
-  </div>
 </section>
+
 <div class="approach-section fade-in">
-  <div class="approach-container">
-    <div class="text-content-box">
-      <h2>CÁCH TIẾP CẬN CỦA CHÚNG TÔI VỚI CÀ PHÊ</h2>
-      <p>Là một trong những doanh nghiệp hàng đầu trong hệ thống cà phê, AROMA CAFÉ là một trong những cầu nối uy
-        tín, vững chắc giữa những người nông dân với thị trường cà phê Việt Nam và thế giới.</p>
-      <button onclick="location.href='help.html'">Liên hệ báo giá</button>
+    <div class="approach-container">
+        <div class="text-content-box">
+            <h2>CÁCH TIẾP CẬN CỦA CHÚNG TÔI VỚI CÀ PHÊ</h2>
+            <p>Là một trong những doanh nghiệp hàng đầu trong hệ thống cà phê, AROMA CAFÉ là một trong những cầu nối uy
+                tín, vững chắc giữa những người nông dân với thị trường cà phê Việt Nam và thế giới.</p>
+            <button onclick="location.href='${pageContext.request.contextPath}/contact'">Liên hệ báo giá</button>
+        </div>
+        <div class="video-content-box">
+            <div class="video-container">
+                <iframe
+                        src="https://www.youtube-nocookie.com/embed/OKdyYY6tShA?"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
-    <div class="video-content-box">
-      <div class="video-container">
-        <iframe
-                src="https://www.youtube-nocookie.com/embed/OKdyYY6tShA?"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
 </div>
+
 <footer class="footer">
     <div class="footer-top">
         <div class="foot-content left">

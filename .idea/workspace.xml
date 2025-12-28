@@ -9,65 +9,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/LogoutServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage1.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage3.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage5.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage6.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminPage8.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/adminpage4.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" afterDir="false" />
+    <list default="true" id="217c3337-a2e6-4645-a534-2e4058d0aa41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/auth/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/auth/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/account/AccountServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/DetailProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/DetailProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/ProductListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/product/ProductListServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/ProductImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/about.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/account.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage1.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage3.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage3.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage5.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage5.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage6.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage6.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage8.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage8.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminpage4.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminpage4.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/catalog.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/catalog.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/account.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/account.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/catalog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/catalog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/catalog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/catalog.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/help.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/help.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/adminPage2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/adminPage2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/policy.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/policy.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/register.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Servlet" />
-        <option value="JavaScript File" />
-        <option value="Class" />
-        <option value="Jsp File" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;23130050-NguyenLeTienDat&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ThanhTungTYT/LTWEB-NHOM23.git&quot;,
-    &quot;accountId&quot;: &quot;8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff&quot;
-  }
-}</component>
-  <component name="KubernetesApiPersistence">{}</component>
-  <component name="KubernetesApiProvider">{
-  &quot;isMigrated&quot;: true
-}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -75,53 +52,26 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
-}</component>
-  <component name="ProjectId" id="36bp8KM3cXfWnhCtbumdQUxqN4l" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Tomcat Server.Tomcat 10.1.48.executor": "Run",
+    "TomEE Server.Tomcat 10.executor": "Run",
     "Tomcat Server.Tomcat 10.1.49.executor": "Run",
-    "Tomcat Server.index.jsp.executor": "Run",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "dat",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
+    "git-widget-placeholder": "bao",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Intelllij\Project\LTWEB-NHOM23\src\main\webapp" />
-    </key>
-  </component>
   <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="TomeeConfiguration" />
+      </set>
+    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -135,7 +85,19 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$USER_HOME$/.jdks/ms-21.0.9" nameIsGenerated="true">
+    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:/Program Files/Java/jdk-21.0.9" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="LTWEB-NHOM23:war exploded">
@@ -145,7 +107,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="d96d19c8-b788-4962-b454-dd53cd9f872e" />
+        <option name="BASE_DIRECTORY_NAME" value="c317f2d3-5dcf-45b5-b987-c0958404a7dd" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -153,7 +115,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="16300" />
+        <option name="DEBUG_PORT" value="51674" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -223,68 +185,7 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="" />
-      <created>1765284971485</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1765284971485</updated>
-      <workItem from="1765284972334" duration="11000" />
-      <workItem from="1765288338416" duration="19000" />
-      <workItem from="1765288942958" duration="77000" />
-      <workItem from="1765289164551" duration="115000" />
-      <workItem from="1765290206049" duration="60000" />
-      <workItem from="1765339737625" duration="70000" />
-      <workItem from="1765351720987" duration="12000" />
-      <workItem from="1765373078399" duration="511000" />
-      <workItem from="1765374284109" duration="1943000" />
-      <workItem from="1765376590356" duration="333000" />
-      <workItem from="1765458143643" duration="3846000" />
-      <workItem from="1765518005144" duration="4344000" />
-      <workItem from="1765523516881" duration="10365000" />
-      <workItem from="1765806828857" duration="736000" />
-      <workItem from="1765879568657" duration="733000" />
-      <workItem from="1765972610073" duration="1539000" />
-      <workItem from="1766043730149" duration="6704000" />
-      <workItem from="1766050524960" duration="588000" />
-      <workItem from="1766051124761" duration="218000" />
-      <workItem from="1766051353891" duration="2041000" />
-      <workItem from="1766067336384" duration="3646000" />
-      <workItem from="1766071646709" duration="21000" />
-      <workItem from="1766071701226" duration="2250000" />
-      <workItem from="1766149770015" duration="6473000" />
-      <workItem from="1766420330509" duration="1638000" />
-      <workItem from="1766421979878" duration="702000" />
-      <workItem from="1766552702499" duration="4430000" />
-      <workItem from="1766588138979" duration="275000" />
-      <workItem from="1766745039122" duration="4457000" />
-      <workItem from="1766820046930" duration="10763000" />
-      <workItem from="1766830919773" duration="3081000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

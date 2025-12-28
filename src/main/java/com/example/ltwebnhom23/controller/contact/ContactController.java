@@ -2,7 +2,6 @@ package com.example.ltwebnhom23.controller.contact;
 
 import com.example.ltwebnhom23.dao.ContactDao;
 import com.example.ltwebnhom23.model.Contact;
-
 import com.example.ltwebnhom23.model.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -56,8 +55,8 @@ public class ContactController extends HttpServlet {
         String message = request.getParameter("message");
 
         Contact contact = new Contact();
-        contact.setUserId(authUser.getId());
-        contact.setFullName(fullName);
+        contact.setUser_id(authUser.getId());
+        contact.setFull_name(fullName);
         contact.setEmail(email);
         contact.setMessage(message);
 
@@ -66,5 +65,4 @@ public class ContactController extends HttpServlet {
         request.setAttribute("success", "Gửi liên hệ thành công!");
         request.getRequestDispatcher("/help.jsp").forward(request, response);
     }
-
 }

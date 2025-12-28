@@ -1,38 +1,38 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: admin
-  Date: 13/12/2025
-  Time: 9:45 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
-    <title>Danh sách sản phẩm</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <title>Danh sách sản phẩm | Aroma Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/catalog.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+
 </head>
 <body>
+
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
-        </div>e
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
+        </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
             <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">3</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
-                    <a href="${pageContext.request.contextPath}/account.jsp">
+                    <a href="${pageContext.request.contextPath}/account">
                         <i class="fas fa-user"></i>
+                        <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
                     </a>
                 </c:when>
                 <c:otherwise>
@@ -43,6 +43,7 @@
             </c:choose>
         </div>
     </div>
+
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
@@ -50,44 +51,85 @@
         <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
+
+<input type="hidden" id="currentCid" value="${currentCid}">
+<input type="hidden" id="currentSort" value="${currentSort}">
+
 <div class="catalog">
+
     <div class="catalog-list" id="catalog-list">
         <p class="head-catalog">Danh mục sản phẩm</p>
+
         <ul class="list-catalog" id="list-catalog">
-            <li> <a href="catalog?cid=0" class="catalog-item ${param.cid == null || param.cid == '0' ? 'active' : ''}">Tất cả</a> </li>
+            <li>
+                <a href="catalog?cid=0" class="catalog-item ${currentCid == 0 ? 'active' : ''}">Tất cả</a>
+            </li>
             <c:forEach items="${listCategories}" var="c">
-                <li> <a href="catalog?cid=${c.category_id}" class="catalog-item ${param.cid == c.category_id ? 'active' : ''}">${c.category_name}</a> </li>
+                <li>
+                    <a href="catalog?cid=${c.id}" class="catalog-item ${currentCid == c.id ? 'active' : ''}">${c.name}</a>
+                </li>
             </c:forEach>
         </ul>
         <hr>
+
         <div class="filter">
-            <select>
-                <option>-Chọn lựa-</option>
-                <option>Giá cao đến thấp</option>
-                <option>Giá thấp đến cao</option>
-                <option>Lượt mua nhiều nhất</option>
-                <option>Lượt đánh giá</option>
+            <select name="sort" onchange="changeSort(this.value)">
+                <option value="default" ${currentSort == 'default' ? 'selected' : ''}>-Chọn lựa-</option>
+                <option value="price-desc" ${currentSort == 'price-desc' ? 'selected' : ''}>Giá cao đến thấp</option>
+                <option value="price-asc" ${currentSort == 'price-asc' ? 'selected' : ''}>Giá thấp đến cao</option>
+                <option value="sold" ${currentSort == 'sold' ? 'selected' : ''}>Lượt mua nhiều nhất</option>
+                <option value="rating" ${currentSort == 'rating' ? 'selected' : ''}>Lượt đánh giá</option>
             </select>
         </div>
     </div>
+
     <div class="product-area" id="product-area">
+
         <div class="product-list" id="product-list">
+            <c:if test="${empty listProducts}">
+                <p style="width:100%; text-align:center; padding: 20px;">Không có sản phẩm nào.</p>
+            </c:if>
+
             <c:forEach items="${listProducts}" var="p">
-                <a href="product?pid=${p.product_id}" class="product">
-                    <img src="${p.image_url}">
-                    <p>${p.product_name}</p>
-                    <span>Giá: ${p.price}</span>
+                <a href="product?pid=${p.id}" class="product">
+                    <img src="${p.image_url}" alt="${p.name}">
+                    <p>${p.name}</p>
+                    <span><fmt:formatNumber value="${p.price}" type="number"/> đ</span>
                     <label>Loại: ${p.category_name}</label>
+
+                    <div style="font-size: 12px; color: #666; margin-top: 5px;">
+                        <span><i class="fas fa-star" style="color:gold"></i> ${String.format("%.1f", p.avg_rating)}</span>
+                        <span style="margin-left: 10px;">Đã bán: ${p.sold}</span>
+                    </div>
                 </a>
             </c:forEach>
         </div>
-        <div class="product-page" id="pagination">
-            <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
-            <input type="number" id="page-input" min="1" value="1"/>
-            <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="product-page" id="pagination" style="margin-top: 20px; text-align: center;">
+
+            <c:set var="displayTotal" value="${totalPages > 0 ? totalPages : 1}" />
+
+            <button onclick="changePage(${currentPage - 1})"
+            ${currentPage <= 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <c:forEach begin="1" end="${displayTotal}" var="i">
+                <button class="${currentPage == i ? 'active' : ''}"
+                        onclick="changePage(${i})"
+                    ${currentPage == i ? 'disabled' : ''}> ${i}
+                </button>
+            </c:forEach>
+
+            <button onclick="changePage(${currentPage + 1})"
+            ${currentPage >= displayTotal ? 'disabled' : ''}>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
         </div>
     </div>
 </div>
+
 <footer class="footer">
     <div class="footer-top">
         <div class="foot-content left">
@@ -100,9 +142,9 @@
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="shippingPolicies.html">Chính sách vận chuyển</a></li>
-                <li><a href="warrantyPolicies.html">Chính sách bảo hành, đổi trả</a></li>
-                <li><a href="termOfUse.html">Điều khoản sử dụng</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
 
@@ -122,6 +164,7 @@
 </footer>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 
+<script src="${pageContext.request.contextPath}/assets/js/catalog.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 </body>
 </html>
