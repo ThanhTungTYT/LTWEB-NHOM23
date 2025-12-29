@@ -54,6 +54,17 @@ public class ContactController extends HttpServlet {
         String email = request.getParameter("email");
         String message = request.getParameter("message");
 
+        if (message == null || message.trim().isEmpty()) {
+            request.setAttribute("error", "Nội dung không được để trống!");
+            request.getRequestDispatcher("/help.jsp").forward(request, response);
+            return;
+        }
+
+        if (message.length() > 60000) {
+            request.setAttribute("error", "Nội dung quá dài! Vui lòng viết ngắn gọn hơn.");
+            request.getRequestDispatcher("/help.jsp").forward(request, response);
+            return;
+        }
         Contact contact = new Contact();
         contact.setUser_id(authUser.getId());
         contact.setFull_name(fullName);
