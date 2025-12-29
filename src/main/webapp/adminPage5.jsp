@@ -9,7 +9,7 @@
     <title>Chăm sóc khách hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-    
+
 </head>
 <body>
 
@@ -40,16 +40,20 @@
     </div>
 
     <div class="main-content">
-        <form class="main-menu-date">
+        <form class="main-menu-date" action="adminPage5" method="get">
             <div class="start">
-                <label>Start date</label>
-                <input type="date">
+                <label>Từ ngày</label>
+                <input type="date" name="startDate" value="${startDate}">
             </div>
             <div class="end">
-                <label>End date</label>
-                <input type="date">
+                <label>Đến ngày</label>
+                <input type="date" name="endDate" value="${endDate}">
             </div>
-            <button>Xác nhận</button>
+
+            <div class="action-buttons">
+                <button type="submit">Lọc</button>
+                <a href="adminPage5" class="btn-reset">Đặt lại</a>
+            </div>
         </form>
 
         <div class="contact">

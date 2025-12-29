@@ -394,7 +394,12 @@ table td {
     margin-bottom: 10px;
     margin-left: 30px;
 }
-
+.right-content .main-content .main-menu-date .action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 10px;
+}
 .right-content .main-content .main-menu-date button {
     width: 150px;
     height: 25px;
@@ -415,6 +420,19 @@ table td {
 .right-content .main-content .list-order table .detail {
     cursor: pointer;
     padding: 5px 5px;
+}
+.right-content .main-content .main-menu-date .btn-reset {
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+    background: #6c757d;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 /* --- PAGE 4: TÀI KHOẢN --- */

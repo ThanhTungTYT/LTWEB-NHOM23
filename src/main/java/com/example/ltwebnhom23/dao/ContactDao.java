@@ -55,4 +55,30 @@ public class ContactDao extends BaseDao {
                         .orElse(null)
         );
     }
+
+    public List<Contact> filterContacts(String startDate, String endDate) {
+        StringBuilder sql = new StringBuilder("SELECT id, user_id, full_name, email, message, sent_at FROM contacts WHERE 1=1 ");
+
+        if (startDate != null && !startDate.isEmpty()) {
+            sql.append("AND DATE(sent_at) >= :start ");
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            sql.append("AND DATE(sent_at) <= :end ");
+        }
+
+        sql.append("ORDER BY sent_at DESC");
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (startDate != null && !startDate.isEmpty()) {
+                query.bind("start", startDate);
+            }
+            if (endDate != null && !endDate.isEmpty()) {
+                query.bind("end", endDate);
+            }
+
+            return query.mapToBean(Contact.class).list();
+        });
+    }
 }
