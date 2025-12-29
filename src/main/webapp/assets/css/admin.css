@@ -696,7 +696,7 @@ table td {
     font-weight: 500;
     font-size: 15px;
     margin-top: 5px;
-    margin-right: 50px;
+    margin-right: 10px;
     color: white;
     background: #c76739;
     width: 30px;
@@ -711,6 +711,12 @@ table td {
 
 }
 
+.detail-p, .form-add {
+    display: none;
+}
+.contact table td button.btn-reply {
+    background-color: #c76739;
+}
 /* --- THÀNH PHẦN CHUNG KHÁC --- */
 .status {
     padding: 5px 10px;
