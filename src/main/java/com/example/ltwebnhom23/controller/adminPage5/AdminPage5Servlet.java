@@ -22,11 +22,22 @@ public class AdminPage5Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String startDate = request.getParameter("startDate");
+        String endDate = request.getParameter("endDate");
         // 1. Lấy danh sách tất cả liên hệ từ Database
         List<Contact> contactList = contactDao.getAllContacts();
 
+        if ((startDate != null && !startDate.isEmpty()) || (endDate != null && !endDate.isEmpty())) {
+            contactList = contactDao.filterContacts(startDate, endDate);
+        } else {
+            contactList = contactDao.getAllContacts();
+        }
+
         // 2. Gán vào request để JSP sử dụng
         request.setAttribute("contactList", contactList);
+
+        request.setAttribute("startDate", startDate);
+        request.setAttribute("endDate", endDate);
 
         // 3. Chuyển hướng sang trang JSP
         request.getRequestDispatcher("/adminPage5.jsp").forward(request, response);
