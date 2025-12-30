@@ -9,23 +9,48 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import com.example.ltwebnhom23.services.CategoryService;
+import com.example.ltwebnhom23.model.Category;
+import com.example.ltwebnhom23.dao.CategoryDao;
 
 @WebServlet(name = "AdminPage2Servlet", value = "/adminPage2")
 
 public class AdminPage2Servlet  extends HttpServlet {
     private ProductService productService = new ProductService();
+    private CategoryService categoryService = new CategoryService();
+    private CategoryDao categoryDao = new CategoryDao();
 
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> products = productService.getAllProduct();
         request.setAttribute("products", products);
+        List<Category> categories = categoryService.getAllCategories();
+        request.setAttribute("categories", categories);
         request.getRequestDispatcher("/adminPage2.jsp").forward(request,  response);
-    }
+;    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
+        String action = request.getParameter("action");
+        if (action == null) action = "";
+
         try {
+            switch (action) {
+                case "add_category":
+                    handleAddCategory(request, response);
+                    break;
+                case "add_product":
+                default:
+                    handleAddProduct(request, response);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            doGet(request, response);
+        }
+    }
+    private void handleAddProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             double price = Double.parseDouble(request.getParameter("price"));
@@ -53,11 +78,12 @@ public class AdminPage2Servlet  extends HttpServlet {
                 request.setAttribute("error", "Thêm sản phẩm thất bại!");
                 doGet(request, response);
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            request.setAttribute("error", "Lỗi: " + e.getMessage());
-            doGet(request, response);
+    }
+    private void handleAddCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String categoryName = request.getParameter("category_name");
+        if (categoryName != null && !categoryName.trim().isEmpty()) {
+            categoryDao.insertCategory(categoryName);
         }
+        response.sendRedirect(request.getContextPath() + "/adminPage2");
     }
 }

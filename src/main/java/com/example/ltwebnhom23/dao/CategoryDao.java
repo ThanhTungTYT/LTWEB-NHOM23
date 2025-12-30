@@ -13,4 +13,12 @@ public class CategoryDao extends BaseDao {
                         .list()
         );
     }
+
+    public boolean insertCategory(String name) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO categories (name) VALUES (:name)")
+                        .bind("name", name)
+                        .execute() > 0
+        );
+    }
 }

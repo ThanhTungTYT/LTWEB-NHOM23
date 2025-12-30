@@ -17,3 +17,26 @@ function addImageUrl() {
     input.value = "";
     alert("Đã thêm ảnh vào danh sách chờ!");
 }
+function addCat() {
+    var popup = document.getElementById('form-add-cat');
+    var content = document.getElementById('right-content');
+
+    if (popup) {
+        popup.style.display = 'block';
+        // Làm mờ nền phía sau (nếu muốn)
+        if (content) content.style.filter = 'blur(5px)';
+    } else {
+        console.error("Lỗi: Không tìm thấy ID form-add-cat");
+    }
+}
+
+function dongFormThemLoai() {
+    var popup = document.getElementById('form-add-cat');
+    var content = document.getElementById('right-content');
+
+    if (popup) {
+        popup.style.display = 'none';
+        // Bỏ làm mờ nền
+        if (content) content.style.filter = 'none';
+    }
+}
