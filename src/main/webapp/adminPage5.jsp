@@ -103,11 +103,34 @@
 
                 <c:if test="${empty contactList}">
                     <tr>
-                        <td colspan="6">Chưa có liên hệ nào.</td>
+                        <td colspan="6">Chưa có liên hệ nào hoặc không tìm thấy kết quả phù hợp.</td>
                     </tr>
                 </c:if>
                 </tbody>
             </table>
+
+                <c:if test="${totalPages > 1}">
+                    <div class="pagination">
+
+                        <a href="${currentPage > 1 ? 'adminPage5?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
+                           class="${currentPage <= 1 ? 'disabled' : ''}">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </a>
+
+                        <c:forEach begin="1" end="${totalPages}" var="i">
+                            <a href="adminPage5?page=${i}&startDate=${startDate}&endDate=${endDate}"
+                               class="${currentPage == i ? 'active' : ''}">
+                                    ${i}
+                            </a>
+                        </c:forEach>
+
+                        <a href="${currentPage < totalPages ? 'adminPage5?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
+                           class="${currentPage >= totalPages ? 'disabled' : ''}">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </a>
+
+                    </div>
+                </c:if>
         </div>
     </div>
 </div>
@@ -159,26 +182,23 @@
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 
 <script>
-    // Hàm mở popup chi tiết
     function openDetail(name, email, message) {
         document.getElementById('d-name').innerText = name;
         document.getElementById('d-email').innerText = email;
         document.getElementById('d-msg').innerText = message;
 
         document.getElementById('detail-p').style.display = 'flex';
-        document.getElementById('form-reply').style.display = 'none'; // Đóng form kia nếu đang mở
+        document.getElementById('form-reply').style.display = 'none';
     }
 
-    // Hàm mở popup phản hồi
     function openReply(name, email) {
         document.getElementById('r-name').value = name;
         document.getElementById('r-email').value = email;
 
-        document.getElementById('form-reply').style.display = 'block'; // form-add dùng display block hoặc flex đều được
+        document.getElementById('form-reply').style.display = 'block';
         document.getElementById('detail-p').style.display = 'none';
     }
 
-    // Hàm đóng popup
     function closePopup(id) {
         document.getElementById(id).style.display = 'none';
     }
