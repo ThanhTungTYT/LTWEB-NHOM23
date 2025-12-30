@@ -53,7 +53,33 @@
             <option>Cà phê xay nguyên chất</option>
             <option>Các sản phẩm đặc biệt khác</option>
         </select>
+        <button type="button" onclick="addCat()" id="add-cat-btn">
+            + Thêm loại sản phẩm
+        </button>
         <button id="add">+ Thêm sản phẩm</button>
+    </div>
+    <div class="cat-list">
+        <h3>DANH SÁCH LOẠI SẢN PHẨM</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên loại sản phẩm</th>
+                <th>Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${categories}" var="c">
+                <tr>
+                    <td>#${c.id}</td>
+                    <td>${c.name}</td>
+                    <td>
+                        <button class="remake-cat" type="button"><i class="fa-solid fa-pen"></i></button>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
     <div class="list-product">
         <h3>DANH SÁCH SẢN PHẨM</h3>
@@ -121,9 +147,10 @@
 <div class="form-add" id="form-add" style="display: none">
     <div class="form-title">
         <p>THÊM SẢN PHẨM</p>
-        <button id="take-off" type="button" onclick="document.getElementById('form-add').style.display='none'">X</button>
+        <button id="take-off" type="button" >X</button>
     </div>
     <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+        <input type="hidden" name="action" value="add_product">
         <div class="p name-p">
             <label>Tên sản phẩm</label>
             <input type="text" name="name" placeholder="Tên sản phẩm" required>
@@ -131,11 +158,10 @@
         <div class="type-p">
             <label>Loại sản phẩm</label>
             <select name="category_id">
-                <option value="">-Chọn dòng sản phẩm-</option>
-                <option value="1">Cà phê hữu cơ</option>
-                <option value="2">Cà phê rang nguyên hạt</option>
-                <option value="3">Cà phê xay nguyên chất</option>
-                <option value="4">Các sản phẩm đặc biệt khác</option>
+                <option value="">-- Chọn loại --</option>
+                <c:forEach items="${categories}" var="cat">
+                    <option value="${cat.id}">${cat.name}</option>
+                </c:forEach>
             </select>
         </div>
         <div class="price-p">
@@ -167,7 +193,7 @@
 <div class="form-add" id="form-remake" style="display: none">
     <div class="form-title">
         <p>SỬA SẢN PHẨM</p>
-        <button id="close">X</button>
+        <button id="close-remake" type="button" >X</button>
     </div>
     <form class="main-form">
         <div class="p id-p">
@@ -180,12 +206,11 @@
         </div>
         <div class="type-p">
             <label>Loại sản phẩm</label>
-            <select>
-                <option>-Chọn dòng sản phẩm-</option>
-                <option>Cà phê hữu cơ</option>
-                <option>Cà phê rang nguyên hạt</option>
-                <option>Cà phê xay nguyên chất</option>
-                <option>Các sản phẩm đặc biệt khác</option>
+            <select name="category_id">
+                <option value="">-- Chọn loại --</option>
+                <c:forEach items="${categories}" var="cat">
+                    <option value="${cat.id}">${cat.name}</option>
+                </c:forEach>
             </select>
         </div>
         <div class="price-p">
@@ -203,6 +228,22 @@
         <div class="des-p">
             <label>Mô tả</label>
             <textarea placeholder="Mô tả"></textarea>
+        </div>
+        <button class="submit" type="submit">Thêm</button>
+    </form>
+</div>
+<div id="form-add-cat" class="form-add">
+
+    <div class="form-title">
+        <p >THÊM LOẠI SẢN PHẨM</p>
+        <button type="button" onclick="dongFormThemLoai()">X</button>
+    </div>
+
+    <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+        <input type="hidden" name="action" value="add_category">
+        <div class="p name-p" >
+            <label>Tên loại sản phẩm</label>
+            <input type="text" name="category_name" required placeholder="Nhập tên loại..." >
         </div>
         <button class="submit" type="submit">Thêm</button>
     </form>
