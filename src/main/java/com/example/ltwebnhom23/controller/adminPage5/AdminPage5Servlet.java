@@ -22,24 +22,47 @@ public class AdminPage5Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 1. Lấy tham số lọc từ URL
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-        // 1. Lấy danh sách tất cả liên hệ từ Database
-        List<Contact> contactList = contactDao.getAllContacts();
 
-        if ((startDate != null && !startDate.isEmpty()) || (endDate != null && !endDate.isEmpty())) {
-            contactList = contactDao.filterContacts(startDate, endDate);
-        } else {
-            contactList = contactDao.getAllContacts();
+        // 2. Cấu hình phân trang
+        int page = 1;
+        int pageSize = 25; // Hiển thị 25 dòng mỗi trang
+
+        if (request.getParameter("page") != null) {
+            try {
+                page = Integer.parseInt(request.getParameter("page"));
+                if (page < 1) page = 1;
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
         }
 
-        // 2. Gán vào request để JSP sử dụng
-        request.setAttribute("contactList", contactList);
+        // Tính vị trí bắt đầu lấy dữ liệu trong database
+        int offset = (page - 1) * pageSize;
 
+        // 3. Gọi DAO để lấy dữ liệu
+        // - Lấy tổng số lượng tin nhắn (khớp với điều kiện lọc) để tính số trang
+        int totalContacts = contactDao.countContacts(startDate, endDate);
+
+        // - Lấy danh sách tin nhắn cho trang hiện tại (có limit và offset)
+        List<Contact> contactList = contactDao.getContacts(startDate, endDate, pageSize, offset);
+
+        // 4. Tính tổng số trang
+        // Math.ceil: làm tròn lên (ví dụ có 26 tin, mỗi trang 25 tin -> cần 2 trang)
+        int totalPages = (int) Math.ceil((double) totalContacts / pageSize);
+
+        // 5. Gán dữ liệu vào request để JSP hiển thị
+        request.setAttribute("contactList", contactList);   // Danh sách tin nhắn
+        request.setAttribute("currentPage", page);          // Trang hiện tại
+        request.setAttribute("totalPages", totalPages);     // Tổng số trang
+
+        // Gửi lại ngày lọc để giữ trạng thái trên ô input
         request.setAttribute("startDate", startDate);
         request.setAttribute("endDate", endDate);
 
-        // 3. Chuyển hướng sang trang JSP
+        // 6. Chuyển hướng sang trang JSP
         request.getRequestDispatcher("/adminPage5.jsp").forward(request, response);
     }
 }

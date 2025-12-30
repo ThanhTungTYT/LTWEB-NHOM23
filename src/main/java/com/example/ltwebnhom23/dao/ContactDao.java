@@ -81,4 +81,47 @@ public class ContactDao extends BaseDao {
             return query.mapToBean(Contact.class).list();
         });
     }
+
+    public int countContacts(String startDate, String endDate) {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM contacts WHERE 1=1 ");
+        if (startDate != null && !startDate.isEmpty()) sql.append("AND DATE(sent_at) >= :start ");
+        if (endDate != null && !endDate.isEmpty()) sql.append("AND DATE(sent_at) <= :end ");
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+            if (startDate != null && !startDate.isEmpty()) query.bind("start", startDate);
+            if (endDate != null && !endDate.isEmpty()) query.bind("end", endDate);
+            return query.mapTo(Integer.class).one();
+        });
+    }
+
+    public List<Contact> getContacts(String startDate, String endDate, int limit, int offset) {
+        StringBuilder sql = new StringBuilder("SELECT id, user_id, full_name, email, message, sent_at FROM contacts WHERE 1=1 ");
+
+        if (startDate != null && !startDate.isEmpty()) {
+            sql.append("AND DATE(sent_at) >= :start ");
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            sql.append("AND DATE(sent_at) <= :end ");
+        }
+
+        sql.append("ORDER BY sent_at DESC LIMIT :limit OFFSET :offset");
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+
+            if (startDate != null && !startDate.isEmpty()) {
+                query.bind("start", startDate);
+            }
+            if (endDate != null && !endDate.isEmpty()) {
+                query.bind("end", endDate);
+            }
+
+            query.bind("limit", limit);
+            query.bind("offset", offset);
+
+            return query.mapToBean(Contact.class).list();
+        });
+    }
+
 }
