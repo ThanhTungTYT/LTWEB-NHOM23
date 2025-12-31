@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "ContactController", urlPatterns = {"/contact"})
-public class ContactController extends HttpServlet {
+public class ContactServlet extends HttpServlet {
 
     private ContactDao contactDao;
 
