@@ -40,3 +40,11 @@ function dongFormThemLoai() {
         if (content) content.style.filter = 'none';
     }
 }
+function deleteCategory(id) {
+    if (confirm("CẢNH BÁO: Bạn có chắc chắn muốn xóa loại sản phẩm này?\n(Lưu ý: Nếu loại này đang chứa sản phẩm thì sẽ xóa các sản phẩm có loại này)")) {
+        // Điền ID vào form ẩn
+        document.getElementById('input-cat-id').value = id;
+        // Gửi form đi
+        document.getElementById('form-delete-cat').submit();
+    }
+}

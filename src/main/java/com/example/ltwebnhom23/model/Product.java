@@ -12,6 +12,7 @@ public class Product {
     private int weight_grams;
     private double price;
     private Timestamp created_at;
+    private String state;
 
     // --- Các trường mở rộng (Lấy từ bảng khác qua JOIN) ---
     private String image_url;     // Lấy từ product_images
@@ -21,7 +22,7 @@ public class Product {
     public Product() {}
 
     // Constructor đầy đủ
-    public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price, Timestamp created_at) {
+    public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price, Timestamp created_at, String state) {
         this.id = id;
         this.category_id = category_id;
         this.name = name;
@@ -31,6 +32,7 @@ public class Product {
         this.weight_grams = weight_grams;
         this.price = price;
         this.created_at = created_at;
+        this.state = state;
     }
 
     // --- Getter & Setter ---
@@ -69,4 +71,7 @@ public class Product {
 
     public double getAvg_rating() { return avg_rating; }
     public void setAvg_rating(double avg_rating) { this.avg_rating = avg_rating; }
+
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 }

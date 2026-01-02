@@ -60,4 +60,8 @@ public class ProductService {
             return false;
         }
     }
+
+    public boolean deleteProduct(int id) {
+        return productDao.deleteProduct(id);
+    }
 }

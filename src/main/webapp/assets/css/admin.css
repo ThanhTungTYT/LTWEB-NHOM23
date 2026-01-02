@@ -387,16 +387,28 @@ table td {
 .right-content .list-product button:hover {
     background: #700000;
 }
-
-.right-content .cat-list table th, .right-content .cat-list table td button {
-    width: 40px;
-    height: 30px;
-    background: #c76739;
-    color: white;
+.right-content .cat-list h3 {
+    font-size: 18px;
+    font-weight: 500;
     margin-bottom: 20px;
+    color: #495057;
 }
-.right-content .cat-list table th, .right-content .cat-list table td button:hover {
-    background: #8c4828;
+.right-content .cat-list{
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);}
+.right-content .cat-list button {
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+    color: white;
+    background: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
 /* --- PAGE 3: ĐƠN HÀNG --- */
 .right-content .main-content .main-menu-date {

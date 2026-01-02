@@ -12,4 +12,7 @@ public class CategoryService {
     public List<Category> getAllCategories(){
         return categoryDao.getAllCategories();
     }
+    public boolean deleteCategory(int id) {
+        return categoryDao.deleteCategory(id);
+    }
 }
