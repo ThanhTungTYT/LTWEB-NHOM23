@@ -29,6 +29,7 @@ public class ProductDao extends BaseDao {
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
                                 "LEFT JOIN products_review r ON p.id = r.product_id " +
+                                "Where p.state ='active' And c.state = 'active' "+
                                 "GROUP BY p.id, p.name, p.price, c.name")
                         .mapToBean(Product.class)
                         .list()
@@ -169,6 +170,14 @@ public class ProductDao extends BaseDao {
                         .bind("pid", productId)
                         .bind("url", imageUrl)
                         .execute()
+        );
+    }
+
+    public boolean deleteProduct(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE products SET state = 'Deleted' WHERE id = :id")
+                        .bind("id", id)
+                        .execute() > 0
         );
     }
 }

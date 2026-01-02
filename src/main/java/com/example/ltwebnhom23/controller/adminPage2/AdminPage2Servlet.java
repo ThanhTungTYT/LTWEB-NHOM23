@@ -40,6 +40,12 @@ public class AdminPage2Servlet  extends HttpServlet {
                 case "add_category":
                     handleAddCategory(request, response);
                     break;
+                case "delete_product":
+                    handleDeleteProduct(request, response);
+                    break;
+                    case "delete_category":
+                    handleDeleteCategory(request, response);
+                    break;
                 case "add_product":
                 default:
                     handleAddProduct(request, response);
@@ -79,11 +85,33 @@ public class AdminPage2Servlet  extends HttpServlet {
                 doGet(request, response);
             }
     }
+
     private void handleAddCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String categoryName = request.getParameter("category_name");
         if (categoryName != null && !categoryName.trim().isEmpty()) {
             categoryDao.insertCategory(categoryName);
         }
         response.sendRedirect(request.getContextPath() + "/adminPage2");
+    }
+    private void handleDeleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            productService.deleteProduct(id); // Gọi service để xóa
+            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_product");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_id");
+        }
+    }
+
+    private void handleDeleteCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            categoryService.deleteCategory(id); // Gọi service để xóa
+            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_category");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_id");
+        }
     }
 }

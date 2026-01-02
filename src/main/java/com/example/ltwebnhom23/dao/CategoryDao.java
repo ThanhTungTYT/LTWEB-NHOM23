@@ -8,7 +8,7 @@ public class CategoryDao extends BaseDao {
 
     public List<Category> getAllCategories(){
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM categories")
+                handle.createQuery("SELECT * FROM categories where state ='active' ")
                         .mapToBean(Category.class)
                         .list()
         );
@@ -20,5 +20,15 @@ public class CategoryDao extends BaseDao {
                         .bind("name", name)
                         .execute() > 0
         );
+    }
+    public boolean deleteCategory(int id) {
+        return getJdbi().inTransaction(handle -> {
+            handle.createUpdate("UPDATE products SET state = 'Deleted' WHERE category_id = :id")
+                    .bind("id", id)
+                    .execute();
+            return handle.createUpdate("UPDATE categories SET state = 'Deleted' WHERE id = :id")
+                    .bind("id", id)
+                    .execute() > 0;
+        });
     }
 }

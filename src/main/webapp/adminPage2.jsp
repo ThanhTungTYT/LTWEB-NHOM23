@@ -66,16 +66,24 @@
             <tr>
                 <th>ID</th>
                 <th>Tên loại sản phẩm</th>
+                <th>Trạng thái</th>
                 <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${categories}" var="c">
                 <tr>
-                    <td>#${c.id}</td>
+                    <td>${c.id}</td>
                     <td>${c.name}</td>
                     <td>
-                        <button class="remake-cat" type="button"><i class="fa-solid fa-pen"></i></button>
+                        <span>${c.state}</span>
+                    </td>
+                    <td>
+                        <button type="button"
+                                onclick="deleteCategory(${c.id})"
+                                title="Xóa loại này">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
                     </td>
                 </tr>
             </c:forEach>
@@ -95,6 +103,7 @@
                 <th>Giá (VND)</th>
                 <th>Số lượng còn</th>
                 <th>Số lượng bán</th>
+                <th>Trạng thái</th>
                 <th></th>
             </tr>
             </thead>
@@ -116,6 +125,7 @@
                     </td>
                     <td>${p.stock}</td>
                     <td>${p.sold}</td>
+                    <td>${p.state}</td>
                     <td>
                         <button class="remake"
                                 type="button"
@@ -249,6 +259,10 @@
         <button class="submit" type="submit">Thêm</button>
     </form>
 </div>
+<form id="form-delete-cat" action="${pageContext.request.contextPath}/adminPage2" method="post" style="display: none;">
+    <input type="hidden" name="action" value="delete_category">
+    <input type="hidden" name="id" id="input-cat-id">
+</form>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/adminPage2.js"></script>
