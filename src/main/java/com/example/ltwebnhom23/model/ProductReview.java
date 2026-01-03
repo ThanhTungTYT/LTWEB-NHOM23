@@ -1,5 +1,4 @@
 package com.example.ltwebnhom23.model;
-import java.sql.Timestamp;
 
 public class ProductReview {
     private int id;
@@ -7,19 +6,18 @@ public class ProductReview {
     private int userId;
     private int rating;
     private String comment;
-    private Timestamp createdAt;
+    private String username;
 
 
     public ProductReview() {
     }
 
-    public ProductReview(int id, int productId, int userId, int rating, String comment, Timestamp createdAt) {
+    public ProductReview(int id, int productId, int userId, int rating, String comment) {
         this.id = id;
         this.productId = productId;
         this.userId = userId;
         this.rating = rating;
         this.comment = comment;
-        this.createdAt = createdAt;
     }
 
 
@@ -63,12 +61,11 @@ public class ProductReview {
         this.comment = comment;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
 }
