@@ -28,12 +28,12 @@ public class RegisterServlet extends HttpServlet {
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
-        if(!validation.rePass(request.getParameter("password"), request.getParameter(confirmpassword))){
+        if(!validation.rePass(request.getParameter("password"), request.getParameter("confirmpassword"))){
             request.setAttribute("status", "Xác nhận mật khẩu không chính xác");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
-        if(!validation.isEmail(request.getParameter(email))){
+        if(!validation.isEmail(request.getParameter("email"))){
             request.setAttribute("status", "Email không đúng định dạng");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;

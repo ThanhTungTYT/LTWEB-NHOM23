@@ -2,8 +2,10 @@ package com.example.ltwebnhom23.controller.product;
 
 import com.example.ltwebnhom23.model.Product;
 import com.example.ltwebnhom23.model.ProductImage;
+import com.example.ltwebnhom23.model.ProductReview;
 import com.example.ltwebnhom23.services.ImageService;
 import com.example.ltwebnhom23.services.ProductService;
+import com.example.ltwebnhom23.services.ReviewService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -16,6 +18,7 @@ public class DetailProductServlet extends HttpServlet {
 
     private ProductService productService = new ProductService();
     private ImageService imageService = new ImageService();
+    private ReviewService reviewService = new ReviewService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +36,17 @@ public class DetailProductServlet extends HttpServlet {
         if (product != null) {
             List<Product> relative = productService.getProductsByRelative(product.getCategory_id(), product.getName(), product.getId());
             request.setAttribute("relative", relative);
+
+            List<ProductReview> review = reviewService.getReviewForProduct(productId);
+            int count = review.size();
+            int sum = 0;
+            for(ProductReview r : review){
+                sum += r.getRating();
+            }
+            double avg = sum/count;
+            request.setAttribute("count", count);
+            request.setAttribute("avg", avg);
+            request.setAttribute("review", review);
 
             List<ProductImage> listImage = imageService.getAllImageById(productId);
             request.setAttribute("listImage", listImage);

@@ -126,36 +126,59 @@
         <div class="product-comment-wrapper">
             <div class="review-summary">
                 <div class="average-rating">
-                    <span class="rating-value">0/5</span>
+                    <span class="rating-value">${avg}/5</span>
                     <div class="stars" style="--rating: 0" aria-label="Đánh giá trung bình là 0/5 sao"></div>
-                    <span class="review-count">(0 đánh giá)</span>
+                    <span class="review-count">(${count} đánh giá)</span>
                 </div>
             </div>
 
             <div class="review-list">
                 <div class="review-item">
-
+                    <c:forEach items="${review}" var="r">
+                        <div class="review-item">
+                            <div class="review-author">${r.username}</div>
+                            <div class="review-meta">
+                                <div class="stars" style="--rating: ${r.rating};" aria-label="Đánh giá ${r.rating}/5 sao"></div>
+                                <span class="review-date"></span>
+                            </div>
+                            <p class="review-body">
+                                ${r.comment}
+                            </p>
+                            <div class="review-images">
+                            </div>
+                        </div>
+                    </c:forEach>
                 </div>
-                <form class="review-form">
+                <form class="review-form" method="post"
+                      action="${pageContext.request.contextPath}/addReview">
+
+                    <input type="hidden" name="pid" value="${product.id}">
+
                     <h4>Viết đánh giá của bạn</h4>
+
                     <div class="form-group rating-group">
                         <label>Bạn đánh giá sản phẩm này bao nhiêu sao?</label>
                         <div class="star-rating-input">
-                            <input type="radio" id="star5" name="rating" value="5" required><label for="star5"
-                                                                                                   title="5 sao"></label>
-                            <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 sao"></label>
-                            <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 sao"></label>
-                            <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 sao"></label>
-                            <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 sao"></label>
+                            <input type="radio" id="star5" name="rating" value="5" required><label for="star5"></label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                            <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="comment-text">Bình luận của bạn:</label>
-                        <textarea id="comment-text" placeholder="Hãy chia sẻ cảm nhận của bạn về sản phẩm..."
-                                  rows="5"></textarea>
+        <textarea name="comment" rows="5"
+                  placeholder="Hãy chia sẻ cảm nhận của bạn..."></textarea>
                     </div>
+
                     <button type="submit">Gửi đánh giá</button>
+
+                    <c:if test="${not empty reviewNotice}">
+                        <p>${reviewNotice}</p>
+                    </c:if>
                 </form>
+
             </div>
         </div>
         <div class="product-relative">
@@ -166,16 +189,10 @@
             </div>
             <div class="product-catalog" id="product-catalog">
                 <c:forEach items="${relative}" var="p">
-                    <%-- Đã sửa: p.product_id -> p.id --%>
                     <a class="product" href="product?pid=${p.id}">
                         <img src="${p.image_url}" alt="${p.name}">
-
-                            <%-- Đã sửa: p.product_name -> p.name --%>
                         <p>${p.name}</p>
-
-                            <%-- Format giá --%>
                         <span><fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> VND</span>
-
                         <label>Loại: ${p.category_name}</label>
                     </a>
                 </c:forEach>

@@ -3,11 +3,11 @@ package com.example.ltwebnhom23.controller.auth;
 public class Validation {
 
     public boolean isEmail(String email){
-        if(email.contains('@')) return true;
+        if(email.contains("@")) return true;
         return false;
     }
     public boolean isPhone(String phone){
-        if(phone.length() != 10) return true;
+        if(phone.length() == 10) return true;
         return false;
     }
     public boolean rePass(String pass, String rePass){
