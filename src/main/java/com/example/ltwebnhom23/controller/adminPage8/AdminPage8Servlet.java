@@ -15,9 +15,18 @@ public class AdminPage8Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Promotion> list = PromotionService.getInstance().getAllPromotions();
+        String keyword = request.getParameter("search");
+        List<Promotion> listPromotions;
 
-        request.setAttribute("listPromotions", list);
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            listPromotions = PromotionService.getInstance().searchPromotions(keyword.trim());
+        } else {
+            listPromotions = PromotionService.getInstance().getAllPromotions();
+        }
+
+        request.setAttribute("listPromotions", listPromotions);
+
+        request.setAttribute("searchKeyword", keyword);
 
         request.getRequestDispatcher("/adminPage8.jsp").forward(request, response);
     }

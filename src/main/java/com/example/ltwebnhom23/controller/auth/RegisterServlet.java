@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
         if(!validation.passLength(request.getParameter("password"), LENGTH)){
-            request.setAttribute("status", "Mật khẩu phải có ít nhất" + LENGTH + "kí tự");
+            request.setAttribute("status", "Mật khẩu phải có ít nhất " + LENGTH + " kí tự");
             request.getRequestDispatcher("register.jsp").forward(request, response);
             return;
         }
