@@ -57,7 +57,7 @@
         <div class="forgot-password">
             <p>Quên mật khẩu? <a href="forgotpassword.html">Click vào đây</a></p>
         </div>
-        <p>${error}</p>
+        <p class="error-msg">${error}</p>
         <button type="submit" id="b-login">Đăng nhập</button>
     </form>
     <div class="register-link">

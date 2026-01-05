@@ -72,9 +72,16 @@
 
 .container .or-login .icon-btn {
     border: none;
-    background: transparent; /* loại bỏ viền và nền của nút */
+    background: transparent;
     padding: 0;
     margin: 0 8px;
     cursor: pointer;
-    appearance: none; /* loại bỏ kiểu dáng mặc định của nút */
+    appearance: none;
+}
+
+.container .status {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
 }

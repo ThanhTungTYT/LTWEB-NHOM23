@@ -95,7 +95,7 @@
                             </button>
 
                             <button class="btn-reply" onclick="openReply('${c.full_name}', '${c.email}')" title="Phản hồi">
-                                <i class="fa-solid fa-paper-plane"></i>
+                                <i class="fa-solid fa-reply"></i>
                             </button>
                         </td>
                     </tr>

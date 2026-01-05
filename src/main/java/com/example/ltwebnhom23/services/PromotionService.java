@@ -22,4 +22,8 @@ public class PromotionService {
     public List<Promotion> getAllPromotions() {
         return promotionDao.getAll();
     }
+
+    public List<Promotion> searchPromotions(String keyword) {
+        return promotionDao.searchPromotions(keyword);
+    }
 }

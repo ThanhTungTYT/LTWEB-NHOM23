@@ -75,3 +75,10 @@
     color: #cd764d;
     text-decoration: none;
 }
+
+.container .error-msg {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}

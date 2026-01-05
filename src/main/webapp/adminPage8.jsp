@@ -42,9 +42,9 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ MÃ GIẢM GIÁ</p>
     </div>
-    <form class="search-bar">
-        <input type="text" placeholder="Tìm kiếm mã giảm giá" required>
-        <button><i class="fas fa-search"></i></button>
+    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage8" method="GET">
+        <input type="text" name="search" placeholder="Tìm kiếm mã giảm giá (ID hoặc Code)" value="${searchKeyword}">
+        <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-menu">
         <button id="add">+ Thêm mã giảm giá</button>
@@ -69,7 +69,7 @@
             <c:forEach items="${listPromotions}" var="p">
                 <tr>
                     <td>#${p.id}</td>
-                    <td><strong style="color: #c76739;">${p.code}</strong></td>
+                    <td><strong>${p.code}</strong></td>
                     <td>${p.description}</td>
 
                     <td>
@@ -137,12 +137,10 @@
         </div>
         <button class="submit" type="submit">Tạo Mã</button>
     </form>
-    =======
     <div class="form-add" id="form-add" style="display: none">
         <div class="form-title">
             <p>THÊM MÃ KHUYẾN MÃI</p>
             <button id="take-off">X</button>
-            >>>>>>> origin/main
         </div>
         <form class="main-form">
             <div class="p name-p">
