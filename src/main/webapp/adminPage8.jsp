@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
         <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item">Quản lí banner</a>
-        <a href="${pageContext.request.contextPath}/adminPage8.jsp" class="menu-item active">Quản lí mã giảm giá</a>
+        <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item active">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
         <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
     </div>
@@ -65,63 +66,39 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>#V001</td>
-                <td><strong>SALE10</strong></td>
-                <td>10% cho đơn trên 500k</td>
-                <td>500k</td>
-                <td>10%</td>
-                <td>100</td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#V002</td>
-                <td><strong>SALE15</strong></td>
-                <td>15% cho đơn trên 800k</td>
-                <td>800k</td>
-                <td>15%</td>
-                <td>100</td>
-                <td></td>
-                <td>31/12/2024</td>
-                <td>
-                    <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#V003</td>
-                <td><strong>SALE10</strong></td>
-                <td>20% cho đơn trên 1000k</td>
-                <td>1000k</td>
-                <td>20%</td>
-                <td>100</td>
-                <td>1/1/2000</td>
-                <td>31/12/2025</td>
-                <td>
-                    <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>#V04</td>
-                <td><strong>SALE10</strong></td>
-                <td>5% trong giáng sinh</td>
-                <td>24-25 tháng 12</td>
-                <td>5%</td>
-                <td>100</td>
-                <td>24/12/2025</td>
-                <td>25/12/2025</td>
-                <td>
-                    <button class="delete"><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
+            <c:forEach items="${listPromotions}" var="p">
+                <tr>
+                    <td>#${p.id}</td>
+                    <td><strong style="color: #c76739;">${p.code}</strong></td>
+                    <td>${p.description}</td>
+
+                    <td>
+                        <fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
+                    </td>
+
+                    <td>
+                        <fmt:formatNumber value="${p.discountPercent}" type="number" maxFractionDigits="0"/>%
+                    </td>
+
+                    <td style="text-align: center;">${p.quantity}</td>
+
+                    <td>
+                        <fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/>
+                    </td>
+
+                    <td>
+                        <fmt:formatDate value="${p.endDate}" pattern="dd/MM/yyyy"/>
+                    </td>
+
+                    <td>
+                        <button class="delete"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
-<<<<<<< HEAD
 <div class="form-add" id="form-add" style="display: none">
     <div class="form-title">
         <p>THÊM MÃ KHUYẾN MÃI</p>
