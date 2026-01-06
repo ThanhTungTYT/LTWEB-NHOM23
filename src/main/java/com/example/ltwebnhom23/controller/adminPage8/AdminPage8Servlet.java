@@ -15,6 +15,21 @@ public class AdminPage8Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        String idStr = request.getParameter("id");
+
+        if ("delete".equals(action) && idStr != null) {
+            try {
+                int id = Integer.parseInt(idStr);
+                PromotionService.getInstance().deletePromotion(id);
+
+                response.sendRedirect(request.getContextPath() + "/adminPage8");
+                return;
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
         String keyword = request.getParameter("search");
         List<Promotion> listPromotions;
 
@@ -25,7 +40,6 @@ public class AdminPage8Servlet extends HttpServlet {
         }
 
         request.setAttribute("listPromotions", listPromotions);
-
         request.setAttribute("searchKeyword", keyword);
 
         request.getRequestDispatcher("/adminPage8.jsp").forward(request, response);

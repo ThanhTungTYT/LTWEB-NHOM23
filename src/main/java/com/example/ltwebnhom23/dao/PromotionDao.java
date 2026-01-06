@@ -35,4 +35,12 @@ public class PromotionDao extends BaseDao {
                         .list()
         );
     }
+
+    public int delete(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("DELETE FROM promotions WHERE id = :id")
+                        .bind("id", id)
+                        .execute()
+        );
+    }
 }
