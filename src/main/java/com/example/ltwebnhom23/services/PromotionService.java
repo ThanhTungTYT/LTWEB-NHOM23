@@ -26,4 +26,8 @@ public class PromotionService {
     public List<Promotion> searchPromotions(String keyword) {
         return promotionDao.searchPromotions(keyword);
     }
+
+    public boolean deletePromotion(int id) {
+        return promotionDao.delete(id) > 0;
+    }
 }

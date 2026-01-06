@@ -12,6 +12,7 @@ public class Promotion implements Serializable {
     private Timestamp startDate;
     private Timestamp endDate;
     private int quantity;
+    private String state;
 
     public Promotion() {}
 
@@ -39,4 +40,7 @@ public class Promotion implements Serializable {
 
     public int getQuantity() { return quantity; }
     public void setQuantity(int quantity) { this.quantity = quantity; }
+
+    public String getState() {return state; }
+    public void setState(String state) {this.state = state; }
 }

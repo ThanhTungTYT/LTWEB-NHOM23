@@ -42,13 +42,16 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ MÃ GIẢM GIÁ</p>
     </div>
+
     <form class="search-bar" action="${pageContext.request.contextPath}/adminPage8" method="GET">
         <input type="text" name="search" placeholder="Tìm kiếm mã giảm giá (ID hoặc Code)" value="${searchKeyword}">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
+
     <div class="main-menu">
-        <button id="add">+ Thêm mã giảm giá</button>
+        <button id="btn-open-add">+ Thêm mã giảm giá</button>
     </div>
+
     <div class="list-discount">
         <h3 class="discount-title">DANH SÁCH MÃ GIẢM GIÁ</h3>
         <table>
@@ -59,10 +62,10 @@
                 <th>Mô tả</th>
                 <th>Điều kiện</th>
                 <th>Mức giảm</th>
-                <th>Số lượng</th>
-                <th>Thời gian bắt đầu</th>
-                <th>Hạn sử dụng</th>
-                <th></th>
+                <th>SL</th>
+                <th>Bắt đầu</th>
+                <th>Kết thúc</th>
+                <th>Trạng thái</th> <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
@@ -71,107 +74,102 @@
                     <td>#${p.id}</td>
                     <td><strong>${p.code}</strong></td>
                     <td>${p.description}</td>
-
-                    <td>
-                        <fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="đ" maxFractionDigits="0"/>
-                    </td>
-
-                    <td>
-                        <fmt:formatNumber value="${p.discountPercent}" type="number" maxFractionDigits="0"/>%
-                    </td>
-
+                    <td><fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="đ" maxFractionDigits="0"/></td>
+                    <td><fmt:formatNumber value="${p.discountPercent}" type="number" maxFractionDigits="0"/>%</td>
                     <td style="text-align: center;">${p.quantity}</td>
+                    <td><fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/></td>
+                    <td><fmt:formatDate value="${p.endDate}" pattern="dd/MM/yyyy"/></td>
 
-                    <td>
-                        <fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/>
+                    <td style="text-align: center;"> <span class="status-text ${p.state == 'active' ? 'active' : 'inactive'}">
+                            ${p.state == 'active' ? 'Active' : 'Inactive'}
+                    </span>
                     </td>
 
                     <td>
-                        <fmt:formatDate value="${p.endDate}" pattern="dd/MM/yyyy"/>
-                    </td>
+                        <button type="button" class="btn-action btn-edit"
+                                data-id="${p.id}"
+                                data-code="${p.code}"
+                                data-desc="${p.description}"
+                                data-min="<fmt:formatNumber value='${p.minOrderValue}' pattern='#' />"
+                                data-discount="<fmt:formatNumber value='${p.discountPercent}' pattern='#' />"
+                                data-quantity="${p.quantity}"
+                                data-start="<fmt:formatDate value='${p.startDate}' pattern='yyyy-MM-dd'/>"
+                                data-end="<fmt:formatDate value='${p.endDate}' pattern='yyyy-MM-dd'/>"
+                                data-state="${p.state}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
 
-                    <td>
-                        <button class="delete"><i class="fa-solid fa-trash"></i></button>
+                        <a href="${pageContext.request.contextPath}/adminPage8?action=delete&id=${p.id}"
+                           class="btn-action btn-delete"
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa mã này không?');">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
                     </td>
-                </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
-<div class="form-add" id="form-add" style="display: none">
+
+<div class="form-add" id="form-promotion" style="display: none">
     <div class="form-title">
-        <p>THÊM MÃ KHUYẾN MÃI</p>
-        <button id="take-off">X</button>
-    </div>
-    <form class="main-form">
+        <p id="popup-title">THÊM MÃ KHUYẾN MÃI</p>
+        <button id="take-off">X</button> </div>
+
+    <form class="main-form" action="${pageContext.request.contextPath}/adminPage8" method="POST">
+        <input type="hidden" name="action" id="input-action" value="add">
+        <input type="hidden" name="id" id="input-id" value="">
+
         <div class="p name-p">
             <label>Mã Code</label>
-            <input type="text" placeholder="Mã giảm giá" required>
+            <input type="text" name="code" id="input-code" required>
         </div>
+
         <div class="price-p">
             <label>Mô tả</label>
-            <input type="text" placeholder="Nhập thông tin" required>
+            <textarea name="description" id="input-description" style="width: 60%; height: 50px; padding: 5px"></textarea>
         </div>
 
         <div class="price-p">
-            <label>Điều kiện</label>
-            <input type="number" placeholder="Nhập số tiền tối thiểu" required>
+            <label>Đơn tối thiểu</label>
+            <input type="number" name="minOrderValue" id="input-min" required>
         </div>
 
         <div class="price-p">
-            <label>Giá trị giảm</label>
-            <input type="number" placeholder="Phần trăm giảm" required>
+            <label>Mức giảm (%)</label>
+            <input type="number" name="discountPercent" id="input-discount" required>
         </div>
+
         <div class="count-p">
             <label>Số lượng</label>
-            <input type="number" placeholder="Số lượng mã" required>
+            <input type="number" name="quantity" id="input-quantity" required>
         </div>
+
         <div class="count-p">
             <label>Ngày bắt đầu</label>
-            <input type="date" required>
+            <input type="date" name="startDate" id="input-start" required>
         </div>
+
         <div class="count-p">
             <label>Hạn sử dụng</label>
-            <input type="date" required>
+            <input type="date" name="endDate" id="input-end" required>
         </div>
-        <button class="submit" type="submit">Tạo Mã</button>
+
+        <div class="type-p">
+            <label>Trạng thái</label>
+            <select name="state" id="input-state">
+                <option value="active">Active (Hoạt động)</option>
+                <option value="inactive">Inactive (Ngừng)</option>
+            </select>
+        </div>
+
+        <button class="submit" type="submit">Xác nhận</button>
     </form>
-    <div class="form-add" id="form-add" style="display: none">
-        <div class="form-title">
-            <p>THÊM MÃ KHUYẾN MÃI</p>
-            <button id="take-off">X</button>
-        </div>
-        <form class="main-form">
-            <div class="p name-p">
-                <label>Mã Code</label>
-                <input type="text" placeholder="Mã giảm giá" required>
-            </div>
-            <div class="type-p">
-                <label>Loại giảm giá</label>
-                <select>
-                    <option>Theo phần trăm (%)</option>
-                    <option>Theo số tiền (VND)</option>
-                </select>
-            </div>
-            <div class="price-p">
-                <label>Giá trị giảm</label>
-                <input type="number" placeholder="Nhập số..." required>
-            </div>
-            <div class="count-p">
-                <label>Số lượng</label>
-                <input type="number" placeholder="Số lượng mã" required>
-            </div>
-            <div class="count-p">
-                <label>Hạn sử dụng</label>
-                <input type="date" required>
-            </div>
-            <button class="submit" type="submit">Tạo Mã</button>
-        </form>
-    </div>
 </div>
 
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
-    <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/adminPage8.js"></script>
+
 </body>
 </html>
