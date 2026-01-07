@@ -64,4 +64,7 @@ public class ProductService {
     public boolean deleteProduct(int id) {
         return productDao.deleteProduct(id);
     }
+    public boolean updateProduct(Product p) {
+        return productDao.updateProduct(p);
+    }
 }

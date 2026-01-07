@@ -180,4 +180,28 @@ public class ProductDao extends BaseDao {
                         .execute() > 0
         );
     }
+    // Trong file ProductDao.java
+
+    public boolean updateProduct(Product p) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE products SET " +
+                                "name = :name, " +
+                                "category_id = :catId, " +
+                                "price = :price, " +
+                                "stock = :stock, " +
+                                "weight_grams = :weight, " +
+                                "description = :desc, " +
+                                "state = :state " +  // Lưu ý: Không có dấu phẩy ở dòng cuối cùng này
+                                "WHERE id = :id")    // Lưu ý: Có dấu cách trước WHERE
+                        .bind("name", p.getName())
+                        .bind("catId", p.getCategory_id())
+                        .bind("price", p.getPrice())
+                        .bind("stock", p.getStock())
+                        .bind("weight", p.getWeight_grams())
+                        .bind("desc", p.getDescription())
+                        .bind("state", p.getState())
+                        .bind("id", p.getId())
+                        .execute() > 0
+        );
+    }
 }
