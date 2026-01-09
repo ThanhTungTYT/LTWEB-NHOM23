@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %> <%-- Thêm thư viện fmt để format tiền nếu cần --%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 
 <html>
 <head>
@@ -24,7 +24,7 @@
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">3</span>
+                <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
@@ -72,7 +72,8 @@
                 <div class="sub-content">
                     <p>Thương hiệu: <span>Aroma Cafe</span></p>
                 </div>
-                <form>
+                <form method="post" action="${pageContext.request.contextPath}/add-to-cart">
+                    <input type="hidden" name="pid" value="${product.id}">
                     <div class="weight">
                         <label>Khối lượng</label>
                         <p>${product.weight_grams} gram</p>
@@ -84,6 +85,7 @@
                     <div class="count-num">
                         <label>Số lượng</label>
                         <button id="count-minus" type="button">-</button>
+                        <input type="hidden" name="q" id="q" value="1">
                         <span id="num-count">1</span>
                         <button id="count-add" type="button">+</button>
                     </div>
@@ -237,5 +239,22 @@
 
 <script src="${pageContext.request.contextPath}/assets/js/product.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
+<script>
+    const numCount = document.getElementById("num-count");
+    const qInput = document.getElementById("q");
+
+    document.getElementById("count-add").onclick = () => {
+        let v = parseInt(numCount.innerText) + 1;
+        numCount.innerText = v;
+        qInput.value = v;
+    };
+
+    document.getElementById("count-minus").onclick = () => {
+        let v = Math.max(1, parseInt(numCount.innerText) - 1);
+        numCount.innerText = v;
+        qInput.value = v;
+    };
+
+</script>
 </body>
 </html>

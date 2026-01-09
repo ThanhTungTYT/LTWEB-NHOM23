@@ -1,0 +1,36 @@
+package com.example.ltwebnhom23.controller.cart;
+
+import com.example.ltwebnhom23.cart.Cart;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+
+@WebServlet(name = "CartServlet", value = "/cart")
+public class CartServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+        Cart cart = null;
+
+        if (session != null) {
+            cart = (Cart) session.getAttribute("cart");
+        }
+
+        if (cart == null) {
+            cart = new Cart(); // tránh null
+        }
+
+        request.setAttribute("cart", cart);
+        request.getRequestDispatcher("/cart.jsp").forward(request, response);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+}

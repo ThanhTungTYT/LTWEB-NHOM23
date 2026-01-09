@@ -26,7 +26,7 @@
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">3</span>
+                <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
