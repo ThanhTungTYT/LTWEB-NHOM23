@@ -1,24 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     height: 100vh;
     font-family: Tahoma, Arial, sans-serif;
     background-color: #f5f5f5;
 }
-
 header {
     width: 100%;
     background-color: #A0522D;
     color: white;
     font-family: Arial, sans-serif;
 }
-
 .top {
     position: relative;
     width: 100%;
@@ -28,32 +24,32 @@ header {
     padding: 5px 100px;
     gap: 20px;
 }
-
-.top .logo {
+.top .logo{
     cursor: pointer;
 }
-
 .search-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-43%);
     display: flex;
-    align-items: center;
-    width: 500px;
-    max-width: 100%;
+    flex-grow: 1;
+    max-width: 600px;
 }
-
 #search-input {
-    flex: 1;
-    width: auto;
+    width: 600px;
     border: none;
     padding: 12px 20px;
     font-size: 1rem;
     border-radius: 25px 0 0 25px;
+    outline: none;
+    color: #333;
 }
 
 #search-button {
     width: 90px;
     border: none;
     padding: 10px 18px;
-    background-color: #cd764d;
+    background-color: #cd764d ;
     color: white;
     cursor: pointer;
     border-radius: 0 25px 25px 0;
@@ -62,31 +58,26 @@ header {
 }
 
 #search-button:hover {
-    background-color: #c76739;
+    background-color: #c76739 ;
 }
-
 .mini-menu {
     display: flex;
     align-items: center;
     gap: 100px;
 }
-
 .mini-menu a {
     color: white;
     text-decoration: none;
     font-size: 24px;
     transition: all 0.2s ease-in-out;
 }
-
 .mini-menu a:hover {
     transform: scale(1.1);
     color: #cd764d;
 }
-
 .cart {
     position: relative;
 }
-
 #num-cart-label {
     position: absolute;
     top: -10px;
@@ -103,11 +94,9 @@ header {
     text-align: center;
     line-height: 18px;
 }
-
-.top .mini-menu .user {
+.top .mini-menu .user{
     cursor: pointer;
 }
-
 .bottom {
     display: flex;
     justify-content: center;
@@ -126,7 +115,6 @@ header {
     border-radius: 5px;
     transition: background-color 0.2s;
 }
-
 /* ===== FOOTER ===== */
 footer {
     background-color: #A0522D;
@@ -203,8 +191,7 @@ footer {
     padding: 10px;
     font-size: 15px;
 }
-
-.slide-top {
+.slide-top{
     position: fixed;
     display: none;
     bottom: 20px;
@@ -217,8 +204,7 @@ footer {
     border: 3px solid black;
     cursor: pointer;
 }
-
-.slide-top:hover {
+.slide-top:hover{
     background: saddlebrown;
     color: white;
 }

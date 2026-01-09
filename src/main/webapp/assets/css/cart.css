@@ -1,5 +1,11 @@
-e
-    /* Container giỏ hàng */
+/* Ẩn mũi tên trong input number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Container giỏ hàng */
 .cart-container {
     max-width: 900px;
     margin: 40px auto;
@@ -11,7 +17,7 @@ e
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #c76739;
+    color:  #c76739;
 }
 
 /* Xoá tất cả sản phẩm */
@@ -93,7 +99,6 @@ e
     color: #333;
     margin-top: 4px;
 }
-
 .product-weight span {
     font-weight: 600;
     color: #c76739;
@@ -126,12 +131,10 @@ e
     cursor: pointer;
     font-size: 18px;
 }
-
 /* Hiệu ứng hover cho nút tăng giảm số lượng */
 .product-quantity button:hover {
     background: #ddd;
 }
-
 /* Input số lượng sản phẩm */
 .product-quantity input {
     width: 40px;
@@ -142,7 +145,7 @@ e
 }
 
 /* Tổng tiền giỏ hàng */
-.cart-totals {
+.cart-totals{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -150,18 +153,17 @@ e
     margin-bottom: 20px;
     margin-top: 10px;
 }
-
 /* Tiêu đề tổng tiền giỏ hàng */
-.cart-totals h3 {
+.cart-totals h3{
     font-size: 25px;
-    color: #c76739;
+    color:  #c76739;
 }
 
 /* Số tổng tiền giỏ hàng */
-.cart-totals span {
+.cart-totals span{
     font-size: 30px;
     font-weight: bold;
-    color: #c76739;
+    color:  #c76739;
     margin: auto;
 }
 
@@ -176,12 +178,12 @@ e
 
 /* Nút Thanh toán */
 .checkout-button {
-    text-decoration: none;
+    text-decoration:none;
     text-align: center;
     display: block;
     width: 100%;
     background-color: #c76739;
-    color: white;
+    color: white ;
     border: none;
     padding: 18px 0;
     font-size: 22px;
