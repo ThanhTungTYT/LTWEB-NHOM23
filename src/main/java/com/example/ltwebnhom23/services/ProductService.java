@@ -60,11 +60,30 @@ public class ProductService {
             return false;
         }
     }
-
-    public boolean deleteProduct(int id) {
-        return productDao.deleteProduct(id);
-    }
     public boolean updateProduct(Product p) {
         return productDao.updateProduct(p);
+    }
+
+    public void deleteListProducts(String[] ids) {
+        if (ids == null || ids.length == 0) return;
+
+        for (String idStr : ids) {
+            try {
+                int id = Integer.parseInt(idStr.trim());
+                int sold = productDao.getSoldCount(id);
+
+                if (sold > 0) {
+                    productDao.softDeleteProduct(id);
+                } else {
+                    try {
+                        productDao.hardDeleteProduct(id);
+                    } catch (Exception e) {
+                        productDao.softDeleteProduct(id);
+                    }
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

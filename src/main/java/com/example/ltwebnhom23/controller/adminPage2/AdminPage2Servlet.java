@@ -40,8 +40,8 @@ public class AdminPage2Servlet  extends HttpServlet {
                 case "add_category":
                     handleAddCategory(request, response);
                     break;
-                case "delete_product":
-                    handleDeleteProduct(request, response);
+                case "delete_list":
+                    handleDeleteList(request, response);
                     break;
                 case "delete_category":
                     handleDeleteCategory(request, response);
@@ -96,14 +96,20 @@ public class AdminPage2Servlet  extends HttpServlet {
         }
         response.sendRedirect(request.getContextPath() + "/adminPage2");
     }
-    private void handleDeleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            productService.deleteProduct(id); // Gọi service để xóa
-            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_product");
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_id");
+    private void handleDeleteList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String idsStr = request.getParameter("ids");
+
+        if (idsStr != null && !idsStr.trim().isEmpty()) {
+            // Tách chuỗi thành mảng
+            String[] ids = idsStr.split(",");
+
+            productService.deleteListProducts(ids);
+
+            // Thông báo thành công
+            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_list_success");
+        } else {
+            // Thông báo lỗi nếu danh sách rỗng
+            response.sendRedirect(request.getContextPath() + "/adminPage2?error=no_selection");
         }
     }
 
