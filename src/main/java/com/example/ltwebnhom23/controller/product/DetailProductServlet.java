@@ -38,13 +38,16 @@ public class DetailProductServlet extends HttpServlet {
             request.setAttribute("relative", relative);
 
             List<ProductReview> review = reviewService.getReviewForProduct(productId);
-            int count = review.size();
+            if(review.size()>0){
+                int count = review.size();
+            }
+            int count = 1;
             int sum = 0;
             for(ProductReview r : review){
                 sum += r.getRating();
             }
             double avg = sum/count;
-            request.setAttribute("count", count);
+            request.setAttribute("count", review.size());
             request.setAttribute("avg", avg);
             request.setAttribute("review", review);
 
