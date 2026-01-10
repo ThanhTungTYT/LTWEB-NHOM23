@@ -95,7 +95,9 @@
         <table>
             <thead>
             <tr>
-                <th></th>
+                <th style="width: 40px; text-align: center;">
+                    <input type="checkbox" onclick="toggleSelectAll(this)" style="cursor: pointer;">
+                </th>
                 <th>ID</th>
                 <th>Tên sản phẩm</th>
                 <th>Loại sản phẩm</th>
@@ -104,28 +106,39 @@
                 <th>Số lượng còn</th>
                 <th>Số lượng bán</th>
                 <th>Trạng thái</th>
-                <th></th>
+                <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${products}" var="p">
                 <tr>
-                    <td><input type="checkbox" name="productIds" value="${p.id}"></td>
+                    <td style="text-align: center;">
+                        <input type="checkbox" name="productIds" value="${p.id}" style="cursor: pointer;">
+                    </td>
 
                     <td>#${p.id}</td>
-
                     <td style="font-weight: bold; text-align: left;">${p.name}</td>
-
                     <td>${p.category_name != null ? p.category_name : 'Khác'}</td>
-
                     <td>${p.weight_grams}</td>
 
                     <td style="color: #d32f2f; font-weight: bold;">
                         <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> đ
                     </td>
-                    <td>${p.stock}</td>
+
+                    <td style="${p.stock == 0 ? 'color:red; font-weight:bold;' : ''}">${p.stock}</td>
                     <td>${p.sold}</td>
-                    <td>${p.state}</td>
+
+                    <td>
+                        <c:choose>
+                            <c:when test="${p.state == 'Deleted'}">
+                                <span style="color:gray; font-style:italic;">Đã ẩn</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span style="color:green;">Active</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+
                     <td>
                         <button class="remake"
                                 type="button"
@@ -135,6 +148,7 @@
                                 data-weight="${p.weight_grams}"
                                 data-price="${p.price}"
                                 data-stock="${p.stock}"
+                                data-state="${p.state}"
                                 data-desc="${p.description}"
                                 onclick="openEditModal(this)">
                             <i class="fa-solid fa-pen"></i>
@@ -142,17 +156,14 @@
                     </td>
                 </tr>
             </c:forEach>
-
-            <c:if test="${empty products}">
-                <tr>
-                    <td colspan="9" style="text-align:center; padding: 20px;">
-                        Chưa có sản phẩm nào.
-                    </td>
-                </tr>
-            </c:if>
             </tbody>
         </table>
-        <button>Xóa sản phẩm</button>
+
+        <div style="margin-top: 15px;">
+            <button type="button" onclick="deleteCheckedProducts()">
+                 Xóa sản phẩm
+            </button>
+        </div>
     </div>
 </div>
 <div class="form-add" id="form-add" style="display: none">
@@ -204,43 +215,58 @@
 <div class="form-add" id="form-remake" style="display: none">
     <div class="form-title">
         <p>SỬA SẢN PHẨM</p>
-        <button id="close-remake" type="button" >X</button>
+        <button id="close-remake" type="button" onclick="closeEditModal()">X</button>
     </div>
-    <form class="main-form">
+
+    <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+        <input type="hidden" name="action" value="edit_product">
+
+        <input type="hidden" name="id" id="edit-id-hidden">
+
         <div class="p id-p">
             <label>ID</label>
-            <p>P00#</p>
+            <input type="text" id="edit-id-display" readonly style="background-color: #f0f0f0;">
         </div>
+
         <div class="p name-p">
             <label>Tên sản phẩm</label>
-            <input type="text" placeholder="Tên sản phẩm">
+            <input type="text" name="name" id="edit-name" required>
         </div>
+
         <div class="type-p">
             <label>Loại sản phẩm</label>
-            <select name="category_id">
+            <select name="category_id" id="edit-category">
                 <option value="">-- Chọn loại --</option>
                 <c:forEach items="${categories}" var="cat">
                     <option value="${cat.id}">${cat.name}</option>
                 </c:forEach>
             </select>
         </div>
+        <div class="state-p">
+            <label>Trạng thái</label>
+            <select name="state" id="edit-state">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
         <div class="price-p">
             <label>Giá sản phẩm</label>
-            <input type="text" placeholder="Giá sản phẩm">
+            <input type="number" name="price" id="edit-price" required>
         </div>
         <div class="weight-p">
             <label>Khối lượng</label>
-            <input type="text" placeholder="Khối lượng" required>
+            <input type="number" name="weight" id="edit-weight" required>
         </div>
         <div class="p name-p">
             <label>Số lượng</label>
-            <input type="text" placeholder="Số lượng">
+            <input type="number" name="stock" id="edit-stock" required>
         </div>
         <div class="des-p">
             <label>Mô tả</label>
-            <textarea placeholder="Mô tả"></textarea>
+            <textarea name="description" id="edit-desc"></textarea>
         </div>
-        <button class="submit" type="submit">Thêm</button>
+
+        <button class="submit" type="submit">Cập nhật</button>
     </form>
 </div>
 <div id="form-add-cat" class="form-add">
@@ -262,6 +288,10 @@
 <form id="form-delete-cat" action="${pageContext.request.contextPath}/adminPage2" method="post" style="display: none;">
     <input type="hidden" name="action" value="delete_category">
     <input type="hidden" name="id" id="input-cat-id">
+</form>
+<form id="delete-form" action="${pageContext.request.contextPath}/adminPage2" method="post" style="display: none;">
+    <input type="hidden" name="action" id="delete-action">
+    <input type="hidden" name="ids" id="delete-ids-multi">
 </form>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>

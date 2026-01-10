@@ -12,6 +12,7 @@ public class ProductDao extends BaseDao {
                                 "c.name AS category_name " +
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
+                                "WHERE p.state = 'active'" +
                                 "ORDER BY p.sold DESC " +
                                 "LIMIT 4")
                         .mapToBean(Product.class)
@@ -44,7 +45,7 @@ public class ProductDao extends BaseDao {
                                 "c.name AS category_name " +
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
-                                "WHERE p.category_id = :c")
+                                "WHERE p.state ='active' And p.category_id = :c")
                         .bind("c", cid)
                         .mapToBean(Product.class)
                         .list()
@@ -61,7 +62,7 @@ public class ProductDao extends BaseDao {
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
                                 "LEFT JOIN products_review r ON p.id = r.product_id " +
-                                "WHERE p.id = :pid " +
+                                "WHERE p.state ='active' And p.id = :pid " +
                                 "GROUP BY p.id, c.name")
                         .bind("pid", pid)
                         .mapToBean(Product.class)
@@ -78,7 +79,7 @@ public class ProductDao extends BaseDao {
                                 "c.name AS category_name " +
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
-                                "WHERE (p.name LIKE CONCAT('%', :name, '%') OR p.category_id = :category_id) " +
+                                "WHERE ( p.state ='active' And p.name LIKE CONCAT('%', :name, '%') OR p.category_id = :category_id) " +
                                 "AND p.id != :product_id " +
                                 "ORDER BY p.sold DESC LIMIT 4")
                         .bind("name", name)
@@ -173,14 +174,40 @@ public class ProductDao extends BaseDao {
         );
     }
 
-    public boolean deleteProduct(int id) {
+    public int getSoldCount(int id) {
         return getJdbi().withHandle(handle ->
-                handle.createUpdate("UPDATE products SET state = 'Deleted' WHERE id = :id")
+                handle.createQuery("SELECT sold FROM products WHERE id = :id")
+                        .bind("id", id)
+                        .mapTo(Integer.class)
+                        .findOne()
+                        .orElse(0)
+        );
+    }
+
+    // ẩn sản phẩm nếu đã mua
+    public boolean softDeleteProduct(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE products SET state = 'inactive' WHERE id = :id")
                         .bind("id", id)
                         .execute() > 0
         );
     }
-    // Trong file ProductDao.java
+
+    //  Xóa vĩnh viễn
+    public boolean hardDeleteProduct(int id) {
+        return getJdbi().withHandle(handle -> {
+            // xóa ảnh trong bảng phụ trước để tránh lỗi khóa ngoại (Foreign Key)
+            handle.createUpdate("DELETE FROM product_images WHERE product_id = :id")
+                    .bind("id", id)
+                    .execute();
+
+            // Sau đó xóa sản phẩm
+            return handle.createUpdate("DELETE FROM products WHERE id = :id")
+                    .bind("id", id)
+                    .execute() > 0;
+        });
+    }
+
 
     public boolean updateProduct(Product p) {
         return getJdbi().withHandle(handle ->
