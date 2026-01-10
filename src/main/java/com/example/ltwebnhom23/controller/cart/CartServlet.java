@@ -22,7 +22,7 @@ public class CartServlet extends HttpServlet {
         }
 
         if (cart == null) {
-            cart = new Cart(); // tránh null
+            cart = new Cart();
         }
 
         request.setAttribute("cart", cart);

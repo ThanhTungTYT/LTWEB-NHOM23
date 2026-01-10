@@ -54,17 +54,17 @@
 
   <div class="clear-all-container" style="display: flex; justify-content: space-between;">
     <a href="#" class="select-all-cart">Chọn tất cả</a>
-    <a href="#" class="clear-all-cart">Xóa tất cả</a>
+    <a href="${pageContext.request.contextPath}/remove-all" class="clear-all-cart">Xóa tất cả</a>
   </div>
 
   <div id="cart-list">
-    <div id="cart-list">
-      <c:forEach items="${cart.list}" var="item">
+      <c:forEach items="${sessionScope.cart.list}" var="item">
         <div class="cart-item" data-price="${item.price}">
+          <input type="hidden" name="pid" value="${item.product.id}">
           <input type="checkbox" class="product-select">
-          <div class="product-remove">
+          <a href="${pageContext.request.contextPath}/remove-item?pid=${item.product.id}" class="product-remove">
               <i class="fas fa-times"></i>
-          </div>
+          </a>
           <div class="product-thumbnail">
             <img src="${item.product.image_url}" alt="${item.product.name}"/>
           </div>
@@ -90,12 +90,11 @@
           </div>
         </div>
       </c:forEach>
-    </div>
   </div>
   <div class="cart-totals">
     <h3>TỔNG CỘNG</h3>
     <span id="cart-total">
-    <fmt:formatNumber value="${cart.total}" type="number"/>đ
+    <fmt:formatNumber value="${sessionScope.cart.total}" type="number"/>đ
     </span>
     <p>(Chỉ tính các sản phẩm được chọn)</p>
   </div>
