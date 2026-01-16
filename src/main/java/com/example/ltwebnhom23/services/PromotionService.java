@@ -30,4 +30,16 @@ public class PromotionService {
     public boolean deletePromotion(int id) {
         return promotionDao.delete(id) > 0;
     }
+
+    public boolean isCodeExist(String code) {
+        return promotionDao.checkCodeExist(code);
+    }
+
+    public boolean addPromotion(Promotion p) {
+        return promotionDao.insert(p) > 0;
+    }
+
+    public void autoUpdateStatus() {
+        promotionDao.autoUpdateStates();
+    }
 }

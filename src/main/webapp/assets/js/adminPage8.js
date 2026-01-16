@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("form-promotion");
-    const btnAdd = document.getElementById("btn-open-add");
+    const btnOpenAdd = document.getElementById("btn-open-add");
     const btnClose = document.getElementById("take-off");
     const content = document.getElementById("right-content");
 
     const formTitle = document.getElementById("popup-title");
     const inputAction = document.getElementById("input-action");
     const inputId = document.getElementById("input-id");
+
     const inputCode = document.getElementById("input-code");
     const inputDesc = document.getElementById("input-description");
     const inputMin = document.getElementById("input-min");
@@ -16,10 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputEnd = document.getElementById("input-end");
     const inputState = document.getElementById("input-state");
 
-
     function showModal() {
         if (modal) {
             modal.style.display = "block";
+            modal.style.top = "50%";
+            modal.style.left = "60%";
+            modal.style.transform = "translate(-50%, -50%)";
+
             if (content) content.style.filter = "blur(5px)";
         }
     }
@@ -31,48 +35,55 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    if (btnAdd) {
-        btnAdd.addEventListener("click", function (e) {
+    const errorElement = document.querySelector(".form-error");
+    if (errorElement) {
+        showModal();
+    }
+
+    if (btnOpenAdd) {
+        btnOpenAdd.addEventListener("click", function (e) {
             e.preventDefault();
 
-            formTitle.innerText = "THÊM MÃ KHUYẾN MÃI";
-            inputAction.value = "add";
-            inputId.value = "";
+            if(formTitle) formTitle.innerText = "THÊM MÃ KHUYẾN MÃI";
+            if(inputAction) inputAction.value = "add";
+            if(inputId) inputId.value = "";
 
-            inputCode.value = "";
-            inputDesc.value = "";
-            inputMin.value = "";
-            inputDiscount.value = "";
-            inputQuantity.value = "";
-            inputStart.value = "";
-            inputEnd.value = "";
-            inputState.value = "active";
+            if(inputCode) inputCode.value = "";
+            if(inputDesc) inputDesc.value = "";
+            if(inputMin) inputMin.value = "";
+            if(inputDiscount) inputDiscount.value = "";
+            if(inputQuantity) inputQuantity.value = "";
+            if(inputStart) inputStart.value = "";
+            if(inputEnd) inputEnd.value = "";
+            if(inputState) inputState.value = "active";
+
+            if(errorElement) errorElement.style.display = 'none';
 
             showModal();
         });
     }
 
-    // --- 4. XỬ LÝ SỰ KIỆN NÚT "SỬA" (QUAN TRỌNG) ---
     document.body.addEventListener("click", function (e) {
         const editBtn = e.target.closest(".btn-edit");
 
         if (editBtn) {
             e.preventDefault();
-
             const data = editBtn.dataset;
 
-            formTitle.innerText = "CẬP NHẬT MÃ #" + data.id;
-            inputAction.value = "update";
-            inputId.value = data.id;
+            if(formTitle) formTitle.innerText = "CẬP NHẬT MÃ #" + data.id;
+            if(inputAction) inputAction.value = "update";
+            if(inputId) inputId.value = data.id;
 
-            inputCode.value = data.code;
-            inputDesc.value = data.desc;
-            inputMin.value = data.min;
-            inputDiscount.value = data.discount;
-            inputQuantity.value = data.quantity;
-            inputStart.value = data.start;
-            inputEnd.value = data.end;
-            inputState.value = data.state;
+            if(inputCode) inputCode.value = data.code;
+            if(inputDesc) inputDesc.value = data.desc;
+            if(inputMin) inputMin.value = data.min;
+            if(inputDiscount) inputDiscount.value = data.discount;
+            if(inputQuantity) inputQuantity.value = data.quantity;
+            if(inputStart) inputStart.value = data.start;
+            if(inputEnd) inputEnd.value = data.end;
+            if(inputState) inputState.value = data.state;
+
+            if(errorElement) errorElement.style.display = 'none';
 
             showModal();
         }
