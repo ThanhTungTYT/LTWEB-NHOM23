@@ -177,6 +177,14 @@
 </footer>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 
+<script>
+    window.BANNERS = [
+        <c:forEach items="${listBanner}" var="b" varStatus="st">
+            "${b.banner_url}"<c:if test="${!st.last}">,</c:if>
+        </c:forEach>
+    ];
+</script>
+
 <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 </body>

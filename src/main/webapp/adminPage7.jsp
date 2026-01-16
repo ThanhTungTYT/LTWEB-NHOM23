@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: TDat
-  Date: 27/12/2025
-  Time: 15:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -27,7 +20,7 @@
         <a href="${pageContext.request.contextPath}/adminPage3.jsp" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item active">Quản lí banner</a>
+        <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item active">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
         <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
@@ -52,7 +45,6 @@
         <table>
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Hình ảnh</th>
                 <th>Trạng thái</th>
                 <th>Ngày bắt đầu</th>
@@ -60,29 +52,18 @@
                 <th></th>
             </tr>
             </thead>
-
             <tbody>
-            <tr>
-                <td>B001</td>
-                <td><img src="../webapp/img/img_2.jpg" width="200"></td>
-                <td>active</td>
-                <td>2024-01-10</td>
-                <td>2024-02-10</td>
-                <td>
-                    <button class="remake"><i class="fa-solid fa-pen"></i></button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>B002</td>
-                <td><img src="../webapp/img/img_1.jpg" width="200"></td>
-                <td>inactive</td>
-                <td>2024-01-15</td>
-                <td>2024-03-01</td>
-                <td>
-                    <button class="remake"><i class="fa-solid fa-pen"></i></button>
-                </td>
-            </tr>
+            <c:forEach items="${listBanner}" var="b">
+                <tr>
+                    <td><img src="${b.banner_url}" width="200"></td>
+                    <td>${b.status}</td>
+                    <td>${b.start_date}</td>
+                    <td>${b.start_date}</td>
+                    <td>
+                        <button class="remake"><i class="fa-solid fa-pen"></i></button>
+                    </td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
