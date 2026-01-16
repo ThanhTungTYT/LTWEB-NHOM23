@@ -2,8 +2,6 @@
   Created by IntelliJ IDEA.
   User: TDat
   Date: 27/12/2025
-  Time: 15:48
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,6 +15,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
 </head>
 <body>
+
 <div class="left-menu" id="left-menu">
     <div class="logo">
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
@@ -65,7 +64,8 @@
                 <th>SL</th>
                 <th>Bắt đầu</th>
                 <th>Kết thúc</th>
-                <th>Trạng thái</th> <th>Hành động</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
             </tr>
             </thead>
             <tbody>
@@ -80,9 +80,10 @@
                     <td><fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/></td>
                     <td><fmt:formatDate value="${p.endDate}" pattern="dd/MM/yyyy"/></td>
 
-                    <td style="text-align: center;"> <span class="status-text ${p.state == 'active' ? 'active' : 'inactive'}">
-                            ${p.state == 'active' ? 'Active' : 'Inactive'}
-                    </span>
+                    <td style="text-align: center;">
+                        <span class="status-text ${p.state == 'active' ? 'active' : 'inactive'}">
+                                ${p.state == 'active' ? 'Active' : 'Inactive'}
+                        </span>
                     </td>
 
                     <td>
@@ -105,6 +106,7 @@
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
@@ -114,7 +116,8 @@
 <div class="form-add" id="form-promotion" style="display: none">
     <div class="form-title">
         <p id="popup-title">THÊM MÃ KHUYẾN MÃI</p>
-        <button id="take-off">X</button> </div>
+        <button id="take-off">X</button>
+    </div>
 
     <form class="main-form" action="${pageContext.request.contextPath}/adminPage8" method="POST">
         <input type="hidden" name="action" id="input-action" value="add">
@@ -163,7 +166,12 @@
             </select>
         </div>
 
+        <c:if test="${not empty errorMessage}">
+            <p class="form-error">${errorMessage}</p>
+        </c:if>
+
         <button class="submit" type="submit">Xác nhận</button>
+
     </form>
 </div>
 

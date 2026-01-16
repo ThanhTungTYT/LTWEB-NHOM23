@@ -12,11 +12,26 @@ public class PromotionDao extends BaseDao {
                                 "min_order_value AS minOrderValue, " +
                                 "start_date AS startDate, " +
                                 "end_date AS endDate, " +
-                                "quantity " +
+                                "quantity, state " +
                                 "FROM promotions ORDER BY id DESC")
                         .mapToBean(Promotion.class)
                         .list()
         );
+    }
+
+    public void autoUpdateStates() {
+        getJdbi().useHandle(handle -> {
+            String sqlInactive = "UPDATE promotions SET state = 'inactive' " +
+                    "WHERE (start_date > NOW() OR end_date < NOW()) " +
+                    "AND state != 'inactive'";
+
+            String sqlActive = "UPDATE promotions SET state = 'active' " +
+                    "WHERE start_date <= NOW() AND end_date >= NOW() " +
+                    "AND state != 'active'";
+
+            handle.createUpdate(sqlInactive).execute();
+            handle.createUpdate(sqlActive).execute();
+        });
     }
 
     public List<Promotion> searchPromotions(String keyword) {
@@ -40,6 +55,31 @@ public class PromotionDao extends BaseDao {
         return getJdbi().withHandle(handle ->
                 handle.createUpdate("DELETE FROM promotions WHERE id = :id")
                         .bind("id", id)
+                        .execute()
+        );
+    }
+
+    public boolean checkCodeExist(String code) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM promotions WHERE code = :code")
+                        .bind("code", code)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+
+    public int insert(Promotion p) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO promotions (code, description, discount_percent, min_order_value, quantity, start_date, end_date, state) " +
+                                "VALUES (:code, :desc, :discount, :min, :qty, :start, :end, :state)")
+                        .bind("code", p.getCode())
+                        .bind("desc", p.getDescription())
+                        .bind("discount", p.getDiscountPercent())
+                        .bind("min", p.getMinOrderValue())
+                        .bind("qty", p.getQuantity())
+                        .bind("start", p.getStartDate())
+                        .bind("end", p.getEndDate())
+                        .bind("state", p.getState())
                         .execute()
         );
     }
