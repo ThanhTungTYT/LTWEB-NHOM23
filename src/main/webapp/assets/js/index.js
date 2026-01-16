@@ -1,26 +1,20 @@
 const img_home = document.getElementById('img-home');
-const images = [
-    '../webapp/img/img_1.jpg',
-    '../webapp/img/img_2.jpg',
-    '../webapp/img/img_3.jpg'
-];
+const images = window.BANNERS || [];
 
 let currentIndex = 0;
 
+if (images.length > 0) {
+    img_home.style.backgroundImage = `url("${images[0]}")`;
+}
+
 function showNextImage() {
-    currentIndex++;
-    if (currentIndex >= images.length) {
-        currentIndex = 0;
-    }
-    img_home.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex + 1) % images.length;
+    img_home.style.backgroundImage = `url("${images[currentIndex]}")`;
 }
 
 function showPreviousImage() {
-    currentIndex--;
-    if (currentIndex < 0) {
-        currentIndex = images.length - 1;
-    }
-    img_home.style.backgroundImage = `url('${images[currentIndex]}')`;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    img_home.style.backgroundImage = `url("${images[currentIndex]}")`;
 }
 
 setInterval(showNextImage, 3000);
