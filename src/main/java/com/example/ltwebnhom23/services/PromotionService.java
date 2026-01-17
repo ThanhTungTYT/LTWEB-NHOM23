@@ -46,4 +46,13 @@ public class PromotionService {
     public boolean updatePromotion(Promotion p) {
         return promotionDao.update(p) > 0;
     }
+    // Dùng cho trang thanh toán
+    public List<Promotion> getAvailablePromotions() {
+        return promotionDao.getAvailablePromotions();
+    }
+
+    // Dùng khi user chọn mã
+    public Promotion getPromotionById(int id) {
+        return promotionDao.getById(id);
+    }
 }

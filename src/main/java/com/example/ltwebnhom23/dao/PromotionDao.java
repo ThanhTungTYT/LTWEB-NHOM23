@@ -98,4 +98,45 @@ public class PromotionDao extends BaseDao {
                         .execute()
         );
     }
+    // ================= CHECKOUT =================
+
+    // Lấy các mã hợp lệ cho thanh toán
+    public List<Promotion> getAvailablePromotions() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT id, code, description, " +
+                                        "discount_percent AS discountPercent, " +
+                                        "min_order_value AS minOrderValue, " +
+                                        "start_date AS startDate, " +
+                                        "end_date AS endDate, " +
+                                        "quantity, state " +
+                                        "FROM promotions " +
+                                        "WHERE state = 'active' " +
+                                        "AND quantity > 0 " +
+                                        "AND start_date <= NOW() " +
+                                        "AND end_date >= NOW()"
+                        )
+                        .mapToBean(Promotion.class)
+                        .list()
+        );
+    }
+
+    // Lấy 1 promotion theo id (khi user chọn)
+    public Promotion getById(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT id, code, description, " +
+                                        "discount_percent AS discountPercent, " +
+                                        "min_order_value AS minOrderValue, " +
+                                        "start_date AS startDate, " +
+                                        "end_date AS endDate, " +
+                                        "quantity, state " +
+                                        "FROM promotions WHERE id = :id"
+                        )
+                        .bind("id", id)
+                        .mapToBean(Promotion.class)
+                        .findFirst()
+                        .orElse(null)
+        );
+    }
 }

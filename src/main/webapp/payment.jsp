@@ -120,9 +120,7 @@
                             <img src="${item.product.image_url}" alt="${item.product.name}" onerror="this.src='${pageContext.request.contextPath}/assets/img/default.png'">
                             <div class="cart-info">
                                 <p class="product-name">${item.product.name}</p>
-                                <p class="product-type">Loại: Cà phê hạt</p>
-                                <p class="weight">Khối lượng: <span>500gr</span></p>
-                                <p class="price">
+                                <p class="price"> Giá:
                                     <fmt:formatNumber value="${item.price}" type="currency" currencySymbol="đ"/>
                                 </p>
                             </div>
@@ -136,38 +134,64 @@
 
             <section class="discount-box">
                 <h3>Mã khuyến mãi</h3>
-                <%-- Name là promoCode để khớp với Servlet --%>
-                <select id="discount-select" name="promoCode">
-                    <option value="0">Chọn mã</option>
-                    <option value="10">Giảm 10% (≥ 500k)</option>
-                    <option value="15">Giảm 15% (≥ 1tr)</option>
-                    <option value="20">Giảm 20% (≥ 1tr5)</option>
+
+                <select name="promotionId">
+                    <option value="">-- Chọn mã --</option>
+
+                    <c:forEach var="p" items="${promotions}">
+                        <option value="${p.id}">
+                                ${p.code} - Giảm ${p.discountPercent}%
+                        </option>
+                    </c:forEach>
                 </select>
-                <div class="apply-row">
-                    <input type="text" placeholder="Nhập mã khuyến mãi" id="discount-code">
-                    <button type="button" class="apply-btn">Áp dụng</button>
-                </div>
             </section>
 
             <section class="summary-box">
                 <h3>Tóm tắt đơn hàng</h3>
+                <!-- Tổng tiền hàng -->
                 <div class="summary-row">
                     <span>Tổng tiền hàng</span>
                     <span id="total-price">
-                        <fmt:formatNumber value="${sessionScope.cart.total}" type="currency" currencySymbol="₫"/>
+                        <fmt:formatNumber value="${cart.total}"
+                                          type="currency"
+                                          currencySymbol="₫"/>
                     </span>
                 </div>
+                <!-- Mã giảm giá -->
+                <c:if test="${not empty promotion}">
+                    <div class="summary-row discount">
+                    <span>
+                        Mã giảm giá
+                        (<strong>${promotion.code}</strong>)
+                    </span>
+                    <span style="color: #28a745;">
+                -
+                    <fmt:formatNumber value="${discountAmount}"
+                                  type="currency"
+                                  currencySymbol="₫"/>
+                    </span>
+                    </div>
+                </c:if>
+                <!-- Phí vận chuyển -->
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
                     <span>30.000₫</span>
                 </div>
+                <hr>
+                <!-- Tổng thanh toán -->
                 <div class="summary-row total">
                     <span>Tổng thanh toán</span>
                     <span id="final-total">
-                        <fmt:formatNumber value="${sessionScope.cart.total + 30000}" type="currency" currencySymbol="₫"/>
-                    </span>
+            <fmt:formatNumber
+                    value="${cart.total - (discountAmount != null ? discountAmount : 0) + 30000}"
+                    type="currency"
+                    currencySymbol="₫"/>
+        </span>
                 </div>
-                <button type="submit" class="checkout-btn" id="checkout-btn">Đặt hàng</button>
+
+                <button type="submit" class="checkout-btn" id="checkout-btn">
+                    Đặt hàng
+                </button>
             </section>
         </div>
     </div>
