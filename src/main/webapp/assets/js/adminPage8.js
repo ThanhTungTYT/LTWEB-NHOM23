@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputStart = document.getElementById("input-start");
     const inputEnd = document.getElementById("input-end");
     const inputState = document.getElementById("input-state");
+    const errorElement = document.querySelector(".form-error");
 
     function showModal() {
         if (modal) {
@@ -23,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.top = "50%";
             modal.style.left = "60%";
             modal.style.transform = "translate(-50%, -50%)";
-
             if (content) content.style.filter = "blur(5px)";
         }
     }
@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const errorElement = document.querySelector(".form-error");
     if (errorElement) {
         showModal();
     }
@@ -48,7 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if(inputAction) inputAction.value = "add";
             if(inputId) inputId.value = "";
 
-            if(inputCode) inputCode.value = "";
+            if(inputCode) {
+                inputCode.value = "";
+                inputCode.removeAttribute("readonly");
+                inputCode.style.backgroundColor = "white";
+                inputCode.style.cursor = "text";
+            }
+
             if(inputDesc) inputDesc.value = "";
             if(inputMin) inputMin.value = "";
             if(inputDiscount) inputDiscount.value = "";
@@ -74,7 +79,13 @@ document.addEventListener("DOMContentLoaded", function () {
             if(inputAction) inputAction.value = "update";
             if(inputId) inputId.value = data.id;
 
-            if(inputCode) inputCode.value = data.code;
+            if(inputCode) {
+                inputCode.value = data.code;
+                inputCode.setAttribute("readonly", true);
+                inputCode.style.backgroundColor = "#e9ecef";
+                inputCode.style.cursor = "not-allowed";
+            }
+
             if(inputDesc) inputDesc.value = data.desc;
             if(inputMin) inputMin.value = data.min;
             if(inputDiscount) inputDiscount.value = data.discount;

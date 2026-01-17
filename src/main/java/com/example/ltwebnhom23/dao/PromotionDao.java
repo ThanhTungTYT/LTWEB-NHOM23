@@ -83,4 +83,21 @@ public class PromotionDao extends BaseDao {
                         .execute()
         );
     }
+
+    public int update(Promotion p) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE promotions SET description = :desc, discount_percent = :discount, " +
+                                "min_order_value = :min, quantity = :qty, start_date = :start, end_date = :end, state = :state " +
+                                "WHERE id = :id")
+                        .bind("desc", p.getDescription())
+                        .bind("discount", p.getDiscountPercent())
+                        .bind("min", p.getMinOrderValue())
+                        .bind("qty", p.getQuantity())
+                        .bind("start", p.getStartDate())
+                        .bind("end", p.getEndDate())
+                        .bind("state", p.getState())
+                        .bind("id", p.getId())
+                        .execute()
+        );
+    }
 }
