@@ -76,31 +76,31 @@
         <button id="take-off">X</button>
     </div>
 
-    <form class="main-form">
+    <form class="main-form" method="post" action="${pageContext.request.contextPath}/add-banner">
         <div class="p name-p">
             <label>URL Banner</label>
-            <input type="text" placeholder="Link ảnh banner">
+            <input type="text" name="banner_url" placeholder="Link ảnh banner">
         </div>
-
         <div class="type-p">
             <label>Trạng thái</label>
-            <select>
+            <select name="status">
                 <option>active</option>
                 <option>inactive</option>
             </select>
         </div>
-
         <div class="p">
             <label>Ngày bắt đầu</label>
-            <input type="date">
+            <input type="date" name="start">
         </div>
 
         <div class="p">
             <label>Ngày kết thúc</label>
-            <input type="date">
+            <input type="date" name="end">
         </div>
-
         <button class="submit" type="submit">Thêm Banner</button>
+        <c:if test="${not empty notice}">
+            <p>${notice}</p>
+        </c:if>
     </form>
 </div>
 

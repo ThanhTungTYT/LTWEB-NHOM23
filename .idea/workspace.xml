@@ -10,12 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage7/AddBanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/BannerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/BannerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Banner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/model/Banner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/BannerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/BannerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage7.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +45,12 @@
     &quot;assignee&quot;: &quot;23130050-NguyenLeTienDat&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ThanhTungTYT/LTWEB-NHOM23",
-    "accountId": "8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ThanhTungTYT/LTWEB-NHOM23&quot;,
+    &quot;accountId&quot;: &quot;8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -91,7 +91,7 @@
     "Tomcat Server.index.jsp.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "dat",
+    "git-widget-placeholder": "tung",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/Intelllij/Project/LTWEB-NHOM23",
@@ -104,21 +104,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunDashboard">
-    <option name="configurationStatuses">
-      <map>
-        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-          <value>
-            <map>
-              <entry key="Tomcat 10.1.49" value="STOPPED" />
-            </map>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$USER_HOME$/.jdks/ms-21.0.9" nameIsGenerated="true">
+    <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="21" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="LTWEB-NHOM23:war exploded">

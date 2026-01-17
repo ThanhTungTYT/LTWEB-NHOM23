@@ -1,0 +1,128 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"LTWEB-NHOM23:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b7ab3a46-6632-4d7d-9516-c82f5fd24fc9\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/adminPage2.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/adminPage2.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"Servlet\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dat\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;23130050-NguyenLeTienDat&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/ThanhTungTYT/LTWEB-NHOM23\",\r\n    \"accountId\": \"8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff\"\r\n  }\r\n}]]></component>\r\n  <component name=\"KubernetesApiPersistence\">{}</component>\r\n  <component name=\"KubernetesApiProvider\">{\r\n  &quot;isMigrated&quot;: true\r\n}</component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 0\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"36bp8KM3cXfWnhCtbumdQUxqN4l\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"Tomcat Server.Tomcat 10.1.48.executor\": \"Run\",\r\n    \"Tomcat Server.Tomcat 10.1.49.executor\": \"Run\",\r\n    \"Tomcat Server.index.jsp.executor\": \"Run\",\r\n    \"com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1\": \"true\",\r\n    \"com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1\": \"true\",\r\n    \"git-widget-placeholder\": \"dat\",\r\n    \"junie.onboarding.icon.badge.shown\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"E:/Intelllij/Project/LTWEB-NHOM23\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"preferences.fileTypes\",\r\n    \"to.speed.mode.migration.done\": \"true\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunDashboard\">\r\n    <option name=\"configurationStatuses\">\r\n      <map>\r\n        <entry key=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\">\r\n          <value>\r\n            <map>\r\n              <entry key=\"Tomcat 10.1.49\" value=\"STOPPED\" />\r\n            </map>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 10.1.49\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.1.49\" ALTERNATIVE_JRE_ENABLED=\"true\" ALTERNATIVE_JRE_PATH=\"$USER_HOME$/.jdks/ms-21.0.9\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"LTWEB-NHOM23:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/LTWEB_NHOM23_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"d96d19c8-b788-4962-b454-dd53cd9f872e\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"16300\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"LTWEB-NHOM23:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169\" />\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b7ab3a46-6632-4d7d-9516-c82f5fd24fc9\" name=\"Changes\" comment=\"\" />\r\n      <created>1765284971485</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1765284971485</updated>\r\n      <workItem from=\"1765284972334\" duration=\"11000\" />\r\n      <workItem from=\"1765288338416\" duration=\"19000\" />\r\n      <workItem from=\"1765288942958\" duration=\"77000\" />\r\n      <workItem from=\"1765289164551\" duration=\"115000\" />\r\n      <workItem from=\"1765290206049\" duration=\"60000\" />\r\n      <workItem from=\"1765339737625\" duration=\"70000\" />\r\n      <workItem from=\"1765351720987\" duration=\"12000\" />\r\n      <workItem from=\"1765373078399\" duration=\"511000\" />\r\n      <workItem from=\"1765374284109\" duration=\"1943000\" />\r\n      <workItem from=\"1765376590356\" duration=\"333000\" />\r\n      <workItem from=\"1765458143643\" duration=\"3846000\" />\r\n      <workItem from=\"1765518005144\" duration=\"4344000\" />\r\n      <workItem from=\"1765523516881\" duration=\"10365000\" />\r\n      <workItem from=\"1765806828857\" duration=\"736000\" />\r\n      <workItem from=\"1765879568657\" duration=\"733000\" />\r\n      <workItem from=\"1765972610073\" duration=\"1539000\" />\r\n      <workItem from=\"1766043730149\" duration=\"6704000\" />\r\n      <workItem from=\"1766050524960\" duration=\"588000\" />\r\n      <workItem from=\"1766051124761\" duration=\"218000\" />\r\n      <workItem from=\"1766051353891\" duration=\"2041000\" />\r\n      <workItem from=\"1766067336384\" duration=\"3646000\" />\r\n      <workItem from=\"1766071646709\" duration=\"21000\" />\r\n      <workItem from=\"1766071701226\" duration=\"2250000\" />\r\n      <workItem from=\"1766149770015\" duration=\"6473000\" />\r\n      <workItem from=\"1767371099142\" duration=\"3959000\" />\r\n      <workItem from=\"1767410933788\" duration=\"6226000\" />\r\n      <workItem from=\"1768028304432\" duration=\"3522000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 87cdad45eea265241fc37ced2c6e43395c86eb3e)
++++ b/.idea/workspace.xml	(date 1768039204825)
+@@ -11,11 +11,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="b7ab3a46-6632-4d7d-9516-c82f5fd24fc9" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/controller/adminPage2/AdminPage2Servlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/dao/ProductDao.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ltwebnhom23/services/ProductService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/adminPage2.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/assets/js/adminPage2.js" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -45,12 +40,12 @@
+     &quot;assignee&quot;: &quot;23130050-NguyenLeTienDat&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/ThanhTungTYT/LTWEB-NHOM23",
+-    "accountId": "8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff"
+-  }
+-}]]></component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/ThanhTungTYT/LTWEB-NHOM23&quot;,
++    &quot;accountId&quot;: &quot;8a33f7c8-d86e-4d6e-b7ae-4d034192c1ff&quot;
++  }
++}</component>
+   <component name="KubernetesApiPersistence">{}</component>
+   <component name="KubernetesApiProvider">{
+   &quot;isMigrated&quot;: true
+@@ -80,43 +75,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "Tomcat Server.Tomcat 10.1.48.executor": "Run",
+-    "Tomcat Server.Tomcat 10.1.49.executor": "Run",
+-    "Tomcat Server.index.jsp.executor": "Run",
+-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
+-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+-    "git-widget-placeholder": "dat",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "E:/Intelllij/Project/LTWEB-NHOM23",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "preferences.fileTypes",
+-    "to.speed.mode.migration.done": "true",
+-    "vue.rearranger.settings.migration": "true"
+-  }
+-}]]></component>
+-  <component name="RunDashboard">
+-    <option name="configurationStatuses">
+-      <map>
+-        <entry key="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+-          <value>
+-            <map>
+-              <entry key="Tomcat 10.1.49" value="STOPPED" />
+-            </map>
+-          </value>
+-        </entry>
+-      </map>
+-    </option>
+-  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;Tomcat Server.Tomcat 10.1.48.executor&quot;: &quot;Run&quot;,
++    &quot;Tomcat Server.Tomcat 10.1.49.executor&quot;: &quot;Run&quot;,
++    &quot;Tomcat Server.index.jsp.executor&quot;: &quot;Run&quot;,
++    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
++    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;Rebasing tung&quot;,
++    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;E:/Intelllij/Project/LTWEB-NHOM23&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
++    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
+   <component name="RunManager">
+     <configuration name="Tomcat 10.1.49" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.49" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="$USER_HOME$/.jdks/ms-21.0.9" nameIsGenerated="true">
+       <option name="UPDATING_POLICY" value="restart-server" />
+@@ -209,8 +191,8 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
++        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
++        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+       </set>
+     </attachedChunks>
+   </component>
+@@ -249,6 +231,7 @@
+       <workItem from="1767371099142" duration="3959000" />
+       <workItem from="1767410933788" duration="6226000" />
+       <workItem from="1768028304432" duration="3522000" />
++      <workItem from="1768039055153" duration="70000" />
+     </task>
+     <servers />
+   </component>

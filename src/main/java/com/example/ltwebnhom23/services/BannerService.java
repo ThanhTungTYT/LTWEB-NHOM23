@@ -15,5 +15,8 @@ public class BannerService {
     public List<Banner> getBannerActive(){
         return banner.getBannerActive();
     }
+    public boolean addBanner(Banner b){
+        return banner.addBanner(b);
+    }
 
 }
