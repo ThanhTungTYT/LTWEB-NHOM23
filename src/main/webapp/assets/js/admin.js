@@ -104,5 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(content) content.style.filter = 'blur(0)';
             }
         }
+
     });
 });

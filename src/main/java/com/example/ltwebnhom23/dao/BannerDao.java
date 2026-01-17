@@ -32,4 +32,16 @@ public class BannerDao extends BaseDao{
         );
     }
 
+    public boolean updateBanner(int bid, Banner bannner){
+        return getJdbi().withHandle(handle ->
+            handle.createUpdate("UPDATE banners SET banner_url = :banner, status = :status, start_date = :start, end_date = :end WHERE id = :bid")
+                    .bind("banner", bannner.getBanner_url())
+                    .bind("status", bannner.getStatus())
+                    .bind("start", bannner.getStart_date())
+                    .bind("end", bannner.getEnd_date())
+                    .bind("bid", bid)
+                    .execute() > 0
+        );
+    }
+
 }
