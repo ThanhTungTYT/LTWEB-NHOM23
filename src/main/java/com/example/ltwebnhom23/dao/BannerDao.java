@@ -21,4 +21,15 @@ public class BannerDao extends BaseDao{
         );
     }
 
+    public boolean addBanner(Banner banner){
+        return getJdbi().withHandle(handle ->
+            handle.createUpdate("INSERT INTO banners(banner_url, status, start_date, end_date) VALUES(:banner_url, :status, :start, :end)")
+                    .bind("banner_url", banner.getBanner_url())
+                    .bind("status", banner.getStatus())
+                    .bind("start", banner.getStart_date())
+                    .bind("end", banner.getEnd_date())
+                    .execute() > 0
+        );
+    }
+
 }

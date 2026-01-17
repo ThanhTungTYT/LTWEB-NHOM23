@@ -49,4 +49,11 @@ public class Banner {
     public void setEnd_date(Timestamp end_date) {
         this.end_date = end_date;
     }
+    public void setStartDateFromForm(String start) {
+        this.start_date = Timestamp.valueOf(start + " 00:00:00");
+    }
+
+    public void setEndDateFromForm(String end) {
+        this.end_date = Timestamp.valueOf(end + " 23:59:59");
+    }
 }
