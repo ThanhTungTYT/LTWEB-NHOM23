@@ -55,10 +55,11 @@
             <tbody>
             <c:forEach items="${listBanner}" var="b">
                 <tr>
+                    <input type="hidden" name="bid" value="${b.id}">
                     <td><img src="${b.banner_url}" width="200"></td>
                     <td>${b.status}</td>
                     <td>${b.start_date}</td>
-                    <td>${b.start_date}</td>
+                    <td>${b.end_date}</td>
                     <td>
                         <button class="remake"><i class="fa-solid fa-pen"></i></button>
                     </td>
@@ -108,23 +109,19 @@
 <div class="form-add" id="form-remake" style="display: none">
     <div class="form-title">
         <p>SỬA BANNER</p>
-        <button id="close">X</button>
+        <button id="close-remake">X</button>
     </div>
 
-    <form class="main-form">
-        <div class="p id-p">
-            <label>ID Banner</label>
-            <p>B00#</p>
-        </div>
-
+    <form class="main-form" method="post" action="${pageContext.request.contextPath}/update-banner">
+        <input type="hidden" name="bid" id="up_bid">
         <div class="p name-p">
             <label>URL Banner</label>
-            <input type="text">
+            <input type="text" name="up_url">
         </div>
 
         <div class="type-p">
             <label>Trạng thái</label>
-            <select>
+            <select name="up_status">
                 <option>active</option>
                 <option>inactive</option>
             </select>
@@ -132,18 +129,45 @@
 
         <div class="p">
             <label>Ngày bắt đầu</label>
-            <input type="date">
+            <input type="date" name="up_start">
         </div>
 
         <div class="p">
             <label>Ngày kết thúc</label>
-            <input type="date">
+            <input type="date" name="up_end">
         </div>
 
         <button class="submit" type="submit">Lưu Thay Đổi</button>
+        <c:if test="${not empty notice_up}">
+            <p>${notice_up}</p>
+        </c:if>
     </form>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+<script>
+    document.querySelectorAll(".remake").forEach(btn => {
+        btn.onclick = function () {
+            const row = btn.closest("tr");
+
+            document.getElementById("up_bid").value =
+                row.querySelector("input[name='bid']").value;
+
+            document.querySelector("input[name='up_url']").value =
+                row.querySelector("img").src;
+
+            document.querySelector("select[name='up_status']").value =
+                row.children[1].innerText.trim();
+
+            document.querySelector("input[name='up_start']").value =
+                row.children[2].innerText.trim();
+
+            document.querySelector("input[name='up_end']").value =
+                row.children[3].innerText.trim();
+
+            document.getElementById("form-remake").style.display = "block";
+        }
+    });
+</script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 </body>
 </html>

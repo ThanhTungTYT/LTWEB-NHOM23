@@ -3,12 +3,14 @@ package com.example.ltwebnhom23.model;
 import java.sql.Timestamp;
 
 public class Banner {
+    private int id;
     private String banner_url;
     private String status;
     private Timestamp start_date;
     private Timestamp end_date;
 
-    public Banner(String banner_url, String status, Timestamp start_date, Timestamp end_date) {
+    public Banner(int id, String banner_url, String status, Timestamp start_date, Timestamp end_date) {
+        this.id = id;
         this.banner_url = banner_url;
         this.status = status;
         this.start_date = start_date;
@@ -16,6 +18,14 @@ public class Banner {
     }
 
     public Banner() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBanner_url() {

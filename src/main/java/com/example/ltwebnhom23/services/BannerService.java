@@ -18,5 +18,8 @@ public class BannerService {
     public boolean addBanner(Banner b){
         return banner.addBanner(b);
     }
+    public boolean updateBanner(int bid, Banner b){
+        return banner.updateBanner(bid, b);
+    }
 
 }
