@@ -75,6 +75,7 @@ public class AdminPage8Servlet extends HttpServlet {
             LocalDate endDate = LocalDate.parse(endStr);
             LocalDate today = LocalDate.now();
 
+
             if ("add".equals(action) && PromotionService.getInstance().isCodeExist(code)) {
                 error = "Mã giảm giá '" + code + "' đã tồn tại!";
             }
@@ -84,19 +85,33 @@ public class AdminPage8Servlet extends HttpServlet {
             else if (discount < 1 || discount > 100) {
                 error = "Mức giảm giá phải từ 1% đến 100%!";
             }
-            else if (quantity < 1 || quantity > 1000000) {
-                error = "Số lượng mã phải từ 1 đến 1.000.000!";
+            else if (quantity < 0 || quantity > 1000000) {
+                error = "Số lượng mã phải từ 0 đến 1.000.000!";
             }
-            else if (startDate.isBefore(today)) {
+            else if ("add".equals(action) && startDate.isBefore(today)) {
                 error = "Ngày bắt đầu không được ở quá khứ!";
             }
-            else if (!endDate.isAfter(today)) {
-                error = "Ngày kết thúc phải từ ngày mai trở đi!";
-            } else if (endDate.isBefore(startDate)) {
+            else if (!endDate.isAfter(today) && !endDate.isEqual(today)) {
+                if(!endDate.isAfter(today)) {
+                    error = "Ngày kết thúc phải từ ngày mai trở đi!";
+                }
+            }
+            else if (endDate.isBefore(startDate)) {
                 error = "Ngày kết thúc không được nhỏ hơn ngày bắt đầu!";
             }
-            else if (!"active".equals(state) && !"inactive".equals(state)) {
-                error = "Trạng thái không hợp lệ!";
+
+            if (error == null) {
+                if (quantity == 0) {
+                    state = "inactive";
+                }
+                else if ("active".equals(state)) {
+                    if (startDate.isAfter(today)) {
+                        state = "inactive";
+                    }
+                    else if (endDate.isBefore(today)) {
+                        error = "Không thể kích hoạt mã đã hết hạn!";
+                    }
+                }
             }
 
             if (error != null) {
@@ -118,21 +133,14 @@ public class AdminPage8Servlet extends HttpServlet {
             if ("add".equals(action)) {
                 PromotionService.getInstance().addPromotion(p);
             } else if ("update".equals(action)) {
-                int id = Integer.parseInt(idStr);
-                p.setId(id);
+                p.setId(Integer.parseInt(idStr));
                 PromotionService.getInstance().updatePromotion(p);
             }
             response.sendRedirect(request.getContextPath() + "/adminPage8");
 
-        } catch (NumberFormatException e) {
-            request.setAttribute("errorMessage", "Dữ liệu số không hợp lệ!");
-            doGet(request, response);
-        } catch (DateTimeParseException e) {
-            request.setAttribute("errorMessage", "Định dạng ngày tháng không hợp lệ!");
-            doGet(request, response);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("errorMessage", "Lỗi hệ thống: " + e.getMessage());
+            request.setAttribute("errorMessage", "Lỗi dữ liệu: " + e.getMessage());
             doGet(request, response);
         }
     }

@@ -22,13 +22,11 @@ public class PromotionDao extends BaseDao {
     public void autoUpdateStates() {
         getJdbi().useHandle(handle -> {
             String sqlInactive = "UPDATE promotions SET state = 'inactive' " +
-                    "WHERE (start_date > NOW() OR end_date < NOW()) " +
+                    "WHERE (start_date > NOW() OR end_date < NOW() OR quantity <= 0) " +
                     "AND state != 'inactive'";
-
             String sqlActive = "UPDATE promotions SET state = 'active' " +
-                    "WHERE start_date <= NOW() AND end_date >= NOW() " +
+                    "WHERE start_date <= NOW() AND end_date >= NOW() AND quantity > 0 " +
                     "AND state != 'active'";
-
             handle.createUpdate(sqlInactive).execute();
             handle.createUpdate(sqlActive).execute();
         });
