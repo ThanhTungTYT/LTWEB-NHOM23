@@ -99,7 +99,7 @@
     <p>(Chỉ tính các sản phẩm được chọn)</p>
   </div>
 
-  <a href="payment.html" type="button" class="checkout-button"> Thanh Toán </a>
+  <a href="${pageContext.request.contextPath}/payment" type="button" class="checkout-button"> Thanh Toán </a>
 
   <div class="payment-methods">
     <h4>Phương thức thanh toán</h4>
