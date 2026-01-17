@@ -42,4 +42,8 @@ public class PromotionService {
     public void autoUpdateStatus() {
         promotionDao.autoUpdateStates();
     }
+
+    public boolean updatePromotion(Promotion p) {
+        return promotionDao.update(p) > 0;
+    }
 }
