@@ -22,13 +22,11 @@ public class PromotionDao extends BaseDao {
     public void autoUpdateStates() {
         getJdbi().useHandle(handle -> {
             String sqlInactive = "UPDATE promotions SET state = 'inactive' " +
-                    "WHERE (start_date > NOW() OR end_date < NOW()) " +
+                    "WHERE (start_date > NOW() OR end_date < NOW() OR quantity <= 0) " +
                     "AND state != 'inactive'";
-
             String sqlActive = "UPDATE promotions SET state = 'active' " +
-                    "WHERE start_date <= NOW() AND end_date >= NOW() " +
+                    "WHERE start_date <= NOW() AND end_date >= NOW() AND quantity > 0 " +
                     "AND state != 'active'";
-
             handle.createUpdate(sqlInactive).execute();
             handle.createUpdate(sqlActive).execute();
         });
@@ -98,6 +96,47 @@ public class PromotionDao extends BaseDao {
                         .bind("state", p.getState())
                         .bind("id", p.getId())
                         .execute()
+        );
+    }
+    // ================= CHECKOUT =================
+
+    // Lấy các mã hợp lệ cho thanh toán
+    public List<Promotion> getAvailablePromotions() {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT id, code, description, " +
+                                        "discount_percent AS discountPercent, " +
+                                        "min_order_value AS minOrderValue, " +
+                                        "start_date AS startDate, " +
+                                        "end_date AS endDate, " +
+                                        "quantity, state " +
+                                        "FROM promotions " +
+                                        "WHERE state = 'active' " +
+                                        "AND quantity > 0 " +
+                                        "AND start_date <= NOW() " +
+                                        "AND end_date >= NOW()"
+                        )
+                        .mapToBean(Promotion.class)
+                        .list()
+        );
+    }
+
+    // Lấy 1 promotion theo id (khi user chọn)
+    public Promotion getById(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT id, code, description, " +
+                                        "discount_percent AS discountPercent, " +
+                                        "min_order_value AS minOrderValue, " +
+                                        "start_date AS startDate, " +
+                                        "end_date AS endDate, " +
+                                        "quantity, state " +
+                                        "FROM promotions WHERE id = :id"
+                        )
+                        .bind("id", id)
+                        .mapToBean(Promotion.class)
+                        .findFirst()
+                        .orElse(null)
         );
     }
 }
