@@ -22,7 +22,10 @@ public class PaymentServlet extends HttpServlet {
         }
 
         req.setAttribute("cart", s.getAttribute("cart"));
-
+        req.setAttribute(
+                "promotions",
+                PromotionService.getInstance().getAvailablePromotions()
+        );
         req.getRequestDispatcher("payment.jsp").forward(req, resp);
     }
 }

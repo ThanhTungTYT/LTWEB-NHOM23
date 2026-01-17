@@ -37,6 +37,14 @@ public class OrderServlet extends HttpServlet {
         order.setTotal(cart.getTotal());
 
         double discount = 0;
+        String pid = req.getParameter("promotionId");
+        if (pid != null && !pid.isEmpty()) {
+            Promotion p = PromotionService.getInstance().getPromotionById(Integer.parseInt(pid));
+            if (p != null && cart.getTotal() >= p.getMinOrderValue()) {
+                discount = cart.getTotal() * p.getDiscountPercent() / 100;
+                order.setPromoId(p.getId());
+            }
+        }
 
         order.setDiscount(discount);
         order.setFinalAmount(cart.getTotal() - discount);
