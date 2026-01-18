@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnClose = document.getElementById("take-off");
     const content = document.getElementById("right-content");
 
+    const mainForm = document.getElementById("main-form");
+    const contextPath = mainForm ? mainForm.getAttribute("data-context") : "";
+
     const formTitle = document.getElementById("popup-title");
-    const inputAction = document.getElementById("input-action");
     const inputId = document.getElementById("input-id");
 
     const inputCode = document.getElementById("input-code");
@@ -37,14 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (errorElement) {
         showModal();
+        if (inputId && inputId.value) {
+            if(mainForm) mainForm.action = contextPath + "/adminPage8/update";
+            if(inputCode) {
+                inputCode.setAttribute("readonly", true);
+                inputCode.style.backgroundColor = "#e9ecef";
+            }
+        } else {
+            if(mainForm) mainForm.action = contextPath + "/adminPage8/add";
+        }
     }
 
     if (btnOpenAdd) {
         btnOpenAdd.addEventListener("click", function (e) {
             e.preventDefault();
 
+            if(mainForm) mainForm.action = contextPath + "/adminPage8/add";
+
             if(formTitle) formTitle.innerText = "THÊM MÃ KHUYẾN MÃI";
-            if(inputAction) inputAction.value = "add";
             if(inputId) inputId.value = "";
 
             if(inputCode) {
@@ -75,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             const data = editBtn.dataset;
 
+            if(mainForm) mainForm.action = contextPath + "/adminPage8/update";
+
             if(formTitle) formTitle.innerText = "CẬP NHẬT MÃ #" + data.id;
-            if(inputAction) inputAction.value = "update";
             if(inputId) inputId.value = data.id;
 
             if(inputCode) {

@@ -139,4 +139,22 @@ public class PromotionDao extends BaseDao {
                         .orElse(null)
         );
     }
+
+    public boolean checkCodeUsed(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT COUNT(*) FROM orders WHERE promo_id = :id")
+                        .bind("id", id)
+                        .mapTo(Integer.class)
+                        .one() > 0
+        );
+    }
+
+    public int softDelete(int id) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE promotions SET quantity = 0, state = 'inactive' WHERE id = :id")
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+
 }

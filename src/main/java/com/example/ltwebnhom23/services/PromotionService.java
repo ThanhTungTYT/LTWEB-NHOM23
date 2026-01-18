@@ -27,8 +27,14 @@ public class PromotionService {
         return promotionDao.searchPromotions(keyword);
     }
 
-    public boolean deletePromotion(int id) {
-        return promotionDao.delete(id) > 0;
+    public int deletePromotionSafe(int id) {
+        boolean isUsed = promotionDao.checkCodeUsed(id);
+
+        if (isUsed) {
+            return promotionDao.softDelete(id) > 0 ? 2 : 0;
+        } else {
+            return promotionDao.delete(id) > 0 ? 1 : 0;
+        }
     }
 
     public boolean isCodeExist(String code) {
