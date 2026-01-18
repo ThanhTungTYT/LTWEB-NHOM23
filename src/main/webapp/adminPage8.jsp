@@ -1,8 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: TDat
-  Date: 27/12/2025
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
@@ -42,7 +37,19 @@
         <p>QUẢN LÍ MÃ GIẢM GIÁ</p>
     </div>
 
-    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage8" method="GET">
+    <%
+        String sessionMsg = (String) session.getAttribute("sessionMessage");
+        if (sessionMsg != null) {
+    %>
+    <div style="background-color: #d4edda; color: #155724; font-weight: bold; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <%= sessionMsg %>
+    </div>
+    <%
+            session.removeAttribute("sessionMessage");
+        }
+    %>
+
+    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage8/search" method="GET">
         <input type="text" name="search" placeholder="Tìm kiếm mã giảm giá (ID hoặc Code)" value="${searchKeyword}">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
@@ -100,9 +107,9 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
 
-                        <a href="${pageContext.request.contextPath}/adminPage8?action=delete&id=${p.id}"
+                        <a href="${pageContext.request.contextPath}/adminPage8/delete?id=${p.id}"
                            class="btn-action btn-delete"
-                           onclick="return confirm('Bạn có chắc chắn muốn xóa mã này không?');">
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa mã này không? Nếu mã đã được sử dụng, hệ thống sẽ chỉ tắt kích hoạt.');">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>
@@ -119,8 +126,7 @@
         <button id="take-off">X</button>
     </div>
 
-    <form class="main-form" action="${pageContext.request.contextPath}/adminPage8" method="POST">
-        <input type="hidden" name="action" id="input-action" value="add">
+    <form class="main-form" id="main-form" method="POST" data-context="${pageContext.request.contextPath}">
         <input type="hidden" name="id" id="input-id" value="">
 
         <div class="p name-p">
