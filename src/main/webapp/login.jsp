@@ -49,15 +49,26 @@
 </header>
 <div class="container">
     <h2 id="Login">Đăng nhập</h2>
+
+    <c:if test="${not empty sessionScope.successMsg}">
+        <div class="alert-success">
+            <i class="fas fa-check-circle"></i> ${sessionScope.successMsg}
+        </div>
+        <c:remove var="successMsg" scope="session"/>
+    </c:if>
     <form id="f-login" action="login" method="post">
         <label class="lbu" for="username">Tên đăng nhập:</label>
         <input type="text" id="username" name="email" placeholder="Tên đăng nhập hoặc email" required><br><br>
+
         <label class="lbpw" for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" placeholder="Mật khẩu" required><br><br>
+
         <div class="forgot-password">
             <p>Quên mật khẩu? <a href="forgotpassword.html">Click vào đây</a></p>
         </div>
+
         <p class="error-msg">${error}</p>
+
         <button type="submit" id="b-login">Đăng nhập</button>
     </form>
     <div class="register-link">
