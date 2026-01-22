@@ -156,5 +156,14 @@ public class PromotionDao extends BaseDao {
                         .execute()
         );
     }
+    public Promotion getPromotionByCode(String code) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM promotions  WHERE code = :code LIMIT 1")
+                        .bind("code", code)
+                        .mapToBean(Promotion.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
 
 }

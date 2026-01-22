@@ -45,4 +45,6 @@ public class CartItem implements Serializable {
     public void upQuantity(int quantity){
         this.quantity += quantity;
     }
+
+    public double getTotalPrice() {return price * quantity;}
 }

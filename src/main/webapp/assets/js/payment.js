@@ -1,68 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const totalPriceEl = document.getElementById("total-price");
-    const finalTotalEl = document.getElementById("final-total");
-    const discountSelect = document.getElementById("discount-select");
-    const checkoutBtn = document.getElementById("checkout-btn");
+
+    const promotionSelect = document.getElementById("promotionSelect");
+    const totalEl = document.getElementById("total-price");
+    const finalEl = document.getElementById("final-total");
+    const shippingEl = document.getElementById("shipping-fee");
+
+    if (!promotionSelect || !totalEl || !finalEl || !shippingEl) return;
+
+    const total = parseFloat(totalEl.dataset.total);
+    const shipping = parseFloat(shippingEl.dataset.fee);
+
+    function formatVND(value) {
+        return value.toLocaleString("vi-VN") + " ₫";
+    }
+
+    function updateTotal() {
+        const selectedOption =
+            promotionSelect.options[promotionSelect.selectedIndex];
+
+        const discountPercent =
+            parseFloat(selectedOption.dataset.discount || 0);
+
+        const discount = total * discountPercent / 100;
+        const finalAmount = total - discount + shipping;
+
+        finalEl.textContent = formatVND(finalAmount);
+    }
 
     updateTotal();
-    discountSelect.addEventListener("change", updateTotal);
-
-    // Tính tổng
-    function updateTotal() {
-        let total = 0;
-
-        document.querySelectorAll(".cart-item").forEach(item => {
-            const price = Number(item.dataset.price);
-            const qty = 1; // MẶC ĐỊNH 1
-            total += price * qty;
-        });
-
-        const discount = getDiscount(total);
-
-        totalPriceEl.textContent = format(total);
-        finalTotalEl.textContent = format(total - discount);
-    }
-
-    function getDiscount(total) {
-        const percent = parseInt(discountSelect.value) || 0;
-        if ((percent === 10 && total >= 500000) ||
-            (percent === 15 && total >= 1000000) ||
-            (percent === 20 && total >= 1500000)) {
-            return (total * percent) / 100;
-        }
-        return 0;
-    }
-
-    checkoutBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (!validateForm()) {
-            alert("Vui lòng điền đầy đủ thông tin...");
-            return;
-        }
-        alert("Thanh toán đơn hàng thành công! Trở về trang chủ...");
-        setTimeout(() => window.location.href = "index.html", 1500);
-    });
-
-    function validateForm() {
-        const fields = ["fullname", "phone", "country", "address", "province", "ward"];
-        let valid = true;
-        fields.forEach(id => {
-            const input = document.getElementById(id);
-            const err = input.nextElementSibling;
-            if (!input.value.trim()) {
-                err.textContent = "Vui lòng điền thông tin.";
-                valid = false;
-            } else err.textContent = "";
-        });
-        return valid;
-    }
-
-    function format(value) {
-        return value.toLocaleString("vi-VN") + "₫";
-    }
-});
-
-// chuyển sang trang tài khoản
-document.getElementById("account-btn").addEventListener("click", () => {
-    window.location.href = "../templates/account.html";
+    promotionSelect.addEventListener("change", updateTotal);
 });
