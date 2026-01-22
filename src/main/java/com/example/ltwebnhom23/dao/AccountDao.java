@@ -1,7 +1,8 @@
 package com.example.ltwebnhom23.dao;
 
-import com.example.ltwebnhom23.model.User;
-import com.example.ltwebnhom23.model.Address;
+import com.example.ltwebnhom23.model.*;
+
+import java.util.List;
 
 public class AccountDao extends BaseDao {
 
