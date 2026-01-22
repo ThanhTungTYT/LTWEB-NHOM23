@@ -177,9 +177,6 @@
                                 currencySymbol="₫"/>
                     </span>
                 </div>
-
-
-
                 <button type="submit" class="checkout-btn">
                     Đặt hàng
                 </button>

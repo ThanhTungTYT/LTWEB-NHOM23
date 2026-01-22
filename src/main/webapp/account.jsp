@@ -65,7 +65,7 @@
         <nav>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/info" class="sidebar-link active">Thông tin cá nhân</a></li>
-                <li><a href="history-order.html" class="sidebar-link">Lịch sử mua hàng</a></li>
+                <li><a href="${pageContext.request.contextPath}/his-order" class="sidebar-link">Lịch sử mua hàng</a></li>
                 <li><a href="change-password.html" class="sidebar-link">Đổi mật khẩu</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout" class="logout-link">Đăng xuất</a></li>
             </ul>

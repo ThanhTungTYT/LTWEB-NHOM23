@@ -31,10 +31,7 @@ public class OrderServlet extends HttpServlet {
         }
 
         req.setAttribute("cart", s.getAttribute("cart"));
-        req.setAttribute(
-                "promotions",
-                PromotionService.getInstance().getAvailablePromotions()
-        );
+        req.setAttribute("promotions", PromotionService.getInstance().getAvailablePromotions());
 
         req.getRequestDispatcher("payment.jsp").forward(req, resp);
     }
@@ -112,6 +109,6 @@ public class OrderServlet extends HttpServlet {
 
         orderService.create(order, cart);
         s.removeAttribute("cart");
-        resp.sendRedirect(req.getContextPath() + "/account");
+        resp.sendRedirect(req.getContextPath() + "/account?success=1");
     }
 }

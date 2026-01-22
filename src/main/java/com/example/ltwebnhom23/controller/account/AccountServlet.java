@@ -3,6 +3,8 @@ package com.example.ltwebnhom23.controller.account;
 import com.example.ltwebnhom23.model.User;
 import com.example.ltwebnhom23.model.Address;
 import com.example.ltwebnhom23.services.AccountService;
+import com.example.ltwebnhom23.model.Order;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "AccountServlet", urlPatterns = {"/account", "/info", "/update-info"})
+@WebServlet(name = "AccountServlet", urlPatterns = {"/account", "/info", "/update-info","/his-order"})
 public class AccountServlet extends HttpServlet {
 
     private AccountService accountService = new AccountService();
@@ -32,7 +34,7 @@ public class AccountServlet extends HttpServlet {
             return;
         }
 
-        // TRƯỜNG HỢP 1: Header gọi vào đây -> Trả về trang khung (Layout)
+
         if (action.equals("/account")) {
             request.getRequestDispatcher("/account.jsp").forward(request, response);
         }
@@ -46,6 +48,12 @@ public class AccountServlet extends HttpServlet {
             request.setAttribute("addr", addressDetail);
 
             request.getRequestDispatcher("/info.jsp").forward(request, response);
+        }
+        else if (action.equals("/his-order")) {
+            List<Order> orders =
+                    accountService.getOrdersByUserId(authUser.getId());
+            request.setAttribute("orders", orders);
+            request.getRequestDispatcher("/historyOrder.jsp").forward(request, response);
         }
     }
 

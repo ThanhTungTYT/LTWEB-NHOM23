@@ -1,10 +1,12 @@
 package com.example.ltwebnhom23.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 public class Order {
     private int id;
     private int userId;
+    private List<OrderItem> items;
     private Integer promoId;
     private int paymentMethodId;
 
@@ -122,5 +124,13 @@ public class Order {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 }
