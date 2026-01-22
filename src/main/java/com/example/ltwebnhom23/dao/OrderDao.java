@@ -37,8 +37,33 @@ public class OrderDao extends BaseDao {
                     .bind("price", i.getPrice())
                     .bind("quantity", i.getQuantity())
                     .add();
+
+                int updateProduct = h.createUpdate(
+                        "update  products "+
+                                "set stock = stock - :qty , sold = sold + :qty "+
+                                "where id = :pid and stock >= :qty and state = 'active'")
+                        .bind("qty", i.getQuantity())
+                        .bind("pid", i.getProduct().getId())
+                        .execute();
+                if(updateProduct == 0){
+                    throw new RuntimeException("Sản phẩm hết hàng");
+                }
+                h.createUpdate("UPDATE products SET state = 'inactive' WHERE id = :pid and stock <= 0").bind("pid", i.getProduct().getId()).execute();
             }
             batch.execute();
+
+            if(order.getPromoId() != null){
+                int updatePromo = h.createUpdate(
+                        "UPDATE  promotions "+
+                                "SET quantity = quantity -1 "+
+                                "WHERE id = :pid and quantity > 0 and state = 'active'"
+                ).bind("pid", order.getPromoId()).execute();
+                if(updatePromo == 0){
+                    throw new RuntimeException("Mã giảm giá không hợp lệ");
+                }
+                h.createUpdate("UPDATE promotions SET state = 'inactive' WHERE id = :pid and quantity <= 0")
+                        .bind("pid", order.getPromoId()).execute();
+            }
             return true;
         });
     }
@@ -98,5 +123,4 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
-
 }
