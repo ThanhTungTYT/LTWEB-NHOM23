@@ -76,7 +76,7 @@
                     <td>${c.id}</td>
                     <td>${c.name}</td>
                     <td>
-                        <span>${c.state}</span>
+                        <span class="status-text active">${c.state}</span>
                     </td>
                     <td>
                         <button type="button"
@@ -130,15 +130,14 @@
 
                     <td>
                         <c:choose>
-                            <c:when test="${p.state == 'Deleted'}">
-                                <span style="color:gray; font-style:italic;">Đã ẩn</span>
+                            <c:when test="${p.state eq 'inactive'}">
+                                <span class="status-text inactive">Inactive</span>
                             </c:when>
                             <c:otherwise>
-                                <span style="color:green;">Active</span>
+                                <span class="status-text active">Active</span>
                             </c:otherwise>
                         </c:choose>
                     </td>
-
                     <td>
                         <button class="remake"
                                 type="button"
@@ -244,9 +243,9 @@
         </div>
         <div class="state-p">
             <label>Trạng thái</label>
-            <select name="state" id="edit-state">
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+            <select name="state" id="edit-state" required>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
             </select>
         </div>
         <div class="price-p">

@@ -27,7 +27,7 @@ public class AdminPage2Servlet  extends HttpServlet {
         List<Category> categories = categoryService.getAllCategories();
         request.setAttribute("categories", categories);
         request.getRequestDispatcher("/adminPage2.jsp").forward(request,  response);
-        ;    }
+    }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -155,6 +155,7 @@ public class AdminPage2Servlet  extends HttpServlet {
             } else {
                 response.sendRedirect(request.getContextPath() + "/adminPage2?error=update_failed");
             }
+            System.out.println("STATE = [" + state + "]");
         } catch (NumberFormatException e) {
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_data");

@@ -75,10 +75,13 @@ function openEditModal(button) {
 
     var stateSelect = document.getElementById("edit-state");
     if (stateSelect) {
-        if (state && state.toLowerCase() === 'active') {
-            stateSelect.value = "Active";
+        if (state && state.trim() !== "") {
+            stateSelect.value = state.trim().toLowerCase() === 'inactive'
+                ? 'Inactive'
+                : 'Active';
         } else {
-            stateSelect.value = "Inactive";
+            // DEFAULT – bắt buộc có
+            stateSelect.value = 'Active';
         }
     }
 }
