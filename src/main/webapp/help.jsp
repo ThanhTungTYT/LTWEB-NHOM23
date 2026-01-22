@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Aroma Café Cà phê rang số 1 Việt Nam</title>
+    <title>Liên hệ | Aroma Café</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/help.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
