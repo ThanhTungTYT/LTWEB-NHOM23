@@ -38,4 +38,13 @@ public class AuthDao extends BaseDao {
                         .execute() > 0
         );
     }
+
+    public boolean updatePassword(String email, String newPasswordHash) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET password_hash = :pass WHERE email = :email")
+                        .bind("pass", newPasswordHash)
+                        .bind("email", email)
+                        .execute() > 0
+        );
+    }
 }
