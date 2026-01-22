@@ -26,4 +26,10 @@ public class AuthService {
 
         return authDao.register(user);
     }
+
+    public boolean resetPassword(String email, String newRawPassword) {
+        String hashedPassword = MD5Util.md5(newRawPassword);
+
+        return authDao.updatePassword(email, hashedPassword);
+    }
 }

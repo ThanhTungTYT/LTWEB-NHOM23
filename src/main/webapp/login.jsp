@@ -5,7 +5,7 @@
     <title>Đăng nhập | Aroma Café</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <header>
@@ -16,13 +16,15 @@
                  width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
+            <form action="search" method="get" style="display: flex; width: 100%;">
+                <input type="text" id="search-input" name="q" placeholder="Tìm kiếm...">
+                <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
+            </form>
         </div>
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
+                <span id="num-cart-label">${sessionScope.cart.totalQuantity != null ? sessionScope.cart.totalQuantity : 0}</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
@@ -47,6 +49,7 @@
         <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
+
 <div class="container">
     <h2 id="Login">Đăng nhập</h2>
 
@@ -56,6 +59,7 @@
         </div>
         <c:remove var="successMsg" scope="session"/>
     </c:if>
+
     <form id="f-login" action="login" method="post">
         <label class="lbu" for="username">Tên đăng nhập:</label>
         <input type="text" id="username" name="email" placeholder="Tên đăng nhập hoặc email" required><br><br>
@@ -64,16 +68,19 @@
         <input type="password" id="password" name="password" placeholder="Mật khẩu" required><br><br>
 
         <div class="forgot-password">
-            <p>Quên mật khẩu? <a href="forgotpassword.html">Click vào đây</a></p>
+            <p>Quên mật khẩu? <a href="${pageContext.request.contextPath}/forgot-password">Click vào đây</a></p>
         </div>
 
-        <p class="error-msg">${error}</p>
+        <p class="error-msg" style="color: red; font-style: italic;">${error}</p>
 
         <button type="submit" id="b-login">Đăng nhập</button>
     </form>
+
     <div class="register-link">
-        <p>Bạn chưa có tài khoản? <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký ở đây</a></p></div>
+        <p>Bạn chưa có tài khoản? <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký ở đây</a></p>
+    </div>
 </div>
+
 <footer class="footer">
     <div class="footer-top">
         <div class="foot-content left">
