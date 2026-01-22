@@ -7,7 +7,11 @@ public class Validation {
         return false;
     }
     public boolean isPhone(String phone){
-        if(phone.length() == 10) return true;
+        boolean hasDigit = true;
+        for(char c : phone.toCharArray()){
+            if(!Character.isDigit(c)) hasDigit = false;
+        }
+        if(phone.length() == 10 && hasDigit) return true;
         return false;
     }
     public boolean rePass(String pass, String rePass){
@@ -32,7 +36,6 @@ public class Validation {
                 hasSpecial = true;
             }
         }
-
         if(hasUpper == true && hasDigit == true && hasSpecial == true) return true;
         return false;
     }

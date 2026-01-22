@@ -50,6 +50,7 @@
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -62,6 +63,12 @@
                     <td>${b.end_date}</td>
                     <td>
                         <button class="remake"><i class="fa-solid fa-pen"></i></button>
+                    </td>
+                    <td>
+                        <form method="post" action="delete-banner">
+                            <input type="hidden" name="bid" value="${b.id}">
+                            <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
             </c:forEach>

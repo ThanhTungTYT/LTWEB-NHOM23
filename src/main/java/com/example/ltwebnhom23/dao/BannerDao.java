@@ -44,4 +44,11 @@ public class BannerDao extends BaseDao{
         );
     }
 
+    public boolean deleteBanner(int bid){
+        return getJdbi().withHandle(handle ->
+            handle.createUpdate("DELETE FROM banners WHERE id = :bid")
+                    .bind("bid", bid)
+                    .execute() > 0
+        );
+    }
 }

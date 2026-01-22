@@ -21,5 +21,7 @@ public class BannerService {
     public boolean updateBanner(int bid, Banner b){
         return banner.updateBanner(bid, b);
     }
-
+    public boolean deleteBanner(int bid){
+        return banner.deleteBanner(bid);
+    }
 }
