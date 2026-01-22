@@ -67,6 +67,20 @@ public class OrderDao extends BaseDao {
             return true;
         });
     }
+    public List<Order> getAllOrders() {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT id, user_id, payment_method_id, promo_id, " +
+                                        "receiver_name, receiver_phone, note, " +
+                                        "total_amount, shipping_fee, discount_percent, final_amount, " +
+                                        "status, created_at " +
+                                        "FROM orders " +
+                                        "ORDER BY created_at DESC"
+                        )
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
     /* ================== GET ORDERS BY USER ================== */
     public List<Order> getOrdersByUserId(int userId) {
         return getJdbi().withHandle(h ->
