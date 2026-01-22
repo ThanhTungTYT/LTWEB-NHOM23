@@ -61,4 +61,12 @@ public class PromotionService {
     public Promotion getPromotionById(int id) {
         return promotionDao.getById(id);
     }
+    // khong ap dung ma
+    public Promotion getPromotionByCode(String code) {
+        return promotionDao.getPromotionByCode(code);
+    }
+
+    public Promotion getNoPromo() {
+        return getPromotionByCode("NO_PROMO");
+    }
 }

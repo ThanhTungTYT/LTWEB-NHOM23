@@ -24,12 +24,12 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
-            <a href="profile.jsp">
+            <a href="${pageContext.request.contextPath}/account">
                 <i class="fa-solid fa-user"></i>
-                <span>${sessionScope.auth.fullName}</span>
+                <span>${sessionScope.user.full_name}</span>
             </a>
         </div>
     </div>
@@ -41,7 +41,7 @@
     </div>
 </header>
 
-<form action="order" method="post" id="checkout-form">
+<form action="payment" method="post" id="checkout-form">
 
     <div class="checkout-container">
         <div class="back-link">
@@ -63,8 +63,8 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div>
-                        <p class="name">${sessionScope.auth.fullName}</p>
-                        <p class="email">${sessionScope.auth.email}</p>
+                        <p class="name">${sessionScope.user.full_name}</p>
+                        <p class="email">${sessionScope.user.email}</p>
                     </div>
                 </div>
             </section>
@@ -73,11 +73,11 @@
                 <h3>Thông tin giao hàng</h3>
                 <div class="shipping-form">
                     <input type="text" id="fullname" name="fullname" placeholder="Họ và tên"
-                           value="${sessionScope.auth.fullName}" required>
+                           value="${sessionScope.user.full_name}" required>
                     <small class="error"></small>
 
                     <input type="text" id="phone" name="phone" placeholder="Số điện thoại"
-                           value="${sessionScope.auth.phone}" required>
+                           value="${sessionScope.user.phone}" required>
                     <small class="error"></small>
 
                     <input type="text" id="country" name="country" placeholder="Quốc gia" value="Việt Nam" required>
@@ -100,7 +100,7 @@
                     <input type="radio" name="paymentMethod" value="cod" checked> Thanh toán khi nhận hàng
                 </label>
                 <label class="radio-item">
-                    <input type="radio" name="paymentMethod" value="bank"> Chuyển khoản qua ngân hàng
+                    <input type="radio" name="paymentMethod" value="bank"> Chuyển khoản ngân hàng
                 </label>
             </section>
 
@@ -135,61 +135,52 @@
             <section class="discount-box">
                 <h3>Mã khuyến mãi</h3>
 
-                <select name="promotionId">
-                    <option value="">-- Chọn mã --</option>
-
+                <select name="promotionId" id="promotionSelect">
+                    <option value="" data-discount="0">-- Chọn mã --</option>
                     <c:forEach var="p" items="${promotions}">
-                        <option value="${p.id}">
+                        <option value="${p.id}"
+                                data-discount="${p.discountPercent}">
                                 ${p.code} - Giảm ${p.discountPercent}%
                         </option>
                     </c:forEach>
                 </select>
             </section>
-
             <section class="summary-box">
                 <h3>Tóm tắt đơn hàng</h3>
                 <!-- Tổng tiền hàng -->
                 <div class="summary-row">
                     <span>Tổng tiền hàng</span>
-                    <span id="total-price">
-                        <fmt:formatNumber value="${cart.total}"
-                                          type="currency"
-                                          currencySymbol="₫"/>
-                    </span>
-                </div>
-                <!-- Mã giảm giá -->
-                <c:if test="${not empty promotion}">
-                    <div class="summary-row discount">
-                    <span>
-                        Mã giảm giá
-                        (<strong>${promotion.code}</strong>)
-                    </span>
-                    <span style="color: #28a745;">
-                -
-                    <fmt:formatNumber value="${discountAmount}"
-                                  type="currency"
-                                  currencySymbol="₫"/>
-                    </span>
-                    </div>
-                </c:if>
-                <!-- Phí vận chuyển -->
-                <div class="summary-row">
-                    <span>Phí vận chuyển</span>
-                    <span>30.000₫</span>
-                </div>
-                <hr>
-                <!-- Tổng thanh toán -->
-                <div class="summary-row total">
-                    <span>Tổng thanh toán</span>
-                    <span id="final-total">
+                    <span id="total-price"
+                          data-total="${sessionScope.cart.total}">
             <fmt:formatNumber
-                    value="${cart.total - (discountAmount != null ? discountAmount : 0) + 30000}"
+                    value="${sessionScope.cart.total}"
                     type="currency"
                     currencySymbol="₫"/>
         </span>
                 </div>
 
-                <button type="submit" class="checkout-btn" id="checkout-btn">
+                <!-- Phí vận chuyển -->
+                <div class="summary-row">
+                    <span>Phí vận chuyển</span>
+                    <span id="shipping-fee" data-fee="30000">30.000₫</span>
+                </div>
+                <hr>
+                <!-- Tổng thanh toán -->
+                <div class="summary-row total">
+                    <span>Tổng thanh toán</span>
+                    <span id="final-total"
+                          data-base="${sessionScope.cart.total}"
+                          data-ship="30000">
+                        <fmt:formatNumber
+                                value="${sessionScope.cart.total + 30000}"
+                                type="currency"
+                                currencySymbol="₫"/>
+                    </span>
+                </div>
+
+
+
+                <button type="submit" class="checkout-btn">
                     Đặt hàng
                 </button>
             </section>

@@ -9,6 +9,8 @@ public class OrderService {
     private final OrderDao dao = new OrderDao();
 
     public boolean create(Order order, Cart cart) {
+        if (order == null || cart == null || cart.getList().isEmpty())
+            return false;
         order.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         return dao.createOrder(order, cart);
     }
