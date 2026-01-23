@@ -31,10 +31,8 @@
             Trạng thái:
             <span class="order-status ${o.status}">
                 <c:choose>
-                    <c:when test="${o.status == 'Đang xử lý:'}">Đang xử lý</c:when>
-                    <c:when test="${o.status == 'Đã nhận'}">Đã xác nhận</c:when>
-                    <c:when test="${o.status == 'Đang giao'}">Đang giao hàng</c:when>
-                    <c:when test="${o.status == 'completed'}">Hoàn thành</c:when>
+                    <c:when test="${o.status == 'Đang xử lý'}">Đang xử lý</c:when>
+                    <c:when test="${o.status == 'Đã giao'}">Đã giao</c:when>
                     <c:when test="${o.status == 'Đã hủy'}">Đã hủy</c:when>
                     <c:otherwise>Không xác định</c:otherwise>
                 </c:choose>
@@ -57,6 +55,13 @@
                 </div>
             </div>
         </c:forEach>
+        <c:if test="${o.status == 'Đang xử lý'}">
+            <form action="${pageContext.request.contextPath}/cancel-order" method="post">
+                <input type="hidden" name="orderId" value="${o.id}">
+                <button type="submit">Hủy đơn</button>
+            </form>
+
+        </c:if>
     </div>
 </c:forEach>
 </body>

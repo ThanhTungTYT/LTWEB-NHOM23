@@ -137,4 +137,26 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+    public boolean updateOrderStatus(Order order) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate(
+                                "UPDATE orders " +
+                                        "SET status = :status " +
+                                        "WHERE id = :orderId"
+                        )
+                        .bind("status", order.getStatus())
+                        .bind("orderId", order.getId())
+                        .execute() > 0
+        );
+    }
+    public boolean cancelOrder(Order order) {
+        return getJdbi().withHandle(handle -> {
+            int rows = handle.createUpdate("UPDATE orders SET status = :status WHERE id = :id")
+                    .bind("status", order.getStatus())
+                    .bind("id", order.getId())
+                    .execute();
+
+            return rows > 0;
+        });
+    }
 }
