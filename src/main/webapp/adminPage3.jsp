@@ -5,6 +5,7 @@
   Time: 15:47
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -35,10 +36,10 @@
     <div class="menu">
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item ">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
-        <a href="${pageContext.request.contextPath}/adminPage3.jsp" class="menu-item active">Quản lí đơn hàng</a>
-        <a href="${pageContext.request.contextPath}/adminPage4.jsp" class="menu-item">Quản lí tài khoản</a>
+        <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item active">Quản lí đơn hàng</a>
+        <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item">Quản lí banner</a>
+        <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
         <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
@@ -79,103 +80,136 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-list"></i></button>
-                    </td>
-                    <td>#DH10542</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>09/11/2025</td>
-                    <td><span class="status pending">Chờ xử lý</span></td>
-                    <td>120.000đ</td>
-                    <td>Thanh toán khi nhận hàng</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-list"></i></button>
-                    </td>
-                    <td>#DH10541</td>
-                    <td>Trần Thị B</td>
-                    <td>09/11/2025</td>
-                    <td><span class="status completed">Đã giao</span></td>
-                    <td>150.000đ</td>
-                    <td>Chuyển khoản qua ngân hàng</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-list"></i></button>
-                    </td>
-                    <td>#DH10540</td>
-                    <td>Lê Văn C</td>
-                    <td>08/11/2025</td>
-                    <td><span class="status cancelled">Đã hủy</span></td>
-                    <td>250.000đ</td>
-                    <td>Chuyển khoản qua ngân hàng</td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-list"></i></button>
-                    </td>
-                    <td>#DH10539</td>
-                    <td>Phạm Thị D</td>
-                    <td>08/11/2025</td>
-                    <td><span class="status completed">Đã giao</span></td>
-                    <td>55.000đ</td>
-                    <td>Thanh toán khi nhận hàng</td>
-                </tr>
+
+                <c:forEach items="${orders}" var="o">
+                    <tr>
+                        <td>
+                            <button class="detail"
+                                    onclick="showDetail(${o.id})">
+                                <i class="fa-solid fa-list"></i>
+                            </button>
+                        </td>
+
+                        <td>#DH${o.id}</td>
+
+                        <td>
+                            <c:out value="${userMap[o.userId]['full_name']}" />
+                        </td>
+
+                        <td>
+                            <fmt:formatDate value="${o.createdAt}" pattern="dd/MM/yyyy"/>
+                        </td>
+
+                        <td>
+                            <span class="status ${o.status}">
+                                <c:choose>
+                                    <c:when test="${o.status == 'Đang xử lý'}">Đang xử lý</c:when>
+                                    <c:when test="${o.status == 'Đã giao'}">Đã giao</c:when>
+                                    <c:when test="${o.status == 'Đã hủy'}">Đã huỷ</c:when>
+                                </c:choose>
+                            </span>
+                        </td>
+                        <td>
+                            <fmt:formatNumber value="${o.finalAmount}" type="number"/>đ
+                        </td>
+
+                        <td>
+                            <c:choose>
+                                <c:when test="${o.paymentMethodId == 1}">
+                                    Thanh toán khi nhận hàng
+                                </c:when>
+                                <c:otherwise>
+                                    Chuyển khoản ngân hàng
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<div class="detail-p" id="detail-p" style="display: none">
-    <button id="close">X</button>
-    <div class="order">
-        <h3>DANH SÁCH SẢN PHẨM</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tên sản phẩm</th>
-                <th>Loại sản phẩm</th>
-                <th>Giá (VND)</th>
-                <th>Số lượng</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>P001</td>
-                <td>Cafe Aroma 1</td>
-                <td>Cà phê hữu cơ</td>
-                <td>100.000</td>
-                <td>1</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="info-customer">
-        <h3>THÔNG TIN KHÁCH HÀNG</h3>
-        <div class="info">
-            <div class="info-left">
-                <p>1. Họ và tên: Phan Thanh Tùng</p>
-                <p>2. SĐT: 0868.xxx.xxx</p>
-                <p>3. Email: example@gmail.com</p>
-            </div>
-            <div class="info-right">
-                <p>4. Tỉnh: Gia Lai</p>
-                <p>5. Xã: Hòa Hội</p>
-                <p>6. Địa chỉ: Số 1xx, đường 1x, thôn Hòa Hội</p>
+<c:forEach items="${orders}" var="o">
+    <div class="detail-p order-detail"
+         id="detail-${o.id}"
+         style="display:none">
+
+        <button id="close" onclick="closeDetail()">X</button>
+
+        <!-- DANH SÁCH SẢN PHẨM -->
+        <div class="order">
+            <h3>DANH SÁCH SẢN PHẨM</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá (VND)</th>
+                    <th>Số lượng</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${orderItemsMap[o.id]}" var="i">
+                    <tr>
+                        <td>${i.product.name}</td>
+                        <td>
+                            <fmt:formatNumber value="${i.price}" type="number"/>đ
+                        </td>
+                        <td>${i.quantity}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <!-- THÔNG TIN KHÁCH -->
+        <div class="info-customer">
+            <h3>THÔNG TIN KHÁCH HÀNG</h3>
+            <div class="info">
+                <div class="info-left">
+                    <p>Họ và tên: ${userMap[o.userId].full_name}</p>
+                    <p>SĐT: ${o.receiverPhone}</p>
+                </div>
             </div>
         </div>
+
+        <!-- TỔNG TIỀN -->
+        <div class="totalSum">
+            <h3>
+                TỔNG TIỀN SẢN PHẨM:
+                <span>
+                <fmt:formatNumber value="${o.totalAmount}" type="number"/> đ
+            </span>
+            </h3>
+            <h3>
+                GIẢM GIÁ (Tổng tiền sản phẩm):
+                <span>
+                <fmt:formatNumber value="${o.discountPercent * o.totalAmount /100}" type="number"/> đ
+            </span>
+            </h3>
+            <h3>
+                PHÍ VẬN CHUYỂN:
+                <span>
+                <fmt:formatNumber value="${o.shippingFee}" type="number"/> đ
+            </span>
+            </h3>
+            <h3>
+                TỔNG TIỀN ĐƠN HÀNG:
+                <span>
+                <fmt:formatNumber value="${o.finalAmount}" type="number"/> đ
+            </span>
+            </h3>
+        </div>
+        <c:if test="${o.status == 'Đang xử lý'}">
+            <form action="${pageContext.request.contextPath}/adminPage3" method="post">
+                <input type="hidden" name="orderId" value="${o.id}">
+                <button type="submit">Xuất hóa đơn</button>
+            </form>
+        </c:if>
     </div>
-    <div class="totalSum">
-        <h3>PHÍ VẬN CHUYỂN: <span>20.000</span> VND</h3>
-        <h3>TỔNG TIỀN: <span>120.000</span> VND</h3>
-    </div>
-    <button>Xuất hóa đơn</button>
-</div>
+</c:forEach>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/adminPage3.js"></script>
 
 </body>
 </html>

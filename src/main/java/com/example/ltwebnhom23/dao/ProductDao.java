@@ -23,14 +23,13 @@ public class ProductDao extends BaseDao {
     // Lấy toàn bộ sản phẩm (cho trang Admin hoặc Debug)
     public List<Product> getAllProduct() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, " +
+                handle.createQuery("SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, p.state, " +
                                 "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
                                 "c.name AS category_name, " +
                                 "IFNULL(AVG(r.rating), 0) AS avg_rating " +
                                 "FROM products p " +
                                 "JOIN categories c ON p.category_id = c.id " +
                                 "LEFT JOIN products_review r ON p.id = r.product_id " +
-                                "Where p.state ='active' And c.state = 'active' "+
                                 "GROUP BY p.id, p.name, p.price, c.name")
                         .mapToBean(Product.class)
                         .list()
@@ -114,7 +113,8 @@ public class ProductDao extends BaseDao {
                     "IFNULL(AVG(r.rating), 0) AS avg_rating " +
                     "FROM products p " +
                     "JOIN categories c ON p.category_id = c.id " +
-                    "LEFT JOIN products_review r ON p.id = r.product_id ";
+                    "LEFT JOIN products_review r ON p.id = r.product_id " +
+                    "Where p.state = 'active' And p.stock > 0 " ;
 
             if (cid > 0) {
                 sql += "WHERE p.category_id = :cid ";

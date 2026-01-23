@@ -541,6 +541,31 @@
         cursor: pointer;
         border: none;
     }
+    .status {
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    /* Đang xử lý */
+    .status.Đang.xử.lý {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    /* Đã giao */
+    .status.Đã.giao {
+        background-color: #d4edda;
+        color: #155724;
+    }
+
+    /* Đã huỷ (nếu có) */
+    .status.Đã.hủy {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
 
     .right-content .list-account button:hover {
         background: #700000;
@@ -678,6 +703,7 @@
         display: flex;
         flex-direction: row;
         gap: 50px;
+        margin-bottom: 20px;
     }
 
     .detail-p .info-customer .info div {
@@ -1021,16 +1047,20 @@
 
     .status-text {
         font-weight: 700;
-        text-transform: capitalize;
-        font-size: 14px;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 13px;
+        display: inline-block;
     }
 
     .status-text.active {
-        color: green;
+        background-color: #d4edda;
+        color: #155724;
     }
 
     .status-text.inactive {
-        color: red;
+        background-color: #f8d7da;
+        color: #721c24;
     }
 
     .form-error {

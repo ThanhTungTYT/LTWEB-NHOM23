@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>Xác thực OTP - Aroma Café</title>
+    <title>Xác thực OTP | Aroma Café</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/register.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
