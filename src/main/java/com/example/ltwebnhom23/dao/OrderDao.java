@@ -10,61 +10,67 @@ import java.util.List;
 
 public class OrderDao extends BaseDao {
 
-    public boolean createOrder(Order order, Cart cart) {
+    public boolean createOrder(Order order, Cart checkoutCart) {
         return getJdbi().inTransaction(h -> {
-            int orderId = h.createUpdate(
-                            "INSERT INTO orders (" +
-                                    "user_id, payment_method_id, promo_id, " +
-                                    "receiver_name, receiver_phone, note, " +
-                                    "total_amount, shipping_fee, discount_percent, final_amount, created_at" +
-                                    ") VALUES (" +
-                                    ":userId, :paymentMethodId, :promoId, " +
-                                    ":receiverName, :receiverPhone, :note, " +
-                                    ":totalAmount, :shippingFee, :discountPercent, :finalAmount, :createdAt)"
-                    ).bindBean(order)
-                    .executeAndReturnGeneratedKeys("id")
-                    .mapTo(Integer.class).one();
+            try {
+                int orderId = h.createUpdate(
+                                "INSERT INTO orders (" +
+                                        "user_id, payment_method_id, promo_id, " +
+                                        "receiver_name, receiver_phone, note, " +
+                                        "total_amount, shipping_fee, discount_percent, final_amount, created_at, status" +
+                                        ") VALUES (" +
+                                        ":userId, :paymentMethodId, :promoId, " +
+                                        ":receiverName, :receiverPhone, :note, " +
+                                        ":totalAmount, :shippingFee, :discountPercent, :finalAmount, :createdAt, :status)" // Thêm status
+                        ).bindBean(order)
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(Integer.class).one();
 
-            var batch = h.prepareBatch(
-                    "INSERT INTO order_items(order_id, product_id, price, quantity) " +
-                            "VALUES (:orderId, :productId, :price, :quantity)"
-            );
+                var batch = h.prepareBatch(
+                        "INSERT INTO order_items(order_id, product_id, price, quantity) " +
+                                "VALUES (:orderId, :productId, :price, :quantity)"
+                );
 
-            for (CartItem i : cart.getList()) {
-                batch
-                    .bind("orderId", orderId)
-                    .bind("productId", i.getProduct().getId())
-                    .bind("price", i.getPrice())
-                    .bind("quantity", i.getQuantity())
-                    .add();
+                for (CartItem i : checkoutCart.getList()) {
 
-                int updateProduct = h.createUpdate(
-                        "update  products "+
-                                "set stock = stock - :qty , sold = sold + :qty "+
-                                "where id = :pid and stock >= :qty and state = 'active'")
-                        .bind("qty", i.getQuantity())
-                        .bind("pid", i.getProduct().getId())
-                        .execute();
-                if(updateProduct == 0){
-                    throw new RuntimeException("Sản phẩm hết hàng");
+                    batch.bind("orderId", orderId)
+                            .bind("productId", i.getProduct().getId())
+                            .bind("price", i.getPrice())
+                            .bind("quantity", i.getQuantity())
+                            .add();
+
+                    int updateProduct = h.createUpdate(
+                                    "UPDATE products " +
+                                            "SET stock = stock - :qty, sold = sold + :qty " +
+                                            "WHERE id = :pid AND stock >= :qty AND state = 'active'")
+                            .bind("qty", i.getQuantity())
+                            .bind("pid", i.getProduct().getId())
+                            .execute();
+
+                    if (updateProduct == 0) {
+                        throw new RuntimeException("Sản phẩm " + i.getProduct().getName() + " đã hết hàng hoặc không đủ số lượng.");
+                    }
+
+                    h.createUpdate("UPDATE products SET state = 'inactive' WHERE id = :pid AND stock <= 0")
+                            .bind("pid", i.getProduct().getId())
+                            .execute();
                 }
-                h.createUpdate("UPDATE products SET state = 'inactive' WHERE id = :pid and stock <= 0").bind("pid", i.getProduct().getId()).execute();
-            }
-            batch.execute();
+                batch.execute();
 
-            if(order.getPromoId() != null){
-                int updatePromo = h.createUpdate(
-                        "UPDATE  promotions "+
-                                "SET quantity = quantity -1 "+
-                                "WHERE id = :pid and quantity > 0 and state = 'active'"
-                ).bind("pid", order.getPromoId()).execute();
-                if(updatePromo == 0){
-                    throw new RuntimeException("Mã giảm giá không hợp lệ");
+                if (order.getPromoId() != null && order.getPromoId() > 0) {
+                    int updatePromo = h.createUpdate(
+                            "UPDATE promotions " +
+                                    "SET quantity = quantity - 1 " +
+                                    "WHERE id = :pid AND quantity > 0 AND state = 'active'"
+                    ).bind("pid", order.getPromoId()).execute();
+
                 }
-                h.createUpdate("UPDATE promotions SET state = 'inactive' WHERE id = :pid and quantity <= 0")
-                        .bind("pid", order.getPromoId()).execute();
+
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw e;
             }
-            return true;
         });
     }
     public List<Order> getAllOrders() {

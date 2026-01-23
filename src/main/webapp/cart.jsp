@@ -56,6 +56,13 @@
 <div class="cart-container">
     <h2>Giỏ hàng của bạn</h2>
 
+    <c:if test="${not empty sessionScope.error}">
+        <div style="color: red; text-align: center; margin-bottom: 10px;">
+            <i class="fas fa-exclamation-circle"></i> ${sessionScope.error}
+        </div>
+        <% session.removeAttribute("error"); %>
+    </c:if>
+
     <c:if test="${empty sessionScope.cart or empty sessionScope.cart.list}">
         <div style="text-align: center; margin: 50px 0;">
             <p>Giỏ hàng của bạn đang trống.</p>
@@ -64,11 +71,12 @@
     </c:if>
 
     <c:if test="${not empty sessionScope.cart and not empty sessionScope.cart.list}">
-        <form action="${pageContext.request.contextPath}/payment" method="get" id="cart-form">
+        <form action="${pageContext.request.contextPath}/payment" method="post" id="cart-form">
+            <input type="hidden" name="action" value="prepare">
 
             <div class="clear-all-container" style="display: flex; justify-content: space-between;">
                 <a href="#" class="select-all-cart">Chọn tất cả</a>
-                <a href="${pageContext.request.contextPath}/remove-all" class="clear-all-cart" onclick="return confirm('Bạn chắc chắn muốn xóa hết giỏ hàng?');">Xóa tất cả</a>
+                <a href="${pageContext.request.contextPath}/remove-all" class="clear-all-cart">Xóa tất cả</a>
             </div>
 
             <div id="cart-list">
@@ -78,12 +86,20 @@
                                name="selectedIds" value="${item.product.id}" checked
                                data-subtotal="${item.price * item.quantity}">
 
-                        <a href="${pageContext.request.contextPath}/remove-item?pid=${item.product.id}" class="product-remove" title="Xóa sản phẩm">
+                        <a href="${pageContext.request.contextPath}/remove-item?pid=${item.product.id}" class="product-remove" title="Xóa sản phẩm" onclick="return confirm('Xóa sản phẩm này?');">
                             <i class="fas fa-times"></i>
                         </a>
 
                         <div class="product-thumbnail">
-                            <img src="${item.product.image_url}" alt="${item.product.name}"/>
+                            <c:choose>
+                                <%-- Nếu có link ảnh thì hiện ảnh --%>
+                                <c:when test="${not empty item.product.image_url}">
+                                    <img src="${item.product.image_url}" alt="${item.product.name}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/assets/img/about05.png" alt="Default Image"/>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
 
                         <div class="product-details">

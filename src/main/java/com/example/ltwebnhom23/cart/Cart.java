@@ -15,8 +15,26 @@ public class Cart implements Serializable {
     }
 
     public void addProduct(Product product, int quantity){
-        if(data.containsKey(product.getId())) data.get(product.getId()).upQuantity(quantity);
-        else data.put(product.getId(), new CartItem(product, quantity, product.getPrice()));
+        if(data.containsKey(product.getId())) {
+            data.get(product.getId()).upQuantity(quantity);
+        } else {
+            data.put(product.getId(), new CartItem(product, quantity, product.getPrice()));
+        }
+    }
+
+    public CartItem getItem(int pid) {
+        return data.get(pid);
+    }
+
+    public void addItemDirectly(CartItem item) {
+        if (item != null) {
+            CartItem newItem = new CartItem(item.getProduct(), item.getQuantity(), item.getPrice());
+            data.put(newItem.getProduct().getId(), newItem);
+        }
+    }
+
+    public void remove(int pid) {
+        data.remove(pid);
     }
 
     public boolean deleteProduct(int pid){
@@ -35,23 +53,22 @@ public class Cart implements Serializable {
 
     public int getTotalQuantity(){
         AtomicInteger total = new AtomicInteger();
-        data.values().stream().forEach(p -> total.addAndGet(p.getQuantity()));
+        data.values().forEach(p -> total.addAndGet(p.getQuantity()));
         return total.get();
     }
 
     public double getTotal(){
-        AtomicReference<Double> total = new AtomicReference<>((double) 0);
-        data.values().stream().forEach(p -> total.updateAndGet(v -> (v + (p.getQuantity() * p.getPrice()))));
-        return total.get();
+        return data.values().stream()
+                .mapToDouble(p -> p.getPrice() * p.getQuantity())
+                .sum();
     }
-
     public void updateQuantity(int pid, int quantity) {
         CartItem item = data.get(pid);
         if (item != null) {
             if (quantity <= 0) {
-                data.remove(pid); // Nếu số lượng <= 0 thì xóa luôn
+                data.remove(pid);
             } else {
-                item.setQuantity(quantity); // Set số lượng mới
+                item.setQuantity(quantity);
             }
         }
     }

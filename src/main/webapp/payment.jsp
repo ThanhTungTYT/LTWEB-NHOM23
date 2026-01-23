@@ -54,13 +54,13 @@
 </header>
 
 <form action="payment" method="post" id="checkout-form">
+    <input type="hidden" name="action" value="process">
 
     <div class="checkout-container">
         <div class="back-link">
             <a href="cart.jsp"><i class="fas fa-arrow-left"></i> Quay lại giỏ hàng</a>
         </div>
 
-        <%-- Hiển thị thông báo lỗi nếu Servlet trả về --%>
         <c:if test="${not empty requestScope.error}">
             <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin-bottom: 15px; border-radius: 5px; text-align: center;">
                 <i class="fas fa-exclamation-triangle"></i> ${requestScope.error}
@@ -124,12 +124,20 @@
 
         <div class="checkout-right">
             <section class="cart-box">
-                <h3>Giỏ hàng</h3>
+                <h3>Sản phẩm thanh toán</h3>
                 <div id="cart-list">
-                    <c:forEach items="${sessionScope.cart.list}" var="item">
-                        <%-- data-price dùng cho JS tính toán phía client --%>
+                    <c:forEach items="${requestScope.cart.list}" var="item">
                         <div class="cart-item" data-price="${item.price}">
-                            <img src="${item.product.image_url}" alt="${item.product.name}" onerror="this.src='${pageContext.request.contextPath}/assets/img/default.png'">
+                            <c:choose>
+                                <c:when test="${not empty item.product.image_url}">
+                                    <img src="${item.product.image_url}"
+                                         alt="${item.product.name}">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/assets/img/about04.png"
+                                         alt="Default Image">
+                                </c:otherwise>
+                            </c:choose>
                             <div class="cart-info">
                                 <p class="product-name">${item.product.name}</p>
                                 <p class="price"> Giá:
@@ -138,6 +146,9 @@
                             </div>
                             <div class="quantity-box">
                                 <p>Số lượng: ${item.quantity}</p>
+                            </div>
+                            <div style="margin-left:auto; font-weight: bold; font-size: 0.9em; color: #555;">
+                                <fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol="đ"/>
                             </div>
                         </div>
                     </c:forEach>
@@ -157,34 +168,32 @@
                     </c:forEach>
                 </select>
             </section>
+
             <section class="summary-box">
                 <h3>Tóm tắt đơn hàng</h3>
-                <!-- Tổng tiền hàng -->
                 <div class="summary-row">
                     <span>Tổng tiền hàng</span>
                     <span id="total-price"
-                          data-total="${sessionScope.cart.total}">
-            <fmt:formatNumber
-                    value="${sessionScope.cart.total}"
-                    type="currency"
-                    currencySymbol="₫"/>
-        </span>
+                          data-total="${requestScope.cart.total}">
+                        <fmt:formatNumber
+                                value="${requestScope.cart.total}"
+                                type="currency"
+                                currencySymbol="₫"/>
+                    </span>
                 </div>
 
-                <!-- Phí vận chuyển -->
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
                     <span id="shipping-fee" data-fee="30000">30.000₫</span>
                 </div>
                 <hr>
-                <!-- Tổng thanh toán -->
                 <div class="summary-row total">
                     <span>Tổng thanh toán</span>
                     <span id="final-total"
-                          data-base="${sessionScope.cart.total}"
+                          data-base="${requestScope.cart.total}"
                           data-ship="30000">
                         <fmt:formatNumber
-                                value="${sessionScope.cart.total + 30000}"
+                                value="${requestScope.cart.total + 30000}"
                                 type="currency"
                                 currencySymbol="₫"/>
                     </span>
