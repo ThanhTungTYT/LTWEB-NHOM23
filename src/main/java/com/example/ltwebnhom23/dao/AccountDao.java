@@ -86,4 +86,13 @@ public class AccountDao extends BaseDao {
                         .execute() > 0
         );
     }
+    public String getFullNameById(int userId) {
+        return getJdbi().withHandle(h ->
+                h.createQuery("SELECT full_name FROM users WHERE id = :id")
+                        .bind("id", userId)
+                        .mapTo(String.class)
+                        .findOne()
+                        .orElse("Không xác định")
+        );
+    }
 }

@@ -3,8 +3,8 @@ package com.example.ltwebnhom23.controller.adminPage3;
 import com.example.ltwebnhom23.model.Order;
 import com.example.ltwebnhom23.model.OrderItem;
 import com.example.ltwebnhom23.model.User;
+import com.example.ltwebnhom23.services.AccountService;
 import com.example.ltwebnhom23.services.OrderService;
-import com.example.ltwebnhom23.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,14 +23,14 @@ import java.util.stream.Collectors;
 public class AdminPage3Servlet extends HttpServlet {
 
     private final OrderService orderService = new OrderService();
-    private final UserService userService = new UserService();
+    private final AccountService accountService = new AccountService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         var orders = orderService.getAllOrders();
-        List<User> users = userService.getAllUsers();
+        List<User> users = accountService.getAllUser();
 
         Map<Integer, User> userMap = users.stream()
                 .collect(Collectors.toMap(User::getId, u -> u));

@@ -6,6 +6,7 @@ import com.example.ltwebnhom23.services.AccountService;
 import com.example.ltwebnhom23.model.Order;
 import java.util.List;
 
+import com.example.ltwebnhom23.services.OrderService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class AccountServlet extends HttpServlet {
 
     private AccountService accountService = new AccountService();
+    private OrderService orderService = new OrderService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,7 +52,7 @@ public class AccountServlet extends HttpServlet {
             request.getRequestDispatcher("/info.jsp").forward(request, response);
         }
         else if (action.equals("/his-order")) {
-            List<Order> orders = accountService.getOrdersByUserId(authUser.getId());
+            List<Order> orders = orderService.getOrdersByUserId(authUser.getId());
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/historyOrder.jsp").forward(request, response);
         }
@@ -102,7 +104,7 @@ public class AccountServlet extends HttpServlet {
             if (orderIdStr != null && !orderIdStr.isEmpty()) {
                 try {
                     int orderId = Integer.parseInt(orderIdStr);
-                    boolean isCancelled = accountService.cancelOrder(orderId);
+                    boolean isCancelled = orderService.cancelOrder(orderId);
                     if (isCancelled) {
                     }
                 } catch (NumberFormatException e) {
