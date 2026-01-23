@@ -44,5 +44,15 @@ public class Cart implements Serializable {
         data.values().stream().forEach(p -> total.updateAndGet(v -> (v + (p.getQuantity() * p.getPrice()))));
         return total.get();
     }
-    
+
+    public void updateQuantity(int pid, int quantity) {
+        CartItem item = data.get(pid);
+        if (item != null) {
+            if (quantity <= 0) {
+                data.remove(pid); // Nếu số lượng <= 0 thì xóa luôn
+            } else {
+                item.setQuantity(quantity); // Set số lượng mới
+            }
+        }
+    }
 }
