@@ -56,10 +56,11 @@
             </div>
         </c:forEach>
         <c:if test="${o.status == 'Đang xử lý'}">
-            <form action="" method="post">
+            <form action="${pageContext.request.contextPath}/cancel-order" method="post">
                 <input type="hidden" name="orderId" value="${o.id}">
                 <button type="submit">Hủy đơn</button>
             </form>
+
         </c:if>
     </div>
 </c:forEach>

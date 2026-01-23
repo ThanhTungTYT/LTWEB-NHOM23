@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "AccountServlet", urlPatterns = {"/account", "/info", "/update-info","/his-order"})
+@WebServlet(name = "AccountServlet", urlPatterns = {"/account", "/info", "/update-info","/his-order", "/cancel-order"})
 public class AccountServlet extends HttpServlet {
 
     private AccountService accountService = new AccountService();
@@ -96,6 +96,20 @@ public class AccountServlet extends HttpServlet {
             } else {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");
             }
+        }
+        else if (action.equals("/cancel-order")) {
+            String orderIdStr = request.getParameter("orderId");
+            if (orderIdStr != null && !orderIdStr.isEmpty()) {
+                try {
+                    int orderId = Integer.parseInt(orderIdStr);
+                    boolean isCancelled = accountService.cancelOrder(orderId);
+                    if (isCancelled) {
+                    }
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+            }
+            response.sendRedirect(request.getContextPath() + "/account");
         }
     }
 }
