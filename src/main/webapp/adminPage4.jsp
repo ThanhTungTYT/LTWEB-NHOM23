@@ -36,9 +36,9 @@
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
-        <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item active">Quản lí tài khoản</a>
+        <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item active">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item">Quản lí banner</a>
+        <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
         <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
@@ -90,7 +90,10 @@
                         <td>${u.phone}</td>
                         <td>${u.role}</td>
                         <td>
-                            <button><i class="fa-solid fa-trash"></i></button>
+                            <form method="post" action="delete-user">
+                                <input type="hidden" name="uid" value="${u.id}">
+                                <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>
@@ -103,26 +106,26 @@
         <p>THÊM TÀI KHOẢN</p>
         <button id="take-off">X</button>
     </div>
-    <form class="main-form">
+    <form method="post" action="add-user" class="main-form">
         <div class="p name-p">
             <label>Tên người dùng</label>
-            <input type="text" placeholder="Tên người dùng">
+            <input type="text" name="name" placeholder="Tên người dùng">
         </div>
         <div class="price-p">
             <label>Email</label>
-            <input type="text" placeholder="Email" required>
+            <input type="text" name="email" placeholder="Email" required>
         </div>
         <div class="count-p">
             <label>Mật khẩu</label>
-            <input type="text" placeholder="Mật khẩu" required>
+            <input type="text" name="pass" placeholder="Mật khẩu" required>
         </div>
         <div class="count-p">
             <label>Số điện thoại</label>
-            <input type="text" placeholder="Số điện thoại">
+            <input type="text" name="phone" placeholder="Số điện thoại">
         </div>
         <div class="type-p">
             <label>Role</label>
-            <select>
+            <select name="role">
                 <option>-Chọn vai trò-</option>
                 <option>Admin</option>
                 <option>Customer</option>

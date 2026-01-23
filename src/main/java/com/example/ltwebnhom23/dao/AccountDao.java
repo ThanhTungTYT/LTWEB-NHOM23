@@ -68,4 +68,22 @@ public class AccountDao extends BaseDao {
                         .list()
         );
     }
+    public boolean deleteUser(int uid){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("DELETE FROM users WHERE id = :uid")
+                        .bind("uid", uid)
+                        .execute() > 0
+        );
+    }
+    public boolean addUser(User user){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("INSERT INTO users(full_name, email, phone, password_hash, role, created_at) VALUES (:name, :email, :phone, :pass, :role, NOW())")
+                        .bind("name", user.getFull_name())
+                        .bind("email", user.getEmail())
+                        .bind("phone", user.getPhone())
+                        .bind("pass", user.getPassword_hash())
+                        .bind("role", user.getRole())
+                        .execute() > 0
+        );
+    }
 }
