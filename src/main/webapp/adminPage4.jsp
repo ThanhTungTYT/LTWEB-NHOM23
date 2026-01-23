@@ -55,12 +55,9 @@
     <div class="notify">
         <h3>THÔNG BÁO</h3>
         <div class="notify-main">
-            <p><span>Phan Thanh Tùng</span> vừa tạo tài khoản.</p>
-            <p><span>Nguyễn Huy Bảo</span> vừa tạo tài khoản.</p>
-            <p><span>Nguyễn Lê Tiến Đạt</span> vừa tạo tài khoản.</p>
-            <p><span>XXX</span> vừa tạo tài khoản.</p>
-            <p><span>YYY</span> vừa tạo tài khoản.</p>
-            <p><span>ZZZ</span> vừa tạo tài khoản.</p>
+            <c:forEach items="${listNew}" var="n">
+                <p><span>${n.full_name}</span> vừa tạo tài khoản.</p>
+            </c:forEach>
         </div>
     </div>
     <form class="search-bar">
@@ -85,83 +82,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>KH000</td>
-                <td></td>
-                <td>admin@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Admin</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH001</td>
-                <td>Phan Thanh Tùng</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH002</td>
-                <td>Nguyễn Huy Bảo</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH003</td>
-                <td>Nguyễn Lê Tiến Đạt</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH004</td>
-                <td>XXX</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH005</td>
-                <td>YYY</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH006</td>
-                <td>ZZZ</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
+                <c:forEach items="${listUsers}" var="u">
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.full_name}</td>
+                        <td>${u.email}</td>
+                        <td>${u.phone}</td>
+                        <td>${u.role}</td>
+                        <td>
+                            <button><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
