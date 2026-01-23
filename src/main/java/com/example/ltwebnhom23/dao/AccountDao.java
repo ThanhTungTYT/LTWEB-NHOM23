@@ -95,4 +95,13 @@ public class AccountDao extends BaseDao {
                         .orElse("Không xác định")
         );
     }
+    public List<User> getUserByKeyword(String key){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users WHERE full_name LIKE :kw OR email LIKE :kw OR phone LIKE :kw")
+                        .bind("kw", "%" + key + "%")
+                        .mapToBean(User.class)
+                        .list()
+        );
+    }
+
 }

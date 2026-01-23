@@ -43,4 +43,7 @@ public class AccountService {
 
         return accountDao.addUser(user);
     }
+    public List<User> getUserByKeyword(String key){
+        return accountDao.getUserByKeyword(key);
+    }
 }
