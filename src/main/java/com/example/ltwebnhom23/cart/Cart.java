@@ -44,8 +44,5 @@ public class Cart implements Serializable {
         data.values().stream().forEach(p -> total.updateAndGet(v -> (v + (p.getQuantity() * p.getPrice()))));
         return total.get();
     }
-
-    public boolean update(int id, Product product){
-        return true;
-    }
+    
 }

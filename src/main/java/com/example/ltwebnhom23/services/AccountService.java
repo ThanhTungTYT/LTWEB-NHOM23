@@ -32,6 +32,13 @@ public class AccountService {
         }
         return orders;
     }
+    public List<User> getAllUser(){
+        return accountDao.getAllUser();
+    }
+    public List<User> getNewUser(){
+        return accountDao.getNewUser();
+    }
+
     public boolean cancelOrder(int orderId) {
         Order order = new Order();
         order.setId(orderId);

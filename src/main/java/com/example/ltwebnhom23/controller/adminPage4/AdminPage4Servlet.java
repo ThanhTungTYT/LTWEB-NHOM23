@@ -1,0 +1,32 @@
+package com.example.ltwebnhom23.controller.adminPage4;
+
+import com.example.ltwebnhom23.model.User;
+import com.example.ltwebnhom23.services.AccountService;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet(name = "AdminPage4Servlet", value = "/adminPage4")
+public class AdminPage4Servlet extends HttpServlet {
+
+    private AccountService a = new AccountService();
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<User> listUsers = a.getAllUser();
+        List<User> newUsers = a.getNewUser();
+
+        request.setAttribute("listUsers", listUsers);
+        request.setAttribute("listNew", newUsers);
+
+        request.getRequestDispatcher("adminPage4.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}

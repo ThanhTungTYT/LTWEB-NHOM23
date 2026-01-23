@@ -2,18 +2,6 @@ const minus = document.getElementById("count-minus");
 const add = document.getElementById("count-add");
 const count = document.getElementById("num-count");
 
-minus.addEventListener("click", ev => {
-    let current = parseInt(count.textContent);
-    if (current > 1) {
-        count.textContent = current - 1;
-    }
-})
-
-add.addEventListener("click", ev => {
-    let current = parseInt(count.textContent);
-    count.textContent = current + 1;
-})
-
 document.addEventListener("DOMContentLoaded", function () {
     const toggleBtn = document.getElementById('readMoreBtn');
     const content = document.getElementById('contentToCollapse');

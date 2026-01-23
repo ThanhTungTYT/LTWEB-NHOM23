@@ -54,4 +54,18 @@ public class AccountDao extends BaseDao {
             return userRows > 0 || addrRows > 0;
         });
     }
+    public List<User> getAllUser(){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users")
+                        .mapToBean(User.class)
+                        .list()
+        );
+    }
+    public List<User> getNewUser(){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users WHERE DATE(created_at) = CURDATE()")
+                        .mapToBean(User.class)
+                        .list()
+        );
+    }
 }
