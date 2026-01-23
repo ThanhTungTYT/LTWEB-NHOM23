@@ -94,11 +94,13 @@ public class ProductDao extends BaseDao {
     // 1. Đếm tổng số sản phẩm để tính số trang
     public int countProducts(int cid) {
         return getJdbi().withHandle(handle -> {
-            String sql = "SELECT COUNT(*) FROM products p ";
+            StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM products p WHERE p.state = 'active' AND p.stock > 0 ");
+
             if (cid > 0) {
-                sql += "WHERE p.category_id = :cid";
+                sql.append("AND p.category_id = :cid");
             }
-            var query = handle.createQuery(sql);
+
+            var query = handle.createQuery(sql.toString());
             if (cid > 0) query.bind("cid", cid);
             return query.mapTo(Integer.class).one();
         });
@@ -117,7 +119,7 @@ public class ProductDao extends BaseDao {
                     "Where p.state = 'active' And p.stock > 0 " ;
 
             if (cid > 0) {
-                sql += "WHERE p.category_id = :cid ";
+                sql += "AND p.category_id = :cid ";
             }
 
             sql += "GROUP BY p.id, p.name, p.price, c.name, p.sold, p.stock, p.weight_grams, p.category_id ";
