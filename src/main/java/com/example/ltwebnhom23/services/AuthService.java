@@ -32,4 +32,19 @@ public class AuthService {
 
         return authDao.updatePassword(email, hashedPassword);
     }
+
+    public boolean changePassword(int userId, String oldPassRaw, String newPassRaw) {
+        String currentHashInDb = authDao.getPasswordHashById(userId);
+
+        if (currentHashInDb == null) return false; // Không tìm thấy user
+
+        String oldPassInputHash = MD5Util.md5(oldPassRaw);
+
+        if (!oldPassInputHash.equals(currentHashInDb)) {
+            return false; // Mật khẩu cũ không đúng
+        }
+
+        String newPassHash = MD5Util.md5(newPassRaw);
+        return authDao.updatePasswordById(userId, newPassHash);
+    }
 }

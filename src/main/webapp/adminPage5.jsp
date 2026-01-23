@@ -186,21 +186,22 @@
         document.getElementById('d-name').innerText = name;
         document.getElementById('d-email').innerText = email;
         document.getElementById('d-msg').innerText = message;
-
         document.getElementById('detail-p').style.display = 'flex';
         document.getElementById('form-reply').style.display = 'none';
+        document.getElementById('right-content').style.filter = 'blur(5px)';
     }
 
     function openReply(name, email) {
         document.getElementById('r-name').value = name;
         document.getElementById('r-email').value = email;
-
         document.getElementById('form-reply').style.display = 'block';
         document.getElementById('detail-p').style.display = 'none';
+        document.getElementById('right-content').style.filter = 'blur(5px)';
     }
 
     function closePopup(id) {
         document.getElementById(id).style.display = 'none';
+        document.getElementById('right-content').style.filter = 'none';
     }
 </script>
 
