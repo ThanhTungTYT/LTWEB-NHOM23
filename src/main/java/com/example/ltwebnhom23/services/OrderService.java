@@ -25,4 +25,18 @@ public class OrderService {
     public boolean updateOrder(Order order) {
         return dao.updateOrderStatus(order);
     }
+    public List<Order> getOrdersByUserId(int userId) {
+        List<Order> orders = dao.getOrdersByUserId(userId);
+
+        for (Order o : orders) {
+            o.setItems(dao.getItemsByOrderId(o.getId()));
+        }
+        return orders;
+    }
+    public boolean cancelOrder(int orderId) {
+        Order order = new Order();
+        order.setId(orderId);
+        order.setStatus("Đã hủy");
+        return dao.cancelOrder(order);
+    }
 }

@@ -24,14 +24,7 @@ public class AccountService {
         return accountDao.updateUser(userId, fullName, phone, addressId, city, district, streetAddress);
     }
 
-    public List<Order> getOrdersByUserId(int userId) {
-        List<Order> orders = orderDao.getOrdersByUserId(userId);
 
-        for (Order o : orders) {
-            o.setItems(orderDao.getItemsByOrderId(o.getId()));
-        }
-        return orders;
-    }
     public List<User> getAllUser(){
         return accountDao.getAllUser();
     }
@@ -39,12 +32,7 @@ public class AccountService {
         return accountDao.getNewUser();
     }
 
-    public boolean cancelOrder(int orderId) {
-        Order order = new Order();
-        order.setId(orderId);
-        order.setStatus("Đã hủy");
-        return orderDao.cancelOrder(order);
-    }
+
 
     public boolean deleteUser(int uid){
         return accountDao.deleteUser(uid);
