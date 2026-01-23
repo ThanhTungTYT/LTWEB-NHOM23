@@ -45,4 +45,14 @@ public class AccountService {
         order.setStatus("Đã hủy");
         return orderDao.cancelOrder(order);
     }
+
+    public boolean deleteUser(int uid){
+        return accountDao.deleteUser(uid);
+    }
+    public boolean addUser(User user){
+        String hashedPassword = MD5Util.md5(user.getPassword_hash());
+        user.setPassword_hash(hashedPassword);
+
+        return accountDao.addUser(user);
+    }
 }
