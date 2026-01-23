@@ -149,4 +149,14 @@ public class OrderDao extends BaseDao {
                         .execute() > 0
         );
     }
+    public boolean cancelOrder(Order order) {
+        return getJdbi().withHandle(handle -> {
+            int rows = handle.createUpdate("UPDATE orders SET status = :status WHERE id = :id")
+                    .bind("status", order.getStatus())
+                    .bind("id", order.getId())
+                    .execute();
+
+            return rows > 0;
+        });
+    }
 }

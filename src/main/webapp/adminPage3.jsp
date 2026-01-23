@@ -175,13 +175,25 @@
         <!-- TỔNG TIỀN -->
         <div class="totalSum">
             <h3>
+                TỔNG TIỀN SẢN PHẨM:
+                <span>
+                <fmt:formatNumber value="${o.totalAmount}" type="number"/> đ
+            </span>
+            </h3>
+            <h3>
+                GIẢM GIÁ (Tổng tiền sản phẩm):
+                <span>
+                <fmt:formatNumber value="${o.discountPercent * o.totalAmount /100}" type="number"/> đ
+            </span>
+            </h3>
+            <h3>
                 PHÍ VẬN CHUYỂN:
                 <span>
                 <fmt:formatNumber value="${o.shippingFee}" type="number"/> đ
             </span>
             </h3>
             <h3>
-                TỔNG TIỀN:
+                TỔNG TIỀN ĐƠN HÀNG:
                 <span>
                 <fmt:formatNumber value="${o.finalAmount}" type="number"/> đ
             </span>

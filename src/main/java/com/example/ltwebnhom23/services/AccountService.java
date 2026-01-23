@@ -32,5 +32,10 @@ public class AccountService {
         }
         return orders;
     }
-
+    public boolean cancelOrder(int orderId) {
+        Order order = new Order();
+        order.setId(orderId);
+        order.setStatus("Đã hủy");
+        return orderDao.cancelOrder(order);
+    }
 }
