@@ -32,5 +32,11 @@ public class AccountService {
         }
         return orders;
     }
+    public List<User> getAllUser(){
+        return accountDao.getAllUser();
+    }
+    public List<User> getNewUser(){
+        return accountDao.getNewUser();
+    }
 
 }

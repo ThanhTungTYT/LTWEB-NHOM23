@@ -36,7 +36,7 @@
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3.jsp" class="menu-item">Quản lí đơn hàng</a>
-        <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item active">Quản lí tài khoản</a>
+        <a href="${pageContext.request.contextPath}/adminPage4.jsp" class="menu-item active">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
@@ -55,12 +55,9 @@
     <div class="notify">
         <h3>THÔNG BÁO</h3>
         <div class="notify-main">
-            <p><span>Phan Thanh Tùng</span> vừa tạo tài khoản.</p>
-            <p><span>Nguyễn Huy Bảo</span> vừa tạo tài khoản.</p>
-            <p><span>Nguyễn Lê Tiến Đạt</span> vừa tạo tài khoản.</p>
-            <p><span>XXX</span> vừa tạo tài khoản.</p>
-            <p><span>YYY</span> vừa tạo tài khoản.</p>
-            <p><span>ZZZ</span> vừa tạo tài khoản.</p>
+            <c:forEach items="${listNew}" var="n">
+                <p><span>${n.full_name}</span> vừa tạo tài khoản.</p>
+            </c:forEach>
         </div>
     </div>
     <form class="search-bar">
@@ -79,89 +76,23 @@
                 <th>Họ và tên</th>
                 <th>Email</th>
                 <th>Số điện thoại</th>
-                <th>Mật khẩu</th>
                 <th>Role</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>KH000</td>
-                <td></td>
-                <td>admin@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Admin</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH001</td>
-                <td>Phan Thanh Tùng</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH002</td>
-                <td>Nguyễn Huy Bảo</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH003</td>
-                <td>Nguyễn Lê Tiến Đạt</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH004</td>
-                <td>XXX</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH005</td>
-                <td>YYY</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
-            <tr>
-                <td>KH006</td>
-                <td>ZZZ</td>
-                <td>example@gmail.com</td>
-                <td>xxxx.xxx.xxx</td>
-                <td>xxxxxxxxx</td>
-                <td>Customer</td>
-                <td>
-                    <button><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
+                <c:forEach items="${listUsers}" var="u">
+                    <tr>
+                        <td>${u.id}</td>
+                        <td>${u.full_name}</td>
+                        <td>${u.email}</td>
+                        <td>${u.phone}</td>
+                        <td>${u.role}</td>
+                        <td>
+                            <button><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>

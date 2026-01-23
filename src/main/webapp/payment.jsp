@@ -16,7 +16,9 @@
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='index.jsp'" width="300px" height="100px" alt="Logo">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
@@ -24,20 +26,30 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
-            <a href="${pageContext.request.contextPath}/account">
-                <i class="fa-solid fa-user"></i>
-                <span>${sessionScope.user.full_name}</span>
-            </a>
+            <c:choose>
+                <c:when test="${not empty sessionScope.user}">
+                    <a href="${pageContext.request.contextPath}/account">
+                        <i class="fas fa-user"></i>
+                        <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/login.jsp">
+                        <i class="fas fa-user"></i>
+                    </a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
+
     <div class="bottom">
-        <a href="index.jsp">Trang chủ</a>
-        <a href="catalog.jsp">Sản phẩm</a>
-        <a href="help.jsp">Liên hệ</a>
-        <a href="aboutUs.jsp">Giới thiệu</a>
+        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
+        <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>
     </div>
 </header>
 
@@ -189,21 +201,27 @@
     <div class="footer-top">
         <div class="foot-content left">
             <h3>Aroma Café</h3>
-            <p>Địa chỉ: Khu phố 6, Linh Trung, Thủ Đức.</p>
-            <p>Điện thoại: 1900-xxxx.</p>
-            <p>Email: contact@aromacafe.com</p>
+            <p>Địa chỉ: xxx, xxx, xxx.</p>
+            <p>Điện thoại: xxx-xxx-xxxx.</p>
+            <p>Email: example@gmail.com</p>
         </div>
+
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
-                <li><a href="shippingPolicies.jsp">Chính sách vận chuyển</a></li>
-                <li><a href="warrantyPolicies.jsp">Chính sách bảo hành</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
+
         <div class="foot-content right">
-            <h3>Kết nối</h3>
+            <h3>Kết nối với chúng tôi</h3>
             <div class="social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
@@ -215,6 +233,7 @@
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 
 <script src="${pageContext.request.contextPath}/assets/js/payment.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 
 </body>
 </html>
