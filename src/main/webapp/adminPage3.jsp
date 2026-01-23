@@ -39,7 +39,7 @@
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item active">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage7.jsp" class="menu-item">Quản lí banner</a>
+        <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
         <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
@@ -80,6 +80,7 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <c:forEach items="${orders}" var="o">
                     <tr>
                         <td>
@@ -92,7 +93,7 @@
                         <td>#DH${o.id}</td>
 
                         <td>
-                            <c:out value="${userMap[o.userId].full_name}" />
+                            <c:out value="${userMap[o.userId]['full_name']}" />
                         </td>
 
                         <td>
@@ -100,11 +101,14 @@
                         </td>
 
                         <td>
-            <span class="status ${o.status}">
-                    ${o.status}
-            </span>
+                            <span class="status ${o.status}">
+                                <c:choose>
+                                    <c:when test="${o.status == 'Đang xử lý'}">Đang xử lý</c:when>
+                                    <c:when test="${o.status == 'Đã giao'}">Đã giao</c:when>
+                                    <c:when test="${o.status == 'Đã hủy'}">Đã huỷ</c:when>
+                                </c:choose>
+                            </span>
                         </td>
-
                         <td>
                             <fmt:formatNumber value="${o.finalAmount}" type="number"/>đ
                         </td>
@@ -183,7 +187,12 @@
             </span>
             </h3>
         </div>
-        <button>Xuất hóa đơn</button>
+        <c:if test="${o.status == 'Đang xử lý'}">
+            <form action="${pageContext.request.contextPath}/adminPage3" method="post">
+                <input type="hidden" name="orderId" value="${o.id}">
+                <button type="submit">Xuất hóa đơn</button>
+            </form>
+        </c:if>
     </div>
 </c:forEach>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>

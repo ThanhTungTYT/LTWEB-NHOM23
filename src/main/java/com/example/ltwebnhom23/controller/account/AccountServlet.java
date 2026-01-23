@@ -50,8 +50,7 @@ public class AccountServlet extends HttpServlet {
             request.getRequestDispatcher("/info.jsp").forward(request, response);
         }
         else if (action.equals("/his-order")) {
-            List<Order> orders =
-                    accountService.getOrdersByUserId(authUser.getId());
+            List<Order> orders = accountService.getOrdersByUserId(authUser.getId());
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("/historyOrder.jsp").forward(request, response);
         }
