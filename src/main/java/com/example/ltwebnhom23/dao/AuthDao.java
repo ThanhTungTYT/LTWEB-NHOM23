@@ -47,4 +47,23 @@ public class AuthDao extends BaseDao {
                         .execute() > 0
         );
     }
+
+    public String getPasswordHashById(int userId) {
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT password_hash FROM users WHERE id = :id")
+                        .bind("id", userId)
+                        .mapTo(String.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+    public boolean updatePasswordById(int userId, String newPasswordHash) {
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET password_hash = :pass WHERE id = :id")
+                        .bind("pass", newPasswordHash)
+                        .bind("id", userId)
+                        .execute() > 0
+        );
+    }
 }
