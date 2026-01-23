@@ -45,7 +45,14 @@ public class Cart implements Serializable {
         return total.get();
     }
 
-    public boolean update(int id, Product product){
-        return true;
+    public void updateQuantity(int pid, int quantity) {
+        CartItem item = data.get(pid);
+        if (item != null) {
+            if (quantity <= 0) {
+                data.remove(pid); // Nếu số lượng <= 0 thì xóa luôn
+            } else {
+                item.setQuantity(quantity); // Set số lượng mới
+            }
+        }
     }
 }

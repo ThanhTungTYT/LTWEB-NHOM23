@@ -1,85 +1,56 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cartList = document.getElementById("cart-list");
+
+    // 1. CÁC HÀM XỬ LÝ CHECKBOX VÀ TỔNG TIỀN (UI PREVIEW)
+    const checkboxes = document.querySelectorAll(".item-checkbox");
     const totalDisplay = document.getElementById("cart-total");
-    const clearAllBtn = document.querySelector(".clear-all-cart");
     const selectAllBtn = document.querySelector(".select-all-cart");
 
-    // Gắn sự kiện ban đầu
-    initCartEvents();
-    updateCartTotal();
-
-    // GẮN SỰ KIỆN CHO TOÀN BỘ ITEM
-    function initCartEvents() {
-        document.querySelectorAll(".cart-item").forEach(item => attachItemEvents(item));
-    }
-
-
-    // SỰ KIỆN TRONG MỖI CART-ITEM
-    function attachItemEvents(item) {
-        const btnMinus = item.querySelector(".btn-decrease");
-        const btnPlus = item.querySelector(".btn-increase");
-        const qtyInput = item.querySelector("input[type='number']");
-        const checkbox = item.querySelector(".product-select");
-        const removeBtn = item.querySelector(".product-remove");
-
-        btnMinus.addEventListener("click", () => {
-            changeQuantity(qtyInput, -1);
-        });
-        btnPlus.addEventListener("click", () => {
-            changeQuantity(qtyInput, +1);
-        });
-
-        qtyInput.addEventListener("change", () => {
-            qtyInput.value = Math.max(1, parseInt(qtyInput.value) || 1);
-            updateCartTotal();
-        });
-
-        checkbox.addEventListener("change", updateCartTotal);
-
-    }
-
-    // THAY ĐỔI SỐ LƯỢNG
-    function changeQuantity(input, amount) {
-        let val = parseInt(input.value) || 1;
-        val = Math.max(1, val + amount);
-        input.value = val;
-        updateCartTotal();
-    }
-
-    // CẬP NHẬT TỔNG TIỀN
-    function updateCartTotal() {
+    function updateDisplayTotal() {
         let total = 0;
+        const checkedBoxes = document.querySelectorAll(".item-checkbox:checked");
 
-        document.querySelectorAll(".cart-item").forEach(item => {
-            const checkbox = item.querySelector(".product-select");
-            const qty = parseInt(item.querySelector("input[type='number']").value);
-            const price = parseInt(item.dataset.price);
-            const subtotal = qty * price;
-
-            item.querySelector(".product-subtotal").textContent = formatPrice(subtotal);
-
-            if (checkbox.checked) total += subtotal;
+        checkedBoxes.forEach(box => {
+            total += parseFloat(box.dataset.subtotal);
         });
 
-        totalDisplay.textContent = formatPrice(total);
+        totalDisplay.innerText = total.toLocaleString('vi-VN') + 'đ';
     }
 
-    // NÚT CHỌN TẤT CẢ
-    selectAllBtn.addEventListener("click", e => {
-        e.preventDefault();
-
-        const checkboxes = document.querySelectorAll(".product-select");
-
-        // Nếu tất cả đã chọn → chuyển thành bỏ chọn
-        const shouldSelectAll = [...checkboxes].some(cb => !cb.checked);
-
-        checkboxes.forEach(cb => cb.checked = shouldSelectAll);
-
-        updateCartTotal();
+    // Gắn sự kiện change cho từng checkbox con
+    checkboxes.forEach(cb => {
+        cb.addEventListener("change", updateDisplayTotal);
     });
 
-    // ĐỊNH DẠNG GIÁ
-    function formatPrice(value) {
-        return value.toLocaleString("vi-VN") + "đ";
+    // Xử lý nút Chọn tất cả
+    if (selectAllBtn) {
+        selectAllBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            // Logic check/uncheck như cũ
+            const isAllChecked = [...checkboxes].every(cb => cb.checked);
+            checkboxes.forEach(cb => cb.checked = !isAllChecked);
+
+            // QUAN TRỌNG: Gọi lại hàm tính tiền sau khi chọn tất cả
+            updateDisplayTotal();
+        });
     }
+
+    const clearAllBtn = document.querySelector(".clear-all-cart");
+    if (clearAllBtn) {
+        clearAllBtn.addEventListener("click", function (e) {
+            if (!confirm("Bạn có chắc chắn muốn xóa toàn bộ giỏ hàng không?")) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    const qtyInputs = document.querySelectorAll(".product-quantity input[type='number']");
+    qtyInputs.forEach(input => {
+        input.addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                this.blur();
+            }
+        });
+    });
+
 });
