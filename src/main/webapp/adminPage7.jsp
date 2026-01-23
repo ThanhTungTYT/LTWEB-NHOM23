@@ -17,7 +17,7 @@
     <div class="menu">
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item ">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
-        <a href="${pageContext.request.contextPath}/adminPage3.jsp" class="menu-item">Quản lí đơn hàng</a>
+        <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4.jsp" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item active">Quản lí banner</a>

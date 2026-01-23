@@ -106,6 +106,7 @@ public class OrderServlet extends HttpServlet {
         order.setFinalAmount(finalAmount);
         order.setNote(note);
         order.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        System.out.println(order);
 
         orderService.create(order, cart);
         s.removeAttribute("cart");

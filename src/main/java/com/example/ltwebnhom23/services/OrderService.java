@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderService {
     private final OrderDao dao = new OrderDao();
     public boolean create(Order order, Cart cart) {
-        return false;
+        return dao.createOrder(order, cart);
     }
 
     public List<Order> getAllOrders() {
@@ -22,5 +22,7 @@ public class OrderService {
     public List<OrderItem> getItemsByOrderId(int orderId) {
         return dao.getItemsByOrderId(orderId);
     }
-
+    public boolean updateOrder(Order order) {
+        return dao.updateOrderStatus(order);
+    }
 }

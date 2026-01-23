@@ -50,5 +50,20 @@ public class AdminPage3Servlet extends HttpServlet {
 
         req.getRequestDispatcher("/adminPage3.jsp").forward(req, resp);
     }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
 
+        int orderId = Integer.parseInt(req.getParameter("orderId"));
+        String status = "Đã giao";
+
+        Order order = new Order();
+        order.setId(orderId);
+        order.setStatus(status);
+
+        boolean updated = orderService.updateOrder(order);
+        System.out.println("Update order " + orderId + ": " + updated);
+
+        resp.sendRedirect(req.getContextPath() + "/adminPage3");
+    }
 }
