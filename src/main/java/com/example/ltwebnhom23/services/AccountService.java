@@ -46,4 +46,7 @@ public class AccountService {
     public List<User> getUserByKeyword(String key){
         return accountDao.getUserByKeyword(key);
     }
+    public boolean updateUser(int uid, User user){
+        return accountDao.updateUser(uid, user);
+    }
 }

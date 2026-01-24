@@ -104,4 +104,12 @@ public class AccountDao extends BaseDao {
         );
     }
 
+    public boolean updateUser(int uid, User user){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET role = :role WHERE id = :uid")
+                        .bind("role", user.getRole())
+                        .bind("uid", uid)
+                        .execute() > 0
+        );
+    }
 }
