@@ -76,8 +76,8 @@
                 <th>Họ và tên</th>
                 <th>Email</th>
                 <th>Số điện thoại</th>
-                <th>Mật khẩu</th>
                 <th>Role</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
@@ -89,6 +89,9 @@
                         <td>${u.email}</td>
                         <td>${u.phone}</td>
                         <td>${u.role}</td>
+                        <td>
+                            <button class="remake" style="background: blue"><i class="fa-solid fa-pen"></i></button>
+                        </td>
                         <td>
                             <form method="post" action="delete-user">
                                 <input type="hidden" name="uid" value="${u.id}">
@@ -113,7 +116,7 @@
         </div>
         <div class="price-p">
             <label>Email</label>
-            <input type="text" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required>
         </div>
         <div class="count-p">
             <label>Mật khẩu</label>
@@ -127,14 +130,52 @@
             <label>Role</label>
             <select name="role">
                 <option>-Chọn vai trò-</option>
-                <option>Admin</option>
-                <option>Customer</option>
+                <option>admin</option>
+                <option>customer</option>
             </select>
         </div>
         <button class="submit" type="submit">Thêm</button>
     </form>
 </div>
+<!-- POPUP SỬA ACCOUNT -->
+<div class="form-add" id="form-remake" style="display: none">
+    <div class="form-title">
+        <p>SỬA ACCOUNT</p>
+        <button id="close-remake">X</button>
+    </div>
+
+    <form class="main-form" method="post" action="${pageContext.request.contextPath}/update-user">
+        <input type="hidden" name="uid" id="up_uid">
+        <div class="type-p">
+            <label>Role</label>
+            <select name="up_role">
+                <option>-Chọn vai trò-</option>
+                <option>admin</option>
+                <option>customer</option>
+            </select>
+        </div>
+        <button class="submit" type="submit">Lưu Thay Đổi</button>
+        <c:if test="${not empty notice_up}">
+            <p>${notice_up}</p>
+        </c:if>
+    </form>
+</div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+<script>
+        document.querySelectorAll(".remake").forEach(btn => {
+        btn.onclick = function () {
+            const row = btn.closest("tr");
+
+            const uid = row.children[0].innerText.trim();
+            const role = row.children[4].innerText.trim();
+
+            document.getElementById("up_uid").value = uid;
+            document.querySelector("select[name='up_role']").value = role;
+
+            document.getElementById("form-remake").style.display = "block";
+        }
+    });
+</script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 </body>
 </html>

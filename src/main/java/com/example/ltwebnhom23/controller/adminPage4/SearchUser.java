@@ -18,7 +18,7 @@ public class SearchUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> listUsers = new ArrayList<>();
-        List<User> newUsers = a.getNewUser();
+        List<User> newUsers = account.getNewUser();
 
         String key = request.getParameter("keyword");
         request.setAttribute("listNew", newUsers);
