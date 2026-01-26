@@ -5,6 +5,7 @@
   Time: 15:47
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -15,17 +16,6 @@
     <title>Trang Quản Trị Aroma Café</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .right-content {
-            width: 80%;
-            transition: width 0.3s ease;
-        }
-    </style>
 </head>
 <body>
 <div class="left-menu" id="left-menu">
@@ -52,103 +42,125 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>TỔNG QUAN</p>
     </div>
-    <div class="kpi-grid">
-        <div class="kpi-card">
-            <div class="card-icon blue">
-                <i class='bx bx-trending-up'></i>
-            </div>
-            <div class="card-info">
-                <h3>1.500.000đ</h3>
-                <span>Doanh thu hôm nay</span>
-            </div>
-        </div>
-        <div class="kpi-card">
-            <div class="card-icon green">
-                <i class='bx bx-package'></i>
-            </div>
-            <div class="card-info">
-                <h3>32</h3>
-                <span>Đơn hàng mới</span>
-            </div>
-        </div>
-        <div class="kpi-card">
-            <div class="card-icon orange">
-                <i class='bx bx-group'></i>
-            </div>
-            <div class="card-info">
-                <h3>120</h3>
-                <span>Khách truy cập</span>
-            </div>
-        </div>
-        <div class="kpi-card">
-            <div class="card-icon red">
-                <i class='bx bx-money-withdraw'></i>
-            </div>
-            <div class="card-info">
-                <h3>46.875đ</h3>
-                <span>Giá trị TB</span>
-            </div>
-        </div>
+    <div class="filter-section">
+
+        <form method="get" action="${pageContext.request.contextPath}/adminPage1">
+            <select name="filter" onchange="this.form.submit()">
+                <option value="today" ${filter == 'today' ? 'selected' : ''}>Hôm nay</option>
+                <option value="week" ${filter == 'week' ? 'selected' : ''}>7 ngày</option>
+                <option value="month" ${filter == 'month' ? 'selected' : ''}>30 ngày</option>
+                <option value="quarter" ${filter == 'quarter' ? 'selected' : ''}>1 quý</option>
+            </select>
+        </form>
+
+        <button><a href="${pageContext.request.contextPath}/adminPage1" class="reset-link">Đặt lại</a></button>
     </div>
-    <div class="charts-grid">
-        <div class="chart-card large">
-            <h3>Tổng doanh thu (30 ngày)</h3>
-            <p><span><i class="fa-solid fa-chart-line"></i></span>1.000.000.000 VND</p>
+    <form method="post" action="${pageContext.request.contextPath}/adminPage1" class="main-menu-date">
+        <div class="start">
+            <label>Start date</label>
+            <input type="date" name="startDate" value="${startDate}">
         </div>
-        <div class="chart-card small">
-            <h3>Top sản phẩm</h3>
-            <div class="list-product">
-                <p>Cà phê hữu cơ: <span>500.000.000 VND</span></p>
-                <p>Cà phê rang nguyên hạt: <span>210.000.000 VND</span></p>
-                <p>Cà phê xay nguyên chất: <span>205.000.000 VND</span></p>
-                <p>Các sản phẩm đặc biệt: <span>85.000.000 VND</span></p>
+        <div class="end">
+            <label>End date</label>
+            <input type="date" name="endDate" value="${endDate}">
+        </div>
+        <button>Xác nhận</button>
+    </form>
+
+        <div class="kpi-grid">
+
+            <div class="kpi-card">
+                <div class="card-icon blue"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="card-info">
+                    <h3>${totalRevenue} đ</h3>
+                    <span>Tổng doanh thu</span>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="card-icon green"><i class="fa-solid fa-box"></i></div>
+                <div class="card-info">
+                    <h3>${totalOrders}</h3>
+                    <span>Đơn hàng</span>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="card-icon orange"><i class="fa-solid fa-clock"></i></div>
+                <div class="card-info">
+                    <h3>${pendingOrders}</h3>
+                    <span>Đơn chờ xử lý</span>
+                </div>
+            </div>
+
+            <div class="kpi-card">
+                <div class="card-icon red"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="card-info">
+                    <h3>${newCustomers}</h3>
+                    <span>Khách mới</span>
+                </div>
+            </div>
+
+        </div>
+        <div class="charts-grid">
+            <div class="chart-card large">
+                <h3>Tổng doanh thu (30 ngày)</h3>
+                <p>
+                    <span><i class="fa-solid fa-chart-line"></i></span>
+                    <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/> VND
+                </p>
+            </div>
+            <div class="chart-card">
+                <h3>Top sản phẩm bán chạy</h3>
+
+                <c:forEach items="${topProducts}" var="p">
+                    <p>${p[0]} <span>${p[1]} lượt bán</span></p>
+                </c:forEach>
+
+                <c:if test="${empty topProducts}">
+                    <p>Không có dữ liệu</p>
+                </c:if>
             </div>
         </div>
-    </div>
-    <div class="table-card">
-        <h3>Đơn hàng gần đây</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>Mã ĐH</th>
-                <th>Khách hàng</th>
-                <th>Ngày đặt</th>
-                <th>Trạng thái</th>
-                <th>Tổng tiền</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>#10542</td>
-                <td>Nguyễn Văn A</td>
-                <td>09/11/2025</td>
-                <td><span class="status pending">Chờ xử lý</span></td>
-                <td>120.000đ</td>
-            </tr>
-            <tr>
-                <td>#10541</td>
-                <td>Trần Thị B</td>
-                <td>09/11/2025</td>
-                <td><span class="status completed">Đã giao</span></td>
-                <td>0đ</td>
-            </tr>
-            <tr>
-                <td>#10540</td>
-                <td>Lê Văn C</td>
-                <td>08/11/2025</td>
-                <td><span class="status cancelled">Đã hủy</span></td>
-                <td>0đ</td>
-            </tr>
-            <tr>
-                <td>#10539</td>
-                <td>Phạm Thị D</td>
-                <td>08/11/2025</td>
-                <td><span class="status completed">Đã giao</span></td>
-                <td>55.000đ</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        <div class="table-card">
+            <h3>Đơn hàng gần đây</h3>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Mã ĐH</th>
+                    <th>Người nhận</th>
+                    <th>Ngày đặt</th>
+                    <th>Trạng thái</th>
+                    <th>Tổng tiền</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${orders}" var="o">
+                    <tr>
+                        <td>#${o.id}</td>
+                        <td>${o.receiverName}</td>
+                        <td>${o.createdAt}</td>
+                        <td>
+                        <span class="status
+                            ${o.status == 'Đang xử lý' ? 'pending' :
+                              o.status == 'Đã giao' ? 'completed' : 'cancelled'}">
+                                ${o.status}
+                        </span>
+                        </td>
+                        <td>${o.finalAmount} đ</td>
+                    </tr>
+                </c:forEach>
+
+                <c:if test="${empty orders}">
+                    <tr>
+                        <td colspan="5" style="text-align:center">Không có đơn hàng</td>
+                    </tr>
+                </c:if>
+                </tbody>
+            </table>
+        </div>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>

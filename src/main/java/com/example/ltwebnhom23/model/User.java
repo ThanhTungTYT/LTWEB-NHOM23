@@ -1,4 +1,5 @@
 package com.example.ltwebnhom23.model;
+import java.sql.Timestamp;
 
 public class User {
     private int id;
@@ -7,6 +8,7 @@ public class User {
     private String phone;
     private String password_hash;
     private String role;
+    private Timestamp createdAt;
 
     public User(int id, String full_name, String email, String phone, String password_hash, String role) {
         this.id = id;

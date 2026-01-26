@@ -6,6 +6,7 @@ import com.example.ltwebnhom23.model.Order;
 import com.example.ltwebnhom23.model.OrderItem;
 import com.example.ltwebnhom23.model.Product;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class OrderDao extends BaseDao {
@@ -164,5 +165,85 @@ public class OrderDao extends BaseDao {
 
             return rows > 0;
         });
+    }
+    public double getTotalRevenue(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT COALESCE(SUM(final_amount),0) " +
+                                        "FROM orders " +
+                                        "WHERE status = 'Đã giao' " +
+                                        "AND created_at BETWEEN :start AND :end"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapTo(Double.class)
+                        .one()
+        );
+    }
+
+    public int countOrders(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT COUNT(*) FROM orders " +
+                                        "WHERE created_at BETWEEN :start AND :end"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    public int countPendingOrders(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT COUNT(*) FROM orders " +
+                                        "WHERE status = 'Đang xử lý' " +
+                                        "AND created_at BETWEEN :start AND :end"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    public List<Object[]> getTopProducts(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT p.name, SUM(oi.quantity) total_sold " +
+                                        "FROM order_items oi " +
+                                        "JOIN orders o ON oi.order_id = o.id " +
+                                        "JOIN products p ON oi.product_id = p.id " +
+                                        "WHERE o.status = 'Đã giao' " +
+                                        "AND o.created_at BETWEEN :start AND :end " +
+                                        "GROUP BY p.name " +
+                                        "ORDER BY total_sold DESC " +
+                                        "LIMIT 5"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .map((rs, ctx) ->
+                                new Object[]{
+                                        rs.getString("name"),
+                                        rs.getInt("total_sold")
+                                }
+                        )
+                        .list()
+        );
+    }
+
+    public List<Order> getOrdersByDate(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT * FROM orders " +
+                                        "WHERE created_at BETWEEN :start AND :end " +
+                                        "ORDER BY created_at DESC"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapToBean(Order.class)
+                        .list()
+        );
     }
 }
