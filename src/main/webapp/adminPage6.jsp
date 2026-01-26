@@ -25,7 +25,7 @@
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item">Quản lí tài khoản</a>
-        <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item active">Quản lí đánh giá</a>
+        <a href="${pageContext.request.contextPath}/adminPage6" class="menu-item active">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
@@ -38,16 +38,12 @@
 <div class="right-content" id="right-content">
     <div class="title">
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
-        <p>CHĂM SÓC KHÁCH HÀNG</p>
+        <p>QUẢN LÍ ĐÁNH GIÁ</p>
     </div>
-    <div class="notify">
-        <h3>THÔNG BÁO</h3>
-        <div class="notify-main">
-            <p><span>Phan Thanh Tùng</span> vừa gửi 1 liên hệ.</p>
-            <p><span>Nguyễn Huy Bảo</span> vừa gửi 1 liên hệ.</p>
-            <p><span>Nguyễn Lê Tiến Đạt</span> vừa gửi 1 liên hệ.</p>
-        </div>
-    </div>
+    <form class="search-bar">
+        <input type="text" placeholder="Tìm kiếm người dùng hoặc sản phẩm" required>
+        <button><i class="fas fa-search"></i></button>
+    </form>
     <div class="main-content">
         <form class="main-menu-date">
             <div class="start">
@@ -60,92 +56,53 @@
             </div>
             <button>Xác nhận</button>
         </form>
-        <div class="contact">
-            <h3 class="contact-title">DANH SÁCH LIÊN HỆ</h3>
+        <div class="review">
+            <h3 class="review-title">DANH SÁCH ĐÁNH GIÁ</h3>
             <table>
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Ngày gửi</th>
-                    <th>Họ và tên</th>
-                    <th>Email</th>
-                    <th>Nôi dung</th>
-                    <th></th>
+                    <th>Sản phẩm</th>
+                    <th>Khách hàng</th>
+                    <th>Xếp hạng</th>
+                    <th>Ngày đánh giá</th>
+                    <th>Hành động</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>CT01</td>
-                    <td>19/11/2025</td>
-                    <td>Nguyễn Thị C</td>
-                    <td>admin@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CT02</td>
-                    <td>20/11/2025</td>
-                    <td>Phan Thanh Tùng</td>
-                    <td>example@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CT03</td>
-                    <td>22/11/2025</td>
-                    <td>Nguyễn Huy Bảo</td>
-                    <td>example@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CT04</td>
-                    <td>30/10/2025</td>
-                    <td>Nguyễn Lê Tiến Đạt</td>
-                    <td>example@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CT05</td>
-                    <td>22/10/2025</td>
-                    <td>Nguyễn Văn A</td>
-                    <td>example@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>CT06</td>
-                    <td>15/10/2025</td>
-                    <td>Nguyễn Lê Tiến Đạt</td>
-                    <td>example@gmail.com</td>
-                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
-                    <td>
-                        <button class="detail"><i class="fa-solid fa-message"></i></button>
-                    </td>
-                </tr>
+                <c:forEach items="${listReview}" var="r">
+                    <tr>
+                        <td>${r.productname}</td>
+                        <td>${r.username}</td>
+                        <td>
+                            <span class="rating-stars">${r.rating}/5</span>
+                        </td>
+                        <td>${r.created_at}</td>
+                        <td>
+                            <button class="detail"><i class="fa-solid fa-eye"></i></button>
+                            <form method="post" action="delete-review">
+                                <input type="hidden" name="rid" value="${r.id}">
+                                <button class="delete"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
 <div class="detail-p" id="detail-p" style="display: none">
     <button id="close">X</button>
-    <div>Tên khách hàng: Phan Thanh Tùng</div>
-    <div>Email: example@gmail.com</div>
-    <div class="detail-content">
-        <span>Nội dung chi tiết</span>
-        <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.</p>
+    <h3>CHI TIẾT ĐÁNH GIÁ #<span id="review-id-display">RV001</span></h3>
+    <div>Sản phẩm: Cà phê hữu cơ hạt A</div>
+    <div>Khách hàng: Nguyễn Văn A</div>
+    <div>Ngày: 15/11/2025</div>
+    <div>Xếp hạng: 5/5</div>
+    <div class="detail-full">
+        <p>Nội dung:</p>
+        <p class="review-text">Sản phẩm rất chất lượng, hương vị đậm đà, đóng gói cẩn thận. Tôi rất hài lòng và sẽ tiếp
+            tục ủng hộ Aroma Café!</p>
     </div>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
