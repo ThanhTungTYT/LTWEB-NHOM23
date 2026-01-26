@@ -43,4 +43,13 @@ public class ReviewDao extends BaseDao {
         );
     }
 
+    public List<ProductReview> getReviewByKey(String key){
+        return getJdbi().withHandle(handle ->
+            handle.createQuery("SELECT r.*, p.name AS productname, u.full_name AS username FROM products_review r JOIN products p ON r.product_id = p.id JOIN users u ON r.user_id = u.id WHERE p.name LIKE :kw OR u.full_name LIKE :kw ORDER BY r.created_at DESC ")
+                    .bind("kw", "%"+key+"%")
+                    .mapToBean(ProductReview.class)
+                    .list()
+        );
+    }
+
 }

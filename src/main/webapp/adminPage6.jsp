@@ -40,9 +40,9 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ ĐÁNH GIÁ</p>
     </div>
-    <form class="search-bar">
-        <input type="text" placeholder="Tìm kiếm người dùng hoặc sản phẩm" required>
-        <button><i class="fas fa-search"></i></button>
+    <form class="search-bar" method="get" action="search-review">
+        <input type="text" name="key" placeholder="Tìm kiếm người dùng hoặc sản phẩm">
+        <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-content">
         <form class="main-menu-date">
@@ -78,7 +78,15 @@
                         </td>
                         <td>${r.created_at}</td>
                         <td>
-                            <button class="detail"><i class="fa-solid fa-eye"></i></button>
+                            <button class="detail"
+                                    data-product="${r.productname}"
+                                    data-user="${r.username}"
+                                    data-rating="${r.rating}"
+                                    data-date="${r.created_at}"
+                                    data-comment="${r.comment}">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+
                             <form method="post" action="delete-review">
                                 <input type="hidden" name="rid" value="${r.id}">
                                 <button class="delete"><i class="fa-solid fa-trash"></i></button>
@@ -94,18 +102,33 @@
 
 <div class="detail-p" id="detail-p" style="display: none">
     <button id="close">X</button>
-    <h3>CHI TIẾT ĐÁNH GIÁ #<span id="review-id-display">RV001</span></h3>
-    <div>Sản phẩm: Cà phê hữu cơ hạt A</div>
-    <div>Khách hàng: Nguyễn Văn A</div>
-    <div>Ngày: 15/11/2025</div>
-    <div>Xếp hạng: 5/5</div>
+    <h3>CHI TIẾT ĐÁNH GIÁ</h3>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
     <div class="detail-full">
         <p>Nội dung:</p>
-        <p class="review-text">Sản phẩm rất chất lượng, hương vị đậm đà, đóng gói cẩn thận. Tôi rất hài lòng và sẽ tiếp
-            tục ủng hộ Aroma Café!</p>
+        <p class="review-text"></p>
     </div>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+<script>
+    document.querySelectorAll(".detail").forEach(btn => {
+        btn.onclick = function () {
+            document.querySelector("#detail-p div:nth-child(3)").innerText =
+                "Sản phẩm: " + btn.dataset.product;
+            document.querySelector("#detail-p div:nth-child(4)").innerText =
+                "Khách hàng: " + btn.dataset.user;
+            document.querySelector("#detail-p div:nth-child(5)").innerText =
+                "Ngày: " + btn.dataset.date;
+            document.querySelector("#detail-p div:nth-child(6)").innerText =
+                "Xếp hạng: " + btn.dataset.rating + "/5";
+            document.querySelector(".review-text").innerText =
+                btn.dataset.comment;
+        }
+    });
+</script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 </body>
 </html>
