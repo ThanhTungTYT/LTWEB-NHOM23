@@ -26,7 +26,7 @@
     <div class="top">
         <div class="logo">
             <img src="${pageContext.request.contextPath}/assets/img/logo.png"
-                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 onclick="location.href='${pageContext.request.contextPath}/'"
                  width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
@@ -35,7 +35,7 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
@@ -46,7 +46,7 @@
                     </a>
                 </c:when>
                 <c:otherwise>
-                    <a href="${pageContext.request.contextPath}/login.jsp">
+                    <a href="${pageContext.request.contextPath}/login">
                         <i class="fas fa-user"></i>
                     </a>
                 </c:otherwise>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="bottom">
-        <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
+        <a href="${pageContext.request.contextPath}/">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
         <a href="${pageContext.request.contextPath}/contact">Liên hệ</a>
         <a href="${pageContext.request.contextPath}/about">Giới thiệu</a>

@@ -30,7 +30,7 @@ public class ContactServlet extends HttpServlet {
         User authUser = (User) session.getAttribute("user");
 
         if (authUser == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
             return;
         }
 
@@ -46,7 +46,7 @@ public class ContactServlet extends HttpServlet {
 
         User authUser = (User) session.getAttribute("user");
         if (authUser == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
             return;
         }
 
