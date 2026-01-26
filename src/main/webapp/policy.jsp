@@ -16,13 +16,15 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/policies.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <header>
     <div class="top">
         <div class="logo">
-            <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+            <img src="${pageContext.request.contextPath}/assets/img/logo.png"
+                 onclick="location.href='${pageContext.request.contextPath}/index.jsp'"
+                 width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Tìm kiếm...">
@@ -30,13 +32,14 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">3</span>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+                <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">
-                    <a href="${pageContext.request.contextPath}/account.jsp">
+                    <a href="${pageContext.request.contextPath}/account">
                         <i class="fas fa-user"></i>
+                        <span style="font-size: 14px; margin-left: 5px">${sessionScope.user.full_name}</span>
                     </a>
                 </c:when>
                 <c:otherwise>
@@ -47,6 +50,7 @@
             </c:choose>
         </div>
     </div>
+
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>

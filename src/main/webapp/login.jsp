@@ -16,15 +16,13 @@
                  width="300px" height="100px" alt="Logo">
         </div>
         <div class="search-bar">
-            <form action="search" method="get" style="display: flex; width: 100%;">
-                <input type="text" id="search-input" name="q" placeholder="Tìm kiếm...">
-                <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+            <input type="text" id="search-input" placeholder="Tìm kiếm...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                <span id="num-cart-label">${sessionScope.cart.totalQuantity != null ? sessionScope.cart.totalQuantity : 0}</span>
+                <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
                 <c:when test="${not empty sessionScope.user}">

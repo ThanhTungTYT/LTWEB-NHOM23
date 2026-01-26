@@ -13,17 +13,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Trang Quản Trị Aroma Café</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
     <style>
-        /* Thêm style để đảm bảo bố cục hoạt động */
         body {
             display: flex;
             flex-direction: row;
         }
 
         .right-content {
-            width: 80%; /* Hoặc 100% nếu menu bị ẩn */
+            width: 80%;
             transition: width 0.3s ease;
         }
     </style>

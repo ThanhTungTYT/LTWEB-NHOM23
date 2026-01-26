@@ -27,7 +27,7 @@
         </div>
         <div class="mini-menu">
             <div class="cart">
-                <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="${pageContext.request.contextPath}/cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                 <span id="num-cart-label">${sessionScope.cart.totalQuantity}</span>
             </div>
             <c:choose>
@@ -45,6 +45,7 @@
             </c:choose>
         </div>
     </div>
+
     <div class="bottom">
         <a href="${pageContext.request.contextPath}/index.jsp">Trang chủ</a>
         <a href="${pageContext.request.contextPath}/catalog">Sản phẩm</a>
