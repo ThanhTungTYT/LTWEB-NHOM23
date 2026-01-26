@@ -29,4 +29,8 @@ public class ReviewService {
         return reviewDao.getReviewByKey(key);
     }
 
+    public List<ProductReview> getReviewByTime(String start, String end){
+        return reviewDao.getReviewByTime(start, end);
+    }
+
 }
