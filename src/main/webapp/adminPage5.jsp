@@ -15,7 +15,7 @@
 
 <div class="left-menu" id="left-menu">
     <div class="logo">
-        <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+        <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
     </div>
     <div class="menu">
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item">Tổng quan</a>
@@ -109,28 +109,27 @@
                 </tbody>
             </table>
 
-                <c:if test="${totalPages > 1}">
-                    <div class="pagination">
+            <div class="pagination">
+                <%-- Nút Previous --%>
+                <a href="${currentPage > 1 ? 'adminPage5?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
+                   class="${currentPage <= 1 ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
 
-                        <a href="${currentPage > 1 ? 'adminPage5?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
-                           class="${currentPage <= 1 ? 'disabled' : ''}">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </a>
+                <%-- Danh sách số trang --%>
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <a href="adminPage5?page=${i}&startDate=${startDate}&endDate=${endDate}"
+                       class="${currentPage == i ? 'active' : ''}">
+                            ${i}
+                    </a>
+                </c:forEach>
 
-                        <c:forEach begin="1" end="${totalPages}" var="i">
-                            <a href="adminPage5?page=${i}&startDate=${startDate}&endDate=${endDate}"
-                               class="${currentPage == i ? 'active' : ''}">
-                                    ${i}
-                            </a>
-                        </c:forEach>
-
-                        <a href="${currentPage < totalPages ? 'adminPage5?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
-                           class="${currentPage >= totalPages ? 'disabled' : ''}">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-
-                    </div>
-                </c:if>
+                <%-- Nút Next --%>
+                <a href="${currentPage < totalPages ? 'adminPage5?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
+                   class="${currentPage >= totalPages ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -30,7 +30,7 @@
 <body>
 <div class="left-menu" id="left-menu">
     <div class="logo">
-        <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/index.jsp'" width="300px" height="100px">
+        <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
     </div>
     <div class="menu">
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item active">Tổng quan</a>

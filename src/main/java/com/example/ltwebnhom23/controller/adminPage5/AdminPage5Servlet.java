@@ -53,6 +53,10 @@ public class AdminPage5Servlet extends HttpServlet {
         // Math.ceil: làm tròn lên (ví dụ có 26 tin, mỗi trang 25 tin -> cần 2 trang)
         int totalPages = (int) Math.ceil((double) totalContacts / pageSize);
 
+        if (totalPages < 1) {
+            totalPages = 1;
+        }
+
         // 5. Gán dữ liệu vào request để JSP hiển thị
         request.setAttribute("contactList", contactList);   // Danh sách tin nhắn
         request.setAttribute("currentPage", page);          // Trang hiện tại
