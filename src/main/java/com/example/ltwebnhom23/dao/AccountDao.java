@@ -2,6 +2,7 @@ package com.example.ltwebnhom23.dao;
 
 import com.example.ltwebnhom23.model.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class AccountDao extends BaseDao {
@@ -110,6 +111,18 @@ public class AccountDao extends BaseDao {
                         .bind("role", user.getRole())
                         .bind("uid", uid)
                         .execute() > 0
+        );
+    }
+    public int countNewCustomers(Timestamp start, Timestamp end) {
+        return getJdbi().withHandle(h ->
+                h.createQuery(
+                                "SELECT COUNT(*) FROM users " +
+                                        "WHERE created_at BETWEEN :start AND :end"
+                        )
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapTo(Integer.class)
+                        .one()
         );
     }
 }

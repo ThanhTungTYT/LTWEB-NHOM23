@@ -110,6 +110,61 @@
     }
 
     /* --- PAGE 1: TỔNG QUAN --- */
+    .right-content .filter-section{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 30px;
+    }
+    .right-content .filter-section a {
+        text-decoration: none;
+        color: white;
+    }
+    .right-content .filter-section button {
+        width: 150px;
+        height: 25px;
+        border-radius: 10px;
+        background: #c76739;
+        color: white;
+        cursor: pointer;
+    }
+    .right-content .filter-section button:hover {
+        background: #8c4828;
+    }
+        .right-content select{
+        float: left;
+        width: 200px;
+        height: 25px;
+        border-radius: 5px;
+        padding: 0 10px;
+    }
+    .right-content .main-menu-date {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 10px;
+        margin-left: 30px;
+    }
+    .right-content  .main-menu-date .action-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    .right-content  .main-menu-date button {
+        width: 150px;
+        height: 25px;
+        border-radius: 10px;
+        background: #c76739;
+        color: white;
+        cursor: pointer;
+    }
+
+    .right-content  .main-menu-date button:hover {
+        background: #8c4828;
+    }
     .dashboard-container {
         padding: 30px;
         display: flex;
