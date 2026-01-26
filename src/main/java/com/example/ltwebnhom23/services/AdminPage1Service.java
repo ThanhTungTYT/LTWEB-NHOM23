@@ -7,6 +7,7 @@ import com.example.ltwebnhom23.model.Order;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 public class AdminPage1Service {
 
@@ -51,7 +52,7 @@ public class AdminPage1Service {
         return accountDao.countNewCustomers(getStartTime(filter), getEndTime());
     }
 
-    public List<Object[]> getTopProducts(String filter) {
+    public List<Map<String, Object>> getTopProducts(String filter) {
         return orderDao.getTopProducts(getStartTime(filter), getEndTime());
     }
 
@@ -75,7 +76,7 @@ public class AdminPage1Service {
         return accountDao.countNewCustomers(start, end);
     }
 
-    public List<Object[]> getTopProducts(Timestamp start, Timestamp end) {
+    public List<Map<String, Object>> getTopProducts(Timestamp start, Timestamp end) {
         return orderDao.getTopProducts(start, end);
     }
 

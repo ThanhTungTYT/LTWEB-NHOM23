@@ -72,7 +72,9 @@
             <div class="kpi-card">
                 <div class="card-icon blue"><i class="fa-solid fa-chart-line"></i></div>
                 <div class="card-info">
-                    <h3>${totalRevenue} đ</h3>
+                    <h3>
+                    <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/> VND
+                   </h3>
                     <span>Tổng doanh thu</span>
                 </div>
             </div>
@@ -104,17 +106,19 @@
         </div>
         <div class="charts-grid">
             <div class="chart-card large">
-                <h3>Tổng doanh thu (30 ngày)</h3>
-                <p>
+                <h3>Tổng doanh thu</h3>
+                <p class="sum-total">
                     <span><i class="fa-solid fa-chart-line"></i></span>
                     <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/> VND
                 </p>
             </div>
             <div class="chart-card">
-                <h3>Top sản phẩm bán chạy</h3>
-
-                <c:forEach items="${topProducts}" var="p">
-                    <p>${p[0]} <span>${p[1]} lượt bán</span></p>
+                <h3 >Top sản phẩm bán chạy</h3>
+                <c:forEach items="${topProducts}" var="row">
+                    <p>
+                            ${row.product.name} :
+                            ${row.totalSold} sản phẩm
+                    </p>
                 </c:forEach>
 
                 <c:if test="${empty topProducts}">
@@ -149,7 +153,7 @@
                                 ${o.status}
                         </span>
                         </td>
-                        <td>${o.finalAmount} đ</td>
+                        <td><fmt:formatNumber value="${o.finalAmount} " type="number" groupingUsed="true"/> VND</td>
                     </tr>
                 </c:forEach>
 

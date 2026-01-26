@@ -122,7 +122,7 @@
                     <td>${p.weight_grams}</td>
 
                     <td style="color: #d32f2f; font-weight: bold;">
-                        <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> đ
+                        <fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> VND
                     </td>
 
                     <td style="${p.stock == 0 ? 'color:red; font-weight:bold;' : ''}">${p.stock}</td>
