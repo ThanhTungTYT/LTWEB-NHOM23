@@ -7,7 +7,9 @@ import com.example.ltwebnhom23.model.OrderItem;
 import com.example.ltwebnhom23.model.Product;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderDao extends BaseDao {
 
@@ -255,27 +257,39 @@ public class OrderDao extends BaseDao {
         );
     }
 
-    public List<Object[]> getTopProducts(Timestamp start, Timestamp end) {
-        return getJdbi().withHandle(h ->
-                h.createQuery(
-                                "SELECT p.name, SUM(oi.quantity) total_sold " +
+    public List<Map<String, Object>> getTopProducts(Timestamp start, Timestamp end) {
+
+        return getJdbi().withHandle(handle ->
+                handle.createQuery(
+                                "SELECT " +
+                                        "p.id AS productId, " +
+                                        "p.name AS productName, " +
+                                        "SUM(oi.quantity) AS totalSold " +
                                         "FROM order_items oi " +
                                         "JOIN orders o ON oi.order_id = o.id " +
                                         "JOIN products p ON oi.product_id = p.id " +
                                         "WHERE o.status = 'Đã giao' " +
                                         "AND o.created_at BETWEEN :start AND :end " +
-                                        "GROUP BY p.name " +
-                                        "ORDER BY total_sold DESC " +
+                                        "GROUP BY p.id, p.name " +
+                                        "ORDER BY totalSold DESC " +
                                         "LIMIT 5"
                         )
                         .bind("start", start)
                         .bind("end", end)
-                        .map((rs, ctx) ->
-                                new Object[]{
-                                        rs.getString("name"),
-                                        rs.getInt("total_sold")
-                                }
-                        )
+                        .map((rs, ctx) -> {
+
+                            // tạo Product
+                            Product product = new Product();
+                            product.setId(rs.getInt("productId"));
+                            product.setName(rs.getString("productName"));
+
+                            // map kết quả
+                            Map<String, Object> row = new HashMap<>();
+                            row.put("product", product);
+                            row.put("totalSold", rs.getInt("totalSold"));
+
+                            return row;
+                        })
                         .list()
         );
     }

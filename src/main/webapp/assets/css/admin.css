@@ -115,7 +115,7 @@
         align-items: center;
         gap: 15px;
         margin-top: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         margin-left: 30px;
     }
     .right-content .filter-section a {
@@ -240,7 +240,7 @@
     }
 
     .chart-card h3 {
-        font-size: 18px;
+        font-size: 45px;
         font-weight: 600;
         margin-bottom: 20px;
         color: #495057;
@@ -250,10 +250,20 @@
         font-size: 30px;
         color: #7dca01;
         text-align: start;
+        margin-bottom: 20px;
+    }
+    .chart-card.large {
+        position: relative;
     }
 
-    .large p {
-        margin-top: 40px;
+    .sum-total {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .large span {
@@ -389,7 +399,7 @@
     }
 
     .right-content h3 {
-        font-weight: normal;
+        font-weight: 600;
         color: #495057;
     }
 
