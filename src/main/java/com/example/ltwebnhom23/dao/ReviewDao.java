@@ -26,4 +26,21 @@ public class ReviewDao extends BaseDao {
                     .list()
         );
     }
+
+    public List<ProductReview> getAllReview(){
+        return getJdbi().withHandle(handle ->
+            handle.createQuery("SELECT r.*, p.name AS productname, u.full_name AS username FROM products_review r JOIN products p ON r.product_id = p.id JOIN users u ON r.user_id = u.id ORDER BY r.created_at DESC")
+                    .mapToBean(ProductReview.class)
+                    .list()
+        );
+    }
+
+    public boolean deleteReview(int rid){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("DELETE FROM products_review WHERE id = :rid")
+                        .bind("rid", rid)
+                        .execute() > 0
+        );
+    }
+
 }

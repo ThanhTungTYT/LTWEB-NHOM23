@@ -16,4 +16,13 @@ public class ReviewService {
     public List<ProductReview> getReviewForProduct(int pid){
         return reviewDao.getReviewForProduct(pid);
     }
+
+    public List<ProductReview> getAllReview(){
+        return reviewDao.getAllReview();
+    }
+
+    public boolean deleteReview(int rid){
+        return reviewDao.deleteReview(rid);
+    }
+
 }
