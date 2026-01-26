@@ -157,13 +157,60 @@ public class OrderDao extends BaseDao {
         );
     }
     public boolean cancelOrder(Order order) {
-        return getJdbi().withHandle(handle -> {
-            int rows = handle.createUpdate("UPDATE orders SET status = :status WHERE id = :id")
-                    .bind("status", order.getStatus())
+        return getJdbi().inTransaction(handle -> {
+
+            int updateOrder = handle.createUpdate(
+                            "UPDATE orders SET status = :status WHERE id = :id"
+                    )
+                    .bind("status", "Đã hủy")
                     .bind("id", order.getId())
                     .execute();
 
-            return rows > 0;
+            if (updateOrder == 0) {
+                throw new RuntimeException("Không tìm thấy đơn hàng");
+            }
+
+            List<OrderItem> items = handle.createQuery(
+                            "SELECT product_id, quantity FROM order_items WHERE order_id = :oid"
+                    )
+                    .bind("oid", order.getId())
+                    .mapToBean(OrderItem.class)
+                    .list();
+
+            for (OrderItem item : items) {
+                handle.createUpdate("UPDATE products " +
+                                        "SET stock = stock + :qty, sold = sold - :qty " +
+                                        "WHERE id = :pid"
+                        )
+                        .bind("qty", item.getQuantity())
+                        .bind("pid", item.getProductId())
+                        .execute();
+
+                handle.createUpdate("UPDATE products SET state = 'active' WHERE id = :pid AND stock > 0")
+                        .bind("pid", item.getProductId())
+                        .execute();
+            }
+
+            Integer promoId = handle.createQuery("SELECT promo_id FROM orders WHERE id = :oid")
+                    .bind("oid", order.getId())
+                    .mapTo(Integer.class)
+                    .findOne()
+                    .orElse(null);
+
+            if (promoId != null) {
+                handle.createUpdate(
+                                "UPDATE promotions SET quantity = quantity + 1 WHERE id = :pid"
+                        )
+                        .bind("pid", promoId)
+                        .execute();
+
+                handle.createUpdate(
+                                "UPDATE promotions SET state = 'active' WHERE id = :pid AND quantity > 0"
+                        )
+                        .bind("pid", promoId)
+                        .execute();
+            }
+            return true;
         });
     }
     public double getTotalRevenue(Timestamp start, Timestamp end) {
