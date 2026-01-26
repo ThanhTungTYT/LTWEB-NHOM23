@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // Nút đóng chung cho chi tiết (nếu có id="close")
         if (e.target.closest('#close')) {
-            if (detail && getComputedStyle(detail).display === 'flex') {
+            if (detail) {
                 detail.style.display = 'none';
                 if(content) content.style.filter = 'blur(0)';
             }

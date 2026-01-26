@@ -25,4 +25,8 @@ public class ReviewService {
         return reviewDao.deleteReview(rid);
     }
 
+    public List<ProductReview> getReviewByKey(String key){
+        return reviewDao.getReviewByKey(key);
+    }
+
 }
