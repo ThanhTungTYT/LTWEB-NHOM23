@@ -45,14 +45,14 @@
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-content">
-        <form class="main-menu-date">
+        <form class="main-menu-date" method="get" action="filter-review">
             <div class="start">
                 <label>Start date</label>
-                <input type="date">
+                <input name="start" type="date">
             </div>
             <div class="end">
                 <label>End date</label>
-                <input type="date">
+                <input name="end" type="date">
             </div>
             <button>Xác nhận</button>
         </form>

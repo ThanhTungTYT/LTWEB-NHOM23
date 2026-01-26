@@ -52,4 +52,14 @@ public class ReviewDao extends BaseDao {
         );
     }
 
+    public List<ProductReview> getReviewByTime(String start, String end){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT r.*, p.name AS productname, u.full_name AS username FROM products_review r JOIN products p ON r.product_id = p.id JOIN users u ON r.user_id = u.id WHERE DATE(r.created_at) >= :start AND DATE(r.created_at) <= :end ORDER BY r.created_at DESC")
+                        .bind("start", start)
+                        .bind("end", end)
+                        .mapToBean(ProductReview.class)
+                        .list()
+        );
+    }
+
 }
