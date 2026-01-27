@@ -81,7 +81,7 @@
                     <td>#${p.id}</td>
                     <td><strong>${p.code}</strong></td>
                     <td>${p.description}</td>
-                    <td><fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="đ" maxFractionDigits="0"/></td>
+                    <td><fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="VND" maxFractionDigits="0"/></td>
                     <td><fmt:formatNumber value="${p.discountPercent}" type="number" maxFractionDigits="0"/>%</td>
                     <td style="text-align: center;">${p.quantity}</td>
                     <td><fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/></td>

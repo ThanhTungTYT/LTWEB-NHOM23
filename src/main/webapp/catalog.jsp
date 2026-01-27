@@ -106,7 +106,7 @@
                 <a href="product?pid=${p.id}" class="product">
                     <img src="${p.image_url}" alt="${p.name}">
                     <p>${p.name}</p>
-                    <span><fmt:formatNumber value="${p.price}" type="number"/> đ</span>
+                    <span><fmt:formatNumber value="${p.price}" type="number"/> VND</span>
                     <label>Loại: ${p.category_name}</label>
 
                     <div style="font-size: 12px; color: #666; margin-top: 5px;">

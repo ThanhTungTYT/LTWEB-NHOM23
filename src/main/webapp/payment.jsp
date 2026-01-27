@@ -157,14 +157,14 @@
                             <div class="cart-info">
                                 <p class="product-name">${item.product.name}</p>
                                 <p class="price"> Giá:
-                                    <fmt:formatNumber value="${item.price}" type="currency" currencySymbol="đ"/>
+                                    <fmt:formatNumber value="${item.price}" type="currency" currencySymbol=" VND"/>
                                 </p>
                             </div>
                             <div class="quantity-box">
                                 <p>Số lượng: ${item.quantity}</p>
                             </div>
                             <div style="margin-left:auto; font-weight: bold; font-size: 0.9em; color: #555;">
-                                <fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol="đ"/>
+                                <fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol=" VND"/>
                             </div>
                         </div>
                     </c:forEach>
@@ -189,33 +189,26 @@
                 <h3>Tóm tắt đơn hàng</h3>
                 <div class="summary-row">
                     <span>Tổng tiền hàng</span>
-                    <span id="total-price"
-                          data-total="${requestScope.cart.total}">
-                        <fmt:formatNumber
-                                value="${requestScope.cart.total}"
-                                type="currency"
-                                currencySymbol="₫"/>
+                    <span id="total-price" data-total="${requestScope.cart.total}">
+                        <fmt:formatNumber value="${requestScope.cart.total}" type="currency" currencySymbol=" VND"/>
                     </span>
                 </div>
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
-                    <span id="shipping-fee" data-fee="30000">30.000₫</span>
+                    <span id="shipping-fee" data-fee="30000">30.000 VND</span>
                 </div>
+
+                <div class="summary-row">
+                    <span>Giảm giá</span>
+                    <span id="discount-amount">0 VND</span> </div>
                 <hr>
                 <div class="summary-row total">
                     <span>Tổng thanh toán</span>
-                    <span id="final-total"
-                          data-base="${requestScope.cart.total}"
-                          data-ship="30000">
-                        <fmt:formatNumber
-                                value="${requestScope.cart.total + 30000}"
-                                type="currency"
-                                currencySymbol="₫"/>
+                    <span id="final-total">
+                        <fmt:formatNumber value="${requestScope.cart.total + 30000}" type="currency" currencySymbol=" VND"/>
                     </span>
                 </div>
-                <button type="submit" class="checkout-btn">
-                    Đặt hàng
-                </button>
+                <button type="submit" class="checkout-btn">Đặt hàng</button>
             </section>
         </div>
     </div>
@@ -256,8 +249,7 @@
 
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 
-<script src="${pageContext.request.contextPath}/assets/js/payment.js"></script>
+<script src="assets/js/payment.js?v=2"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
-
 </body>
 </html>

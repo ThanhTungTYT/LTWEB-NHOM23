@@ -82,7 +82,7 @@
 
                 <p>${p.name}</p>
 
-                <span><fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> đ</span>
+                <span><fmt:formatNumber value="${p.price}" type="number" maxFractionDigits="0"/> VND</span>
 
                 <label><i class="fa-solid fa-fire"></i> ${p.sold}</label>
             </a>

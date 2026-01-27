@@ -104,7 +104,7 @@
                 <th>Tên sản phẩm</th>
                 <th>Loại sản phẩm</th>
                 <th>Khối lượng</th>
-                <th>Giá (VND)</th>
+                <th>Giá (đ)</th>
                 <th>Số lượng còn</th>
                 <th>Số lượng bán</th>
                 <th>Trạng thái</th>
