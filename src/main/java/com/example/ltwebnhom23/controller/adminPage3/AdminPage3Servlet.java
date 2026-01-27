@@ -17,7 +17,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "AdminPage3Servlet", value = "/adminPage3")
+@WebServlet(name = "AdminPage3Servlet", value = "/admin/orders")
+
+
 public class AdminPage3Servlet extends HttpServlet {
 
     private final OrderService orderService = new OrderService();

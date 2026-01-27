@@ -13,7 +13,7 @@ import com.example.ltwebnhom23.services.CategoryService;
 import com.example.ltwebnhom23.model.Category;
 import com.example.ltwebnhom23.dao.CategoryDao;
 
-@WebServlet(name = "AdminPage2Servlet", value = "/adminPage2")
+@WebServlet(name = "AdminPage2Servlet", value = "/admin/products")
 
 public class AdminPage2Servlet  extends HttpServlet {
     private ProductService productService = new ProductService();

@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminPage6Servlet", value = "/adminPage6")
+@WebServlet(name = "AdminPage6Servlet", value = "/admin/reviews")
 public class AdminPage6Servlet extends HttpServlet {
 
     private ReviewService review = new ReviewService();
@@ -20,7 +20,7 @@ public class AdminPage6Servlet extends HttpServlet {
 
         request.setAttribute("listReview", listReview);
 
-        request.getRequestDispatcher("adminPage6.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminPage6.jsp").forward(request, response);
     }
 
     @Override
