@@ -42,9 +42,9 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ SẢN PHẨM</p>
     </div>
-    <form class="search-bar">
-        <input type="text" placeholder="Tìm kiếm sản phẩm" required>
-        <button><i class="fas fa-search"></i></button>
+    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage2/search" method="GET">
+        <input type="text" name="search" placeholder="Tìm kiếm (id hoặc tên sản phẩm)" value="${searchKeyword}">
+        <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-menu">
         <form method="get" action="${pageContext.request.contextPath}/adminPage2">
