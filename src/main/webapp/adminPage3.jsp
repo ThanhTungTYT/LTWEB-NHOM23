@@ -57,7 +57,7 @@
             <input type="text" name="search" placeholder="Tìm kiếm (Mã ĐH hoặc Tên khách hàng)" value="${searchKeyword}">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
-        <form class="main-menu-date" action="${pageContext.request.contextPath}/adminPage3" method="get">
+        <form class="main-menu-date" action="${pageContext.request.contextPath}/admin/orders" method="get">
             <div class="start">
                 <label>Start date</label>
                 <input type="date" name="startDate" value="${startDate}">
@@ -69,7 +69,7 @@
 
             <div class="action-buttons">
                 <button type="submit">Xác nhận</button>
-                <a href="${pageContext.request.contextPath}/adminPage3" class="btn-reset">Đặt lại</a>
+                <a href="${pageContext.request.contextPath}/admin/orders" class="btn-reset">Đặt lại</a>
             </div>
         </form>
         <div class="list-order">
@@ -228,7 +228,7 @@
             </h3>
         </div>
         <c:if test="${o.status == 'Đang xử lý'}">
-            <form action="${pageContext.request.contextPath}/adminPage3" method="post">
+            <form action="${pageContext.request.contextPath}/admin/orders" method="post">
                 <input type="hidden" name="orderId" value="${o.id}">
                 <button type="submit">Xuất hóa đơn</button>
             </form>

@@ -42,32 +42,35 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>TỔNG QUAN</p>
     </div>
-    <div class="filter-section">
-
-        <form method="get" action="${pageContext.request.contextPath}/admin/dashboard">
-            <select name="filter" onchange="this.form.submit()">
-                <option value="today" ${filter == 'today' ? 'selected' : ''}>Hôm nay</option>
-                <option value="week" ${filter == 'week' ? 'selected' : ''}>7 ngày</option>
-                <option value="month" ${filter == 'month' ? 'selected' : ''}>30 ngày</option>
-                <option value="quarter" ${filter == 'quarter' ? 'selected' : ''}>1 quý</option>
-            </select>
+    <div class="top-bar">
+        <form method="post" action="${pageContext.request.contextPath}/admin/dashboard" class="main-menu-date">
+            <div class="start">
+                <label>Start date</label>
+                <input type="date" name="startDate" value="${startDate}">
+            </div>
+            <div class="end">
+                <label>End date</label>
+                <input type="date" name="endDate" value="${endDate}">
+            </div>
+            <button>Xác nhận</button>
         </form>
 
-        <button><a href="${pageContext.request.contextPath}/admin/dashboard" class="reset-link">Đặt lại</a></button>
+        <div class="filter-section">
+            <form method="get" action="${pageContext.request.contextPath}/admin/dashboard">
+                <select name="filter" onchange="this.form.submit()">
+                    <option value="today" ${filter == 'today' ? 'selected' : ''}>Hôm nay</option>
+                    <option value="week" ${filter == 'week' ? 'selected' : ''}>7 ngày</option>
+                    <option value="month" ${filter == 'month' ? 'selected' : ''}>30 ngày</option>
+                    <option value="quarter" ${filter == 'quarter' ? 'selected' : ''}>1 quý</option>
+                </select>
+            </form>
+            <button class="reset">
+                <a href="${pageContext.request.contextPath}/admin/dashboard" class="reset-link">Đặt lại</a>
+            </button>
+        </div>
     </div>
-    <form method="post" action="${pageContext.request.contextPath}/admin/dashboard" class="main-menu-date">
-        <div class="start">
-            <label>Start date</label>
-            <input type="date" name="startDate" value="${startDate}">
-        </div>
-        <div class="end">
-            <label>End date</label>
-            <input type="date" name="endDate" value="${endDate}">
-        </div>
-        <button>Xác nhận</button>
-    </form>
 
-        <div class="kpi-grid">
+    <div class="kpi-grid">
 
             <div class="kpi-card">
                 <div class="card-icon blue"><i class="fa-solid fa-chart-line"></i></div>
@@ -105,13 +108,6 @@
 
         </div>
         <div class="charts-grid">
-            <div class="chart-card large">
-                <h3>Tổng doanh thu</h3>
-                <p class="sum-total">
-                    <span><i class="fa-solid fa-chart-line"></i></span>
-                    <fmt:formatNumber value="${totalRevenue}" type="number" groupingUsed="true"/> VND
-                </p>
-            </div>
             <div class="chart-card">
                 <h3 >Top sản phẩm bán chạy</h3>
                 <c:forEach items="${topProducts}" var="row">
@@ -127,7 +123,7 @@
             </div>
         </div>
         <div class="table-card">
-            <h3>Đơn hàng gần đây</h3>
+            <h3>Đơn hàng</h3>
 
             <table>
                 <thead>
