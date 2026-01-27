@@ -48,4 +48,8 @@ public class OrderService {
         int offset = (page - 1) * pageSize;
         return dao.getOrdersWithFilter(start, end, pageSize, offset);
     }
+
+    public List<Order> searchOrders(String keyword) {
+        return dao.searchOrders(keyword);
+    }
 }

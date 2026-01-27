@@ -365,4 +365,20 @@ public class OrderDao extends BaseDao {
             return query.mapToBean(Order.class).list();
         });
     }
+
+    public List<Order> searchOrders(String keyword) {
+        String sql = "SELECT o.* " +
+                "FROM orders o " +
+                "JOIN users u ON o.user_id = u.id " +
+                "WHERE o.id LIKE :key " +
+                "OR u.full_name LIKE :key " +
+                "ORDER BY o.created_at DESC";
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("key", "%" + keyword + "%")
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
 }
