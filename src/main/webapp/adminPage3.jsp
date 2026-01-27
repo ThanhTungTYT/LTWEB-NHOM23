@@ -36,7 +36,7 @@
         <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item ">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item active">Quản lí đơn hàng</a>
-        <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item">Quản lí tài khoản</a>
+        <a href="${pageContext.request.contextPath}/adminPage4" class="menu-item">Quản lí tài khoản</a>
         <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
@@ -53,16 +53,20 @@
         <p>ĐƠN HÀNG</p>
     </div>
     <div class="main-content">
-        <form class="main-menu-date">
+        <form class="main-menu-date" action="adminPage3" method="get">
             <div class="start">
                 <label>Start date</label>
-                <input type="date">
+                <input type="date" name="startDate" value="${startDate}">
             </div>
             <div class="end">
                 <label>End date</label>
-                <input type="date">
+                <input type="date" name="endDate" value="${endDate}">
             </div>
-            <button>Xác nhận</button>
+
+            <div class="action-buttons">
+                <button type="submit">Xác nhận</button>
+                <a href="adminPage3" class="btn-reset">Đặt lại</a>
+            </div>
         </form>
         <div class="list-order">
             <h3>DANH SÁCH ĐƠN HÀNG</h3>
@@ -126,6 +130,27 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <div class="pagination">
+                <%-- Nút Previous --%>
+                <a href="${currentPage > 1 ? 'adminPage3?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
+                   class="${currentPage <= 1 ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+
+                <%-- Số trang --%>
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <a href="adminPage3?page=${i}&startDate=${startDate}&endDate=${endDate}"
+                       class="${currentPage == i ? 'active' : ''}">
+                            ${i}
+                    </a>
+                </c:forEach>
+
+                <%-- Nút Next --%>
+                <a href="${currentPage < totalPages ? 'adminPage3?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
+                   class="${currentPage >= totalPages ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>
