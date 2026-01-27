@@ -176,9 +176,13 @@
 
                     <button type="submit">Gửi đánh giá</button>
 
-                    <c:if test="${not empty reviewNotice}">
-                        <p>${reviewNotice}</p>
+                    <c:if test="${not empty sessionScope.reviewNotice}">
+                        <div class="notice">
+                                ${sessionScope.reviewNotice}
+                        </div>
+                        <c:remove var="reviewNotice" scope="session"/>
                     </c:if>
+
                 </form>
 
             </div>

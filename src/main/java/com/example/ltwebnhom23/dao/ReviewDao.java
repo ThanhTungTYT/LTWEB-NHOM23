@@ -62,4 +62,15 @@ public class ReviewDao extends BaseDao {
         );
     }
 
+    public int getCountInMinute(int uid, int pid){
+        return getJdbi().withHandle(handle ->
+            handle.createQuery("SELECT COUNT(*) FROM products_review WHERE user_id = :uid AND product_id = :pid AND created_at >= NOW() - INTERVAL 1 MINUTE")
+                    .bind("uid", uid)
+                    .bind("pid", pid)
+                    .mapTo(int.class)
+                    .one()
+        );
+    }
+
+
 }

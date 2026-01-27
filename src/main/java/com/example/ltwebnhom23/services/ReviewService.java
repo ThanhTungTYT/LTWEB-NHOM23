@@ -1,5 +1,6 @@
 package com.example.ltwebnhom23.services;
 
+import com.example.ltwebnhom23.dao.OrderDao;
 import com.example.ltwebnhom23.dao.ReviewDao;
 import com.example.ltwebnhom23.model.ProductReview;
 
@@ -8,6 +9,7 @@ import java.util.List;
 public class ReviewService {
 
     private ReviewDao reviewDao = new ReviewDao();
+    private OrderDao orderDao = new OrderDao();
 
     public boolean addReview(ProductReview review){
         return reviewDao.addReview(review);
@@ -32,5 +34,21 @@ public class ReviewService {
     public List<ProductReview> getReviewByTime(String start, String end){
         return reviewDao.getReviewByTime(start, end);
     }
+    public boolean isBuy(int uid, int pid){
+        int buy = orderDao.getOrderByCondition(pid, uid).size();
 
+        if(buy > 0){
+            return true;
+        }
+
+        return false;
+    }
+    public boolean isSpam(int uid, int pid){
+        int spam = reviewDao.getCountInMinute(uid, pid);
+
+        if(spam > 3){
+            return true;
+        }
+        return false;
+    }
 }

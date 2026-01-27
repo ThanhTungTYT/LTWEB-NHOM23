@@ -307,4 +307,14 @@ public class OrderDao extends BaseDao {
                         .list()
         );
     }
+
+    public List<Order> getOrderByCondition(int pid, int uid){
+        return getJdbi().withHandle(handle ->
+            handle.createQuery("SELECT o.* FROM orders o JOIN order_items oi ON o.id = oi.order_id WHERE o.user_id = :uid AND oi.product_id = :pid ")
+                    .bind("uid", uid)
+                    .bind("pid", pid)
+                    .mapToBean(Order.class)
+                    .list()
+        );
+    }
 }

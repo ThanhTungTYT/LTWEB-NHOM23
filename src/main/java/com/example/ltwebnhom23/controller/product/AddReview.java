@@ -37,6 +37,22 @@ public class AddReview extends HttpServlet {
         review.setRating(Integer.parseInt(request.getParameter("rating")));
         review.setComment(request.getParameter("comment"));
 
+        if(!reviewService.isBuy(user.getId(), productId)){
+            session.setAttribute("reviewNotice", "Bạn cần mua sản phẩm để tiến hành đánh giá.");
+            response.sendRedirect(
+                    request.getContextPath() + "/product?pid=" + productId
+            );
+            return;
+        }
+
+        if(reviewService.isSpam(user.getId(), productId)){
+            session.setAttribute("reviewNotice", "Bạn đang đánh giá quá nhanh, vui lòng chờ 1 phút.");
+            response.sendRedirect(
+                    request.getContextPath() + "/product?pid=" + productId
+            );
+            return;
+        }
+
         if (!reviewService.addReview(review)) {
             session.setAttribute("reviewNotice", "Đã xảy ra lỗi!");
         } else {
