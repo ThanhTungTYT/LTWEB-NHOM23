@@ -28,7 +28,7 @@ public class UpdateUser extends HttpServlet {
         u.setRole(request.getParameter("up_role"));
 
         if(accountService.updateUser(uid, u)){
-            response.sendRedirect(request.getContextPath() + "/adminPage4");
+            response.sendRedirect(request.getContextPath() + "/admin/users");
         }
 
     }

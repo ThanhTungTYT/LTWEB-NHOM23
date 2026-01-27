@@ -22,7 +22,7 @@ public class DeleteReview extends HttpServlet {
         int rid = Integer.parseInt(request.getParameter("rid"));
 
         if(review.deleteReview(rid)){
-            response.sendRedirect(request.getContextPath() + "/adminPage6");
+            response.sendRedirect(request.getContextPath() + "/admin/reviews");
         }
     }
 }

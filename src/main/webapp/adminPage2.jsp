@@ -42,17 +42,17 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ SẢN PHẨM</p>
     </div>
-    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage2/search" method="GET">
+    <form class="search-bar" action="${pageContext.request.contextPath}/admin/products/search" method="GET">
         <input type="text" name="search" placeholder="Tìm kiếm (id hoặc tên sản phẩm)" value="${searchKeyword}">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-menu">
-        <form method="get" action="${pageContext.request.contextPath}/adminPage2">
+        <form method="get" action="${pageContext.request.contextPath}/admin/products">
             <select name="filter" onchange="this.form.submit()">
                 <option value="0" ${currentFilter == 0 ? 'selected' : ''}>-Chọn dòng sản phẩm-</option>
-                <option value="3" ${currentFilter == 1 ? 'selected' : ''}>Cà phê hữu cơ</option>
-                <option value="1" ${currentFilter == 2 ? 'selected' : ''}>Cà phê rang nguyên hạt</option>
-                <option value="2" ${currentFilter == 3 ? 'selected' : ''}>Cà phê xay nguyên chất</option>
+                <option value="1" ${currentFilter == 1 ? 'selected' : ''}>Cà phê rang nguyên hạt</option>
+                <option value="2" ${currentFilter == 2 ? 'selected' : ''}>Cà phê xay nguyên chất</option>
+                <option value="3" ${currentFilter == 3 ? 'selected' : ''}>Cà phê hữu cơ</option>
                 <option value="4" ${currentFilter == 4 ? 'selected' : ''}>Các sản phẩm đặc</option>
             </select>
         </form>
@@ -159,6 +159,36 @@
             </c:forEach>
             </tbody>
         </table>
+        <div class="pagination">
+            <c:if test="${totalPages > 1}">
+
+                <c:choose>
+                    <c:when test="${not empty searchKeyword}">
+                        <c:set var="baseUrl" value="${pageContext.request.contextPath}/admin/products/search?search=${searchKeyword}&" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="baseUrl" value="${pageContext.request.contextPath}/admin/products?filter=${currentFilter}&" />
+                    </c:otherwise>
+                </c:choose>
+
+                <a href="${baseUrl}page=${currentPage > 1 ? currentPage - 1 : 1}"
+                   class="${currentPage <= 1 ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </a>
+
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <a href="${baseUrl}page=${i}"
+                       class="${currentPage == i ? 'active' : ''}">
+                            ${i}
+                    </a>
+                </c:forEach>
+
+                <a href="${baseUrl}page=${currentPage < totalPages ? currentPage + 1 : totalPages}"
+                   class="${currentPage >= totalPages ? 'disabled' : ''}">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>
+            </c:if>
+        </div>
 
         <div style="margin-top: 15px;">
             <button type="button" onclick="deleteCheckedProducts()">

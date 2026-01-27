@@ -29,6 +29,6 @@ public class DeleteBanner extends HttpServlet {
             session.setAttribute("noticeDel", "Xóa thất bại");
         }
 
-        response.sendRedirect(request.getContextPath() + "/adminPage7");
+        response.sendRedirect(request.getContextPath() + "/admin/banner");
     }
 }

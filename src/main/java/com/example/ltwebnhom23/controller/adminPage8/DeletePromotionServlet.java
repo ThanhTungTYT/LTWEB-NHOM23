@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeletePromotionServlet", urlPatterns = {"/adminPage8/delete"})
+@WebServlet(name = "DeletePromotionServlet", urlPatterns = {"/admin/promotion/delete"})
 public class DeletePromotionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +33,6 @@ public class DeletePromotionServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        response.sendRedirect(request.getContextPath() + "/adminPage8");
+        response.sendRedirect(request.getContextPath() + "/admin/promotion");
     }
 }
