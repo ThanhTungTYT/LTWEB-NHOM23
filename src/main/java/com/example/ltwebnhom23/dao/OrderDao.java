@@ -317,4 +317,68 @@ public class OrderDao extends BaseDao {
                     .list()
         );
     }
+
+    public int countOrdersWithFilter(String startDate, String endDate) {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM orders WHERE 1=1 ");
+
+        if (startDate != null && !startDate.isEmpty()) {
+            sql.append("AND DATE(created_at) >= :start ");
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            sql.append("AND DATE(created_at) <= :end ");
+        }
+
+        return getJdbi().withHandle(h -> {
+            var query = h.createQuery(sql.toString());
+            if (startDate != null && !startDate.isEmpty()) query.bind("start", startDate);
+            if (endDate != null && !endDate.isEmpty()) query.bind("end", endDate);
+            return query.mapTo(Integer.class).one();
+        });
+    }
+
+    public List<Order> getOrdersWithFilter(String startDate, String endDate, int limit, int offset) {
+        StringBuilder sql = new StringBuilder(
+                "SELECT id, user_id, payment_method_id, promo_id, " +
+                        "receiver_name, receiver_phone, note, " +
+                        "total_amount, shipping_fee, discount_percent, final_amount, " +
+                        "status, created_at " +
+                        "FROM orders WHERE 1=1 "
+        );
+
+        if (startDate != null && !startDate.isEmpty()) {
+            sql.append("AND DATE(created_at) >= :start ");
+        }
+        if (endDate != null && !endDate.isEmpty()) {
+            sql.append("AND DATE(created_at) <= :end ");
+        }
+
+        sql.append("ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
+
+        return getJdbi().withHandle(h -> {
+            var query = h.createQuery(sql.toString());
+            if (startDate != null && !startDate.isEmpty()) query.bind("start", startDate);
+            if (endDate != null && !endDate.isEmpty()) query.bind("end", endDate);
+
+            query.bind("limit", limit);
+            query.bind("offset", offset);
+
+            return query.mapToBean(Order.class).list();
+        });
+    }
+
+    public List<Order> searchOrders(String keyword) {
+        String sql = "SELECT o.* " +
+                "FROM orders o " +
+                "JOIN users u ON o.user_id = u.id " +
+                "WHERE o.id LIKE :key " +
+                "OR u.full_name LIKE :key " +
+                "ORDER BY o.created_at DESC";
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("key", "%" + keyword + "%")
+                        .mapToBean(Order.class)
+                        .list()
+        );
+    }
 }
