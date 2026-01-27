@@ -2,9 +2,8 @@ package com.example.ltwebnhom23.controller.order;
 
 import com.example.ltwebnhom23.cart.Cart;
 import com.example.ltwebnhom23.cart.CartItem;
-import com.example.ltwebnhom23.model.Order;
-import com.example.ltwebnhom23.model.Promotion;
-import com.example.ltwebnhom23.model.User;
+import com.example.ltwebnhom23.model.*;
+import com.example.ltwebnhom23.services.AccountService;
 import com.example.ltwebnhom23.services.OrderService;
 import com.example.ltwebnhom23.services.PaymentMethodService;
 import com.example.ltwebnhom23.services.PromotionService;
@@ -13,13 +12,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/payment")
 public class OrderServlet extends HttpServlet {
 
     private final OrderService orderService = new OrderService();
+    private final AccountService accountService = new AccountService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -34,7 +32,10 @@ public class OrderServlet extends HttpServlet {
             resp.sendRedirect("cart.jsp");
             return;
         }
+        User user = (User) s.getAttribute("user");
+        Address defaultAddress = accountService.getUserAddress(user.getId());
 
+        req.setAttribute("userAddress", defaultAddress);
         req.setAttribute("cart", s.getAttribute("checkoutCart"));
         req.setAttribute("promotions", PromotionService.getInstance().getAvailablePromotions());
         req.getRequestDispatcher("payment.jsp").forward(req, resp);
@@ -141,9 +142,16 @@ public class OrderServlet extends HttpServlet {
         order.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         order.setStatus("Đang xử lý");
 
-        try {
-            boolean success = orderService.create(order, checkoutCart);
+        OrderAddress address = new OrderAddress();
+        address.setCountry(req.getParameter("country"));
+        address.setProvince(req.getParameter("province"));
+        address.setWard(req.getParameter("ward"));
+        address.setAddress(req.getParameter("address"));
 
+        try {
+            boolean success;
+            if (orderService.create(order, address, checkoutCart)) success = true;
+            else success = false;
             if (success) {
                 for (CartItem boughtItem : checkoutCart.getList()) {
                     mainCart.remove(boughtItem.getProduct().getId());

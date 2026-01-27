@@ -104,16 +104,20 @@
                            value="${sessionScope.user.phone}" required>
                     <small class="error"></small>
 
-                    <input type="text" id="country" name="country" placeholder="Quốc gia" value="Việt Nam" required>
+                    <input type="text" id="country" name="country" placeholder="Quốc gia"
+                           value="${not empty requestScope.userAddress.country ? requestScope.userAddress.country : 'Việt Nam'}" required>
                     <small class="error"></small>
 
-                    <input type="text" id="province" name="province" placeholder="Tỉnh/TP" required>
+                    <input type="text" id="province" name="province" placeholder="Tỉnh/TP"
+                           value="${requestScope.userAddress.province}" required>
                     <small class="error"></small>
 
-                    <input type="text" id="ward" name="ward" placeholder="Quận/Huyện, Phường/Xã" required>
+                    <input type="text" id="ward" name="ward" placeholder="Quận/Huyện, Phường/Xã"
+                           value="${requestScope.userAddress.ward}" required>
                     <small class="error"></small>
 
-                    <input type="text" id="address" name="address" placeholder="Đường, Số nhà" required>
+                    <input type="text" id="address" name="address" placeholder="Đường, Số nhà"
+                           value="${requestScope.userAddress.address}" required>
                     <small class="error"></small>
                 </div>
             </section>
