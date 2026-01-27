@@ -23,11 +23,11 @@
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
     </div>
     <div class="menu">
-        <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item ">Tổng quan</a>
+        <a href="${pageContext.request.contextPath}/adminPage1" class="menu-item ">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item active">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item">Quản lí tài khoản</a>
-        <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
+        <a href="${pageContext.request.contextPath}/adminPage6" class="menu-item">Quản lí đánh giá</a>
         <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
         <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item">Quản lí mã giảm giá</a>
         <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
@@ -47,13 +47,15 @@
         <button><i class="fas fa-search"></i></button>
     </form>
     <div class="main-menu">
-        <select>
-            <option>-Chọn dòng sản phẩm-</option>
-            <option>Cà phê hữu cơ</option>
-            <option>Cà phê rang nguyên hạt</option>
-            <option>Cà phê xay nguyên chất</option>
-            <option>Các sản phẩm đặc biệt khác</option>
-        </select>
+        <form method="get" action="${pageContext.request.contextPath}/adminPage2">
+            <select name="filter" onchange="this.form.submit()">
+                <option value="0" ${currentFilter == 0 ? 'selected' : ''}>-Chọn dòng sản phẩm-</option>
+                <option value="3" ${currentFilter == 1 ? 'selected' : ''}>Cà phê hữu cơ</option>
+                <option value="1" ${currentFilter == 2 ? 'selected' : ''}>Cà phê rang nguyên hạt</option>
+                <option value="2" ${currentFilter == 3 ? 'selected' : ''}>Cà phê xay nguyên chất</option>
+                <option value="4" ${currentFilter == 4 ? 'selected' : ''}>Các sản phẩm đặc</option>
+            </select>
+        </form>
         <button type="button" onclick="addCat()" id="add-cat-btn">
             + Thêm loại sản phẩm
         </button>

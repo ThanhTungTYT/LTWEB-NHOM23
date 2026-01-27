@@ -21,7 +21,7 @@
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
     </div>
     <div class="menu">
-        <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item">Tổng quan</a>
+        <a href="${pageContext.request.contextPath}/adminPage1" class="menu-item">Tổng quan</a>
         <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
         <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
         <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item">Quản lí tài khoản</a>

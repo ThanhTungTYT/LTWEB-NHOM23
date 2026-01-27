@@ -22,8 +22,25 @@ public class AdminPage2Servlet  extends HttpServlet {
 
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Product> products = productService.getAllProduct();
+        String filter = request.getParameter("filter");
+        int categoryId = 0;
+
+        if (filter != null && !filter.isEmpty()) {
+            try {
+                categoryId = Integer.parseInt(filter);
+            } catch (NumberFormatException e) {
+                categoryId = 0;
+                e.printStackTrace();
+            }
+        }
+        List<Product> products;
+        if (categoryId == 0) {
+            products = productService.getAllProduct();
+        } else {
+            products = productService.getProductForCategory(categoryId);
+        }
         request.setAttribute("products", products);
+        request.setAttribute("currentFilter", filter);
         List<Category> categories = categoryService.getAllCategories();
         request.setAttribute("categories", categories);
         request.getRequestDispatcher("/adminPage2.jsp").forward(request,  response);
