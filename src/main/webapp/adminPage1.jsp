@@ -44,7 +44,7 @@
     </div>
     <div class="filter-section">
 
-        <form method="get" action="${pageContext.request.contextPath}/adminPage1">
+        <form method="get" action="${pageContext.request.contextPath}/admin/dashboard">
             <select name="filter" onchange="this.form.submit()">
                 <option value="today" ${filter == 'today' ? 'selected' : ''}>Hôm nay</option>
                 <option value="week" ${filter == 'week' ? 'selected' : ''}>7 ngày</option>
@@ -53,9 +53,9 @@
             </select>
         </form>
 
-        <button><a href="${pageContext.request.contextPath}/adminPage1" class="reset-link">Đặt lại</a></button>
+        <button><a href="${pageContext.request.contextPath}/admin/dashboard" class="reset-link">Đặt lại</a></button>
     </div>
-    <form method="post" action="${pageContext.request.contextPath}/adminPage1" class="main-menu-date">
+    <form method="post" action="${pageContext.request.contextPath}/admin/dashboard" class="main-menu-date">
         <div class="start">
             <label>Start date</label>
             <input type="date" name="startDate" value="${startDate}">

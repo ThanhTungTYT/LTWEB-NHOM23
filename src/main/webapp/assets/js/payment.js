@@ -1,32 +1,55 @@
-document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function() {
+    // 1. Khai báo các biến
+    var promotionSelect = document.getElementById("promotionSelect");
+    var totalEl = document.getElementById("total-price");
+    var shippingEl = document.getElementById("shipping-fee");
+    var discountEl = document.getElementById("discount-amount");
+    var finalEl = document.getElementById("final-total");
 
-    const promotionSelect = document.getElementById("promotionSelect");
-    const totalEl = document.getElementById("total-price");
-    const finalEl = document.getElementById("final-total");
-    const shippingEl = document.getElementById("shipping-fee");
+    // 2. Hàm định dạng tiền tệ
+    function formatVND(amount) {
+    return amount.toLocaleString('vi-VN') + " ₫";
+}
 
-    if (!promotionSelect || !totalEl || !finalEl || !shippingEl) return;
+    // 3. Hàm tính toán
+    function calculateTotal() {
+    // Lấy dữ liệu
+    var total = parseFloat(totalEl.getAttribute("data-total")) || 0;
+    var shipping = parseFloat(shippingEl.getAttribute("data-fee")) || 0;
 
-    const total = parseFloat(totalEl.dataset.total);
-    const shipping = parseFloat(shippingEl.dataset.fee);
+    // Lấy option đang chọn
+    var selectedOption = promotionSelect.options[promotionSelect.selectedIndex];
+    var discountPercent = parseFloat(selectedOption.getAttribute("data-discount")) || 0;
 
-    function formatVND(value) {
-        return value.toLocaleString("vi-VN") + " ₫";
-    }
+    // Tính toán
+    var discountValue = (total * discountPercent) / 100;
+    var finalTotal = total + shipping - discountValue;
 
-    function updateTotal() {
-        const selectedOption =
-            promotionSelect.options[promotionSelect.selectedIndex];
+    console.log("Tổng gốc:", total);
+    console.log("% Giảm:", discountPercent);
+    console.log("Tiền giảm:", discountValue);
 
-        const discountPercent =
-            parseFloat(selectedOption.dataset.discount || 0);
+    // --- CẬP NHẬT GIAO DIỆN ---
 
-        const discount = total * discountPercent / 100;
-        const finalAmount = total - discount + shipping;
+    // Cập nhật dòng Giảm giá
+    if (discountEl) {
+    if (discountValue > 0) {
+    discountEl.innerHTML = "- " + formatVND(discountValue);
+} else {
+    discountEl.innerHTML = "0 ₫";
+}
+} else {
+    console.error("LỖI: Không tìm thấy thẻ có id='discount-amount'");
+}
 
-        finalEl.textContent = formatVND(finalAmount);
-    }
+    // Cập nhật dòng Tổng thanh toán
+    if (finalEl) {
+    finalEl.innerHTML = formatVND(finalTotal);
+}
+}
 
-    updateTotal();
-    promotionSelect.addEventListener("change", updateTotal);
+    // 4. Gắn sự kiện
+    if (promotionSelect) {
+    promotionSelect.addEventListener("change", calculateTotal);
+}
 });

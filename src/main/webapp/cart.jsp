@@ -119,12 +119,12 @@
                             <p class="product-name">${item.product.name}</p>
                             <p class="product-type">Loại: ${item.product.category_name}</p>
                             <p class="product-weight">
-                                Khối lượng: <span>${item.product.weight_grams}gr</span>
+                                Khối lượng: <span>${item.product.weight_grams} gr</span>
                             </p>
                         </div>
 
                         <div class="product-price">
-                            <fmt:formatNumber value="${item.price}" type="number"/>đ
+                            <fmt:formatNumber value="${item.price}" type="number"/> VND
                         </div>
 
                         <div class="product-quantity">
@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="product-subtotal">
-                            <fmt:formatNumber value="${item.price * item.quantity}" type="number"/>đ
+                            <fmt:formatNumber value="${item.price * item.quantity}" type="number"/> VND
                         </div>
                     </div>
                 </c:forEach>
@@ -152,7 +152,7 @@
             <div class="cart-totals">
                 <h3>TỔNG CỘNG</h3>
                 <span id="cart-total">
-                    <fmt:formatNumber value="${sessionScope.cart.total}" type="number"/>đ
+                    <fmt:formatNumber value="${sessionScope.cart.total}" type="number"/> VND
                 </span>
                 <p>(Chưa bao gồm phí vận chuyển)</p>
             </div>

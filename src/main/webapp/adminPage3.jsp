@@ -117,7 +117,7 @@
                             </span>
                         </td>
                         <td>
-                            <fmt:formatNumber value="${o.finalAmount}" type="number"/>đ
+                            <fmt:formatNumber value="${o.finalAmount}" type="number"/> VND
                         </td>
 
                         <td>
