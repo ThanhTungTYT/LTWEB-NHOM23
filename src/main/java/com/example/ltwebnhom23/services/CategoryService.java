@@ -15,4 +15,8 @@ public class CategoryService {
     public boolean deleteCategory(int id) {
         return categoryDao.deleteCategory(id);
     }
+
+    public boolean insertCategory(String name) {
+        return categoryDao.insertCategory(name);
+    }
 }

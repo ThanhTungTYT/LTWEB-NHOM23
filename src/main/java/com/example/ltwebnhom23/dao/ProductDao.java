@@ -1,4 +1,5 @@
 package com.example.ltwebnhom23.dao;
+import com.example.ltwebnhom23.model.Order;
 import com.example.ltwebnhom23.model.Product;
 import java.util.List;
 
@@ -231,6 +232,19 @@ public class ProductDao extends BaseDao {
                         .bind("state", p.getState())
                         .bind("id", p.getId())
                         .execute() > 0
+        );
+    }
+    public List<Product> searchProducts(String keyword) {
+        String sql = "SELECT p.* " +
+                "FROM products p " +
+                "WHERE p.id LIKE :key " +
+                "OR p.name LIKE :key " ;
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("key", "%" + keyword + "%")
+                        .mapToBean(Product.class)
+                        .list()
         );
     }
 }

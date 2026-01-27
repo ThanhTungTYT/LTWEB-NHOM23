@@ -18,8 +18,6 @@ import com.example.ltwebnhom23.dao.CategoryDao;
 public class AdminPage2Servlet  extends HttpServlet {
     private ProductService productService = new ProductService();
     private CategoryService categoryService = new CategoryService();
-    private CategoryDao categoryDao = new CategoryDao();
-
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String filter = request.getParameter("filter");
@@ -109,7 +107,7 @@ public class AdminPage2Servlet  extends HttpServlet {
     private void handleAddCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String categoryName = request.getParameter("category_name");
         if (categoryName != null && !categoryName.trim().isEmpty()) {
-            categoryDao.insertCategory(categoryName);
+            categoryService.insertCategory(categoryName);
         }
         response.sendRedirect(request.getContextPath() + "/adminPage2");
     }
