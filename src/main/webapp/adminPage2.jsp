@@ -47,13 +47,15 @@
         <button><i class="fas fa-search"></i></button>
     </form>
     <div class="main-menu">
-        <select>
-            <option>-Chọn dòng sản phẩm-</option>
-            <option>Cà phê hữu cơ</option>
-            <option>Cà phê rang nguyên hạt</option>
-            <option>Cà phê xay nguyên chất</option>
-            <option>Các sản phẩm đặc biệt khác</option>
-        </select>
+        <form method="get" action="${pageContext.request.contextPath}/adminPage2">
+            <select name="filter" onchange="this.form.submit()">
+                <option value="0" ${currentFilter == 0 ? 'selected' : ''}>-Chọn dòng sản phẩm-</option>
+                <option value="3" ${currentFilter == 1 ? 'selected' : ''}>Cà phê hữu cơ</option>
+                <option value="1" ${currentFilter == 2 ? 'selected' : ''}>Cà phê rang nguyên hạt</option>
+                <option value="2" ${currentFilter == 3 ? 'selected' : ''}>Cà phê xay nguyên chất</option>
+                <option value="4" ${currentFilter == 4 ? 'selected' : ''}>Các sản phẩm đặc</option>
+            </select>
+        </form>
         <button type="button" onclick="addCat()" id="add-cat-btn">
             + Thêm loại sản phẩm
         </button>
