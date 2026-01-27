@@ -82,7 +82,12 @@
 
     <div class="product-list" id="product-list">
         <c:forEach items="${listProduct}" var="p">
-            <a class="product" href="product?pid=${p.id}">
+            <a class="product" href="product?pid=${p.id}" data-name="${p.name}"
+               data-price="<fmt:formatNumber value='${p.price}' type='number' maxFractionDigits='0'/> VND"
+               data-image="${p.image_url}"
+               data-sold="${p.sold}"
+                data-des="${p.description}"
+                data-avgr = "${p.avg_rating}">
                 <img src="${p.image_url}" alt="${p.name}">
 
                 <p>${p.name}</p>
@@ -92,6 +97,16 @@
                 <label><i class="fa-solid fa-fire"></i> ${p.sold}</label>
             </a>
         </c:forEach>
+    </div>
+    <div class="product-preview" id="productPreview">
+        <img id="previewImg">
+        <div class="info">
+            <h3 id="previewName"></h3>
+            <p class="price" id="previewPrice"></p>
+            <p class="sold" id="previewSold"></p>
+            <p class="description" id="previewDes"></p>
+            <p class="rating" id="previewRating"></p>
+        </div>
     </div>
 </div>
 

@@ -8,14 +8,38 @@ public class ProductDao extends BaseDao {
     // Lấy 4 sản phẩm bán chạy nhất
     public List<Product> getProductsBySold() {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT p.id, p.name, p.price, p.sold, p.stock, p.weight_grams, " +
-                                "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
-                                "c.name AS category_name " +
-                                "FROM products p " +
-                                "JOIN categories c ON p.category_id = c.id " +
-                                "WHERE p.state = 'active'" +
-                                "ORDER BY p.sold DESC " +
-                                "LIMIT 4")
+                handle.createQuery("SELECT \n" +
+                                "    p.id,\n" +
+                                "    p.name,\n" +
+                                "    p.price,\n" +
+                                "    p.sold,\n" +
+                                "    p.stock,\n" +
+                                "    p.weight_grams,\n" +
+                                "    p.description,\n" +
+                                "    (\n" +
+                                "        SELECT image_url \n" +
+                                "        FROM product_images i \n" +
+                                "        WHERE i.product_id = p.id \n" +
+                                "        ORDER BY i.id ASC \n" +
+                                "        LIMIT 1\n" +
+                                "    ) AS image_url,\n" +
+                                "    c.name AS category_name,\n" +
+                                "    IFNULL(AVG(r.rating), 0) AS avg_rating\n" +
+                                "FROM products p\n" +
+                                "JOIN categories c ON p.category_id = c.id\n" +
+                                "LEFT JOIN products_review r ON p.id = r.product_id\n" +
+                                "WHERE p.state = 'active'\n" +
+                                "GROUP BY \n" +
+                                "    p.id,\n" +
+                                "    p.name,\n" +
+                                "    p.price,\n" +
+                                "    p.sold,\n" +
+                                "    p.stock,\n" +
+                                "    p.weight_grams,\n" +
+                                "    p.description,\n" +
+                                "    c.name\n" +
+                                "ORDER BY p.sold DESC\n" +
+                                "LIMIT 10;\n")
                         .mapToBean(Product.class)
                         .list()
         );

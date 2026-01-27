@@ -19,10 +19,10 @@
                  onclick="location.href='${pageContext.request.contextPath}/'"
                  width="300px" height="100px" alt="Logo">
         </div>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
-        </div>
+        <form class="search-bar" method="get" action="${pageContext.request.contextPath}/search-product">
+            <input type="text" name="search" id="search-input" placeholder="Tìm kiếm..." value="${keyword}">
+            <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </form>
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
@@ -112,7 +112,6 @@
                     <p>${p.name}</p>
                     <span><fmt:formatNumber value="${p.price}" type="number"/> VND</span>
                     <label>Loại: ${p.category_name}</label>
-
                     <div style="font-size: 12px; color: #666; margin-top: 5px;">
                         <span><i class="fas fa-star" style="color:gold"></i> ${String.format("%.1f", p.avg_rating)}</span>
                         <span style="margin-left: 10px;">Đã bán: ${p.sold}</span>

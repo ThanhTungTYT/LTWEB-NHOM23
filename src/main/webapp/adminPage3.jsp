@@ -238,6 +238,6 @@
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/adminPage3.js"></script>
-
+<script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 </body>
 </html>
