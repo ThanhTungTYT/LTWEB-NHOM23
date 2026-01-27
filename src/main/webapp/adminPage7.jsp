@@ -106,8 +106,11 @@
             <input type="date" name="end">
         </div>
         <button class="submit" type="submit">Thêm Banner</button>
-        <c:if test="${not empty notice}">
-            <p>${notice}</p>
+        <c:if test="${not empty sessionScope.notice}">
+            <div class="notice">
+                    ${sessionScope.notice}
+            </div>
+            <c:remove var="notice" scope="session"/>
         </c:if>
     </form>
 </div>
@@ -145,8 +148,11 @@
         </div>
 
         <button class="submit" type="submit">Lưu Thay Đổi</button>
-        <c:if test="${not empty notice_up}">
-            <p>${notice_up}</p>
+        <c:if test="${not empty sessionScope.notice_up}">
+            <div class="notice">
+                    ${sessionScope.notice_up}
+            </div>
+            <c:remove var="notice_up" scope="session"/>
         </c:if>
     </form>
 </div>
