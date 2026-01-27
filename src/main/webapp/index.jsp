@@ -18,10 +18,11 @@
                  onclick="location.href='${pageContext.request.contextPath}/'"
                  width="300px" height="100px" alt="Logo">
         </div>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i></button>
-        </div>
+        <form class="search-bar" method="get" action="${pageContext.request.contextPath}/search-product">
+            <input type="text" name="search" id="search-input" placeholder="Tìm kiếm..." value="${keyword}">
+            <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
+        </form>
+
         <div class="mini-menu">
             <div class="cart">
                 <a href="${pageContext.request.contextPath}/cart"><i class="fas fa-shopping-cart"></i></a>
@@ -31,7 +32,7 @@
                 <c:when test="${not empty sessionScope.user}">
                     <c:choose>
                         <c:when test="${sessionScope.user.role eq 'admin'}">
-                            <a href="${pageContext.request.contextPath}/adminPage1.jsp">
+                            <a href="${pageContext.request.contextPath}/admin/dashboard">
                                 <i class="fas fa-user-shield"></i>
                                 <span style="font-size: 14px; margin-left: 5px">
                                         ${sessionScope.user.full_name}

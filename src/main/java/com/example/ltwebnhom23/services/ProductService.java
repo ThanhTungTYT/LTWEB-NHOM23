@@ -106,4 +106,8 @@ public class ProductService {
         if (totalProducts == 0) return 1;
         return (int) Math.ceil((double) totalProducts / pageSize);
     }
+
+    public List<Product> getProductByKey(String key){
+        return productDao.getProductByKey(key);
+    }
 }

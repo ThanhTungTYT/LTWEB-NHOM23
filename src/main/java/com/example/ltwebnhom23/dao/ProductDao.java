@@ -316,4 +316,18 @@ public class ProductDao extends BaseDao {
             return query.mapToBean(Product.class).list();
         });
     }
+
+    public List<Product> getProductByKey(String key){
+        return getJdbi().withHandle(handle ->
+                handle.createQuery("SELECT p.id, p.name, p.price, p.sold, " +
+                                "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
+                                "c.name AS category_name " +
+                                "FROM products p " +
+                                "JOIN categories c ON p.category_id = c.id " +
+                                "WHERE p.state ='active' And p.name LIKE :key")
+                        .bind("key", "%"+key+"%")
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
 }
