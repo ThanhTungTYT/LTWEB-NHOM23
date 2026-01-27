@@ -3,6 +3,7 @@ package com.example.ltwebnhom23.dao;
 import com.example.ltwebnhom23.cart.Cart;
 import com.example.ltwebnhom23.cart.CartItem;
 import com.example.ltwebnhom23.model.Order;
+import com.example.ltwebnhom23.model.OrderAddress;
 import com.example.ltwebnhom23.model.OrderItem;
 import com.example.ltwebnhom23.model.Product;
 
@@ -13,9 +14,11 @@ import java.util.Map;
 
 public class OrderDao extends BaseDao {
 
-    public boolean createOrder(Order order, Cart checkoutCart) {
+    // Cần import model OrderAddress
+    public boolean createOrder(Order order, OrderAddress address, Cart checkoutCart) {
         return getJdbi().inTransaction(h -> {
             try {
+                // 1. INSERT ORDER & LẤY ID
                 int orderId = h.createUpdate(
                                 "INSERT INTO orders (" +
                                         "user_id, payment_method_id, promo_id, " +
@@ -24,10 +27,16 @@ public class OrderDao extends BaseDao {
                                         ") VALUES (" +
                                         ":userId, :paymentMethodId, :promoId, " +
                                         ":receiverName, :receiverPhone, :note, " +
-                                        ":totalAmount, :shippingFee, :discountPercent, :finalAmount, :createdAt, :status)" // Thêm status
+                                        ":totalAmount, :shippingFee, :discountPercent, :finalAmount, :createdAt, :status)"
                         ).bindBean(order)
                         .executeAndReturnGeneratedKeys("id")
                         .mapTo(Integer.class).one();
+
+                h.createUpdate("INSERT INTO order_addresses (order_id, country, province, ward, address) " +
+                                "VALUES (:orderId, :country, :province, :ward, :address)")
+                        .bind("orderId", orderId)
+                        .bindBean(address)
+                        .execute();
 
                 var batch = h.prepareBatch(
                         "INSERT INTO order_items(order_id, product_id, price, quantity) " +
@@ -61,12 +70,11 @@ public class OrderDao extends BaseDao {
                 batch.execute();
 
                 if (order.getPromoId() != null && order.getPromoId() > 0) {
-                    int updatePromo = h.createUpdate(
+                    h.createUpdate(
                             "UPDATE promotions " +
                                     "SET quantity = quantity - 1 " +
                                     "WHERE id = :pid AND quantity > 0 AND state = 'active'"
                     ).bind("pid", order.getPromoId()).execute();
-
                 }
 
                 return true;

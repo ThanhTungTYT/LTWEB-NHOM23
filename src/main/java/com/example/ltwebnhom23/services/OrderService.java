@@ -1,19 +1,17 @@
 package com.example.ltwebnhom23.services;
 
 import com.example.ltwebnhom23.cart.Cart;
-import com.example.ltwebnhom23.dao.AccountDao;
 import com.example.ltwebnhom23.dao.OrderDao;
 import com.example.ltwebnhom23.model.Order;
+import com.example.ltwebnhom23.model.OrderAddress;
 import com.example.ltwebnhom23.model.OrderItem;
-import com.example.ltwebnhom23.model.User;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 public class OrderService {
     private final OrderDao dao = new OrderDao();
-    public boolean create(Order order, Cart cart) {
-        return dao.createOrder(order, cart);
+    public boolean create(Order order, OrderAddress address, Cart cart) {
+        return dao.createOrder(order,address, cart);
     }
 
     public List<Order> getAllOrders() {
