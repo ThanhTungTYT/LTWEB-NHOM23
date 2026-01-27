@@ -23,11 +23,9 @@ public class AdminPage1Servlet extends HttpServlet {
 
         String filter = request.getParameter("filter");
 
-        // nếu chưa chọn filter → mặc định today
         if (filter == null || filter.isEmpty()) {
             filter = "today";
         }
-
         loadByFilter(request, filter);
 
         request.setAttribute("filter", filter);
@@ -41,7 +39,9 @@ public class AdminPage1Servlet extends HttpServlet {
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
 
-        if (startDate != null && endDate != null) {
+        if (startDate != null && !startDate.isEmpty()
+                && endDate != null && !endDate.isEmpty()) {
+
             Timestamp start = Timestamp.valueOf(startDate + " 00:00:00");
             Timestamp end = Timestamp.valueOf(endDate + " 23:59:59");
 
@@ -49,12 +49,14 @@ public class AdminPage1Servlet extends HttpServlet {
 
             request.setAttribute("startDate", startDate);
             request.setAttribute("endDate", endDate);
+            request.setAttribute("filter", "custom");
+        } else {
+            loadByFilter(request, "today");
+            request.setAttribute("filter", "today");
         }
 
         request.getRequestDispatcher("/adminPage1.jsp").forward(request, response);
     }
-
-    /* ================= PRIVATE METHODS ================= */
 
     private void loadByFilter(HttpServletRequest request, String filter) {
 
