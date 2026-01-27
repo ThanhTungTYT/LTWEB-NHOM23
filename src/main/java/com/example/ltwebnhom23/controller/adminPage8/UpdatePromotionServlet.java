@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
-@WebServlet(name = "UpdatePromotionServlet", urlPatterns = {"/adminPage8/update"})
+@WebServlet(name = "UpdatePromotionServlet", urlPatterns = {"/admin/promotion/update"})
 public class UpdatePromotionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -71,7 +71,7 @@ public class UpdatePromotionServlet extends HttpServlet {
             p.setState(state);
 
             PromotionService.getInstance().updatePromotion(p);
-            response.sendRedirect(request.getContextPath() + "/adminPage8");
+            response.sendRedirect(request.getContextPath() + "/admin/promotion");
 
         } catch (Exception e) {
             e.printStackTrace();

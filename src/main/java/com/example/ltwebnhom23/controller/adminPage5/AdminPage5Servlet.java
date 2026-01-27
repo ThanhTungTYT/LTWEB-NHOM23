@@ -22,13 +22,10 @@ public class AdminPage5Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1. Lấy tham số lọc từ URL
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
-
-        // 2. Cấu hình phân trang
         int page = 1;
-        int pageSize = 25; // Hiển thị 25 dòng mỗi trang
+        int pageSize = 25;
 
         if (request.getParameter("page") != null) {
             try {
@@ -39,34 +36,21 @@ public class AdminPage5Servlet extends HttpServlet {
             }
         }
 
-        // Tính vị trí bắt đầu lấy dữ liệu trong database
         int offset = (page - 1) * pageSize;
-
-        // 3. Gọi DAO để lấy dữ liệu
-        // - Lấy tổng số lượng tin nhắn (khớp với điều kiện lọc) để tính số trang
         int totalContacts = contactDao.countContacts(startDate, endDate);
-
-        // - Lấy danh sách tin nhắn cho trang hiện tại (có limit và offset)
         List<Contact> contactList = contactDao.getContacts(startDate, endDate, pageSize, offset);
-
-        // 4. Tính tổng số trang
-        // Math.ceil: làm tròn lên (ví dụ có 26 tin, mỗi trang 25 tin -> cần 2 trang)
         int totalPages = (int) Math.ceil((double) totalContacts / pageSize);
 
         if (totalPages < 1) {
             totalPages = 1;
         }
 
-        // 5. Gán dữ liệu vào request để JSP hiển thị
-        request.setAttribute("contactList", contactList);   // Danh sách tin nhắn
-        request.setAttribute("currentPage", page);          // Trang hiện tại
-        request.setAttribute("totalPages", totalPages);     // Tổng số trang
-
-        // Gửi lại ngày lọc để giữ trạng thái trên ô input
+        request.setAttribute("contactList", contactList);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", totalPages);
         request.setAttribute("startDate", startDate);
         request.setAttribute("endDate", endDate);
 
-        // 6. Chuyển hướng sang trang JSP
         request.getRequestDispatcher("/adminPage5.jsp").forward(request, response);
     }
 }

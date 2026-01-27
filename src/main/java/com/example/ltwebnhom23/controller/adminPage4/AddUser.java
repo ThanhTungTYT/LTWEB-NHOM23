@@ -27,7 +27,7 @@ public class AddUser extends HttpServlet {
         user.setRole(request.getParameter("role"));
 
         if(account.addUser(user)){
-            response.sendRedirect(request.getContextPath() + "/adminPage4");
+            response.sendRedirect(request.getContextPath() + "/admin/users");
         }
     }
 }

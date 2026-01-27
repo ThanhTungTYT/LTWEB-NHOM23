@@ -247,4 +247,73 @@ public class ProductDao extends BaseDao {
                         .list()
         );
     }
+
+    public int countSearchProducts(String keyword) {
+        String sql = "SELECT COUNT(*) FROM products p " +
+                "WHERE CAST(p.id AS CHAR) LIKE :key OR p.name LIKE :key";
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("key", "%" + keyword + "%")
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    // 2. Tìm kiếm có phân trang
+    public List<Product> searchProductsPaginated(String keyword, int limit, int offset) {
+        String sql = "SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, p.state, " +
+                "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
+                "c.name AS category_name " +
+                "FROM products p " +
+                "JOIN categories c ON p.category_id = c.id " +
+                "WHERE p.id LIKE :key OR p.name LIKE :key " +
+                "ORDER BY p.id DESC " +
+                "LIMIT :limit OFFSET :offset";
+
+        return getJdbi().withHandle(h ->
+                h.createQuery(sql)
+                        .bind("key", "%" + keyword + "%")
+                        .bind("limit", limit)
+                        .bind("offset", offset)
+                        .mapToBean(Product.class)
+                        .list()
+        );
+    }
+
+    public int countProductsForAdmin(int categoryId) {
+        StringBuilder sql = new StringBuilder("SELECT COUNT(*) FROM products p ");
+        if (categoryId > 0) {
+            sql.append("WHERE p.category_id = :cid");
+        }
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+            if (categoryId > 0) query.bind("cid", categoryId);
+            return query.mapTo(Integer.class).one();
+        });
+    }
+
+    public List<Product> getProductsPaginatedForAdmin(int categoryId, int limit, int offset) {
+        StringBuilder sql = new StringBuilder(
+                "SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, p.state, " +
+                        "(SELECT image_url FROM product_images i WHERE i.product_id = p.id ORDER BY i.id ASC LIMIT 1) AS image_url, " +
+                        "c.name AS category_name " +
+                        "FROM products p " +
+                        "JOIN categories c ON p.category_id = c.id "
+        );
+
+        if (categoryId > 0) {
+            sql.append("WHERE p.category_id = :cid ");
+        }
+        sql.append("ORDER BY p.id DESC ");
+        sql.append("LIMIT :limit OFFSET :offset");
+
+        return getJdbi().withHandle(handle -> {
+            var query = handle.createQuery(sql.toString());
+            if (categoryId > 0) query.bind("cid", categoryId);
+            query.bind("limit", limit);
+            query.bind("offset", offset);
+            return query.mapToBean(Product.class).list();
+        });
+    }
 }

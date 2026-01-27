@@ -87,6 +87,6 @@ public class AdminPage3Servlet extends HttpServlet {
         System.out.println("Update order " + orderId + ": " + updated);
 
         orderService.updateOrder(order);
-        resp.sendRedirect(req.getContextPath() + "/adminPage3.jsp");
+        resp.sendRedirect(req.getContextPath() + "/admin/orders");
     }
 }

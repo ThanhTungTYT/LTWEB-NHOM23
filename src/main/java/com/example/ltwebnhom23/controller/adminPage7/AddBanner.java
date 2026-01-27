@@ -32,6 +32,6 @@ public class AddBanner extends HttpServlet {
             session.setAttribute("notice", "Thêm thất bại");
         }
 
-        response.sendRedirect(request.getContextPath() + "/adminPage7");
+        response.sendRedirect(request.getContextPath() + "/admin/banner");
     }
 }

@@ -18,30 +18,44 @@ import com.example.ltwebnhom23.dao.CategoryDao;
 public class AdminPage2Servlet  extends HttpServlet {
     private ProductService productService = new ProductService();
     private CategoryService categoryService = new CategoryService();
+
     @Override
-    protected void doGet( HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String filter = request.getParameter("filter");
+        String pageStr = request.getParameter("page");
+
         int categoryId = 0;
+        int page = 1;
+        int pageSize = 25;
 
         if (filter != null && !filter.isEmpty()) {
             try {
                 categoryId = Integer.parseInt(filter);
             } catch (NumberFormatException e) {
                 categoryId = 0;
-                e.printStackTrace();
             }
         }
-        List<Product> products;
-        if (categoryId == 0) {
-            products = productService.getAllProduct();
-        } else {
-            products = productService.getProductForCategory(categoryId);
+
+        if (pageStr != null && !pageStr.isEmpty()) {
+            try {
+                page = Integer.parseInt(pageStr);
+                if (page < 1) page = 1;
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
         }
+        List<Product> products = productService.getProductsAdmin(categoryId, page, pageSize);
+        int totalPages = productService.getTotalPagesAdmin(categoryId, pageSize);
+
         request.setAttribute("products", products);
-        request.setAttribute("currentFilter", filter);
+        request.setAttribute("currentFilter", categoryId);
+        request.setAttribute("currentPage", page);
+        request.setAttribute("totalPages", totalPages);
+
         List<Category> categories = categoryService.getAllCategories();
         request.setAttribute("categories", categories);
-        request.getRequestDispatcher("/adminPage2.jsp").forward(request,  response);
+
+        request.getRequestDispatcher("/adminPage2.jsp").forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -97,7 +111,7 @@ public class AdminPage2Servlet  extends HttpServlet {
         boolean isSuccess = productService.addProductWithUrls(newProduct, imageUrls);
 
         if (isSuccess) {
-            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=success");
+            response.sendRedirect(request.getContextPath() + "/admin/products?msg=success");
         } else {
             request.setAttribute("error", "Thêm sản phẩm thất bại!");
             doGet(request, response);
@@ -109,7 +123,7 @@ public class AdminPage2Servlet  extends HttpServlet {
         if (categoryName != null && !categoryName.trim().isEmpty()) {
             categoryService.insertCategory(categoryName);
         }
-        response.sendRedirect(request.getContextPath() + "/adminPage2");
+        response.sendRedirect(request.getContextPath() + "/admin/products");
     }
     private void handleDeleteList(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String idsStr = request.getParameter("ids");
@@ -121,10 +135,10 @@ public class AdminPage2Servlet  extends HttpServlet {
             productService.deleteListProducts(ids);
 
             // Thông báo thành công
-            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_list_success");
+            response.sendRedirect(request.getContextPath() + "/admin/products?msg=deleted_list_success");
         } else {
             // Thông báo lỗi nếu danh sách rỗng
-            response.sendRedirect(request.getContextPath() + "/adminPage2?error=no_selection");
+            response.sendRedirect(request.getContextPath() + "/admin/products?error=no_selection");
         }
     }
 
@@ -132,15 +146,14 @@ public class AdminPage2Servlet  extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             categoryService.deleteCategory(id); // Gọi service để xóa
-            response.sendRedirect(request.getContextPath() + "/adminPage2?msg=deleted_category");
+            response.sendRedirect(request.getContextPath() + "/admin/products?msg=deleted_category");
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_id");
+            response.sendRedirect(request.getContextPath() + "/admin/products?error=invalid_id");
         }
     }
     private void handleEditProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            // 1. Lấy dữ liệu từ form
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             String description = request.getParameter("description");
@@ -148,9 +161,8 @@ public class AdminPage2Servlet  extends HttpServlet {
             int stock = Integer.parseInt(request.getParameter("stock"));
             int categoryId = Integer.parseInt(request.getParameter("category_id"));
             int weight = Integer.parseInt(request.getParameter("weight"));
-            String state = request.getParameter("state"); // Lấy trạng thái Active/Deleted
+            String state = request.getParameter("state");
 
-            // 2. Tạo đối tượng Product mới để update
             Product p = new Product();
             p.setId(id);
             p.setName(name);
@@ -161,22 +173,20 @@ public class AdminPage2Servlet  extends HttpServlet {
             p.setWeight_grams(weight);
             p.setState(state);
 
-            // 3. Gọi Service
             boolean isSuccess = productService.updateProduct(p);
 
-            // 4. Phản hồi
             if (isSuccess) {
-                response.sendRedirect(request.getContextPath() + "/adminPage2?msg=update_success");
+                response.sendRedirect(request.getContextPath() + "/admin/products?msg=update_success");
             } else {
-                response.sendRedirect(request.getContextPath() + "/adminPage2?error=update_failed");
+                response.sendRedirect(request.getContextPath() + "/admin/products?error=update_failed");
             }
             System.out.println("STATE = [" + state + "]");
         } catch (NumberFormatException e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/adminPage2?error=invalid_data");
+            response.sendRedirect(request.getContextPath() + "/admin/products?error=invalid_data");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/adminPage2?error=system_error");
+            response.sendRedirect(request.getContextPath() + "/admin/products?error=system_error");
         }
     }
 }

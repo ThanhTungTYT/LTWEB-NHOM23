@@ -23,7 +23,7 @@ public class DeleteUser extends HttpServlet {
         int uid = Integer.parseInt(request.getParameter("uid"));
 
         if(account.deleteUser(uid)){
-            response.sendRedirect(request.getContextPath() + "/adminPage4");
+            response.sendRedirect(request.getContextPath() + "/admin/users");
         }
     }
 }

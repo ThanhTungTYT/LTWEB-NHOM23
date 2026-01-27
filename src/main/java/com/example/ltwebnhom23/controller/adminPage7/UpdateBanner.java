@@ -36,6 +36,6 @@ public class UpdateBanner extends HttpServlet {
             session.setAttribute("notice_up", "Cập nhật không thành công");
         }
 
-        response.sendRedirect(request.getContextPath() + "/adminPage7");
+        response.sendRedirect(request.getContextPath() + "/admin/banner");
     }
 }

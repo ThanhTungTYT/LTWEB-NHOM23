@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "SearchPromotionServlet", urlPatterns = {"/adminPage8/search"})
+@WebServlet(name = "SearchPromotionServlet", urlPatterns = {"/admin/promotion/search"})
 public class SearchPromotionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

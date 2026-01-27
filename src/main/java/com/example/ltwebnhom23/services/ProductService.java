@@ -28,7 +28,6 @@ public class ProductService {
         return productDao.getProductsByRelative(cid, name, pid);
     }
 
-    // --- CẬP NHẬT PHÂN TRANG ---
     public List<Product> getProductsForCatalog(int cid, String sort, int page) {
         if (sort == null) sort = "default";
         int offset = (page - 1) * 25; // Tính vị trí bắt đầu
@@ -86,7 +85,25 @@ public class ProductService {
             }
         }
     }
-    public List<Product> searchProducts(String keyword) {
-        return productDao.searchProducts(keyword);
+    public List<Product> searchProducts(String keyword, int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return productDao.searchProductsPaginated(keyword, pageSize, offset);
+    }
+
+    public int getTotalPagesSearch(String keyword, int pageSize) {
+        int totalProducts = productDao.countSearchProducts(keyword);
+        if (totalProducts == 0) return 1;
+        return (int) Math.ceil((double) totalProducts / pageSize);
+    }
+
+    public List<Product> getProductsAdmin(int categoryId, int page, int pageSize) {
+        int offset = (page - 1) * pageSize;
+        return productDao.getProductsPaginatedForAdmin(categoryId, pageSize, offset);
+    }
+
+    public int getTotalPagesAdmin(int categoryId, int pageSize) {
+        int totalProducts = productDao.countProductsForAdmin(categoryId);
+        if (totalProducts == 0) return 1;
+        return (int) Math.ceil((double) totalProducts / pageSize);
     }
 }
