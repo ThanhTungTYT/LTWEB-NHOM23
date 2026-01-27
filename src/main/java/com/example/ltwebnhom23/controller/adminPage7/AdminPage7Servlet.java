@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminPage7Servlet", value = "/adminPage7")
+@WebServlet(name = "AdminPage7Servlet", value = "/admin/banner")
 public class AdminPage7Servlet extends HttpServlet {
 
     private BannerService banner = new BannerService();
@@ -17,7 +17,7 @@ public class AdminPage7Servlet extends HttpServlet {
         List<Banner> listBanner = banner.getAllBanner();
         request.setAttribute("listBanner", listBanner);
 
-        request.getRequestDispatcher("adminPage7.jsp").forward(request, response);
+        request.getRequestDispatcher("/adminPage7.jsp").forward(request, response);
     }
 
     @Override

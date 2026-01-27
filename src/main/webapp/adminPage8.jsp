@@ -16,15 +16,15 @@
         <img src="${pageContext.request.contextPath}/assets/img/logo.png" onclick="location.href='${pageContext.request.contextPath}/'" width="300px" height="100px">
     </div>
     <div class="menu">
-        <a href="${pageContext.request.contextPath}/adminPage1.jsp" class="menu-item ">Tổng quan</a>
-        <a href="${pageContext.request.contextPath}/adminPage2" class="menu-item">Quản lí sản phẩm</a>
-        <a href="${pageContext.request.contextPath}/adminPage3" class="menu-item">Quản lí đơn hàng</a>
-        <a href="${pageContext.request.contextPath}/adminpage4" class="menu-item">Quản lí tài khoản</a>
-        <a href="${pageContext.request.contextPath}/adminPage6.jsp" class="menu-item">Quản lí đánh giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage7" class="menu-item">Quản lí banner</a>
-        <a href="${pageContext.request.contextPath}/adminPage8" class="menu-item active">Quản lí mã giảm giá</a>
-        <a href="${pageContext.request.contextPath}/adminPage5" class="menu-item">Chăm sóc khách hàng</a>
-        <a href="#" class="menu-item" onclick="location.href='index.html'">Đăng xuất</a>
+        <a href="${pageContext.request.contextPath}/admin/dashboard" class="menu-item">Tổng quan</a>
+        <a href="${pageContext.request.contextPath}/admin/products" class="menu-item">Quản lí sản phẩm</a>
+        <a href="${pageContext.request.contextPath}/admin/orders" class="menu-item">Quản lí đơn hàng</a>
+        <a href="${pageContext.request.contextPath}/admin/users" class="menu-item">Quản lí tài khoản</a>
+        <a href="${pageContext.request.contextPath}/admin/reviews" class="menu-item">Quản lí đánh giá</a>
+        <a href="${pageContext.request.contextPath}/admin/banner" class="menu-item">Quản lí banner</a>
+        <a href="${pageContext.request.contextPath}/admin/promotion" class="menu-item active">Quản lí mã giảm giá</a>
+        <a href="${pageContext.request.contextPath}/admin/contact" class="menu-item">Chăm sóc khách hàng</a>
+        <a href="#" class="menu-item" onclick="location.href='${pageContext.request.contextPath}/logout'">Đăng xuất</a>
     </div>
     <div class="footer">
         <p>2024 Aroma Café. All rights reserved.</p>

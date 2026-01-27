@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.List;
 
-@WebServlet(name = "AdminPage1Servlet", urlPatterns = {"/adminPage1"})
+@WebServlet(name = "AdminPage1Servlet", urlPatterns = {"/admin/dashboard"})
 public class AdminPage1Servlet extends HttpServlet {
 
     private AdminPage1Service service = new AdminPage1Service();

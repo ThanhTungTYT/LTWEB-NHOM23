@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AdminPage8Servlet", urlPatterns = {"/adminPage8"})
+@WebServlet(name = "AdminPage8Servlet", urlPatterns = {"/admin/promotion"})
 public class AdminPage8Servlet extends HttpServlet {
 
     @Override

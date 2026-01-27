@@ -15,7 +15,7 @@ public class BannerDao extends BaseDao{
     }
     public List<Banner> getBannerActive(){
         return getJdbi().withHandle(handle ->
-            handle.createQuery("SELECT * FROM banners WHERE start_date <= NOW() AND end_date >= NOW()")
+            handle.createQuery("SELECT * FROM banners WHERE start_date <= NOW() AND end_date >= NOW() AND status = 'active'")
                     .mapToBean(Banner.class)
                     .list()
         );
