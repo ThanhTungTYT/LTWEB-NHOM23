@@ -189,18 +189,14 @@
         <textarea name="comment" rows="5"
                   placeholder="Hãy chia sẻ cảm nhận của bạn..."></textarea>
                     </div>
-
                     <button type="submit">Gửi đánh giá</button>
-
-                    <c:if test="${not empty sessionScope.reviewNotice}">
-                        <div class="notice">
-                                ${sessionScope.reviewNotice}
-                        </div>
-                        <c:remove var="reviewNotice" scope="session"/>
-                    </c:if>
-
                 </form>
-
+                <c:if test="${not empty sessionScope.reviewNotice}">
+                    <div class="notice" style="text-align: center;">
+                        <p style="padding: 5px; margin-top: 5px">${sessionScope.reviewNotice}</p>
+                    </div>
+                    <c:remove var="reviewNotice" scope="session"/>
+                </c:if>
             </div>
         </div>
         <div class="product-relative">

@@ -70,16 +70,21 @@
 }
 
 .hot-item .product-list {
+    width: 70%;
+    height: 400;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-evenly;
+    flex-wrap: nowrap;
+    gap: 50px;
     padding: 10px;
     width: 100%;
-    overflow: visible;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
 }
 
 .hot-item .product-list .product {
     width: 250px;
+    flex-shrink: 0;
     max-height: 350px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -129,7 +134,48 @@
     font-size: 14px;
     color: gray;
 }
+.product-preview {
+    width: 80%;
+    margin-top: 40px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    display: none;
+    gap: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.product-preview.show {
+    display: flex;
+}
+.product-preview img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+}
 
+.product-preview .info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-preview .price {
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product-preview .sold {
+    color: gray;
+    margin-top: 10px;
+}
+.product-preview .description {
+    color: black;
+    margin-top: 10px;
+}
+.product-preview .rating {
+    margin-top: 10px;
+}
 .video-1 {
     width: 100%;
     height: fit-content;
