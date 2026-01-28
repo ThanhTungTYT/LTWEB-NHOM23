@@ -16,6 +16,7 @@
     <title>Trang Quản Trị Aroma Café</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div class="left-menu" id="left-menu">
@@ -107,22 +108,11 @@
             </div>
 
         </div>
-        <div class="charts-grid">
-            <div class="chart-card">
-                <h3 >Top sản phẩm bán chạy</h3>
-                <c:forEach items="${topProducts}" var="row">
-                    <p>
-                            ${row.product.name} :
-                            ${row.totalSold} sản phẩm
-                    </p>
-                </c:forEach>
-
-                <c:if test="${empty topProducts}">
-                    <p>Không có dữ liệu</p>
-                </c:if>
-            </div>
-        </div>
-        <div class="table-card">
+    <div class="chart-card" style="padding-left: 5px">
+        <h3>Top sản phẩm bán chạy</h3>
+        <canvas id="topProductChart" height="120"></canvas>
+    </div>
+    <div class="table-card">
             <h3>Đơn hàng</h3>
 
             <table>
@@ -163,6 +153,66 @@
         </div>
 </div>
 <button class="slide-top" id="slide-top"><i class="fas fa-angle-up"></i></button>
+<script>
+    const productLabels = [
+        <c:forEach items="${topProducts}" var="row" varStatus="i">
+        "${row.product.name}"<c:if test="${!i.last}">,</c:if>
+        </c:forEach>
+    ];
+
+    const productData = [
+        <c:forEach items="${topProducts}" var="row" varStatus="i">
+        ${row.totalSold}<c:if test="${!i.last}">,</c:if>
+        </c:forEach>
+    ];
+
+    const ctx = document.getElementById('topProductChart');
+
+    if (ctx && productLabels.length > 0) {
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: productLabels,
+                datasets: [{
+                    label: 'Số lượng bán',
+                    data: productData,
+                    backgroundColor: '#2ecc71',
+                    borderRadius: 6,
+                    barThickness: 20,
+                    categoryPercentage: 0.2,
+                    maxBarThickness: 20
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.raw + " sản phẩm";
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        offset: true
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            padding: 15
+                        }
+                    }
+                }
+            }
+        });
+    }
+</script>
 <script src="${pageContext.request.contextPath}/assets/js/admin.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/script.js"></script>
 
