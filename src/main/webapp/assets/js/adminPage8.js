@@ -40,13 +40,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (errorElement) {
         showModal();
         if (inputId && inputId.value) {
-            if(mainForm) mainForm.action = contextPath + "/adminPage8/update";
+            if(mainForm) mainForm.action = contextPath + "/update";
             if(inputCode) {
                 inputCode.setAttribute("readonly", true);
                 inputCode.style.backgroundColor = "#e9ecef";
             }
         } else {
-            if(mainForm) mainForm.action = contextPath + "/adminPage8/add";
+            if(mainForm) mainForm.action = contextPath + "/add";
         }
     }
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnOpenAdd.addEventListener("click", function (e) {
             e.preventDefault();
 
-            if(mainForm) mainForm.action = contextPath + "/adminPage8/add";
+            if(mainForm) mainForm.action = contextPath + "/add";
 
             if(formTitle) formTitle.innerText = "THÊM MÃ KHUYẾN MÃI";
             if(inputId) inputId.value = "";
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             const data = editBtn.dataset;
 
-            if(mainForm) mainForm.action = contextPath + "/adminPage8/update";
+            if(mainForm) mainForm.action = contextPath + "/update";
 
             if(formTitle) formTitle.innerText = "CẬP NHẬT MÃ #" + data.id;
             if(inputId) inputId.value = data.id;

@@ -42,6 +42,6 @@ public class AdminSendMailServlet extends HttpServlet {
         }
 
         // Quay về trang quản lý
-        response.sendRedirect(request.getContextPath() + "/adminPage5");
+        response.sendRedirect(request.getContextPath() + "/admin/contact");
     }
 }

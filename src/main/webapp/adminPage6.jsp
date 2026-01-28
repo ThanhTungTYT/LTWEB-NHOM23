@@ -40,12 +40,12 @@
         <button class="slider-menu" id="slider-menu"><i class="fa-solid fa-bars"></i></button>
         <p>QUẢN LÍ ĐÁNH GIÁ</p>
     </div>
-    <form class="search-bar" method="get" action="search-review">
+    <form class="search-bar" method="get" action="${pageContext.request.contextPath}/search-review">
         <input type="text" name="key" placeholder="Tìm kiếm người dùng hoặc sản phẩm">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
     <div class="main-content">
-        <form class="main-menu-date" method="get" action="filter-review">
+        <form class="main-menu-date" method="get" action="${pageContext.request.contextPath}/filter-review">
             <div class="start">
                 <label>Start date</label>
                 <input name="start" type="date">
@@ -87,7 +87,7 @@
                                 <i class="fa-solid fa-eye"></i>
                             </button>
 
-                            <form method="post" action="delete-review">
+                            <form method="post" action="${pageContext.request.contextPath}/delete-review">
                                 <input type="hidden" name="rid" value="${r.id}">
                                 <button class="delete"><i class="fa-solid fa-trash"></i></button>
                             </form>

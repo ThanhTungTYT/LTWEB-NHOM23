@@ -38,7 +38,7 @@
                 </c:choose>
             </span>
         </p>
-        <p>Tổng tiền: <fmt:formatNumber value="${o.finalAmount}" type="currency" currencySymbol=" VND"/></p>
+        <p>Tổng tiền: <fmt:formatNumber value="${o.finalAmount}" type="number" maxFractionDigits="0"/> VND</p>
 
         <h4>Sản phẩm đã mua:</h4>
 
@@ -51,7 +51,7 @@
                 <div>
                     <strong>${it.product.name}</strong><br>
                     Số lượng: ${it.quantity}<br>
-                    Giá: <fmt:formatNumber value="${it.price}" type="currency" currencySymbol=" VND"/>
+                    Giá: <fmt:formatNumber value="${it.price}" type="number" maxFractionDigits="0"/> VND
                 </div>
             </div>
         </c:forEach>

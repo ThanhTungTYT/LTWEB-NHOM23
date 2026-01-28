@@ -40,7 +40,7 @@
     </div>
 
     <div class="main-content">
-        <form class="main-menu-date" action="adminPage5" method="get">
+        <form class="main-menu-date" action="${pageContext.request.contextPath}/admin/contact" method="get">
             <div class="start">
                 <label>Từ ngày</label>
                 <input type="date" name="startDate" value="${startDate}">
@@ -52,7 +52,7 @@
 
             <div class="action-buttons">
                 <button type="submit">Lọc</button>
-                <a href="adminPage5" class="btn-reset">Đặt lại</a>
+                <a href="${pageContext.request.contextPath}/admin/contact" class="btn-reset">Đặt lại</a>
             </div>
         </form>
 
@@ -111,21 +111,21 @@
 
             <div class="pagination">
                 <%-- Nút Previous --%>
-                <a href="${currentPage > 1 ? 'adminPage5?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
+                <a href="${currentPage > 1 ? pageContext.request.contextPath : ''}${currentPage > 1 ? '/admin/contact?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
                    class="${currentPage <= 1 ? 'disabled' : ''}">
                     <i class="fa-solid fa-chevron-left"></i>
                 </a>
 
-                <%-- Danh sách số trang --%>
+                <%-- Số trang --%>
                 <c:forEach begin="1" end="${totalPages}" var="i">
-                    <a href="adminPage5?page=${i}&startDate=${startDate}&endDate=${endDate}"
+                    <a href="${pageContext.request.contextPath}/admin/contact?page=${i}&startDate=${startDate}&endDate=${endDate}"
                        class="${currentPage == i ? 'active' : ''}">
                             ${i}
                     </a>
                 </c:forEach>
 
                 <%-- Nút Next --%>
-                <a href="${currentPage < totalPages ? 'adminPage5?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
+                <a href="${currentPage < totalPages ? pageContext.request.contextPath : ''}${currentPage < totalPages ? '/admin/contact?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
                    class="${currentPage >= totalPages ? 'disabled' : ''}">
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>
@@ -156,7 +156,7 @@
         <button onclick="closePopup('form-reply')">X</button>
     </div>
 
-    <form class="main-form" action="admin-send-mail" method="post">
+    <form class="main-form" action="${pageContext.request.contextPath}/admin-send-mail" method="post">
         <div>
             <label>Người nhận:</label>
             <input type="email" id="r-email" name="toEmail" readonly style="background-color: #eee;">

@@ -181,6 +181,10 @@
         flex-direction: column;
     }
 
+    .kpi-grid.kpi-card.card-info h3{
+        margin-bottom: 10px;
+    }
+
     .kpi-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -487,7 +491,7 @@
         font-size: 15px;
         margin-top: 20px;
         color: white;
-        background: red;
+        background: #c76739;
         width: 30px;
         height: 30px;
         border-radius: 10px;
@@ -619,7 +623,7 @@
         font-size: 15px;
         margin-top: 20px;
         color: white;
-        background: red;
+        background: #c76739;
         width: 30px;
         height: 30px;
         border-radius: 10px;

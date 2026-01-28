@@ -8,7 +8,7 @@
 
     // 2. Hàm định dạng tiền tệ
     function formatVND(amount) {
-    return amount.toLocaleString('vi-VN') + " ₫";
+    return amount.toLocaleString('vi-VN') + " VND";
 }
 
     // 3. Hàm tính toán
@@ -36,7 +36,7 @@
     if (discountValue > 0) {
     discountEl.innerHTML = "- " + formatVND(discountValue);
 } else {
-    discountEl.innerHTML = "0 ₫";
+    discountEl.innerHTML = "0 VND";
 }
 } else {
     console.error("LỖI: Không tìm thấy thẻ có id='discount-amount'");

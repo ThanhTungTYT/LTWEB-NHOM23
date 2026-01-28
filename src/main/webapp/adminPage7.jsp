@@ -58,14 +58,18 @@
                 <tr>
                     <input type="hidden" name="bid" value="${b.id}">
                     <td><img src="${b.banner_url}" width="200"></td>
-                    <td>${b.status}</td>
+                    <td>
+                        <span class="status-text ${b.status == 'active' ? 'active' : 'inactive'}">
+                                ${b.status == 'active' ? 'Active' : 'Inactive'}
+                        </span>
+                    </td>
                     <td>${b.start_date}</td>
                     <td>${b.end_date}</td>
                     <td>
                         <button class="remake"><i class="fa-solid fa-pen"></i></button>
                     </td>
                     <td>
-                        <form method="post" action="delete-banner">
+                        <form method="post" action="${pageContext.request.contextPath}/delete-banner">
                             <input type="hidden" name="bid" value="${b.id}">
                             <button type="submit"><i class="fa-solid fa-trash"></i></button>
                         </form>

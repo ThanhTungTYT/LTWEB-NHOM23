@@ -1,4 +1,4 @@
-package com.example.ltwebnhom23.controller.adminPgae6;
+package com.example.ltwebnhom23.controller.adminPage6;
 
 import com.example.ltwebnhom23.model.ProductReview;
 import com.example.ltwebnhom23.services.ReviewService;
@@ -10,23 +10,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "FilterReviewByTime", value = "/filter-review")
-public class FilterReviewByTime extends HttpServlet {
+@WebServlet(name = "SearchReview", value = "/search-review")
+public class SearchReview extends HttpServlet {
 
     private ReviewService review = new ReviewService();
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<ProductReview> listReview = new ArrayList<>();
 
-        String start = request.getParameter("start");
-        String end = request.getParameter("end");
+        String key = request.getParameter("key");
 
-        if(start == null && end == null){
+        if(key == null || key.equals("")){
             listReview = review.getAllReview();
-        }else {
-            listReview = review.getReviewByTime(start, end);
+        }else{
+            listReview = review.getReviewByKey(key);
         }
 
         request.setAttribute("listReview", listReview);

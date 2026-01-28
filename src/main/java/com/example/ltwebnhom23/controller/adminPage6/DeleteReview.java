@@ -1,4 +1,4 @@
-package com.example.ltwebnhom23.controller.adminPgae6;
+package com.example.ltwebnhom23.controller.adminPage6;
 
 import com.example.ltwebnhom23.services.ReviewService;
 import jakarta.servlet.*;

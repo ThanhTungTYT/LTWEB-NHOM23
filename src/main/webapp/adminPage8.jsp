@@ -49,7 +49,7 @@
         }
     %>
 
-    <form class="search-bar" action="${pageContext.request.contextPath}/adminPage8/search" method="GET">
+    <form class="search-bar" action="${pageContext.request.contextPath}/admin/promotion/search" method="GET">
         <input type="text" name="search" placeholder="Tìm kiếm mã giảm giá (ID hoặc Code)" value="${searchKeyword}">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
@@ -81,7 +81,7 @@
                     <td>#${p.id}</td>
                     <td><strong>${p.code}</strong></td>
                     <td>${p.description}</td>
-                    <td><fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="VND" maxFractionDigits="0"/></td>
+                    <td><fmt:formatNumber value="${p.minOrderValue}" type="currency" currencySymbol="" maxFractionDigits="0"/> VND</td>
                     <td><fmt:formatNumber value="${p.discountPercent}" type="number" maxFractionDigits="0"/>%</td>
                     <td style="text-align: center;">${p.quantity}</td>
                     <td><fmt:formatDate value="${p.startDate}" pattern="dd/MM/yyyy"/></td>
@@ -107,7 +107,7 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
 
-                        <a href="${pageContext.request.contextPath}/adminPage8/delete?id=${p.id}"
+                        <a href="${pageContext.request.contextPath}/admin/promotion/delete?id=${p.id}"
                            class="btn-action btn-delete"
                            onclick="return confirm('Bạn có chắc chắn muốn xóa mã này không? Nếu mã đã được sử dụng, hệ thống sẽ chỉ tắt kích hoạt.');">
                             <i class="fa-solid fa-trash"></i>
@@ -126,7 +126,7 @@
         <button id="take-off">X</button>
     </div>
 
-    <form class="main-form" id="main-form" method="POST" data-context="${pageContext.request.contextPath}">
+    <form class="main-form" id="main-form" method="POST" data-context="${pageContext.request.contextPath}/admin/promotion">
         <input type="hidden" name="id" id="input-id" value="">
 
         <div class="p name-p">

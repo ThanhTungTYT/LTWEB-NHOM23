@@ -53,7 +53,7 @@
         <p>ĐƠN HÀNG</p>
     </div>
     <div class="main-content">
-        <form class="search-bar" action="${pageContext.request.contextPath}/adminPage3/search" method="GET">
+        <form class="search-bar" action="${pageContext.request.contextPath}/admin/orders/search" method="GET">
             <input type="text" name="search" placeholder="Tìm kiếm (Mã ĐH hoặc Tên khách hàng)" value="${searchKeyword}">
             <button type="submit"><i class="fas fa-search"></i></button>
         </form>
@@ -136,21 +136,21 @@
             </table>
             <div class="pagination">
                 <%-- Nút Previous --%>
-                <a href="${currentPage > 1 ? pageContext.request.contextPath : ''}${currentPage > 1 ? '/adminPage3?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
+                <a href="${currentPage > 1 ? pageContext.request.contextPath : ''}${currentPage > 1 ? '/admin/orders?page=' : '#'}${currentPage > 1 ? currentPage - 1 : ''}${currentPage > 1 ? '&startDate=' : ''}${currentPage > 1 ? startDate : ''}${currentPage > 1 ? '&endDate=' : ''}${currentPage > 1 ? endDate : ''}"
                    class="${currentPage <= 1 ? 'disabled' : ''}">
                     <i class="fa-solid fa-chevron-left"></i>
                 </a>
 
                 <%-- Số trang --%>
                 <c:forEach begin="1" end="${totalPages}" var="i">
-                    <a href="${pageContext.request.contextPath}/adminPage3?page=${i}&startDate=${startDate}&endDate=${endDate}"
+                    <a href="${pageContext.request.contextPath}/admin/orders?page=${i}&startDate=${startDate}&endDate=${endDate}"
                        class="${currentPage == i ? 'active' : ''}">
                             ${i}
                     </a>
                 </c:forEach>
 
                 <%-- Nút Next --%>
-                <a href="${currentPage < totalPages ? pageContext.request.contextPath : ''}${currentPage < totalPages ? '/adminPage3?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
+                <a href="${currentPage < totalPages ? pageContext.request.contextPath : ''}${currentPage < totalPages ? '/admin/orders?page=' : '#'}${currentPage < totalPages ? currentPage + 1 : ''}${currentPage < totalPages ? '&startDate=' : ''}${currentPage < totalPages ? startDate : ''}${currentPage < totalPages ? '&endDate=' : ''}${currentPage < totalPages ? endDate : ''}"
                    class="${currentPage >= totalPages ? 'disabled' : ''}">
                     <i class="fa-solid fa-chevron-right"></i>
                 </a>

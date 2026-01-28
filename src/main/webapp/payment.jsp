@@ -161,14 +161,14 @@
                             <div class="cart-info">
                                 <p class="product-name">${item.product.name}</p>
                                 <p class="price"> Giá:
-                                    <fmt:formatNumber value="${item.price}" type="currency" currencySymbol=" VND"/>
+                                    <fmt:formatNumber value="${item.price}" type="number" maxFractionDigits="0"/> VND
                                 </p>
                             </div>
                             <div class="quantity-box">
                                 <p>Số lượng: ${item.quantity}</p>
                             </div>
                             <div style="margin-left:auto; font-weight: bold; font-size: 0.9em; color: #555;">
-                                <fmt:formatNumber value="${item.price * item.quantity}" type="currency" currencySymbol=" VND"/>
+                                <fmt:formatNumber value="${item.price * item.quantity}" type="number" maxFractionDigits="0"/> VND
                             </div>
                         </div>
                     </c:forEach>
@@ -194,12 +194,12 @@
                 <div class="summary-row">
                     <span>Tổng tiền hàng</span>
                     <span id="total-price" data-total="${requestScope.cart.total}">
-                        <fmt:formatNumber value="${requestScope.cart.total}" type="currency" currencySymbol=" VND"/>
+                        <fmt:formatNumber value="${requestScope.cart.total}" type="number" maxFractionDigits="0"/> VND
                     </span>
                 </div>
                 <div class="summary-row">
                     <span>Phí vận chuyển</span>
-                    <span id="shipping-fee" data-fee="30000">30.000 VND</span>
+                    <span id="shipping-fee" data-fee="30000">30,000 VND</span>
                 </div>
 
                 <div class="summary-row">
@@ -209,7 +209,7 @@
                 <div class="summary-row total">
                     <span>Tổng thanh toán</span>
                     <span id="final-total">
-                        <fmt:formatNumber value="${requestScope.cart.total + 30000}" type="currency" currencySymbol=" VND"/>
+                        <fmt:formatNumber value="${requestScope.cart.total + 30000}" type="number" maxFractionDigits="0"/> VND
                     </span>
                 </div>
                 <button type="submit" class="checkout-btn">Đặt hàng</button>
