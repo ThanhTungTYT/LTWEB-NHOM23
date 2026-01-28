@@ -9,14 +9,16 @@ public class User {
     private String password_hash;
     private String role;
     private Timestamp createdAt;
+    private String status;
 
-    public User(int id, String full_name, String email, String phone, String password_hash, String role) {
+    public User(int id, String full_name, String email, String phone, String password_hash, String role, String status) {
         this.id = id;
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
         this.password_hash = password_hash;
         this.role = role;
+        this.status = status;
     }
 
     public User() {}
@@ -67,5 +69,13 @@ public class User {
 
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

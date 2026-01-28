@@ -9,7 +9,7 @@ public class AccountDao extends BaseDao {
 
     public User getUserById(int userId) {
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT id, full_name, email, phone, password_hash, role, created_at FROM users WHERE id = :id")
+                handle.createQuery("SELECT id, full_name, email, phone, password_hash, role, created_at, status FROM users WHERE id = :id")
                         .bind("id", userId)
                         .mapToBean(User.class)
                         .findFirst()
@@ -69,9 +69,16 @@ public class AccountDao extends BaseDao {
                         .list()
         );
     }
-    public boolean deleteUser(int uid){
+    public boolean banUser(int uid){
         return getJdbi().withHandle(handle ->
-                handle.createUpdate("DELETE FROM users WHERE id = :uid")
+                handle.createUpdate("UPDATE users SET status = 'ban' WHERE id = :uid")
+                        .bind("uid", uid)
+                        .execute() > 0
+        );
+    }
+    public boolean unBanUser(int uid){
+        return getJdbi().withHandle(handle ->
+                handle.createUpdate("UPDATE users SET status = 'active' WHERE id = :uid")
                         .bind("uid", uid)
                         .execute() > 0
         );

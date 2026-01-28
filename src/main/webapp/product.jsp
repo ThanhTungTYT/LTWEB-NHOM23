@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fomt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
@@ -145,7 +146,7 @@
             <div class="review-summary">
                 <div class="average-rating">
                     <span class="rating-value">${avg}/5</span>
-                    <div class="stars" style="--rating: 0" aria-label="Đánh giá trung bình là 0/5 sao"></div>
+                    <div class="stars" style="--rating: ${avg}" aria-label="Đánh giá trung bình là 0/5 sao"></div>
                     <span class="review-count">(${count} đánh giá)</span>
                 </div>
             </div>
@@ -154,10 +155,9 @@
                 <div class="review-item">
                     <c:forEach items="${review}" var="r">
                         <div class="review-item">
-                            <div class="review-author">${r.username}</div>
+                            <div class="review-author">${r.username} - <span class="review-date"><fomt:formatDate value="${r.created_at}" pattern="dd/MM/yyyy"/></span></div>
                             <div class="review-meta">
                                 <div class="stars" style="--rating: ${r.rating};" aria-label="Đánh giá ${r.rating}/5 sao"></div>
-                                <span class="review-date"></span>
                             </div>
                             <p class="review-body">
                                 ${r.comment}

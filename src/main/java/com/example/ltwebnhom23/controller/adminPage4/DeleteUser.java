@@ -1,5 +1,6 @@
 package com.example.ltwebnhom23.controller.adminPage4;
 
+import com.example.ltwebnhom23.model.User;
 import com.example.ltwebnhom23.services.AccountService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -21,9 +22,16 @@ public class DeleteUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int uid = Integer.parseInt(request.getParameter("uid"));
+        User user = account.getAccountInfo(uid);
 
-        if(account.deleteUser(uid)){
-            response.sendRedirect(request.getContextPath() + "/admin/users");
+        if(user.getStatus().equals("active")){
+            if(account.banUser(uid)){
+                response.sendRedirect(request.getContextPath() + "/admin/users");
+            }
+        }else {
+            if(account.unBanUser(uid)){
+                response.sendRedirect(request.getContextPath() + "/admin/users");
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ public class AuthDao extends BaseDao {
 
     public User findByEmail(String email){
         return getJdbi().withHandle(handle ->
-                handle.createQuery("SELECT * FROM users WHERE email = :e")
+                handle.createQuery("SELECT * FROM users WHERE email = :e AND status = 'active'")
                         .bind("e", email)
                         .mapToBean(User.class)
                         .findOne()
@@ -27,8 +27,8 @@ public class AuthDao extends BaseDao {
     public boolean register(User user){
         return getJdbi().withHandle(handle ->
                 handle.createUpdate(
-                                "INSERT INTO users(full_name, email, phone, password_hash, role, created_at) " +
-                                        "VALUES (:fullname, :email, :phone, :pass, :role, NOW())"
+                                "INSERT INTO users(full_name, email, phone, password_hash, role, created_at, status) " +
+                                        "VALUES (:fullname, :email, :phone, :pass, :role, NOW(), 'active')"
                         )
                         .bind("fullname", user.getFull_name())
                         .bind("email", user.getEmail())
