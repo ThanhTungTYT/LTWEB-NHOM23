@@ -202,7 +202,7 @@
         <p>THÊM SẢN PHẨM</p>
         <button id="take-off" type="button" >X</button>
     </div>
-    <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+    <form class="main-form" action="${pageContext.request.contextPath}/admin/products" method="post">
         <input type="hidden" name="action" value="add_product">
         <div class="p name-p">
             <label>Tên sản phẩm</label>
@@ -249,7 +249,7 @@
         <button id="close-remake" type="button" onclick="closeEditModal()">X</button>
     </div>
 
-    <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+    <form class="main-form" action="${pageContext.request.contextPath}/admin/products" method="post">
         <input type="hidden" name="action" value="edit_product">
 
         <input type="hidden" name="id" id="edit-id-hidden">
@@ -307,7 +307,7 @@
         <button type="button" onclick="dongFormThemLoai()">X</button>
     </div>
 
-    <form class="main-form" action="${pageContext.request.contextPath}/adminPage2" method="post">
+    <form class="main-form" action="${pageContext.request.contextPath}/admin/products" method="post">
         <input type="hidden" name="action" value="add_category">
         <div class="p name-p" >
             <label>Tên loại sản phẩm</label>
@@ -316,11 +316,11 @@
         <button class="submit" type="submit">Thêm</button>
     </form>
 </div>
-<form id="form-delete-cat" action="${pageContext.request.contextPath}/adminPage2" method="post" style="display: none;">
+<form id="form-delete-cat" action="${pageContext.request.contextPath}/admin/products" method="post" style="display: none;">
     <input type="hidden" name="action" value="delete_category">
     <input type="hidden" name="id" id="input-cat-id">
 </form>
-<form id="delete-form" action="${pageContext.request.contextPath}/adminPage2" method="post" style="display: none;">
+<form id="delete-form" action="${pageContext.request.contextPath}/admin/products" method="post" style="display: none;">
     <input type="hidden" name="action" id="delete-action">
     <input type="hidden" name="ids" id="delete-ids-multi">
 </form>

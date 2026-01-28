@@ -99,8 +99,11 @@
             <div id="cart-list">
                 <c:forEach items="${sessionScope.cart.list}" var="item">
                     <div class="cart-item">
-                        <input type="checkbox" class="product-select item-checkbox"
-                               name="selectedIds" value="${item.product.id}" checked
+                        <input type="checkbox"
+                               class="product-select item-checkbox"
+                               name="selectedIds"
+                               value="${item.product.id}"
+                               checked
                                data-subtotal="${item.price * item.quantity}">
 
                         <a href="${pageContext.request.contextPath}/remove-item?pid=${item.product.id}" class="product-remove" title="Xóa sản phẩm" onclick="return confirm('Xóa sản phẩm này?');">
@@ -147,7 +150,7 @@
                         </div>
 
                         <div class="product-subtotal">
-                            <fmt:formatNumber value="${item.price * item.quantity}" type="number"/> VND
+                            <fmt:formatNumber value="${item.price * item.quantity}" type="number" maxFractionDigits="0"/> VND
                         </div>
                     </div>
                 </c:forEach>
@@ -155,10 +158,8 @@
 
             <div class="cart-totals">
                 <h3>TỔNG CỘNG</h3>
-                <span id="cart-total">
-                    <fmt:formatNumber value="${sessionScope.cart.total}" type="number"/> VND
-                </span>
-                <p>(Chưa bao gồm phí vận chuyển)</p>
+                <span id="cart-total">0đ</span>
+                <p>(Chỉ tính các sản phẩm được chọn)</p>
             </div>
 
             <button type="submit" class="checkout-button">Thanh Toán Các Mục Đã Chọn</button>

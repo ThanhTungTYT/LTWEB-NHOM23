@@ -59,7 +59,7 @@
             </c:forEach>
         </div>
     </div>
-    <form class="search-bar" method="get" action="search-user">
+    <form class="search-bar" method="get" action="${pageContext.request.contextPath}/search-user">
         <input type="text" name="keyword" placeholder="Tìm kiếm người dùng">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
@@ -89,7 +89,7 @@
                         <td>${u.phone}</td>
                         <td>${u.role}</td>
                         <td>
-                            <button class="remake" style="background: blue"><i class="fa-solid fa-pen"></i></button>
+                            <button class="remake" ><i class="fa-solid fa-pen"></i></button>
                         </td>
                         <td>
                             <form method="post" action="${pageContext.request.contextPath}/delete-user">
