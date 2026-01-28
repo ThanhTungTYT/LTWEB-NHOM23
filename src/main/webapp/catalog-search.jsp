@@ -86,15 +86,6 @@
 <div class="catalog">
   <div class="catalog-list" id="catalog-list">
     <p class="head-catalog">Danh mục sản phẩm</p>
-    <div class="filter">
-      <select name="sort" onchange="changeSort(this.value)">
-        <option value="default" ${currentSort == 'default' ? 'selected' : ''}>-Chọn lựa-</option>
-        <option value="price-desc" ${currentSort == 'price-desc' ? 'selected' : ''}>Giá cao đến thấp</option>
-        <option value="price-asc" ${currentSort == 'price-asc' ? 'selected' : ''}>Giá thấp đến cao</option>
-        <option value="sold" ${currentSort == 'sold' ? 'selected' : ''}>Lượt mua nhiều nhất</option>
-        <option value="rating" ${currentSort == 'rating' ? 'selected' : ''}>Lượt đánh giá</option>
-      </select>
-    </div>
   </div>
   <div class="product-area" id="product-area">
     <div class="product-list" id="product-list">

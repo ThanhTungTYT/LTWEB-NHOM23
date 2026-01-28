@@ -34,8 +34,11 @@ public class AccountService {
 
 
 
-    public boolean deleteUser(int uid){
-        return accountDao.deleteUser(uid);
+    public boolean banUser(int uid){
+        return accountDao.banUser(uid);
+    }
+    public boolean unBanUser(int uid){
+        return accountDao.unBanUser(uid);
     }
     public boolean addUser(User user){
         String hashedPassword = MD5Util.md5(user.getPassword_hash());

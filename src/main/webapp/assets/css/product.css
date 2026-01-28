@@ -252,6 +252,7 @@
 .product-body .product-details .detail-main .detail-content {
     max-height: 100px;
     overflow: hidden;
+    white-space: pre-line;
     transition: max-height 0.4s ease-out;
 }
 
@@ -425,8 +426,8 @@
     margin-right: 10px;
 }
 
-.review-meta .review-date {
-    font-size: 13px;
+.review-author .review-date {
+    font-size: 20px;
     color: #777;
 }
 

@@ -172,6 +172,7 @@
 .product-preview .description {
     color: black;
     margin-top: 10px;
+    white-space: pre-line;
 }
 .product-preview .rating {
     margin-top: 10px;

@@ -92,9 +92,20 @@
                             <button class="remake" style="background: blue"><i class="fa-solid fa-pen"></i></button>
                         </td>
                         <td>
-                            <form method="post" action="delete-user">
+                            <form method="post" action="${pageContext.request.contextPath}/delete-user">
                                 <input type="hidden" name="uid" value="${u.id}">
-                                <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                <c:choose>
+                                    <c:when test="${u.status eq 'active'}">
+                                        <button type="submit" style="background-color: #e74c3c; color: white;" title="Ban user">
+                                            <i class="fa-solid fa-ban"></i>
+                                        </button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button type="submit" style="background-color: #7f8c8d; color: #ddd;" title="User đã bị ban">
+                                            <i class="fa-solid fa-ban"></i>
+                                        </button>
+                                    </c:otherwise>
+                                </c:choose>
                             </form>
                         </td>
                     </tr>
@@ -108,7 +119,7 @@
         <p>THÊM TÀI KHOẢN</p>
         <button id="take-off">X</button>
     </div>
-    <form method="post" action="add-user" class="main-form">
+    <form method="post" action="${pageContext.request.contextPath}/add-user" class="main-form">
         <div class="p name-p">
             <label>Tên người dùng</label>
             <input type="text" name="name" placeholder="Tên người dùng">
