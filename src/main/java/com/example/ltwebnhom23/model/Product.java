@@ -14,14 +14,12 @@ public class Product {
     private Timestamp created_at;
     private String state;
 
-    // --- Các trường mở rộng (Lấy từ bảng khác qua JOIN) ---
-    private String image_url;     // Lấy từ product_images
-    private String category_name; // Lấy từ categories
-    private double avg_rating;    // Lấy từ bảng review
+    private String image_url;
+    private String category_name;
+    private double avg_rating;
 
     public Product() {}
 
-    // Constructor đầy đủ
     public Product(int id, int category_id, String name, String description, int stock, int sold, int weight_grams, double price, Timestamp created_at, String state) {
         this.id = id;
         this.category_id = category_id;

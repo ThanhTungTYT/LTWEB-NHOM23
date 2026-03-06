@@ -121,7 +121,7 @@ public class PromotionDao extends BaseDao {
         );
     }
 
-    // Lấy 1 promotion theo id (khi user chọn)
+    // Lấy 1 promotion theo id
     public Promotion getById(int id) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery(

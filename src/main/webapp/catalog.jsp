@@ -149,9 +149,9 @@
     <div class="footer-top">
         <div class="foot-content left">
             <h3>Aroma Café</h3>
-            <p>Địa chỉ: xxx, xxx, xxx.</p>
-            <p>Điện thoại: xxx-xxx-xxxx.</p>
-            <p>Email: example@gmail.com</p>
+            <p>Địa chỉ: Trường đại học Nông Lâm TPHCM.</p>
+            <p>Điện thoại: 0933652267.</p>
+            <p>Email: nguyenhuybaolegit@gmail.com</p>
         </div>
 
         <div class="foot-content footer-links">

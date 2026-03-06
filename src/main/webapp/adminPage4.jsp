@@ -139,7 +139,6 @@
         <div class="type-p">
             <label>Role</label>
             <select name="role">
-                <option>-Chọn vai trò-</option>
                 <option>admin</option>
                 <option>customer</option>
             </select>
@@ -159,7 +158,6 @@
         <div class="type-p">
             <label>Role</label>
             <select name="up_role">
-                <option>-Chọn vai trò-</option>
                 <option>admin</option>
                 <option>customer</option>
             </select>

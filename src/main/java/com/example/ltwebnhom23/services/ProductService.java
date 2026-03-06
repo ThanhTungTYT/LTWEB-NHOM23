@@ -42,12 +42,12 @@ public class ProductService {
 
     public boolean addProductWithUrls(Product product, String[] imageUrls) {
         try {
-            int newProductId = productDao.insertProduct(product); // Sửa p -> productDao
+            int newProductId = productDao.insertProduct(product);
             if (newProductId > 0) {
                 if (imageUrls != null && imageUrls.length > 0) {
                     for (String url : imageUrls) {
                         if (url != null && !url.trim().isEmpty()) {
-                            productDao.insertProductImage(newProductId, url.trim()); // Sửa p -> productDao
+                            productDao.insertProductImage(newProductId, url.trim());
                         }
                     }
                 }

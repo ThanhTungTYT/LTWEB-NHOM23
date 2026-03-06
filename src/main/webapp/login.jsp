@@ -65,8 +65,8 @@
     <h2 id="Login">Đăng nhập</h2>
 
     <form id="f-login" action="login" method="post">
-        <label class="lbu" for="username">Tên đăng nhập:</label>
-        <input type="text" id="username" name="email" placeholder="Tên đăng nhập hoặc email" required><br><br>
+        <label class="lbu" for="username">Nhập email:</label>
+        <input type="text" id="username" name="email" placeholder="Email" required><br><br>
 
         <label class="lbpw" for="password">Mật khẩu:</label>
         <input type="password" id="password" name="password" placeholder="Mật khẩu" required><br><br>
@@ -78,6 +78,19 @@
         <button type="submit" id="b-login">Đăng nhập</button>
     </form>
 
+    <div class="social-login-divider">
+        <span>Hoặc đăng nhập bằng</span>
+    </div>
+
+    <div class="social-login-buttons">
+        <button type="button" class="btn-social btn-google" title="Đăng nhập bằng Google">
+            <i class="fab fa-google"></i>
+        </button>
+        <button type="button" class="btn-social btn-facebook" title="Đăng nhập bằng Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+    </div>
+
     <div class="register-link">
         <p>Bạn chưa có tài khoản? <a href="${pageContext.request.contextPath}/register.jsp">Đăng ký ở đây</a></p>
     </div>
@@ -87,9 +100,9 @@
     <div class="footer-top">
         <div class="foot-content left">
             <h3>Aroma Café</h3>
-            <p>Địa chỉ: xxx, xxx, xxx.</p>
-            <p>Điện thoại: xxx-xxx-xxxx.</p>
-            <p>Email: example@gmail.com</p>
+            <p>Địa chỉ: Trường đại học Nông Lâm TPHCM.</p>
+            <p>Điện thoại: 0933652267.</p>
+            <p>Email: nguyenhuybaolegit@gmail.com</p>
         </div>
 
         <div class="foot-content footer-links">

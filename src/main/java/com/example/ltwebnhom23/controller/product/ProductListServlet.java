@@ -18,26 +18,26 @@ public class ProductListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 1. Load danh sách danh mục (để hiển thị bên trái hoặc menu lọc)
+        // 1. Load danh sách danh mục
         List<Category> listCategories = catalogService.getAllCategories();
         request.setAttribute("listCategories", listCategories);
 
         // 2. Lấy tham số từ URL
         String cidStr = request.getParameter("cid");
         String sort = request.getParameter("sort");
-        String pageStr = request.getParameter("page"); // Thêm lấy tham số page
+        String pageStr = request.getParameter("page");
 
-        // 3. Xử lý cid (Category ID)
+        // 3. Xử lý Category ID
         int cid = 0;
         if (cidStr != null && !cidStr.isEmpty()) {
             try {
                 cid = Integer.parseInt(cidStr);
             } catch (NumberFormatException e) {
-                cid = 0; // Nếu lỗi format thì mặc định là 0 (Tất cả)
+                cid = 0;
             }
         }
 
-        // 4. Xử lý page (Trang hiện tại)
+        // 4. Xử lý Trang hiện tại
         int page = 1;
         if (pageStr != null && !pageStr.isEmpty()) {
             try {
@@ -49,10 +49,10 @@ public class ProductListServlet extends HttpServlet {
         }
 
         // 5. Gọi Service
-        // - Tính tổng số trang (để biết nút Next có disable hay không)
+        // - Tính tổng số trang
         int totalPages = productService.getTotalPages(cid);
 
-        // - Lấy danh sách sản phẩm theo trang (Service sẽ tự tính offset)
+        // - Lấy danh sách sản phẩm theo trang
         List<Product> listProducts = productService.getProductsForCatalog(cid, sort, page);
 
         // 6. Set Attribute để gửi ra JSP

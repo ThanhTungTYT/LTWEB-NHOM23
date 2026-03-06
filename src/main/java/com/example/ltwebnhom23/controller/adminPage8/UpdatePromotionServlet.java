@@ -19,7 +19,6 @@ public class UpdatePromotionServlet extends HttpServlet {
         String error = null;
 
         String idStr = request.getParameter("id");
-        // String code = request.getParameter("code"); // Không cần lấy code để validate trùng vì update không sửa code
         String description = request.getParameter("description");
         String minOrderStr = request.getParameter("minOrderValue");
         String discountStr = request.getParameter("discountPercent");
@@ -36,7 +35,6 @@ public class UpdatePromotionServlet extends HttpServlet {
             LocalDate endDate = LocalDate.parse(endStr);
             LocalDate today = LocalDate.now();
 
-            // Validate cho UPDATE (Bỏ check trùng code, bỏ check ngày bắt đầu quá khứ)
             if (minOrder < 1) error = "Đơn hàng tối thiểu phải từ 1đ trở lên!";
             else if (discount < 1 || discount > 100) error = "Mức giảm giá phải từ 1% đến 100%!";
             else if (quantity < 0 || quantity > 1000000) error = "Số lượng mã phải từ 0 đến 1.000.000!";

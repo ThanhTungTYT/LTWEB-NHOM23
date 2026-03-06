@@ -52,7 +52,6 @@ public class AddPromotionServlet extends HttpServlet {
 
             if (error != null) {
                 request.setAttribute("errorMessage", error);
-                // QUAN TRỌNG: Load lại danh sách để JSP hiển thị nền phía sau modal
                 request.setAttribute("listPromotions", PromotionService.getInstance().getAllPromotions());
                 request.getRequestDispatcher("/adminPage8.jsp").forward(request, response);
                 return;

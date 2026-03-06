@@ -180,24 +180,27 @@
     <div class="footer-top">
         <div class="foot-content left">
             <h3>Aroma Café</h3>
-            <p>Địa chỉ: Khu phố 6, Linh Trung, Thủ Đức, TP.HCM.</p>
-            <p>Điện thoại: 1900-1234.</p>
-            <p>Email: contact@aromacafe.com</p>
+            <p>Địa chỉ: Trường đại học Nông Lâm TPHCM.</p>
+            <p>Điện thoại: 0933652267.</p>
+            <p>Email: nguyenhuybaolegit@gmail.com</p>
         </div>
+
         <div class="foot-content footer-links">
             <h3>Quy định & Chính sách</h3>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/policy?type=shipping">Chính sách vận chuyển</a></li>
-                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành</a></li>
+                <li><a href="${pageContext.request.contextPath}/policy?type=warranty">Chính sách bảo hành, đổi trả</a></li>
                 <li><a href="${pageContext.request.contextPath}/policy?type=terms">Điều khoản sử dụng</a></li>
             </ul>
         </div>
+
         <div class="foot-content right">
             <h3>Kết nối với chúng tôi</h3>
             <div class="social">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>

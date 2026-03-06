@@ -45,7 +45,7 @@ public class ProductDao extends BaseDao {
         );
     }
 
-    // Lấy toàn bộ sản phẩm (cho trang Admin hoặc Debug)
+    // Lấy toàn bộ sản phẩm
     public List<Product> getAllProduct() {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT p.id, p.category_id, p.name, p.price, p.description, p.stock, p.sold, p.weight_grams, p.state, " +
@@ -61,7 +61,7 @@ public class ProductDao extends BaseDao {
         );
     }
 
-    // Lấy sản phẩm theo danh mục (cơ bản)
+    // Lấy sản phẩm theo danh mục
     public List<Product> getProductForCategory(int cid) {
         return getJdbi().withHandle(handle ->
                 handle.createQuery("SELECT p.id, p.name, p.price, p.sold, " +
@@ -223,7 +223,7 @@ public class ProductDao extends BaseDao {
     //  Xóa vĩnh viễn
     public boolean hardDeleteProduct(int id) {
         return getJdbi().withHandle(handle -> {
-            // xóa ảnh trong bảng phụ trước để tránh lỗi khóa ngoại (Foreign Key)
+            // xóa ảnh trong bảng phụ trước để tránh lỗi khóa ngoại
             handle.createUpdate("DELETE FROM product_images WHERE product_id = :id")
                     .bind("id", id)
                     .execute();
@@ -245,8 +245,8 @@ public class ProductDao extends BaseDao {
                                 "stock = :stock, " +
                                 "weight_grams = :weight, " +
                                 "description = :desc, " +
-                                "state = :state " +  // Lưu ý: Không có dấu phẩy ở dòng cuối cùng này
-                                "WHERE id = :id")    // Lưu ý: Có dấu cách trước WHERE
+                                "state = :state " +
+                                "WHERE id = :id")
                         .bind("name", p.getName())
                         .bind("catId", p.getCategory_id())
                         .bind("price", p.getPrice())

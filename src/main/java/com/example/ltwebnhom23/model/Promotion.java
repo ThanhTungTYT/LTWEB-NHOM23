@@ -16,7 +16,6 @@ public class Promotion implements Serializable {
 
     public Promotion() {}
 
-    // Getters and Setters (Bắt buộc phải có để JDBI tự map)
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
