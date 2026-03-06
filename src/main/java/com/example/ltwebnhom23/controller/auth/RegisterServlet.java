@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
 
-        // --- PHẦN VALIDATION (GIỮ NGUYÊN) ---
+        // --- PHẦN VALIDATION ---
         if(authService.existsByEmail(email)){
             request.setAttribute("status", "Email đã được sử dụng");
             request.getRequestDispatcher("register.jsp").forward(request, response);

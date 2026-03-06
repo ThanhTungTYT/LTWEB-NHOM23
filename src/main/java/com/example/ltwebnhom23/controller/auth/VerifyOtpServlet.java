@@ -31,7 +31,7 @@ public class VerifyOtpServlet extends HttpServlet {
         Map<String, Object> regData = (Map<String, Object>) session.getAttribute("reg_temp");
 
         if (regData == null) {
-            response.sendRedirect(request.getContextPath() + "/register.jsp");
+            response.sendRedirect(request.getContextPath() + "/register");
             return;
         }
 

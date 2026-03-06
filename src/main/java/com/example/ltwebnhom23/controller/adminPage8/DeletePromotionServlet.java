@@ -16,7 +16,6 @@ public class DeletePromotionServlet extends HttpServlet {
         if (idStr != null) {
             try {
                 int id = Integer.parseInt(idStr);
-                // Gọi hàm Safe Delete
                 int result = PromotionService.getInstance().deletePromotionSafe(id);
 
                 String msg;

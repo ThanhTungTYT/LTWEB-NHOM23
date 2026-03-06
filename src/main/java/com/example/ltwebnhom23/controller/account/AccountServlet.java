@@ -68,7 +68,6 @@ public class AccountServlet extends HttpServlet {
             User authUser = (User) session.getAttribute("user");
 
             if (authUser != null) {
-                // ... (Code update giữ nguyên như cũ của bạn) ...
                 String fullName = request.getParameter("fullname");
                 String phone = request.getParameter("phone");
                 String city = request.getParameter("city");
@@ -93,7 +92,6 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("user", userDetail);
                 request.setAttribute("addr", addressDetail);
 
-                // Quan trọng: Trả về info.jsp để AJAX cập nhật lại vùng nội dung
                 request.getRequestDispatcher("/info.jsp").forward(request, response);
             } else {
                 response.sendRedirect(request.getContextPath() + "/login.jsp");

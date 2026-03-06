@@ -40,8 +40,6 @@ public class AdminSendMailServlet extends HttpServlet {
             e.printStackTrace();
             session.setAttribute("msgError", "Gửi thất bại: " + e.getMessage());
         }
-
-        // Quay về trang quản lý
         response.sendRedirect(request.getContextPath() + "/admin/contact");
     }
 }

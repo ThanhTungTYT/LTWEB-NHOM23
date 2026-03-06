@@ -14,11 +14,9 @@ import java.util.Map;
 
 public class OrderDao extends BaseDao {
 
-    // Cần import model OrderAddress
     public boolean createOrder(Order order, OrderAddress address, Cart checkoutCart) {
         return getJdbi().inTransaction(h -> {
             try {
-                // 1. INSERT ORDER & LẤY ID
                 int orderId = h.createUpdate(
                                 "INSERT INTO orders (" +
                                         "user_id, payment_method_id, promo_id, " +
@@ -286,12 +284,10 @@ public class OrderDao extends BaseDao {
                         .bind("end", end)
                         .map((rs, ctx) -> {
 
-                            // tạo Product
                             Product product = new Product();
                             product.setId(rs.getInt("productId"));
                             product.setName(rs.getString("productName"));
 
-                            // map kết quả
                             Map<String, Object> row = new HashMap<>();
                             row.put("product", product);
                             row.put("totalSold", rs.getInt("totalSold"));

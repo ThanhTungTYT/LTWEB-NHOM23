@@ -1,5 +1,6 @@
 package com.example.ltwebnhom23.controller.account;
 
+import com.example.ltwebnhom23.controller.auth.Validation;
 import com.example.ltwebnhom23.model.User;
 import com.example.ltwebnhom23.services.AuthService;
 import jakarta.servlet.*;
@@ -11,6 +12,8 @@ import java.io.IOException;
 public class ChangePasswordServlet extends HttpServlet {
 
     private AuthService authService = new AuthService();
+    private Validation validation = new Validation();
+    private static final int LENGTH = 8;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,14 +32,20 @@ public class ChangePasswordServlet extends HttpServlet {
         String confirmPass = request.getParameter("confirm_pass");
 
         // 3. Validate cơ bản
-        if (newPass == null || !newPass.equals(confirmPass)) {
+        if(!validation.containChar(newPass)){
+            request.setAttribute("error", "Mật khẩu phải chứa ít nhất 1 kí tự đặc biệt, chữ in hoa và số!");
+            request.getRequestDispatcher("changePassword.jsp").forward(request, response);
+            return;
+        }
+
+        if (newPass == null || !validation.rePass(newPass, confirmPass)) {
             request.setAttribute("error", "Mật khẩu xác nhận không khớp!");
             request.getRequestDispatcher("changePassword.jsp").forward(request, response);
             return;
         }
 
-        if (newPass.length() < 6) {
-            request.setAttribute("error", "Mật khẩu mới phải có ít nhất 6 ký tự!");
+        if (!validation.passLength(newPass, LENGTH)) {
+            request.setAttribute("error", "Mật khẩu mới phải có ít nhất" + LENGTH + "ký tự!");
             request.getRequestDispatcher("changePassword.jsp").forward(request, response);
             return;
         }
