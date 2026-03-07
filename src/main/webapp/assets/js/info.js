@@ -1,18 +1,15 @@
 $(document).ready(function() {
     $('#btnToggle').on('click', function(e) {
         var btn = $(this);
-        var inputs = $('.info-form .editable');
+        var editables = $('.info-form .editable');
 
-        if (inputs.first().prop('readonly')) {
+        if (btn.attr('type') !== 'submit') {
             e.preventDefault();
-
-            inputs.prop('readonly', false);
-
-            inputs.first().focus();
-
+            editables.filter('input').prop('readonly', false);
+            editables.filter('select').prop('disabled', false);
+            editables.first().focus();
             btn.text('Lưu thay đổi');
             btn.addClass('btn-save-mode');
-
             btn.attr('type', 'submit');
         }
     });
